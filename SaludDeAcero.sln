@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SaludDeAcero", "SaludDeAcer
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Datos", "Datos\Datos.csproj", "{4B4EBA86-1750-4773-A0EA-FA345EE43C15}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Negocio", "Negocio\Negocio.csproj", "{BCC81B00-2984-45D1-9508-8CE576CA9C5D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{4B4EBA86-1750-4773-A0EA-FA345EE43C15}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4B4EBA86-1750-4773-A0EA-FA345EE43C15}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4B4EBA86-1750-4773-A0EA-FA345EE43C15}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BCC81B00-2984-45D1-9508-8CE576CA9C5D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BCC81B00-2984-45D1-9508-8CE576CA9C5D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BCC81B00-2984-45D1-9508-8CE576CA9C5D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BCC81B00-2984-45D1-9508-8CE576CA9C5D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
