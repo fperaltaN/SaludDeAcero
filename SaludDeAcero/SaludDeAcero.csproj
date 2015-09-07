@@ -66,25 +66,32 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Data\css\bootstrap-theme.css" />
-    <Content Include="App_Data\css\bootstrap-theme.min.css" />
-    <Content Include="App_Data\css\bootstrap.css" />
-    <Content Include="App_Data\css\bootstrap.min.css" />
-    <Content Include="App_Data\css\jumbotron.css" />
-    <Content Include="App_Data\fonts\glyphicons-halflings-regular.svg" />
-    <Content Include="App_Data\js\bootstrap.js" />
-    <Content Include="App_Data\js\bootstrap.min.js" />
-    <Content Include="App_Data\js\ie-emulation-modes-warning.js" />
-    <Content Include="App_Data\js\ie10-viewport-bug-workaround.js" />
-    <Content Include="App_Data\js\npm.js" />
+    <Content Include="Content\jumbotron.css">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bootstrap-theme.css" />
+    <Content Include="Content\bootstrap-theme.min.css" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="login.aspx" />
     <Content Include="packages.config" />
-    <Content Include="App_Data\css\bootstrap-theme.css.map" />
-    <Content Include="App_Data\css\bootstrap.css.map" />
-    <Content Include="App_Data\fonts\glyphicons-halflings-regular.eot" />
-    <Content Include="App_Data\fonts\glyphicons-halflings-regular.ttf" />
-    <Content Include="App_Data\fonts\glyphicons-halflings-regular.woff" />
-    <Content Include="App_Data\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\bootstrap.css.map" />
+    <Content Include="Content\bootstrap-theme.css.map" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <None Include="Scripts\jquery-2.1.4.intellisense.js" />
+    <Content Include="Scripts\ie-emulation-modes-warning.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <EmbeddedResource Include="Scripts\ie10-viewport-bug-workaround.js" />
+    <Content Include="Scripts\jquery-2.1.4.js" />
+    <Content Include="Scripts\jquery-2.1.4.min.js" />
+    <Content Include="Scripts\jquery-2.1.4.min.map" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -94,6 +101,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />
+    <Content Include="Scripts\npm.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -110,6 +120,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="App_Data\" />
     <Folder Include="Catalogos\" />
     <Folder Include="Imagenes\" />
   </ItemGroup>
