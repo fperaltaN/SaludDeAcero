@@ -73,8 +73,41 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="css\coda-slider.css" />
+    <Content Include="css\tooplate_style.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Imagenes\1Rgur %281%29.jpg" />
+    <Content Include="Imagenes\1Rgur.jpg" />
+    <Content Include="Imagenes\998885_171005126406651_111173835_n.jpg" />
+    <Content Include="Imagenes\facebook.png" />
+    <Content Include="Imagenes\flickr.png" />
+    <Content Include="Imagenes\forever-list.png" />
+    <Content Include="Imagenes\gallery\image_02.jpg" />
+    <Content Include="Imagenes\gallery\image_03.jpg" />
+    <Content Include="Imagenes\gallery\image_04.jpg" />
+    <Content Include="Imagenes\gallery\image_05.jpg" />
+    <Content Include="Imagenes\gallery\image_06.jpg" />
+    <Content Include="Imagenes\menu_hover.png" />
+    <Content Include="Imagenes\myspace.png" />
+    <Content Include="Imagenes\onebit_08.png" />
+    <Content Include="Imagenes\onebit_11.png" />
+    <Content Include="Imagenes\onebit_12.png" />
+    <Content Include="Imagenes\onebit_17.png" />
+    <Content Include="Imagenes\onebit_21.png" />
+    <Content Include="Imagenes\readmore.png" />
+    <Content Include="Imagenes\SaludAcero.jpg" />
+    <Content Include="Imagenes\tooplate_bg.jpg" />
+    <Content Include="Imagenes\tooplate_content.png" />
+    <Content Include="Imagenes\tooplate_image_01.jpg" />
+    <Content Include="Imagenes\tooplate_image_02.jpg" />
+    <Content Include="Imagenes\tooplate_image_03.jpg" />
+    <Content Include="Imagenes\tooplate_image_04.jpg" />
+    <Content Include="Imagenes\tooplate_logo.png" />
+    <Content Include="Imagenes\tooplate_menu_bg.png" />
+    <Content Include="Imagenes\twitter.png" />
+    <Content Include="Imagenes\youtube.png" />
     <Content Include="login.aspx" />
+    <Content Include="MasterPage\Deafault.aspx" />
     <Content Include="packages.config" />
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -84,6 +117,7 @@
     <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="MasterPage\MasterPager.Master" />
     <None Include="Scripts\jquery-2.1.4.intellisense.js" />
     <Content Include="Scripts\ie-emulation-modes-warning.js">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -104,7 +138,9 @@
     <Content Include="Scripts\npm.js">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Global.asax.cs">
@@ -117,12 +153,26 @@
     <Compile Include="login.aspx.designer.cs">
       <DependentUpon>login.aspx</DependentUpon>
     </Compile>
+    <Compile Include="MasterPage\Deafault.aspx.cs">
+      <DependentUpon>Deafault.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MasterPage\Deafault.aspx.designer.cs">
+      <DependentUpon>Deafault.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MasterPage\MasterPager.Master.cs">
+      <DependentUpon>MasterPager.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MasterPage\MasterPager.Master.designer.cs">
+      <DependentUpon>MasterPager.Master</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Catalogos\" />
-    <Folder Include="Imagenes\" />
+    <Folder Include="js\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

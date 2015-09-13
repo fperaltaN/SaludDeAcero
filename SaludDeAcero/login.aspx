@@ -32,7 +32,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#">Project name</a>
+                <a class="navbar-brand" href="#">Salud De Acero</a>
             </div>
             <div id="navbar" class="navbar-collapse collapse">
                 <form class="navbar-form navbar-right">
@@ -48,13 +48,15 @@
             <!--/.navbar-collapse -->
         </div>
     </nav>
-
+    <br />
+    
     <!-- Main jumbotron for a primary marketing message or call to action -->
     <div class="jumbotron">
         <div class="container">
-            <h1>Hello, world!</h1>
-            <p>This is a template for a simple marketing or informational website. It includes a large callout called a jumbotron and three supporting pieces of content. Use it as a starting point to create something more unique.</p>
-            <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more &raquo;</a></p>
+            <h1>Hola, Bienvenido!</h1>
+            <p>En Salud de  Acero mantenemos un fuerte compromiso tanto con nuestros clientes como con la sociedad que nos rodea. La filosofía considera la actividad física como un medio para mantener un buen estado de salud en cualquier edad o condición.</p>
+            
+            <p><a class="btn btn-primary btn-lg" href="#" role="button">Aprende mas acerca de nosotros&raquo;</a></p>
         </div>
     </div>
 
@@ -62,13 +64,25 @@
         <!-- Example row of columns -->
         <div class="row">
             <div class="col-md-4">
-                <h2>Heading</h2>
-                <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-                <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+                <h2>Ponte en forma </h2>
+                <p>&nbsp; Contamos con diferentes planes, hechos especialmente para ponerte en forma y pensados de acuerdo a tus necesidades. &nbsp;</p>
+                <p><a class="btn btn-default" href="#" role="button">Ve mas detalles &raquo;</a></p>
+            </div>
+             <!-- Example row of columns -->
+      
+            <div class="col-md-4">
+                <h2>Solicita una sesión gratis</h2>
+                <p>&nbsp; Te estamos esperando, nuestros  entrenadores altamente capacitados, la primer vista corre por nuestra cuenta&nbsp;</p>
+                <p><a class="btn btn-default" href="#" role="button">Contactanos &raquo;</a></p>
+            </div>
+            <div class="col-md-4">
+                <h2>Echale una miradita</h2>
+                <p>&nbsp; Ven y conoce nuestras instalaciones, contamos con instalaciones de lujo para las actividades de nuestros socios</p>
+                <p><a class="btn btn-default" href="#" role="button">Ve mas detalles &raquo;</a></p>
             </div>
 
-
         </div>
+
     </div>
     <hr>
 
