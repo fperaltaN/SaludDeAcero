@@ -1,0 +1,109 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="CLINI_MEX.MasterPage.Site" %>
+
+<%@ Register Assembly="DevExpress.Web.v14.2, Version=14.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" Namespace="DevExpress.Web" TagPrefix="dx" %>
+
+<!DOCTYPE html>
+<html lang="es">
+<head id="Head1" runat="server">
+    <link href="../App_Themes/Site/estilo.css" rel="stylesheet" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="Form1" runat="server">
+        <div>
+            <div id="cabecera">
+                <div id="contenidoCabecera">
+                    <div id="logotipo">
+                        <img src="../Images/agendumLogo.jpg" style="height: 98px; width: 184px" />
+                    </div>
+                    <div id="titulo">
+                        <h2>Mantenimiento Residencial y Asistencia para el hogar</h2>
+                    </div>
+                    <div id="cerrarS">
+                        <asp:LinkButton ID="cerrar" runat="server" Font-Size="Small" OnClick="cerrar_Click" Visible="False"> Cerrar Sesión </asp:LinkButton>
+                    </div>
+                    <div id="fecha">
+                        <dx:ASPxLabel ID="lblFechaUser" runat="server" Theme="Office2010Blue" Font-Size="Small" Font-Bold="True"></dx:ASPxLabel>
+                    </div>
+                    <div id="usuario">
+                        <dx:ASPxLabel ID="lblNameUser" runat="server" Theme="Office2010Blue" Font-Size="Small" Font-Bold="True"></dx:ASPxLabel>
+                    </div>
+                    <div id="area">
+                        <dx:ASPxLabel ID="lblAreaUser" runat="server" Theme="Office2010Blue" Font-Size="Small" Font-Bold="True"></dx:ASPxLabel>
+                    </div>
+                </div>
+                <div id="menu">
+                    <div id="box">
+                        <dx:ASPxMenu ID="menuGral" runat="server" Theme="PlasticBlue" Visible="False" EnableTheming="True">
+                            <Items>
+                                <dx:MenuItem Text="Inicio" NavigateUrl="../Home/Home.aspx">
+                                    <Image Height="32px" IconID="navigation_home_32x32">
+                                    </Image>
+                                </dx:MenuItem>
+                                <dx:MenuItem Text="Administración">
+                                    <Image Height="32px" IconID="people_usergroup_32x32"> </Image>
+                                   
+                                    <Items>
+                                        <dx:MenuItem Text="Usuarios" NavigateUrl="../Administracion/Usuarios.aspx" />
+                                        <dx:MenuItem Text="Perfiles" NavigateUrl="../Administracion/Perfiles.aspx" />
+                                        <dx:MenuItem Text="Transacciones del Sistema" NavigateUrl="../Administracion/Transacciones.aspx" />
+                                         <dx:MenuItem Text="Catálogos">
+                                            <Items>
+                                                <dx:MenuItem Text="Canales de comunicación" NavigateUrl="../Catalogos/Canales.aspx"></dx:MenuItem>
+                                                <dx:MenuItem Text="Tipos de Reportes" NavigateUrl="../Catalogos/TiposReportes.aspx"></dx:MenuItem>
+                                                <dx:MenuItem Text="Catégorias de Reportes" NavigateUrl="../Catalogos/CategoriasReportes.aspx"></dx:MenuItem>
+                                                <dx:MenuItem Text="Sub Catégorias de Reportes" NavigateUrl="../Catalogos/SubCatReportes.aspx"></dx:MenuItem>
+                                                <dx:MenuItem Text="Empleados" NavigateUrl="../Catalogos/Empleados.aspx"></dx:MenuItem>
+                                            </Items>
+                                        </dx:MenuItem>
+                                    </Items>
+                                </dx:MenuItem>
+              
+                                <dx:MenuItem Text="Quejas y Sugerencias">
+                                    <Image Height="32px" IconID="scheduling_calendar_32x32">
+                                    </Image>
+                                    <Items>
+                                        <dx:MenuItem Text="Levantamiento de reportes" NavigateUrl="../Quejas y Sugerencias/Levantamiento_Reportes.aspx"/>
+                                        <dx:MenuItem Text="Seguimiento y atención de reportes" NavigateUrl="../Quejas y Sugerencias/Seguimiento_Reportes.aspx" />
+                                        
+                                    </Items>
+                                </dx:MenuItem>
+
+                                <dx:MenuItem Text="Servihogar">
+                                    <Image Height="32px" IconID="miscellaneous_design_32x32">
+                                    </Image>
+                                    <Items>
+                                        
+                                    </Items>
+                                </dx:MenuItem>
+                                <dx:MenuItem Text="Reportes">
+                                    <Image Height="32px" IconID="miscellaneous_design_32x32">
+                                    </Image>
+                                    <Items>
+                                    
+                                    </Items>
+                                </dx:MenuItem>
+                            </Items>
+                        </dx:ASPxMenu>
+                    </div>
+                </div>
+            </div>
+            <div id="bajo">
+                <div id="columnIzq">
+                </div>
+                <div id="columnCentro">
+                    <asp:ContentPlaceHolder ID="contentPrincipal" runat="server">
+                    </asp:ContentPlaceHolder>
+                </div>
+                <div id="pie">
+                    <asp:Label ID="lblagendum" runat="server" CssClass="footer"
+                        Text="servihogar@agendum.com.mx" Font-Bold="True"></asp:Label>
+                </div>
+            </div>
+        </div>
+    </form>
+</body>
+</html>

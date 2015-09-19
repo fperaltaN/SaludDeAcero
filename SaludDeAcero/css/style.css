@@ -1,0 +1,334 @@
+body {
+    font-family: Arial,Helvetica,sans-serif;
+    margin: 0;
+    background: #F5F1F5;
+    color: #000;
+    background: url('../images') repeat;
+}
+ul
+{
+	margin: 5px;
+	padding-left: 20px;
+}
+.BodyContent
+{
+	position: relative;
+	left: 0;
+	top: 0;
+	width: 100%;
+	margin: 0 auto 0 auto;
+}
+.Bienvenidos
+{
+	font-size: xx-large;
+	font-family: Calibri;
+	font-weight: bold;
+	color: #D0C9B9;
+}
+.verticalLine
+{
+	border-left: thick solid #ff0000;
+	border-top: solid 1px;
+}
+.botonGuardar:active {
+    vertical-align: top;
+    padding: 10px 13px 6px;
+}
+.botonNuevo:active {
+    vertical-align: top;
+    padding: 10px 13px 6px;
+    top: 10px;
+}
+.botonRegresar:active {
+    vertical-align: top;
+    padding: 10px 13px 6px;
+}
+.botonCancelar:active {
+    vertical-align: top;
+    padding: 10px 13px 6px;
+}
+.botonCancelar
+{
+	cursor: pointer;
+	-moz-border-radius: 20px 50px 49px 27px;
+	-webkit-border-top-right-radius: 50px;
+	-webkit-border-top-left-radius: 50px;
+	-webkit-border-bottom-right-radius: 50px;
+	-webkit-border-bottom-left-radius: 50px;
+	font-size: 10px;
+	font-family: Verdana,Helvetica;
+	font-weight: bold;
+	color: white;
+	background: #CC0000;
+	border: 0px;
+	width: 120px;
+	height: 30px;
+}
+.botonGuardar {
+    cursor: pointer;
+    -moz-border-radius: 20px 50px 49px 27px;
+    -webkit-border-top-right-radius: 50px;
+    -webkit-border-top-left-radius: 50px;
+    -webkit-border-bottom-right-radius: 50px;
+    -webkit-border-bottom-left-radius: 50px;
+    font-size: 10px;
+    font-family: Verdana,Helvetica;
+    font-weight: bold;
+    color: white;
+    background: #808080;
+    border: 0px;
+    width: 120px;
+    height: 30px;
+}
+.botonCancelar:disabled
+{
+	cursor:auto;
+	-moz-border-radius: 20px 50px 49px 27px;
+	-webkit-border-top-right-radius: 50px;
+	-webkit-border-top-left-radius: 50px;
+	-webkit-border-bottom-right-radius: 50px;
+	-webkit-border-bottom-left-radius: 50px;
+	font-size: 10px;
+	font-family: Verdana,Helvetica;
+	font-weight: bold;
+	color: #C0C0C0;
+	background: #999999;
+	border: 0px;
+	width: 120px;
+	height: 30px;
+}
+.botonGuardar:disabled
+{
+	cursor:auto;
+	-moz-border-radius: 20px 50px 49px 27px;
+	-webkit-border-top-right-radius: 50px;
+	-webkit-border-top-left-radius: 50px;
+	-webkit-border-bottom-right-radius: 50px;
+	-webkit-border-bottom-left-radius: 50px;
+	font-size: 10px;
+	font-family: Verdana,Helvetica;
+	font-weight: bold;
+	color: #C0C0C0;
+	background: #999999;
+	border: 0px;
+	width: 120px;
+	height: 30px;
+}
+.botonNuevo {
+    cursor: pointer;
+    -moz-border-radius: 20px 50px 49px 27px;
+    -webkit-border-top-right-radius: 50px;
+    -webkit-border-top-left-radius: 50px;
+    -webkit-border-bottom-right-radius: 50px;
+    -webkit-border-bottom-left-radius: 50px;
+    font-size: 10px;
+    font-family: Verdana,Helvetica;
+    font-weight: bold;
+    color: white;
+    background: #3366FF;
+    border: 0px;
+    width: 120px;
+    height: 30px;
+}
+.botonNuevo:disabled
+{
+	cursor:auto;
+	-moz-border-radius: 20px 50px 49px 27px;
+	-webkit-border-top-right-radius: 50px;
+	-webkit-border-top-left-radius: 50px;
+	-webkit-border-bottom-right-radius: 50px;
+	-webkit-border-bottom-left-radius: 50px;
+	font-size: 10px;
+	font-family: Verdana,Helvetica;
+	font-weight: bold;
+	color: #C0C0C0;
+	background: #999999;
+	border: 0px;
+	width: 120px;
+	height: 30px;
+}
+.tituloPagina
+{
+	font-family: Verdana,Helvetica;
+	font-weight: bold;
+	color: #f15e34;
+}
+
+.botonRegresar
+{
+	cursor:pointer;
+	-moz-border-radius: 20px 50px 49px 27px;
+	-webkit-border-top-right-radius: 50px;
+	-webkit-border-top-left-radius: 50px;
+	-webkit-border-bottom-right-radius: 50px;
+	-webkit-border-bottom-left-radius: 50px;
+	font-size: 10px;
+	font-family: Verdana,Helvetica;
+	font-weight: bold;
+	color: white;
+	background: #669999;
+	border: 0px;
+	width: 120px;
+	height: 30px;
+}
+.footer
+{
+	color: #f15e34;
+	font-weight: 700;
+	border: 0px;
+	margin: 0px;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	font-weight: bold;
+	font-weight: bold;
+	font-style: normal;
+	font-variant: normal;
+	letter-spacing: normal;
+	line-height: normal;
+	orphans: auto;
+	text-align: -webkit-center;
+	text-indent: 0px;
+	text-transform: none;
+	white-space: normal;
+	widows: auto;
+}
+#wrapper
+{
+	min-height: 100%;
+	height: auto !important;
+	height: 100%;
+	margin: 0 auto -150px; /* el magin-bottom es el valor negativo de          la altura del footer */
+}
+
+#footer, #push
+{
+	height: 150px; /* la altura del push es la misma que la altura          del footer */
+}
+body
+{
+	margin: 0;
+	border: 0;
+}
+
+a
+{
+	color: #601716;
+}
+
+#header
+{
+	width: 100%;
+	height: 150px;
+	padding-left: 10px;
+	padding-right: 10px;
+	background-image: url(Imagenes/fondo_div_header.jpg);
+	background-repeat: repeat-x;
+}
+
+#header_interior
+{
+	width: 1024px;
+	height: 150px;
+	background-image: url(Imagenes/fondo_header_completo.jpg);
+	background-repeat: no-repeat;
+}
+
+#content
+{
+	width: 100%;
+	min-height: 500px;
+	padding-left: 10px;
+	padding-right: 10px;
+	background-image: url(Imagenes/fondo_div_content.jpg);
+}
+
+#footer
+{
+	width: 100%;
+	min-height: 250px;
+	padding-left: 10px;
+	padding-right: 10px;
+	background-image: url(Imagenes/fondo_div_footer.png);
+}
+
+#titulo_seccion
+{
+	width: 100%;
+	height: 30px;
+	padding-left: 10px;
+	padding-right: 10px;
+	background-image: url(Imagenes/fondo_div_division.png);
+	background-repeat: repeat-x;
+	text-align: center;
+}
+
+#cuadro_info_usuario
+{
+	width: 250px;
+	min-height: 150px;
+}
+/*Formatos de fuentes*/
+
+.titulos
+{
+	color: #601716;
+	font-weight: bold;
+	font-size: 16px;
+	font-family: Calibri, Arial, verdana;
+}
+
+.texto_destacado1
+{
+	color: #601716;
+	font-weight: bold;
+	font-family: Calibri, Arial, verdana;
+}
+
+.titulo_login
+{
+	color: #D0C9B9;
+	font-size: 24px;
+	font-weight: bold;
+	font-family: Calibri, Arial, verdana;
+}
+
+#cuadro_login
+{
+	width: 500px;
+	height: 500px;
+	background-image: url(Imagenes/fondo_div_content.jpg);
+	border: medium;
+	border-color: #8f877a;
+}
+
+.letraDestacada
+{
+	color: #601716;
+	
+
+
+.letraDestacada
+{
+	color: #601716;
+	font-size: 15px;
+	font-weight: bold;
+	font-family: Calibri, Arial, verdana;
+    margin-left: 60px;
+}
+
+ze: 11px;
+	font-family: Calibri, Arial, verdana;
+}
+
+.letraComentariosMediana
+{
+	color: #000000;
+	font-size: 12px;
+	font-family: Calibri, Arial, verdana;
+}
+
+#contenido_scroll
+{
+	width: 1024px;
+	overflow: scroll;
+}

@@ -1,0 +1,179 @@
+/*-------------------------------------
+  This file has been auto-generated
+  by the Sitefinity Template Builder
+--------------------------------------*/
+
+#PublicWrapper div.RadSiteMap ul.rsmLevel {width: auto !important}
+.sfimageWrp {overflow-x: hidden}
+
+/*layout-width*/
+#PublicWrapper.width900 {
+	width: 860px;
+	padding-left: 20px;
+	padding-right: 20px;
+	float:left;
+	left: 50%;
+	position:relative;
+	margin-left: -450px;
+}
+
+#PublicWrapper.width1200 {
+	width: 1150px;
+	padding-left: 25px;
+	padding-right: 25px;
+	float:left;
+	left: 50%;
+	position:relative;
+	margin-left: -600px;
+}
+
+#PublicWrapper.width100 {
+	width: 92%;
+	padding-left: 2%;
+	padding-right: 2%;
+	float:left;
+	left: 50%;
+	position:relative;
+	margin-left: -48%;
+}
+
+/*layout-position*/
+#PublicWrapper.float-right {
+	position:relative;
+	float:right;
+	left: 0;
+	right: 0px;
+	margin-right: 10px;
+}
+
+#PublicWrapper.float-left {
+	position:relative;
+	float:left;
+	margin-left: 0px;
+	left: 0;
+	margin-left: 22px;
+}
+
+#PublicWrapper.float-center {
+	position:relative;
+	float:left;
+	left: 50%;
+}
+
+/*font-size*/
+.font-size-small {
+    font-size:12px;
+}
+.font-size-medium {
+    font-size:14px;
+}
+.font-size-large{
+    font-size:16px;
+}
+
+/*line-height*/
+.line-height-small{
+    line-height:1em
+}
+.line-height-normal{
+    line-height:normal;
+}
+.line-height-big{
+    line-height:1.7em;
+}
+
+#PublicWrapper .dropped-text a:link, 
+#PublicWrapper .dropped-text a:active, 
+#PublicWrapper .dropped-text a:visited,
+#PublicWrapper .sfCols a:link, 
+#PublicWrapper .sfCols a:active, 
+#PublicWrapper .sfCols a:visited
+{
+    color:#0033cc;
+    text-decoration:underline;
+}
+
+#PublicWrapper .sfCols a:hover
+{
+    text-decoration:none;
+}
+#PublicWrapper blockquote
+{
+    font-weight:normal;
+    font-style:italic;
+    font-size:1.3em;
+    padding:5px;
+    border-left:1px solid #999;
+}
+
+/*#PublicWrapper .column-wrapper,
+#PublicWrapper .sf_cols
+{
+    background-color:#ffffff;
+}*/
+
+#PublicWrapper .contentbackground-box
+{
+    background-color: #ffffff;
+}
+
+/*standard*/
+body.standard {background-color:#ccc}
+body.standard .background-box{background-color: #ccc}
+
+body.standard 
+{
+    font-family:Arial;
+    font-size:1em;
+}
+
+
+body #PublicWrapper .placeholder_4.sf_cols {
+	background-color: #ffffff;
+}
+
+body.standard{
+	background-image: url(../Images/red_wall.jpg);
+	font-family: Arial;
+	color: rgb(0, 0, 0);
+	background-color: rgb(204, 204, 204);
+	line-height: normal;
+	font-size: 12px;
+	background-position: 0% 0%;
+	background-repeat: repeat;
+	background-attachment: scroll;
+	padding: 0px;
+	margin-top: 0px;
+	margin-left: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+}
+
+body #PublicWrapper{
+	position: relative;
+	float: Left;
+	width: 1200px;
+	left: 50%;
+	right: auto;
+	margin-left: -600px;
+	margin-right: auto;
+	background-color: rgb(255, 255, 255);
+	padding: 20px;
+	margin-top: 10px;
+}
+
+body #PublicWrapper .sf_cols .sf_cols, body #PublicWrapper .sf_cols .dropped-textblock{
+	color: rgb(0, 0, 0);
+}
+
+body #PublicWrapper .sf_cols h1, body #PublicWrapper .sf_cols h2, body #PublicWrapper .sf_cols h3{
+	color: rgb(0, 0, 0);
+}
+
+body #PublicWrapper .sf_cols .dropped-blockquote{
+	color: rgb(0, 0, 0);
+}
+
+body #PublicWrapper .sf_cols .sfContentBlock a, body #PublicWrapper .sf_cols .content-wrapper a{
+	color: rgb(0, 0, 0);
+}

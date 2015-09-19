@@ -1,0 +1,197 @@
+/* Eliminamos los estilos por defecto del navegador */
+
+/*@import url(reset.css);*/
+
+fieldset{background-color:#F2F2F2;position:relative;
+    top: 0px;
+    left: 1px;
+}
+legend{background-color:#F2F2F2}
+/*table{width:1111px
+} /*este estilo modifica el ancho de las tablas para que esten centradas adecuadamente*/
+#tblMenu tr td table{width:25px} /*este estilo modifica el ancho de los elementos del menu*/
+#tblModal table{width:250px}
+font{color:Maroon}
+
+/*------------------------------------------------------------------ */
+
+body { font-family:Arial, Helvetica, sans-serif; font-size:13px;  padding:0; margin:0; background-color:#F2F2F2;}
+
+html { margin-bottom:1px; height:100%; width:100%; /*overflow-x:hidden;*/}
+
+strong { font-weight:bold;}
+
+/*------------------------------  STYLES -------------------------- */
+
+.left { float:left;}
+
+.right { float:right}
+
+.imagen  { border:#434343 3px solid; margin:0 0 30px 0;}
+
+.imagen:hover { border:#6a6a6a 3px solid;}
+
+.imageng { border:#434343 3px solid; margin:0 0 10px 0;}
+
+.imageng a:hover { border:#6a6a6a 3px solid; margin:0 0 10px 0;}
+
+.parrafo { font-size:14px; color:#000000; line-height:18px; background:url(http://www.maquinasyservicios.com/images/bg_parrafo.png); padding:10px 5px 10px 5px; min-height:216px; margin:0 0 15px 0;}
+
+.parrafoint { font-size:14px; color: #333333; line-height:19px; text-align:justify; text-align:left;}
+
+.titulo { color:black; font-size:18px; font-weight:bold; text-transform:uppercase; margin:5px 0 15px 0;}
+
+.leermas { width:76px; height:21px; background:url(http://www.maquinasyservicios.com/images/leermas.png) no-repeat; display:block; text-indent:-99999px; margin:30px 0 50px 0;}
+
+.mas { color:#000000; font-weight:bold;}
+
+.btn { width:180px; height:40px; background:url(http://www.maquinasyservicios.com/images/btn_infra.png) no-repeat; color:#333333; display:block; text-decoration:none; line-height:35px; text-align:center; font-weight:bold; margin:0 0 10px 0;}
+
+.btn:hover { background-position:bottom;}
+
+.top { width:420px; height:16px; background:url(http://www.maquinasyservicios.com/images/top_cont.png) no-repeat; margin:0 0 0 60px;}
+
+.topcont { width:620px; height:16px; background:url(http://www.maquinasyservicios.com/images/top_contacto.png) no-repeat; margin:0 0 0 60px;}
+
+
+/*------------------------------  HEADER -------------------------- */
+
+#headerwrap { background:url(http://www.maquinasyservicios.com/images/bg_header.jpg) repeat-x; height:146px; width:100%; margin: 0 auto; }
+
+#header { width:979px; height:146px; margin:0 auto; background:url(http://www.maquinasyservicios.com/images/bg_headercont.jpg) no-repeat left;}
+
+#logotipo { width:350px; height:130px;}
+
+#logotype { margin:10px 0 0 0;}
+
+#logo {width:325px; 
+height:133px; 
+display:block; background:url(http://www.maquinasyservicios.com/images/maquinasyservicios.png) no-repeat; text-indent:-999999px;
+}
+
+#slogan { /*background:url(images/slogan.png) no-repeat;*/ height:20px; 
+margin:30px 0 0 0;
+}
+
+/*menu*/
+
+#nav li { float:left; margin:0 10px 0 0;}
+
+#nav li a { width:87px; height:53px; background:#6a6a6a; display:block; font-family:Arial, Helvetica, sans-serif; color:white; font-size:18px; text-decoration:none; text-align:center; line-height:55px;}
+
+#nav li a:hover { color:#ffd923; background:url(http://www.maquinasyservicios.com/images/fondo_btncenter.jpg) top center no-repeat #6a6a6a;}
+
+/*------------------------------  BANNER -------------------------- */
+
+#bannerwrap { height:227px; 
+width:100%; background:url(http://www.maquinasyservicios.com/images/bg_banner.jpg) repeat-x;
+}
+
+#banner { width:100%; height:159px; 
+background:url(http://www.maquinasyservicios.com/images/banner2.png) no-repeat; margin:0 auto;z-index: -999;
+}
+
+/*------------------------------  CONTENIDO -------------------------- */
+
+#wrapcontenido { background:#8e8e8e;}
+
+#contenido { width:979px; background:url(http://www.maquinasyservicios.com/images/bg_contenido.jpg) no-repeat top center; margin:0 auto; padding:30px 0 0 55px;}
+
+#contenido2 { width:979px; background:url(http://www.maquinasyservicios.com/images/bg_contenido2.jpg) no-repeat top center; margin:0 auto; padding:30px 0 25px 55px;}
+
+#cont1 { width:267px;}
+
+#cont2 { width:267px; margin: 0 0 0 70px; }
+
+#cont3 { width:267px; margin: 0 0 0 60px; }
+
+#contenidoint { width:390px; margin: 0 0 0 60px; background:url(http://www.maquinasyservicios.com/images/b_cont.png) no-repeat bottom #dedede; padding:15px;}
+
+#contenidocont { width:590px; margin: 0 0 0 60px; background:url(http://www.maquinasyservicios.com/images/b_contacto.png) no-repeat bottom #dedede; padding:15px;}
+
+#contenidoint ul { margin:0 0 0 25px;}
+
+#contenidoint ul li { line-height:18px; font-size:14px; color: #333333; padding:0 0 0 25px; background:url(http://www.maquinasyservicios.com/images/bullet.png) no-repeat left top; margin:0 0 10px 0;}
+
+#contr { width:180px; margin:10px 0 0 20px;} 
+
+.titclientes { margin:0 0 20px 0; width:178px; height:25px; background:url(http://www.maquinasyservicios.com/images/tit_nclientes.png) no-repeat; text-indent:-999999px; }
+
+.titclientesg { margin:0 0 20px 0; height:25px; background:url(http://www.maquinasyservicios.com/images/tit_nclientesg.png) no-repeat; text-indent:-999999px; }
+
+.titcontacto { margin:0 0 20px 0; height:22px; background:url(http://www.maquinasyservicios.com/images/tit_cont.png) no-repeat; text-indent:-999999px;}
+
+.titinsumos { margin:0 0 20px 0; width:178px; height:25px; background:url(http://www.maquinasyservicios.com/images/tit_insumos2.png) no-repeat; text-indent:-999999px;}
+
+.titeobras { margin:0 0 20px 0; height:40px; background:url(http://www.maquinasyservicios.com/images/tit_eobras.png) no-repeat; text-indent:-999999px;}
+
+.titescencia { margin:0 0 20px 0; height:25px; background:url(http://www.maquinasyservicios.com/images/tit_escencia.png) no-repeat; text-indent:-999999px;}
+
+.titicarretera { margin:0 0 20px 0; height:22px; background:url(http://www.maquinasyservicios.com/images/tit_icarretera.png) no-repeat; text-indent:-999999px;}
+
+.titienergia { margin:0 0 20px 0; height:27px; background:url(http://www.maquinasyservicios.com/images/tit_ienergia.png) no-repeat; text-indent:-999999px;}
+
+.tithistoria { margin:0 0 20px 0; height:27px; background:url(http://www.maquinasyservicios.com/images/tit_historia.png) no-repeat; text-indent:-999999px;}
+
+.tittraba { margin:0 0 20px 0; height:22px; background:url(http://www.maquinasyservicios.com/images/tit_trabajadores.png) no-repeat; text-indent:-999999px;}
+
+.titnucompro { margin:0 0 40px 0; height:27px; background:url(http://www.maquinasyservicios.com/images/compromisostit.png) no-repeat; text-indent:-999999px;}
+
+.titedu { margin:0 0 20px 0; height:17px; background:url(http://www.maquinasyservicios.com/images/tit_educacion.png) no-repeat; text-indent:-999999px;}
+
+.titsalud { margin:0 0 20px 0; height:17px; background:url(http://www.maquinasyservicios.com/images/tit_salud.png) no-repeat; text-indent:-999999px;}
+
+.titcompro { margin:0 0 20px 0; height:45px; background:url(http://www.maquinasyservicios.com/images/tit_compromiso.png) no-repeat; text-indent:-999999px;}
+
+.titihidra { margin:0 0 20px 0; height:22px; background:url(http://www.maquinasyservicios.com/images/tit_ihidra.png) no-repeat; text-indent:-999999px;}
+
+.agregados { margin:0 0 20px 0; height:25px; background:url(http://www.maquinasyservicios.com/images/tit_agregados.png) no-repeat; text-indent:-999999px;}
+
+.carpeta { margin:0 0 20px 0; height:25px; background:url(http://www.maquinasyservicios.com/images/tit_carpetas.png) no-repeat; text-indent:-999999px;}
+
+.concreto { margin:0 0 20px 0; height:25px; background:url(http://www.maquinasyservicios.com/images/tit_concreto.png) no-repeat; text-indent:-999999px;}
+
+.insumos { margin:0 0 20px 0; height:58px; background:url(http://www.maquinasyservicios.com/images/tit_insumos.png) no-repeat; text-indent:-999999px;}
+
+.titiurbana { margin:0 0 20px 0; height:22px; background:url(http://www.maquinasyservicios.com/images/tit_iurbana.png) no-repeat; text-indent:-999999px;}
+
+.titfilo { margin:0 0 20px 0; height:22px; background:url(http://www.maquinasyservicios.com/images/tit_filosofia.png) no-repeat; text-indent:-999999px;}
+
+.titvision { margin:0 0 20px 0; height:22px; background:url(http://www.maquinasyservicios.com/images/tit_vision.png) no-repeat; text-indent:-999999px;}
+
+.titsol { margin:0 0 20px 0; height:22px; background:url(http://www.maquinasyservicios.com/images/tit_solidez.png) no-repeat; text-indent:-999999px;}
+
+.titeq { margin:0 0 20px 0; height:22px; background:url(http://www.maquinasyservicios.com/images/tit_etrabajo.png) no-repeat; text-indent:-999999px;}
+ 
+.titinfo {  margin:0 0 20px 0; height:22px; background:url(http://www.maquinasyservicios.com/images/tit_info.png) no-repeat; text-indent:-999999px;}
+ 
+.titobra { margin:0 0 20px 0; width:178px; height:22px; background:url(http://www.maquinasyservicios.com/images/tit_obras.png) no-repeat; text-indent:-999999px; }
+
+.privada { margin:0 0 20px 0; width:178px; height:22px; background:url(http://www.maquinasyservicios.com/images/privada.png) no-repeat; text-indent:-999999px; }
+
+.publica { margin:0 0 20px 0; width:278px; height:22px; background:url(http://www.maquinasyservicios.com/images/publica.png) no-repeat; text-indent:-999999px; }
+
+.titservicios { margin:0 0 20px 0; width:178px; height:22px; background:url(http://www.maquinasyservicios.com/images/tit_servicios.png) no-repeat; text-indent:-999999px; }
+
+.tith { margin:0 0 20px 0; width:269px; height:22px; background:url(http://www.maquinasyservicios.com/images/tit_hidra.png) no-repeat; text-indent:-999999px;}
+
+.titc { margin:0 0 20px 0; width:269px; height:22px; background:url(http://www.maquinasyservicios.com/images/tit_carre.png) no-repeat; text-indent:-999999px;}
+
+.titu { margin:0 0 20px 0; width:269px; height:22px; background:url(http://www.maquinasyservicios.com/images/tit_urba.png) no-repeat; text-indent:-999999px;}
+
+/*------------------------------  FOOTER -------------------------- */ 
+
+#footer { height:60px; background:url(http://www.maquinasyservicios.com/images/footer.jpg) repeat-x #ffd823;}
+
+#menubajo { float:right;}
+
+#menubajo li { float:left; color:white; margin:25px 15px 0 0; text-transform:uppercase; }
+
+#menubajo li a { text-decoration:none; color: #caab1d; font-weight:bold;}
+
+#menubajo li a:hover { color:black;}
+
+
+
+
+

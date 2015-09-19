@@ -87,7 +87,16 @@
     <hr>
 
     <footer>
+         	
+			<a href="#"><img src="Imagenes/facebook.png" alt="facebook" /></a>
+			<a href="#"><img src="imagenes/flickr.png" alt="flickr" /></a>
+			<a href="#"><img src="imagenes/myspace.png" alt="myspace" /></a>
+			<a href="#"><img src="imagenes/twitter.png" alt="twitter" /></a>
+			<a href="#"><img src="imagenes/youtube.png" alt="youtube" /></a>
+
+        
         <p>&copy; Salud de Acero  2015</p>
+                 </div>
     </footer>
 
     <!-- Bootstrap core JavaScript

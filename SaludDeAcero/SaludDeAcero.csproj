@@ -43,6 +43,11 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="DevExpress.Data.v14.2, Version=14.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Printing.v14.2.Core, Version=14.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.RichEdit.v14.2.Core, Version=14.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Web.ASPxThemes.v14.2, Version=14.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Web.v14.2, Version=14.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
       <Private>True</Private>
@@ -74,6 +79,9 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="css\coda-slider.css" />
+    <Content Include="css\main.css" />
+    <Content Include="css\mys09.css" />
+    <Content Include="css\style.css" />
     <Content Include="css\tooplate_style.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Imagenes\1Rgur %281%29.jpg" />
@@ -106,8 +114,146 @@
     <Content Include="Imagenes\tooplate_menu_bg.png" />
     <Content Include="Imagenes\twitter.png" />
     <Content Include="Imagenes\youtube.png" />
+    <Content Include="Image\245.gif" />
+    <Content Include="Image\ActiveMenuButton.png" />
+    <Content Include="Image\ActiveMenuButtonAnchor.png" />
+    <Content Include="Image\ArticleCenter.png" />
+    <Content Include="Image\ArticleCorners.png" />
+    <Content Include="Image\ArticleHorizontal.png" />
+    <Content Include="Image\ArticleVertical.png" />
+    <Content Include="Image\ayuda.png" />
+    <Content Include="Image\ayuda1.png" />
+    <Content Include="Image\ayuda2.png" />
+    <Content Include="Image\bg-content-1.jpg" />
+    <Content Include="Image\bg-header.jpg" />
+    <Content Include="Image\bg-li-hov.jpg" />
+    <Content Include="Image\bg-list-li.png" />
+    <Content Include="Image\bg-nav.jpg" />
+    <Content Include="Image\bg-slider.jpg" />
+    <Content Include="Image\bigx.png" />
+    <Content Include="Image\blank.gif" />
+    <Content Include="Image\BlockCenter.png" />
+    <Content Include="Image\BlockContentBorderCenter.png" />
+    <Content Include="Image\BlockContentBorderCorners.png" />
+    <Content Include="Image\BlockContentBorderHorizontal.png" />
+    <Content Include="Image\BlockContentBorderVertical.png" />
+    <Content Include="Image\BlockCorners.png" />
+    <Content Include="Image\BlockHorizontal.png" />
+    <Content Include="Image\BlockVertical.png" />
+    <Content Include="Image\body.jpg" />
+    <Content Include="Image\BorderCenter.png" />
+    <Content Include="Image\BorderCorners.png" />
+    <Content Include="Image\BorderHorizontal.png" />
+    <Content Include="Image\BorderVertical.png" />
+    <Content Include="Image\Button.png" />
+    <Content Include="Image\ButtonAnchor.png" />
+    <Content Include="Image\cinco.png" />
+    <Content Include="Image\dos.png" />
+    <Content Include="Image\fancybox-x.png" />
+    <Content Include="Image\fancybox-y.png" />
+    <Content Include="Image\fancybox.png" />
+    <Content Include="Image\fancybox_loading.gif" />
+    <Content Include="Image\fancybox_overlay.png" />
+    <Content Include="Image\fancybox_sprite.png" />
+    <Content Include="Image\fancy_close.png" />
+    <Content Include="Image\fancy_loading.png" />
+    <Content Include="Image\fancy_nav_left.png" />
+    <Content Include="Image\fancy_nav_right.png" />
+    <Content Include="Image\fancy_shadow_e.png" />
+    <Content Include="Image\fancy_shadow_n.png" />
+    <Content Include="Image\fancy_shadow_ne.png" />
+    <Content Include="Image\fancy_shadow_nw.png" />
+    <Content Include="Image\fancy_shadow_s.png" />
+    <Content Include="Image\fancy_shadow_se.png" />
+    <Content Include="Image\fancy_shadow_sw.png" />
+    <Content Include="Image\fancy_shadow_w.png" />
+    <Content Include="Image\fancy_title_left.png" />
+    <Content Include="Image\fancy_title_main.png" />
+    <Content Include="Image\fancy_title_over.png" />
+    <Content Include="Image\fancy_title_right.png" />
+    <Content Include="Image\footer-after.png" />
+    <Content Include="Image\Footer.png" />
+    <Content Include="Image\gray_down.jpg" />
+    <Content Include="Image\gray_line.jpg" />
+    <Content Include="Image\gray_line.png" />
+    <Content Include="Image\Header.png" />
+    <Content Include="Image\hover.jpg" />
+    <Content Include="Image\i.png" />
+    <Content Include="Image\icoCatalogo.png" />
+    <Content Include="Image\icon.png" />
+    <Content Include="Image\icon1.png" />
+    <Content Include="Image\icon2.png" />
+    <Content Include="Image\icon3.png" />
+    <Content Include="Image\iconos\admin32.ico" />
+    <Content Include="Image\iconos\Grado.ico" />
+    <Content Include="Image\iconos\medico32.ico" />
+    <Content Include="Image\iconos\pago2.ico" />
+    <Content Include="Image\iconos\torneo32px.ico" />
+    <Content Include="Image\iconos\usuario.ico" />
+    <Content Include="Image\iconos\usuario1.ico" />
+    <Content Include="Image\img-phone.png" />
+    <Content Include="Image\indicator.png" />
+    <Content Include="Image\input.png" />
+    <Content Include="Image\instalacion.png" />
+    <Content Include="Image\li.png" />
+    <Content Include="Image\line.jpg" />
+    <Content Include="Image\line.png" />
+    <Content Include="Image\lis.png" />
+    <Content Include="Image\load.gif" />
+    <Content Include="Image\loading.gif" />
+    <Content Include="Image\logo.png" />
+    <Content Include="Image\LogoArgentum.jpg" />
+    <Content Include="Image\LogoArgentumR.jpg" />
+    <Content Include="Image\logotrans2.png" />
+    <Content Include="Image\logotransparente.png" />
+    <Content Include="Image\marco.png" />
+    <Content Include="Image\marco2.png" />
+    <Content Include="Image\marco3.png" />
+    <Content Include="Image\MenuBar.png" />
+    <Content Include="Image\MenuButton.png" />
+    <Content Include="Image\MenuButtonAnchor.png" />
+    <Content Include="Image\nav-after.png" />
+    <Content Include="Image\navbg.jpg" />
+    <Content Include="Image\navbg1.jpg" />
+    <Content Include="Image\next.png" />
+    <Content Include="Image\next_arrow_big.png" />
+    <Content Include="Image\nueve.png" />
+    <Content Include="Image\ocho.png" />
+    <Content Include="Image\pag1.png" />
+    <Content Include="Image\pag2.png" />
+    <Content Include="Image\page-img-1.jpg" />
+    <Content Include="Image\page-img-2.jpg" />
+    <Content Include="Image\page-img-3.jpg" />
+    <Content Include="Image\page-img-4.jpg" />
+    <Content Include="Image\page-img-5.jpg" />
+    <Content Include="Image\page-img-6.jpg" />
+    <Content Include="Image\page-img.jpg" />
+    <Content Include="Image\planta.png" />
+    <Content Include="Image\point.png" />
+    <Content Include="Image\preloader.gif" />
+    <Content Include="Image\prev_arrow_big.png" />
+    <Content Include="Image\red_wall.jpg" />
+    <Content Include="Image\registro.png" />
+    <Content Include="Image\sb_menu.png" />
+    <Content Include="Image\seis.png" />
+    <Content Include="Image\siete.png" />
+    <Content Include="Image\slide-1.jpg" />
+    <Content Include="Image\slide-2.jpg" />
+    <Content Include="Image\slide-3 %281%29.jpg" />
+    <Content Include="Image\slide-3.jpg" />
+    <Content Include="Image\slide-4.jpg" />
+    <Content Include="Image\slide.jpg" />
+    <Content Include="Image\slider-before.png" />
+    <Content Include="Image\slider-img.png" />
+    <Content Include="Image\smallclose.png" />
+    <Content Include="Image\top.jpg" />
+    <Content Include="Image\top1.jpg" />
+    <Content Include="Image\tres.png" />
+    <Content Include="Image\uno.png" />
+    <Content Include="Image\yes.png" />
+    <Content Include="Image\zoon.png" />
     <Content Include="login.aspx" />
-    <Content Include="MasterPage\Deafault.aspx" />
+    <Content Include="MasterPage\default.aspx" />
     <Content Include="packages.config" />
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -117,11 +263,16 @@
     <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <Content Include="MasterPage\MasterPager.Master" />
+    <Content Include="MasterPage\Site.Master" />
+    <Content Include="MasterPage\MasterPage.Master" />
+    <Content Include="Image\iconos\Thumbs.db" />
+    <Content Include="Image\logo.psd" />
+    <Content Include="Image\Thumbs.db" />
     <None Include="Scripts\jquery-2.1.4.intellisense.js" />
     <Content Include="Scripts\ie-emulation-modes-warning.js">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Scripts\ie10-viewport-bug-workaround.js" />
     <Content Include="Scripts\jquery-2.1.4.js" />
     <Content Include="Scripts\jquery-2.1.4.min.js" />
@@ -153,25 +304,34 @@
     <Compile Include="login.aspx.designer.cs">
       <DependentUpon>login.aspx</DependentUpon>
     </Compile>
-    <Compile Include="MasterPage\Deafault.aspx.cs">
-      <DependentUpon>Deafault.aspx</DependentUpon>
+    <Compile Include="MasterPage\default.aspx.cs">
+      <DependentUpon>default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="MasterPage\Deafault.aspx.designer.cs">
-      <DependentUpon>Deafault.aspx</DependentUpon>
+    <Compile Include="MasterPage\default.aspx.designer.cs">
+      <DependentUpon>default.aspx</DependentUpon>
     </Compile>
-    <Compile Include="MasterPage\MasterPager.Master.cs">
-      <DependentUpon>MasterPager.Master</DependentUpon>
+    <Compile Include="MasterPage\MasterPage.Master.cs">
+      <DependentUpon>MasterPage.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="MasterPage\MasterPager.Master.designer.cs">
-      <DependentUpon>MasterPager.Master</DependentUpon>
+    <Compile Include="MasterPage\MasterPage.Master.designer.cs">
+      <DependentUpon>MasterPage.Master</DependentUpon>
+    </Compile>
+    <Compile Include="MasterPage\Site.Master.cs">
+      <DependentUpon>Site.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MasterPage\Site.Master.designer.cs">
+      <DependentUpon>Site.Master</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Catalogos\" />
+    <Folder Include="css\treeview\" />
+    <Folder Include="css\ttf\" />
     <Folder Include="js\" />
   </ItemGroup>
   <PropertyGroup>
