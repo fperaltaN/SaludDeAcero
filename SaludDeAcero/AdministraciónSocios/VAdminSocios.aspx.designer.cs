@@ -7,99 +7,72 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace CLINI_MEX.MasterPage {
+namespace SaludDeAcero.AdministraciónSocios {
     
     
-    public partial class Site {
+    public partial class VAdminSocios {
         
         /// <summary>
-        /// Head1 control.
+        /// btnAgregarSocio control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlHead Head1;
+        protected global::System.Web.UI.WebControls.Button btnAgregarSocio;
         
         /// <summary>
-        /// head control.
+        /// btnModificarSocio control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder head;
+        protected global::System.Web.UI.WebControls.Button btnModificarSocio;
         
         /// <summary>
-        /// Form1 control.
+        /// btnEstadoSocio control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm Form1;
+        protected global::System.Web.UI.WebControls.Button btnEstadoSocio;
         
         /// <summary>
-        /// cerrar control.
+        /// btnHistorialPago control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton cerrar;
+        protected global::System.Web.UI.WebControls.Button btnHistorialPago;
         
         /// <summary>
-        /// lblFechaUser control.
+        /// grdEmpleados control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxLabel lblFechaUser;
+        protected global::DevExpress.Web.ASPxGridView grdEmpleados;
         
         /// <summary>
-        /// lblNameUser control.
+        /// lblNumSocio control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxLabel lblNameUser;
+        protected global::System.Web.UI.WebControls.Label lblNumSocio;
         
         /// <summary>
-        /// lblAreaUser control.
+        /// txtNumSocio control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxLabel lblAreaUser;
-        
-        /// <summary>
-        /// menuGral control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::DevExpress.Web.ASPxMenu menuGral;
-        
-        /// <summary>
-        /// contentPrincipal control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder contentPrincipal;
-        
-        /// <summary>
-        /// lblagendum control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblagendum;
+        protected global::System.Web.UI.WebControls.TextBox txtNumSocio;
     }
 }
