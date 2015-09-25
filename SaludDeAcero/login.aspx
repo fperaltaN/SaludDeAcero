@@ -23,6 +23,7 @@
     <[endif]>--%>
 </head>
 <body>
+
     <nav class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
@@ -35,14 +36,14 @@
                 <a class="navbar-brand" href="#">Salud De Acero</a>
             </div>
             <div id="navbar" class="navbar-collapse collapse">
-                <form class="navbar-form navbar-right">
+                <form class="navbar-form navbar-right" runat="server">
                     <div class="form-group">
-                        <input type="text" placeholder="Email" class="form-control">
+                        <asp:TextBox ID="txtUser" class="form-control" runat="server" Text="" ToolTip="Introduce tu Usuario.."></asp:TextBox>
                     </div>
                     <div class="form-group">
-                        <input type="password" placeholder="Password" class="form-control">
+                         <asp:TextBox ID="txtPass" class="form-control" runat="server" Text="" ToolTip="Introduce tu password.." TextMode="Password"></asp:TextBox>
                     </div>
-                    <button type="submit" class="btn btn-success">Inicar Session</button>
+                    <asp:Button ID="btnIniciarSession" runat="server" class="btn btn-success" Text="Inicar Session" OnClick="btnIniciarSession_Click" />
                 </form>
             </div>
             <!--/.navbar-collapse -->

@@ -1,4 +1,10 @@
-﻿using System;
+﻿/*''=============================================
+'' Autor:	Faleg A. Peralta
+'' Modificado por: 
+'' Fecha de Modificación: 25.09.2015
+'' Descripcion General: Valida el Inicio de Session
+'' =============================================*/
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
@@ -17,7 +23,7 @@ namespace CapaDatos
         #region Metodos de Conexion
         public SQLDatos()
         {
-            connString = ConfigurationSettings.AppSettings["clinimexConection"].ToString();
+            connString = ConfigurationSettings.AppSettings["SaludDeAceroConection"].ToString();
         }
 
         public SqlConnection CrearConexion()

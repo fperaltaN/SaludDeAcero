@@ -71,15 +71,6 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="AdministraciónSocios\css\bootstrap-theme.css" />
-    <Content Include="AdministraciónSocios\css\bootstrap-theme.min.css" />
-    <Content Include="AdministraciónSocios\css\bootstrap.css" />
-    <Content Include="AdministraciónSocios\css\bootstrap.min.css" />
-    <Content Include="AdministraciónSocios\fonts\glyphicons-halflings-regular.svg" />
-    <Content Include="AdministraciónSocios\js\bootstrap.js" />
-    <Content Include="AdministraciónSocios\js\bootstrap.min.js" />
-    <Content Include="AdministraciónSocios\js\npm.js" />
-    <Content Include="AdministraciónSocios\VAdminSocio.aspx" />
     <Content Include="AdministraciónSocios\VAdminSocios.aspx" />
     <Content Include="Catalogos\ConsultaReportePagos.aspx" />
     <Content Include="Catalogos\Empleado.aspx" />
@@ -311,12 +302,6 @@
     <Content Include="Image\iconos\Thumbs.db" />
     <Content Include="Image\logo.psd" />
     <Content Include="Image\Thumbs.db" />
-    <Content Include="AdministraciónSocios\css\bootstrap-theme.css.map" />
-    <Content Include="AdministraciónSocios\css\bootstrap.css.map" />
-    <Content Include="AdministraciónSocios\fonts\glyphicons-halflings-regular.eot" />
-    <Content Include="AdministraciónSocios\fonts\glyphicons-halflings-regular.ttf" />
-    <Content Include="AdministraciónSocios\fonts\glyphicons-halflings-regular.woff" />
-    <Content Include="AdministraciónSocios\fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="MasterPage\SiteMaster.Master" />
     <None Include="Scripts\jquery-2.1.4.intellisense.js" />
     <Content Include="Scripts\ie-emulation-modes-warning.js">
@@ -344,13 +329,6 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AdministraciónSocios\VAdminSocio.aspx.cs">
-      <DependentUpon>VAdminSocio.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="AdministraciónSocios\VAdminSocio.aspx.designer.cs">
-      <DependentUpon>VAdminSocio.aspx</DependentUpon>
-    </Compile>
     <Compile Include="AdministraciónSocios\VAdminSocios.aspx.cs">
       <DependentUpon>VAdminSocios.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -420,7 +398,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\" />
     <Folder Include="css\treeview\" />
     <Folder Include="css\ttf\" />
     <Folder Include="js\" />
