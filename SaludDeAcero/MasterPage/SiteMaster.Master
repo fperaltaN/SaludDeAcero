@@ -90,7 +90,7 @@
                     </div>
                     <div class="col-md-9">
                         <div class="container">
-                            <div style="position: fixed; top: 120px; left: 257px;height:100%">
+                            <div style="position: fixed; top: 70px; left: 257px;height:100%">
                                 <asp:ContentPlaceHolder ID="Content" runat="server">
                                     <table>
                                             <tr>
@@ -105,6 +105,18 @@
             </div>
         </div>
     </form>
+     <%--<footer class="navbar navbar-inverse navbar-fixed-down"  id="down" role="banner">
+         	
+			<a href="#"><img src="../Imagenes/facebook.png" alt="facebook" /></a>
+			<a href="#"><img src="../Imagenes/flickr.png" alt="flickr" /></a>
+			<a href="#"><img src="../Imagenes/myspace.png" alt="myspace" /></a>
+			<a href="#"><img src="../Imagenes/twitter.png" alt="twitter" /></a>
+			<a href="#"><img src="../Imagenes/youtube.png" alt="youtube" /></a>
+
+        
+        <p>&copy; Salud de Acero  2015</p>
+                 </div>
+    </footer>--%>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="../Scripts/bootstrap.min.js"></script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->

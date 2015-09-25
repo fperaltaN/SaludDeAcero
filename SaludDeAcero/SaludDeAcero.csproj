@@ -71,6 +71,20 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="AdministraciónSocios\css\bootstrap-theme.css" />
+    <Content Include="AdministraciónSocios\css\bootstrap-theme.min.css" />
+    <Content Include="AdministraciónSocios\css\bootstrap.css" />
+    <Content Include="AdministraciónSocios\css\bootstrap.min.css" />
+    <Content Include="AdministraciónSocios\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="AdministraciónSocios\js\bootstrap.js" />
+    <Content Include="AdministraciónSocios\js\bootstrap.min.js" />
+    <Content Include="AdministraciónSocios\js\npm.js" />
+    <Content Include="AdministraciónSocios\VAdminSocio.aspx" />
+    <Content Include="AdministraciónSocios\VAdminSocios.aspx" />
+    <Content Include="Catalogos\ConsultaReportePagos.aspx" />
+    <Content Include="Catalogos\Empleado.aspx" />
+    <Content Include="Catalogos\Paquete.aspx" />
+    <Content Include="Catalogos\Socios.aspx" />
     <Content Include="Content\jumbotron.css">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -87,6 +101,28 @@
     <Content Include="Imagenes\1Rgur %281%29.jpg" />
     <Content Include="Imagenes\1Rgur.jpg" />
     <Content Include="Imagenes\998885_171005126406651_111173835_n.jpg" />
+    <Content Include="Imagenes\Aparatos\IMG_1316.JPG" />
+    <Content Include="Imagenes\Aparatos\IMG_1318.JPG" />
+    <Content Include="Imagenes\Aparatos\IMG_1319.JPG" />
+    <Content Include="Imagenes\Aparatos\IMG_1321.JPG" />
+    <Content Include="Imagenes\Aparatos\IMG_1322.JPG" />
+    <Content Include="Imagenes\Aparatos\IMG_1325.JPG" />
+    <Content Include="Imagenes\Aparatos\IMG_1330.JPG" />
+    <Content Include="Imagenes\Aparatos\IMG_1331.JPG" />
+    <Content Include="Imagenes\Aparatos\IMG_1332.JPG" />
+    <Content Include="Imagenes\Aparatos\IMG_1334.JPG" />
+    <Content Include="Imagenes\Aparatos\IMG_1335.JPG" />
+    <Content Include="Imagenes\Aparatos\IMG_1339.JPG" />
+    <Content Include="Imagenes\Aparatos\IMG_1343.JPG" />
+    <Content Include="Imagenes\Aparatos\IMG_1345.JPG" />
+    <Content Include="Imagenes\Aparatos\IMG_1347.JPG" />
+    <Content Include="Imagenes\Aparatos\IMG_1348.JPG" />
+    <Content Include="Imagenes\Aparatos\IMG_1355..jpg" />
+    <Content Include="Imagenes\Aparatos\IMG_1356.JPG" />
+    <Content Include="Imagenes\Aparatos\IMG_1362..jpg" />
+    <Content Include="Imagenes\Aparatos\IMG_1363..jpg" />
+    <Content Include="Imagenes\Aparatos\IMG_1368.JPG" />
+    <Content Include="Imagenes\Aparatos\IMG_1369.JPG" />
     <Content Include="Imagenes\facebook.png" />
     <Content Include="Imagenes\flickr.png" />
     <Content Include="Imagenes\forever-list.png" />
@@ -95,6 +131,7 @@
     <Content Include="Imagenes\gallery\image_04.jpg" />
     <Content Include="Imagenes\gallery\image_05.jpg" />
     <Content Include="Imagenes\gallery\image_06.jpg" />
+    <Content Include="Imagenes\logoSA.png" />
     <Content Include="Imagenes\menu_hover.png" />
     <Content Include="Imagenes\myspace.png" />
     <Content Include="Imagenes\onebit_08.png" />
@@ -252,7 +289,15 @@
     <Content Include="Image\uno.png" />
     <Content Include="Image\yes.png" />
     <Content Include="Image\zoon.png" />
+    <Content Include="javascript\jquery-1.11.1.js" />
+    <Content Include="javascript\jquery.fancybox\jquery-1.3.2.min.js" />
+    <Content Include="javascript\jquery.fancybox\jquery.easing.1.3.js" />
+    <Content Include="javascript\jquery.fancybox\jquery.fancybox-1.2.1.pack.js" />
+    <Content Include="javascript\jquery.fancybox\jquery.fancybox.css" />
+    <Content Include="javascript\Login\Login.aspx" />
+    <Content Include="javascript\swfobject.js" />
     <Content Include="login.aspx" />
+    <Content Include="MasterPage\Anuncios.xml" />
     <Content Include="MasterPage\default.aspx" />
     <Content Include="packages.config" />
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -263,11 +308,16 @@
     <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <Content Include="MasterPage\Site.Master" />
-    <Content Include="MasterPage\MasterPage.Master" />
     <Content Include="Image\iconos\Thumbs.db" />
     <Content Include="Image\logo.psd" />
     <Content Include="Image\Thumbs.db" />
+    <Content Include="AdministraciónSocios\css\bootstrap-theme.css.map" />
+    <Content Include="AdministraciónSocios\css\bootstrap.css.map" />
+    <Content Include="AdministraciónSocios\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="AdministraciónSocios\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="AdministraciónSocios\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="AdministraciónSocios\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="MasterPage\SiteMaster.Master" />
     <None Include="Scripts\jquery-2.1.4.intellisense.js" />
     <Content Include="Scripts\ie-emulation-modes-warning.js">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -294,8 +344,57 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AdministraciónSocios\VAdminSocio.aspx.cs">
+      <DependentUpon>VAdminSocio.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdministraciónSocios\VAdminSocio.aspx.designer.cs">
+      <DependentUpon>VAdminSocio.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AdministraciónSocios\VAdminSocios.aspx.cs">
+      <DependentUpon>VAdminSocios.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdministraciónSocios\VAdminSocios.aspx.designer.cs">
+      <DependentUpon>VAdminSocios.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Catalogos\ConsultaReportePagos.aspx.cs">
+      <DependentUpon>ConsultaReportePagos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Catalogos\ConsultaReportePagos.aspx.designer.cs">
+      <DependentUpon>ConsultaReportePagos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Catalogos\Empleado.aspx.cs">
+      <DependentUpon>Empleado.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Catalogos\Empleado.aspx.designer.cs">
+      <DependentUpon>Empleado.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Catalogos\Paquete.aspx.cs">
+      <DependentUpon>Paquete.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Catalogos\Paquete.aspx.designer.cs">
+      <DependentUpon>Paquete.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Catalogos\Socios.aspx.cs">
+      <DependentUpon>Socios.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Catalogos\Socios.aspx.designer.cs">
+      <DependentUpon>Socios.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="javascript\Login\Login.aspx.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="javascript\Login\Login.aspx.designer.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
     <Compile Include="login.aspx.cs">
       <DependentUpon>login.aspx</DependentUpon>
@@ -311,28 +410,26 @@
     <Compile Include="MasterPage\default.aspx.designer.cs">
       <DependentUpon>default.aspx</DependentUpon>
     </Compile>
-    <Compile Include="MasterPage\MasterPage.Master.cs">
-      <DependentUpon>MasterPage.Master</DependentUpon>
+    <Compile Include="MasterPage\SiteMaster.Master.cs">
+      <DependentUpon>SiteMaster.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="MasterPage\MasterPage.Master.designer.cs">
-      <DependentUpon>MasterPage.Master</DependentUpon>
-    </Compile>
-    <Compile Include="MasterPage\Site.Master.cs">
-      <DependentUpon>Site.Master</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="MasterPage\Site.Master.designer.cs">
-      <DependentUpon>Site.Master</DependentUpon>
+    <Compile Include="MasterPage\SiteMaster.Master.designer.cs">
+      <DependentUpon>SiteMaster.Master</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Catalogos\" />
     <Folder Include="css\treeview\" />
     <Folder Include="css\ttf\" />
     <Folder Include="js\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Negocio\Negocio.csproj">
+      <Project>{bcc81b00-2984-45d1-9508-8ce576ca9c5d}</Project>
+      <Name>Negocio</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

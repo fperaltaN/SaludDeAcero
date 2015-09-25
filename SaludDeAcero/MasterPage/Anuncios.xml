@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Advertisements>
+  <Ad>
+    <!-- La dirección URL de la imagen del anuncio -->
+    <ImageUrl>../Imagenes/Aparatos/IMG_1316.JPG</ImageUrl>
+    <!-- La dirección URL a la que el anuncio redirige al usuario -->
+    <NavigateUrl></NavigateUrl>
+    <!-- El texto alternativo para la imagen -->
+    <AlternateText>Visite el sitio Web de Microsoft</AlternateText>
+    <!-- El número relativo de veces que debe aparecer este anuncio -->
+    <!-- en comparación con los demás -->
+    <Impressions>80</Impressions>
+    <!-- El tema de este anuncio (utilizado para el filtrado) -->
+    <Keyword>ProductInfo</Keyword>
+  </Ad>
+  <Ad>
+    <ImageUrl>../Imagenes/Aparatos/IMG_1318.JPG</ImageUrl>
+    <NavigateUrl></NavigateUrl>
+    <AlternateText>Soporte técnico para profesionales de IT</AlternateText>
+    <Impressions>40</Impressions>
+    <Keyword>Soporte técnico</Keyword>
+  </Ad>
+  <Ad>
+    <ImageUrl>../Imagenes/Aparatos/IMG_1319.JPG</ImageUrl>
+    <NavigateUrl></NavigateUrl>
+    <AlternateText>Soporte técnico para desarrolladores</AlternateText>
+    <Impressions>40</Impressions>
+    <Keyword>Soporte técnico</Keyword>
+  </Ad>
+</Advertisements>

@@ -74,10 +74,11 @@
             <div id="navigation" class="col-md-2">
                 <div class="container-fluid">
                     <div class="col-xs-4 col-md-2">
-                         <div style="position:fixed; top:150px; " class="navigation">
-                              <h1>Navigation</h1>
-                         </div>
-                    </div> <!-- /col-md-2 navigation -->
+                        <div style="position: fixed; top: 150px;" class="navigation">
+                            <h1>Navigation</h1>
+                        </div>
+                    </div>
+                    <!-- /col-md-2 navigation -->
                 </div>
             </div>
             <div class="col-md-9">
@@ -115,139 +116,7 @@
                             <td class="danger">...</td>
                         </tr>
                         <!-- On cells (`td` or `th`) -->
-                        <tr>
-                            <td class="active">...</td>
-                            <td class="success">...</td>
-                            <td class="warning">...</td>
-                            <td class="danger">...</td>
-                        </tr>
-                        <!-- On cells (`td` or `th`) -->
-                        <tr>
-                            <td class="active">...</td>
-                            <td class="success">...</td>
-                            <td class="warning">...</td>
-                            <td class="danger">...</td>
-                        </tr>
-                        <!-- On cells (`td` or `th`) -->
-                        <tr>
-                            <td class="active">...</td>
-                            <td class="success">...</td>
-                            <td class="warning">...</td>
-                            <td class="danger">...</td>
-                        </tr>
-                        <!-- On cells (`td` or `th`) -->
-                        <tr>
-                            <td class="active">...</td>
-                            <td class="success">...</td>
-                            <td class="warning">...</td>
-                            <td class="danger">...</td>
-                        </tr>
-                        <!-- On cells (`td` or `th`) -->
-                        <tr>
-                            <td class="active">...</td>
-                            <td class="success">...</td>
-                            <td class="warning">...</td>
-                            <td class="danger">...</td>
-                        </tr>
-                        <!-- On cells (`td` or `th`) -->
-                        <tr>
-                            <td class="active">...</td>
-                            <td class="success">...</td>
-                            <td class="warning">...</td>
-                            <td class="danger">...</td>
-                        </tr>
-                        <!-- On cells (`td` or `th`) -->
-                        <tr>
-                            <td class="active">...</td>
-                            <td class="success">...</td>
-                            <td class="warning">...</td>
-                            <td class="danger">...</td>
-                        </tr>
-                        <!-- On cells (`td` or `th`) -->
-                        <tr>
-                            <td class="active">...</td>
-                            <td class="success">...</td>
-                            <td class="warning">...</td>
-                            <td class="danger">...</td>
-                        </tr>
-                        <!-- On cells (`td` or `th`) -->
-                        <tr>
-                            <td class="active">...</td>
-                            <td class="success">...</td>
-                            <td class="warning">...</td>
-                            <td class="danger">...</td>
-                        </tr>
-                        <!-- On cells (`td` or `th`) -->
-                        <tr>
-                            <td class="active">...</td>
-                            <td class="success">...</td>
-                            <td class="warning">...</td>
-                            <td class="danger">...</td>
-                        </tr>
-                        <!-- On cells (`td` or `th`) -->
-                        <tr>
-                            <td class="active">...</td>
-                            <td class="success">...</td>
-                            <td class="warning">...</td>
-                            <td class="danger">...</td>
-                        </tr>
-                        <!-- On cells (`td` or `th`) -->
-                        <tr>
-                            <td class="active">...</td>
-                            <td class="success">...</td>
-                            <td class="warning">...</td>
-                            <td class="danger">...</td>
-                        </tr>
-
-                        <!-- On cells (`td` or `th`) -->
-                        <tr>
-                            <td class="active">...</td>
-                            <td class="success">...</td>
-                            <td class="warning">...</td>
-                            <td class="danger">...</td>
-                        </tr>
-                        <!-- On cells (`td` or `th`) -->
-                        <tr>
-                            <td class="active">...</td>
-                            <td class="success">...</td>
-                            <td class="warning">...</td>
-                            <td class="danger">...</td>
-                        </tr>
-                        <!-- On cells (`td` or `th`) -->
-                        <tr>
-                            <td class="active">...</td>
-                            <td class="success">...</td>
-                            <td class="warning">...</td>
-                            <td class="danger">...</td>
-                        </tr>
-                        <!-- On cells (`td` or `th`) -->
-                        <tr>
-                            <td class="active">...</td>
-                            <td class="success">...</td>
-                            <td class="warning">...</td>
-                            <td class="danger">...</td>
-                        </tr>
-                        <!-- On cells (`td` or `th`) -->
-                        <tr>
-                            <td class="active">...</td>
-                            <td class="success">...</td>
-                            <td class="warning">...</td>
-                            <td class="danger">...</td>
-                        </tr>
-                        <!-- On cells (`td` or `th`) -->
-                        <tr>
-                            <td class="active">...</td>
-                            <td class="success">...</td>
-                            <td class="warning">...</td>
-                            <td class="danger">...</td>
-                        </tr>
-                        <!-- On cells (`td` or `th`) -->
-                        <tr>
-                            <td class="active">...</td>
-                            <td class="success">...</td>
-                            <td class="warning">...</td>
-                            <td class="danger">...</td>
-                        </tr>
+                        
                     </table>
                 </div>
             </div>
@@ -334,7 +203,7 @@
             </div>
         </div>
 
-         <!-- Modal Modificar Socio -->
+        <!-- Modal Modificar Socio -->
         <div class="modal fade" id="myModalAUpdateSocio" tabindex="-1" role="dialog" aria-labelledby="AddSocio">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
@@ -414,7 +283,7 @@
             </div>
         </div>
 
-         <!-- Modal Cambiar Estado Socio -->
+        <!-- Modal Cambiar Estado Socio -->
         <div class="modal fade" id="myModalEstadoSocio" tabindex="-1" role="dialog" aria-labelledby="AddSocio">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
@@ -430,15 +299,15 @@
                             </div>
                             <div class="form-group">
                                 <label for="nombreSocio">Nombre(s) Socio</label>
-                                <input type="text" class="form-control" id="nombreSocioEstado" placeholder="Ingrese Nombre del Socio" disabled/>
+                                <input type="text" class="form-control" id="nombreSocioEstado" placeholder="Ingrese Nombre del Socio" disabled />
                             </div>
                             <div class="form-group">
                                 <label for="paternoSocio">Apellido Paterno</label>
-                                <input type="text" class="form-control" id="paternoSocioEstado" placeholder="Ingrese Apellido Paterno del Socio" disabled/>
+                                <input type="text" class="form-control" id="paternoSocioEstado" placeholder="Ingrese Apellido Paterno del Socio" disabled />
                             </div>
                             <div class="form-group">
                                 <label for="maternoSocio">Apellido Materno</label>
-                                <input type="text" class="form-control" id="maternoSocioEstado" placeholder="Ingrese Apellido Materno del Socio" disabled/>
+                                <input type="text" class="form-control" id="maternoSocioEstado" placeholder="Ingrese Apellido Materno del Socio" disabled />
                             </div>
                             <div class="form-group">
                                 <label for="estadoSocio">Estado</label>
@@ -478,7 +347,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="nombreSocio">Nombre(s) Socio</label>
-                                <input type="text" class="form-control" id="nombreSocioDelete" placeholder="Ingrese Nombre del Socio" disabled/>
+                                <input type="text" class="form-control" id="nombreSocioDelete" placeholder="Ingrese Nombre del Socio" disabled />
                             </div>
                         </form>
                     </div>
@@ -491,10 +360,11 @@
             </div>
         </div>
 
+    </div>
 
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-        <script src="../Scripts/bootstrap.min.js"></script>
-        <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-        <script src="../Scripts/ie10-viewport-bug-workaround.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="../Scripts/bootstrap.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="../Scripts/ie10-viewport-bug-workaround.js"></script>
 </body>
 </html>
