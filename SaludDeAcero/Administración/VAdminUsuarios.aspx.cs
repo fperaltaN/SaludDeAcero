@@ -52,7 +52,7 @@ namespace Sisa
         }
 
         /// <summary>
-        /// Evento que muestra el Dialog para dar de alta el Socio
+        /// Evento que muestra el Dialog para Actualizar el Socio
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
