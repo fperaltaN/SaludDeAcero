@@ -41,19 +41,19 @@
                 <nav id="bs-navbar" class="collapse navbar-collapse">
                     <ul class="nav navbar-nav">
                         <li>
-                            <a href="#">Inicio</a>
+                            <a id="Inicio" href="../MasterPage/default.aspx">Inicio</a>
                         </li>
                         <li>
-                            <a href="#">Servicios</a>
+                            <a id="Usuarios"  href="../Administración/VAdminUsuarios.aspx">Usuarios</a>
                         </li>
                         <li>
-                            <a href="#">Paquetes</a>
+                            <a id="Paquetes" href="../AdministraciónPaquetes/VAdminPaquetes.aspx">Paquetes</a>
                         </li>
                         <li>
-                            <a href="#">Socios</a>
+                            <a id="Socios" href="../Administración/VAdminSocios.aspx">Socios</a>
                         </li>
                         <li>
-                            <a href="#">Pagos</a>
+                            <a id="Pagos" href="#">Pagos</a>
                         </li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
