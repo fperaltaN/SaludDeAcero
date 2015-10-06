@@ -71,11 +71,9 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="AdministraciónSocios\VAdminSocios.aspx" />
-    <Content Include="Catalogos\ConsultaReportePagos.aspx" />
-    <Content Include="Catalogos\Empleado.aspx" />
-    <Content Include="Catalogos\Paquete.aspx" />
-    <Content Include="Catalogos\Socios.aspx" />
+    <Content Include="AdministraciónPaquetes\VAdminPaquetes.aspx" />
+    <Content Include="Administración\VAdminUsuarios.aspx" />
+    <Content Include="Administración\VAdminSocios.aspx" />
     <Content Include="Content\jumbotron.css">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -329,40 +327,26 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AdministraciónSocios\VAdminSocios.aspx.cs">
+    <Compile Include="AdministraciónPaquetes\VAdminPaquetes.aspx.cs">
+      <DependentUpon>VAdminPaquetes.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdministraciónPaquetes\VAdminPaquetes.aspx.designer.cs">
+      <DependentUpon>VAdminPaquetes.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Administración\VAdminUsuarios.aspx.cs">
+      <DependentUpon>VAdminUsuarios.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Administración\VAdminUsuarios.aspx.designer.cs">
+      <DependentUpon>VAdminUsuarios.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Administración\VAdminSocios.aspx.cs">
       <DependentUpon>VAdminSocios.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="AdministraciónSocios\VAdminSocios.aspx.designer.cs">
+    <Compile Include="Administración\VAdminSocios.aspx.designer.cs">
       <DependentUpon>VAdminSocios.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Catalogos\ConsultaReportePagos.aspx.cs">
-      <DependentUpon>ConsultaReportePagos.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Catalogos\ConsultaReportePagos.aspx.designer.cs">
-      <DependentUpon>ConsultaReportePagos.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Catalogos\Empleado.aspx.cs">
-      <DependentUpon>Empleado.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Catalogos\Empleado.aspx.designer.cs">
-      <DependentUpon>Empleado.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Catalogos\Paquete.aspx.cs">
-      <DependentUpon>Paquete.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Catalogos\Paquete.aspx.designer.cs">
-      <DependentUpon>Paquete.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Catalogos\Socios.aspx.cs">
-      <DependentUpon>Socios.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Catalogos\Socios.aspx.designer.cs">
-      <DependentUpon>Socios.aspx</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
