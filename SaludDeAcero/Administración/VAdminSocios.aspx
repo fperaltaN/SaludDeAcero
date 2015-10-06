@@ -394,7 +394,7 @@
         </ContentCollection>
     </dx:ASPxPopupControl>
 
-    <!-- Modal Cambiar Estado Socio -->
+    <!-- Modal Elimina  Socio -->
     <dx:ASPxPopupControl ID="popUpEliminarSocio" runat="server" Modal="true" HeaderText="Eliminar Socio" AllowDragging="true"
         PopupHorizontalAlign="Center" PopupVerticalAlign="WindowCenter" ShowCloseButton="true" Width="700px" Height="280px" ScrollBars="Vertical"
         PopupAction="None" CloseAction="CloseButton" Theme="Office2010Silver">
@@ -406,14 +406,14 @@
                             <div class="row">
                                 <div class="col-md-2">
                                     <div class="form-group">
-                                        <label for="maternoSocio">Número Socio</label>
-                                        <asp:TextBox ID="TextBox1" class="form-control" runat="server" Text="" ToolTip="Ingrese Número  del Socio"></asp:TextBox>
+                                        <label for="numeroSocio">Número Socio</label>
+                                        <asp:TextBox ID="txtNumSocioEliminar" class="form-control" runat="server" Text="" ToolTip="Ingrese Número  del Socio"></asp:TextBox>
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label for="nombreSocio">Nombre(s) Socio</label>
-                                        <asp:TextBox ID="TextBox2" class="form-control" runat="server" Text="" ToolTip="Ingrese Nombre(s) del Socio"></asp:TextBox>
+                                        <asp:TextBox ID="txtNomSocioEliminar" class="form-control" runat="server" Text="" ToolTip="Ingrese Nombre(s) del Socio"></asp:TextBox>
                                     </div>
                                 </div>
                             </div>
@@ -421,14 +421,14 @@
                                 <div class="col-md-3">
                                     <div class="form-group">
                                         <label for="maternoSocio">Apellido Paterno</label>
-                                        <asp:TextBox ID="TextBox3" class="form-control" runat="server" Text="" ToolTip="Ingrese Apellido Paterno del Socio"></asp:TextBox>
+                                        <asp:TextBox ID="txtApPaternoEliminar" class="form-control" runat="server" Text="" ToolTip="Ingrese Apellido Paterno del Socio"></asp:TextBox>
                                     </div>
                                 </div>
 
                                 <div class="col-md-3">
                                     <div class="form-group">
                                         <label for="paternoSocio">Apellido Materno</label>
-                                        <asp:TextBox ID="TextBox4" class="form-control" runat="server" Text="" ToolTip="Ingrese Apellido Materno del Socio"></asp:TextBox>
+                                        <asp:TextBox ID="txtApMaternoEliminar" class="form-control" runat="server" Text="" ToolTip="Ingrese Apellido Materno del Socio"></asp:TextBox>
                                     </div>
                                 </div>
                             </div>

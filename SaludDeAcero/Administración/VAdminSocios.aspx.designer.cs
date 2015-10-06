@@ -418,40 +418,40 @@ namespace SaludDeAcero.AdministraciónSocios {
         protected global::DevExpress.Web.PopupControlContentControl PopupControlContentControl3;
         
         /// <summary>
-        /// TextBox1 control.
+        /// txtNumSocioEliminar control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox1;
+        protected global::System.Web.UI.WebControls.TextBox txtNumSocioEliminar;
         
         /// <summary>
-        /// TextBox2 control.
+        /// txtNomSocioEliminar control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox2;
+        protected global::System.Web.UI.WebControls.TextBox txtNomSocioEliminar;
         
         /// <summary>
-        /// TextBox3 control.
+        /// txtApPaternoEliminar control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox3;
+        protected global::System.Web.UI.WebControls.TextBox txtApPaternoEliminar;
         
         /// <summary>
-        /// TextBox4 control.
+        /// txtApMaternoEliminar control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox4;
+        protected global::System.Web.UI.WebControls.TextBox txtApMaternoEliminar;
         
         /// <summary>
         /// btnCancelarEliminar control.
