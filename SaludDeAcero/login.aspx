@@ -43,7 +43,7 @@
                     <div class="form-group">
                          <asp:TextBox ID="txtPass" class="form-control" runat="server" Text="" ToolTip="Introduce tu password.." TextMode="Password"></asp:TextBox>
                     </div>
-                    <asp:Button ID="btnIniciarSession" runat="server" class="btn btn-success" Text="Inicar Session" OnClick="btnIniciarSession_Click" />
+                    <asp:Button ID="btnIniciarSession" runat="server" class="btn btn-success" Text="Iniciar Session" OnClick="btnIniciarSession_Click" />
                 </form>
             </div>
             <!--/.navbar-collapse -->
