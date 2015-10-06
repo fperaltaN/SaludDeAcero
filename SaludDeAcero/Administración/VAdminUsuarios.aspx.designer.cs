@@ -7,55 +7,37 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace SaludDeAcero.AdministraciónSocios {
+namespace Sisa {
     
     
-    public partial class VAdminSocios {
+    public partial class AdministracionUsuarios {
         
         /// <summary>
-        /// btnAgregarSocio control.
+        /// btnAgregarEmpleado control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnAgregarSocio;
+        protected global::System.Web.UI.WebControls.Button btnAgregarEmpleado;
         
         /// <summary>
-        /// btnModificarSocio control.
+        /// btnModificarEmplaedo control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnModificarSocio;
+        protected global::System.Web.UI.WebControls.Button btnModificarEmplaedo;
         
         /// <summary>
-        /// btnEstadoSocio control.
+        /// btnEliminarEmpleado control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnEstadoSocio;
-        
-        /// <summary>
-        /// btnHistorialSocio control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnHistorialSocio;
-        
-        /// <summary>
-        /// btnCancelarSocio control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnCancelarSocio;
+        protected global::System.Web.UI.WebControls.Button btnEliminarEmpleado;
         
         /// <summary>
         /// grdEmpleados control.
@@ -67,31 +49,22 @@ namespace SaludDeAcero.AdministraciónSocios {
         protected global::DevExpress.Web.ASPxGridView grdEmpleados;
         
         /// <summary>
-        /// popUpEditarRep control.
+        /// popUpEditarEmpleado control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxPopupControl popUpEditarRep;
+        protected global::DevExpress.Web.ASPxPopupControl popUpEditarEmpleado;
         
         /// <summary>
-        /// PopupControlContentControl1 control.
+        /// PopupControlEmpleados control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.PopupControlContentControl PopupControlContentControl1;
-        
-        /// <summary>
-        /// txtNumero control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtNumero;
+        protected global::DevExpress.Web.PopupControlContentControl PopupControlEmpleados;
         
         /// <summary>
         /// txtNombre control.
@@ -121,58 +94,49 @@ namespace SaludDeAcero.AdministraciónSocios {
         protected global::System.Web.UI.WebControls.TextBox txtApMaterno;
         
         /// <summary>
-        /// txtFecha control.
+        /// txtTelefonoEmpleado control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxDateEdit txtFecha;
+        protected global::System.Web.UI.WebControls.TextBox txtTelefonoEmpleado;
         
         /// <summary>
-        /// txtTelefono control.
+        /// TxtNombreUsuario control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtTelefono;
+        protected global::System.Web.UI.WebControls.TextBox TxtNombreUsuario;
         
         /// <summary>
-        /// txtDireccion control.
+        /// txtContraseñaAcceso control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtDireccion;
+        protected global::System.Web.UI.WebControls.TextBox txtContraseñaAcceso;
         
         /// <summary>
-        /// ddlPaquete control.
+        /// txtConfContraseña control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlPaquete;
+        protected global::System.Web.UI.WebControls.TextBox txtConfContraseña;
         
         /// <summary>
-        /// txtMedicos control.
+        /// ddlTipoUsuario control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtMedicos;
-        
-        /// <summary>
-        /// txtFisicos control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtFisicos;
+        protected global::System.Web.UI.WebControls.DropDownList ddlTipoUsuario;
         
         /// <summary>
         /// btnCancelar control.
@@ -200,23 +164,5 @@ namespace SaludDeAcero.AdministraciónSocios {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnActualizar;
-        
-        /// <summary>
-        /// btnCancelarEli control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnCancelarEli;
-        
-        /// <summary>
-        /// btnEliminar control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnEliminar;
     }
 }

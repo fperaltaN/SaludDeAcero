@@ -70,7 +70,7 @@ namespace SaludDeAcero.AdministraciónSocios
         /// <param name="e"></param>
         protected void btnAgregarSocio_Click(object sender, EventArgs e)
         {
-            this.popUpEditarRep.ShowOnPageLoad = true;
+            this.popUpRegistrar.ShowOnPageLoad = true;
             btnActualizar.Visible = false;
             btnGuardar.Visible = true;
         }
@@ -82,14 +82,79 @@ namespace SaludDeAcero.AdministraciónSocios
         /// <param name="e"></param>
         protected void btnCancelar_Click(object sender, EventArgs e)
         {
-            this.popUpEditarRep.ShowOnPageLoad = false;
+            this.popUpRegistrar.ShowOnPageLoad = false;
         }
 
+        /// <summary>
+        /// Habilita el Pop Up para modificación del Socio
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void btnModificarSocio_Click(object sender, EventArgs e)
         {
-            this.popUpEditarRep.ShowOnPageLoad = true;
+            this.popUpRegistrar.ShowOnPageLoad = true;
             btnActualizar.Visible = false;
             btnGuardar.Visible = true;
+        }
+
+        /// <summary>
+        /// Habilita el Pop Up para modificación del Estado Socio
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        protected void btnEstadoSocio_Click(object sender, EventArgs e)
+        {
+            this.popUpEstadoSocio.ShowOnPageLoad = true;
+        }
+
+        /// <summary>
+        /// Habilita el Pop Up para Eliminación del Socio
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        protected void btnCancelarSocio_Click(object sender, EventArgs e)
+        {
+            this.popUpEliminarSocio.ShowOnPageLoad = true;
+        }
+
+        /// <summary>
+        /// Deshabilita el Pop Up para Eliminación del Socio
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        protected void btnCancelarEliminar_Click(object sender, EventArgs e)
+        {
+            this.popUpEliminarSocio.ShowOnPageLoad = false;
+        }
+
+        /// <summary>
+        /// Deshabilita el Pop Up para Estado del Socio
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        protected void btnCancelarEstado_Click(object sender, EventArgs e)
+        {
+            this.popUpEstadoSocio.ShowOnPageLoad = false;
+        }
+
+        /// <summary>
+        /// da un resumen de las Fechas de los pago 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        protected void btnHistorialSocio_Click(object sender, EventArgs e)
+        {
+            popUpConsultaHistorial.ShowOnPageLoad = true;
+        }
+
+        /// <summary>
+        /// Deshabilita el Pop Up para Consultar el Historial de Pago
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        protected void btnCanConPago_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
