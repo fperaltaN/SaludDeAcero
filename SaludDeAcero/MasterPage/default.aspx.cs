@@ -30,6 +30,7 @@ namespace SaludDeAcero.MasterPage
                 Response.Cookies.Add(new HttpCookie("ASP.NET_SessionId", ""));
                 Response.Redirect("~/Login.aspx");
             }
+            
         }
     }
 }

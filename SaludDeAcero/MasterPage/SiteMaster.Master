@@ -44,7 +44,7 @@
                             <a id="Inicio" href="../MasterPage/default.aspx">Inicio</a>
                         </li>
                         <li>
-                            <a id="Usuarios"  href="../Administración/VAdminUsuarios.aspx">Usuarios</a>
+                            <a id="Usuarios" href="../Administración/VAdminUsuarios.aspx">Usuarios</a>
                         </li>
                         <li>
                             <a id="Paquetes" href="../AdministraciónPaquetes/VAdminPaquetes.aspx">Paquetes</a>
@@ -56,9 +56,11 @@
                             <a id="Pagos" href="#">Pagos</a>
                         </li>
                     </ul>
-                    <ul class="nav navbar-nav navbar-right">
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Nombre de Usuario <span class="caret"></span></a>
+                    <ul class="nav navbar-nav navbar-right" >
+                        <li class="dropdown"  >
+                            <a href="#" class="dropdown-toggle"  data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                <asp:Label ID="lblUsuario" runat="server" Text="Nombre de Usuario " ></asp:Label>
+                            </a>
                             <ul class="dropdown-menu">
                                 <li><a href="#">Opciones</a></li>
                                 <li><a href="#">Configuración</a></li>
@@ -66,7 +68,7 @@
                                 <li><a href="#">Otras cosas</a></li>
                             </ul>
                         </li>
-                        <li><a href="#">Cerrar Sesión</a></li>
+                        <li><asp:LinkButton ID="lnkBtnCerrarSession" runat="server"  Text="Cerrar Sesión" OnClick="lnkBtnCerrarSession_Click"></asp:LinkButton>  </li>
                     </ul>
                 </nav>
                 <%--</div>--%>
@@ -90,12 +92,12 @@
                     </div>
                     <div class="col-md-9">
                         <div class="container">
-                            <div style="position: fixed; top: 70px; left: 257px;height:100%">
+                            <div style="position: fixed; top: 70px; left: 257px; height: 100%">
                                 <asp:ContentPlaceHolder ID="Content" runat="server">
                                     <table>
-                                            <tr>
-                                                <td></td>
-                                            </tr>
+                                        <tr>
+                                            <td></td>
+                                        </tr>
                                     </table>
                                 </asp:ContentPlaceHolder>
                             </div>
@@ -105,7 +107,7 @@
             </div>
         </div>
     </form>
-     <%--<footer class="navbar navbar-inverse navbar-fixed-down"  id="down" role="banner">
+    <%--<footer class="navbar navbar-inverse navbar-fixed-down"  id="down" role="banner">
          	
 			<a href="#"><img src="../Imagenes/facebook.png" alt="facebook" /></a>
 			<a href="#"><img src="../Imagenes/flickr.png" alt="flickr" /></a>
