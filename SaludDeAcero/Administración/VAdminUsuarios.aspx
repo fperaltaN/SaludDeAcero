@@ -29,7 +29,7 @@
 
                         </li>
                         <li role="presentation">
-                            <asp:Button ID="btnModificarEmplaedo" class="btn btn-info btn-lg" runat="server" Text="Modificar Empleado" OnClick="btnModificarEmplaedo_Click"  />
+                            <asp:Button ID="btnModificarEmplaedo" class="btn btn-info btn-lg" runat="server" Text="Modificar Empleado" OnClick="btnModificarEmplaedo_Click" />
                             <%--<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModalAUpdateSocio">Modificar Socio</button>--%>
                         </li>
                         <li role="presentation">
@@ -40,27 +40,29 @@
                 </div>
                 <div class="table-responsive">
                     <h3 class="page-header">Registro de Empleados</h3>
-                    <dx:ASPxGridView ID="grdEmpleados" runat="server" KeyFieldName="" AutoGenerateColumns="False" Theme="Office2010Silver" Width="100%">
+                    <dx:ASPxGridView ID="grdEmpleados" runat="server" AutoGenerateColumns="False" Theme="Office2010Silver" Width="100%" OnRowCommand="grdEmpleados_RowCommand" OnHtmlRowPrepared="grdEmpleados_HtmlRowPrepared" OnLoad="grdEmpleados_Load">
                         <Columns>
                             <%--<dx:GridViewCommandColumn ShowEditButton="true" VisibleIndex="0" />--%>
                             <dx:GridViewDataTextColumn Caption="Acciones" VisibleIndex="0" Width="15%">
                                 <DataItemTemplate>
-                                    <asp:LinkButton ID="linkEditar" Text="Editar" runat="server" Visible="true" ForeColor="#666666"
+                                    <asp:LinkButton ID="linkSeleccionar" Text="Seleccionar" runat="server" Visible="true" ForeColor="#666666"
                                         Font-Size="Small" Font-Underline="True"></asp:LinkButton>
                                 </DataItemTemplate>
                             </dx:GridViewDataTextColumn>
-                            <dx:GridViewDataColumn Caption="Id" FieldName="" VisibleIndex="0" Visible="false" />
-                            <dx:GridViewDataColumn Caption="Nombre Emplado" FieldName="" VisibleIndex="0" Width="30%" />
-                            <dx:GridViewDataColumn Caption="Telefono" FieldName="" VisibleIndex="0" Width="10%" />
-                            <dx:GridViewDataColumn Caption="Tipo Empleado" FieldName="" VisibleIndex="0" Width="10%" />
-                            <dx:GridViewDataCheckColumn Caption="Activo" FieldName="" Visible="True" ReadOnly="false" VisibleIndex="20" Width="15%">
+                            <dx:GridViewDataColumn Caption="Id" FieldName="ID_USUARIO" VisibleIndex="1" Visible="false" />                          
+                            <dx:GridViewDataColumn Caption="Usuario" FieldName="USUARIO" VisibleIndex="2" Width="10%"  />
+                            <dx:GridViewDataColumn Caption="Nombre" FieldName="NOMBRE" VisibleIndex="3" Width="20%" />
+                            <dx:GridViewDataColumn Caption="Ap Paterno" FieldName="APELLIDO_PAT" VisibleIndex="4" Width="20%" />
+                            <dx:GridViewDataColumn Caption="Ap Materno" FieldName="APELLIDO_MAT" VisibleIndex="5" Width="20%" />  
+                            <dx:GridViewDataColumn Caption="Tipo Empleado" FieldName="PERFIL" VisibleIndex="6" Width="10%" />
+                            <dx:GridViewDataCheckColumn Caption="Activo" FieldName="ACTIVO" Visible="True" ReadOnly="false" VisibleIndex="20" Width="15%">
                                 <DataItemTemplate>
-                                    <asp:CheckBox ID="chkActivo" runat="server" Enabled="false" Checked='<%#Bind("ACTIVO")%>' />
+                                    <asp:CheckBox ID="chkActivo" runat="server" Enabled="false" Checked='<%#Bind("activo")%>' />
                                 </DataItemTemplate>
                             </dx:GridViewDataCheckColumn>
                         </Columns>
-                        <SettingsBehavior ConfirmDelete="True" />
-                        <SettingsText Title="Canales de comunicación" />
+                        <SettingsBehavior AllowSelectByRowClick="true" ConfirmDelete="True" AllowSelectSingleRowOnly="True" />
+                        <SettingsText Title="Administración de Empleados" />
                         <SettingsLoadingPanel Text="" />
                         <Settings ShowTitlePanel="True" ShowFilterBar="Auto" ShowFilterRow="true" />
                         <SettingsPager NumericButtonCount="5" PageSize="5">
@@ -68,13 +70,24 @@
                         </SettingsPager>
                     </dx:ASPxGridView>
                 </div>
+                <br />
+                <asp:LinkButton ID="lnkBtnWord" runat="server" OnClick="lnkBtnWord_Click">[Exportar a Word]</asp:LinkButton>
+                &nbsp;
+                <asp:LinkButton ID="lnkBtnExcel" runat="server" OnClick="lnkBtnExcel_Click" >[Exportar a Excel]</asp:LinkButton>
+                &nbsp;
+                <asp:LinkButton ID="lnkBtnPDF" runat="server" OnClick="lnkBtnPDF_Click" >[Exportar a PDF]</asp:LinkButton>
+                &nbsp;
+                <asp:LinkButton ID="lnkBtnImprimir" runat="server" onclientclick="window.print();">[Imprimir]</asp:LinkButton>
+    
+                <dx:ASPxGridViewExporter ID="grdEmpleadosExporter" runat="server" GridViewID="grdEmpleados">
+                </dx:ASPxGridViewExporter>
             </div>
         </div>
     </div>
 
     <!-- Modal Registrar Empleado -->
     <dx:ASPxPopupControl ID="popUpEditarEmpleado" runat="server" Modal="true" HeaderText="Registro de Empleados" AllowDragging="true"
-        PopupHorizontalAlign="Center" PopupVerticalAlign="WindowCenter"  ShowCloseButton="true" Width="700px" Height="500px" ScrollBars="Vertical"
+        PopupHorizontalAlign="Center" PopupVerticalAlign="WindowCenter" ShowCloseButton="true" Width="700px" Height="500px" ScrollBars="Vertical"
         PopupAction="None" CloseAction="CloseButton" Theme="Office2010Silver">
         <ContentCollection>
             <dx:PopupControlContentControl ID="PopupControlEmpleados" runat="server">

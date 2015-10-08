@@ -49,6 +49,51 @@ namespace Sisa {
         protected global::DevExpress.Web.ASPxGridView grdEmpleados;
         
         /// <summary>
+        /// lnkBtnWord control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton lnkBtnWord;
+        
+        /// <summary>
+        /// lnkBtnExcel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton lnkBtnExcel;
+        
+        /// <summary>
+        /// lnkBtnPDF control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton lnkBtnPDF;
+        
+        /// <summary>
+        /// lnkBtnImprimir control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton lnkBtnImprimir;
+        
+        /// <summary>
+        /// grdEmpleadosExporter control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxGridViewExporter grdEmpleadosExporter;
+        
+        /// <summary>
         /// popUpEditarEmpleado control.
         /// </summary>
         /// <remarks>
