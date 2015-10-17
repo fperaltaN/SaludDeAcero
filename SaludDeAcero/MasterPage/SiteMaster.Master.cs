@@ -37,12 +37,27 @@ namespace SaludDeAcero.MasterPage
             
         }
 
+        /// <summary>
+        /// Cierra la Sesion del sistema
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void lnkBtnCerrarSession_Click(object sender, EventArgs e)
         {
             Session.Abandon();
             Response.Cookies.Add(new HttpCookie("ASP.NET_SessionId", ""));
             Response.Redirect("~/Login.aspx");
             Session["Usuario"] = null;
+        }
+
+        /// <summary>
+        /// Muestra el POPOUT Acerca de
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        protected void lnkAcercade_Click(object sender, EventArgs e)
+        {
+            //this.popUpInformacion.ShowOnPageLoad = true;
         }
     }
 }

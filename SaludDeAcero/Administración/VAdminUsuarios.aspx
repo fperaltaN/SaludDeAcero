@@ -85,9 +85,9 @@
         </div>
     </div>
 
-    <!-- Modal Registrar Empleado -->
+    <!-- Modal Registrar Usuario -->
     <dx:ASPxPopupControl ID="popUpEditarEmpleado" runat="server" Modal="true" HeaderText="Registro de Empleados" AllowDragging="true"
-        PopupHorizontalAlign="Center" PopupVerticalAlign="WindowCenter" ShowCloseButton="true" Width="700px" Height="500px" ScrollBars="Vertical"
+        PopupHorizontalAlign="Center" PopupVerticalAlign="WindowCenter" ShowCloseButton="true" Width="650px" Height="450px" ScrollBars="Vertical"
         PopupAction="None" CloseAction="CloseButton" Theme="Office2010Silver">
         <ContentCollection>
             <dx:PopupControlContentControl ID="PopupControlEmpleados" runat="server">
@@ -166,7 +166,7 @@
         </ContentCollection>
     </dx:ASPxPopupControl>
 
-    <!-- Modal Elimina  Socio -->
+    <!-- Modal Elimina  Usuario -->
     <dx:ASPxPopupControl ID="popUpEliminarEmpleado" runat="server" Modal="true" HeaderText="Eliminar Empleado" AllowDragging="true"
         PopupHorizontalAlign="Center" PopupVerticalAlign="WindowCenter" ShowCloseButton="true" Width="700px" Height="280px" ScrollBars="Vertical"
         PopupAction="None" CloseAction="CloseButton" Theme="Office2010Silver">

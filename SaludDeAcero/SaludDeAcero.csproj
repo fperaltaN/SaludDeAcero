@@ -46,8 +46,10 @@
     <Reference Include="DevExpress.Data.v14.2, Version=14.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Printing.v14.2.Core, Version=14.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.RichEdit.v14.2.Core, Version=14.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Utils.v14.2, Version=14.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Web.ASPxThemes.v14.2, Version=14.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Web.v14.2, Version=14.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraPrinting.v14.2, Version=14.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
       <Private>True</Private>
@@ -72,6 +74,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="AdministraciónPaquetes\VAdminPaquetes.aspx" />
+    <Content Include="Administración\VAdminEmpleados.aspx" />
     <Content Include="Administración\VAdminUsuarios.aspx" />
     <Content Include="Administración\VAdminSocios.aspx" />
     <Content Include="Content\jumbotron.css">
@@ -333,6 +336,13 @@
     </Compile>
     <Compile Include="AdministraciónPaquetes\VAdminPaquetes.aspx.designer.cs">
       <DependentUpon>VAdminPaquetes.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Administración\VAdminEmpleados.aspx.cs">
+      <DependentUpon>VAdminEmpleados.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Administración\VAdminEmpleados.aspx.designer.cs">
+      <DependentUpon>VAdminEmpleados.aspx</DependentUpon>
     </Compile>
     <Compile Include="Administración\VAdminUsuarios.aspx.cs">
       <DependentUpon>VAdminUsuarios.aspx</DependentUpon>

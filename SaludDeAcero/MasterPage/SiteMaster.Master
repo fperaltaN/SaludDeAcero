@@ -1,5 +1,7 @@
 ﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="SiteMaster.master.cs" Inherits="SaludDeAcero.MasterPage.SiteMaster" %>
 
+<%@ Register Assembly="DevExpress.Web.v14.2, Version=14.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" Namespace="DevExpress.Web" TagPrefix="dx" %>
+
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -44,7 +46,7 @@
                             <a id="Inicio" href="../MasterPage/default.aspx">Inicio</a>
                         </li>
                         <li>
-                            <a id="Usuarios" href="../Administración/VAdminUsuarios.aspx">Usuarios</a>
+                            <a id="Usuarios" href="../Administración/VAdminEmpleados.aspx">Empleados</a>
                         </li>
                         <li>
                             <a id="Paquetes" href="../AdministraciónPaquetes/VAdminPaquetes.aspx">Paquetes</a>
@@ -56,19 +58,23 @@
                             <a id="Pagos" href="#">Pagos</a>
                         </li>
                     </ul>
-                    <ul class="nav navbar-nav navbar-right" >
-                        <li class="dropdown"  >
-                            <a href="#" class="dropdown-toggle"  data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                                <asp:Label ID="lblUsuario" runat="server" Text="Nombre de Usuario " ></asp:Label>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                <asp:Label ID="lblUsuario" runat="server" Text="Nombre de Usuario "></asp:Label>
                             </a>
                             <ul class="dropdown-menu">
                                 <li><a href="#">Opciones</a></li>
-                                <li><a href="#">Configuración</a></li>
+                                <li><a href="../Administración/VAdminUsuarios.aspx">Configuración</a></li>
                                 <li role="separator" class="divider"></li>
-                                <li><a href="#">Otras cosas</a></li>
+                                <li>
+                                    <a href="url" data-toggle="modal" data-target="#myModal">Acerca de</a>
+                                </li>
                             </ul>
                         </li>
-                        <li><asp:LinkButton ID="lnkBtnCerrarSession" runat="server"  Text="Cerrar Sesión" OnClick="lnkBtnCerrarSession_Click"></asp:LinkButton>  </li>
+                        <li>
+                            <asp:LinkButton ID="lnkBtnCerrarSession" runat="server" Text="Cerrar Sesión" OnClick="lnkBtnCerrarSession_Click"></asp:LinkButton>
+                        </li>
                     </ul>
                 </nav>
                 <%--</div>--%>
@@ -102,6 +108,33 @@
                                 </asp:ContentPlaceHolder>
                             </div>
                         </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Modal -->
+        <div id="myModal" class="modal fade" role="dialog">
+            <div class="modal-dialog">
+
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Sistema Salud de Acero SISA v1.0</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p>© Todos los Derechos Reservados  Licencia GNU </p>
+                        <br />
+                        <p>Agredecimientos </p>
+                        <ul>
+                            <li>ISC Luis Lazaro</li>
+                            <li>ISC Gilberto Adame Pasillas</li>
+                            <li>LI Jose Luis Blanco</li>
+                            <li>ISC Faleg Alejandro Peralta Martinez</li>
+                        </ul>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                     </div>
                 </div>
             </div>
