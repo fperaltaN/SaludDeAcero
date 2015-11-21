@@ -116,11 +116,57 @@ namespace SaludDeAcero.Administración
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
+        protected void btnGuardar_Click(object sender, EventArgs e)
+        {
+            string mensaje = "";
+            int satisfactorio = 0;// objU.addPaquetes(txtNombrePaquete.Text, txtdescripcionPaquete.Text, txtCosto.Text, Session["Id_Usuario"].ToString());
+            if (satisfactorio == 0)
+            {
+                mensaje = "<script language='javascript' type='text/javascript'>" +
+                                  " alert('Se guardo correctamente la información');</script> ";
+            }
+            else
+            {
+                mensaje = "<script language='javascript' type='text/javascript'>" +
+                                  " alert('Se presentó un problema al guardar la información, favor de revisarla;');</script> ";
+            }
+            Page.ClientScript.RegisterStartupScript(typeof(Page), "PopupScript", mensaje);
+            cargaUsuarios();
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void btnActualizar_Click(object sender, EventArgs e)
         {
             string mensaje = "";
             int satisfactorio = 0;// objU.addPaquetes(txtNombrePaquete.Text, txtdescripcionPaquete.Text, txtCosto.Text, Session["Id_Usuario"].ToString());
-            if (satisfactorio == 1)
+            if (satisfactorio == 0)
+            {
+                mensaje = "<script language='javascript' type='text/javascript'>" +
+                                  " alert('Se guardo correctamente la información');</script> ";
+            }
+            else
+            {
+                mensaje = "<script language='javascript' type='text/javascript'>" +
+                                  " alert('Se presentó un problema al guardar la información, favor de revisarla;');</script> ";
+            }
+            Page.ClientScript.RegisterStartupScript(typeof(Page), "PopupScript", mensaje);
+            cargaUsuarios();
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        protected void btnEliminarSocio_Click(object sender, EventArgs e)
+        {
+            string mensaje = "";
+            int satisfactorio = 0;// objU.addPaquetes(txtNombrePaquete.Text, txtdescripcionPaquete.Text, txtCosto.Text, Session["Id_Usuario"].ToString());
+            if (satisfactorio == 0)
             {
                 mensaje = "<script language='javascript' type='text/javascript'>" +
                                   " alert('Se guardo correctamente la información');</script> ";
@@ -150,9 +196,9 @@ namespace SaludDeAcero.Administración
         protected void cargaUsuarios()
         {
             DataSet datos = objE.getEmpleadosGrid();
-            GridViewRegistroEmpleados.DataSource = datos;
-            GridViewRegistroEmpleados.DataBind();
-            GridViewRegistroEmpleados.KeyFieldName = "id_empleado";
+            grdEmpleados.DataSource = datos;
+            grdEmpleados.DataBind();
+            grdEmpleados.KeyFieldName = "id_empleado";
         }
 
         /// <summary>
@@ -160,7 +206,7 @@ namespace SaludDeAcero.Administración
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        protected void GridViewRegistroEmpleados_RowCommand(object sender, DevExpress.Web.ASPxGridViewRowCommandEventArgs e)
+        protected void grdEmpleados_RowCommand(object sender, DevExpress.Web.ASPxGridViewRowCommandEventArgs e)
         {
             object id = e.KeyValue;
             Session["Row"] = id;
@@ -268,9 +314,39 @@ namespace SaludDeAcero.Administración
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        protected void GridViewRegistroEmpleados_Load(object sender, EventArgs e)
+        protected void grdEmpleados_Load(object sender, EventArgs e)
         {
             cargaUsuarios();
+        }
+
+        /// <summary>
+        /// Exporta el Grid a Word
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        protected void lnkBtnWord_Click(object sender, EventArgs e)
+        {
+            grdEmpleadosExporter.WriteRtfToResponse();
+        }
+
+        /// <summary>
+        /// Exporta el Grid a Excel
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        protected void lnkBtnExcel_Click(object sender, EventArgs e)
+        {
+            grdEmpleadosExporter.WriteXlsToResponse();
+        }
+
+        /// <summary>
+        /// Exporta el Grid a PDF
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        protected void lnkBtnPDF_Click(object sender, EventArgs e)
+        {
+            grdEmpleadosExporter.WritePdfToResponse();
         }
     }
 }
