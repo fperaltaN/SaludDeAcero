@@ -49,7 +49,8 @@
                 </div>
                 <div class="table-responsive">
                     <h3 class="page-header">Registro de Paquetes</h3>
-                    <dx:ASPxGridView ID="grdPaqutes" runat="server" KeyFieldName="" AutoGenerateColumns="False" Theme="Office2010Silver" Width="100%">
+                    <dx:ASPxGridView ID="grdPaquetes" runat="server"  AutoGenerateColumns="False" Theme="Office2010Silver" Width="100%"
+                         OnRowCommand="grdPaquetes_RowCommand" OnHtmlRowPrepared="grdPaquetes_HtmlRowPrepared" OnLoad="grdPaquetes_Load">
                         <Columns>
                             <%--<dx:GridViewCommandColumn ShowEditButton="true" VisibleIndex="0" />--%>
                             <dx:GridViewDataTextColumn Caption="Acciones" VisibleIndex="0" Width="5%">
@@ -58,12 +59,12 @@
                                         Font-Size="Small" Font-Underline="True"></asp:LinkButton>
                                 </DataItemTemplate>
                             </dx:GridViewDataTextColumn>
-                            <dx:GridViewDataColumn Caption="Id" FieldName="" VisibleIndex="0" Visible="false" />
-                            <dx:GridViewDataColumn Caption="Nombre Paquete" FieldName="" VisibleIndex="0" Width="10%" />
-                            <dx:GridViewDataColumn Caption="Servicio" FieldName="" VisibleIndex="0" Width="5%" />
-                            <dx:GridViewDataColumn Caption="Costo $" FieldName="" VisibleIndex="0" Width="5%" />
-                            <dx:GridViewDataColumn Caption="Descripción" FieldName="" VisibleIndex="0" Width="10%" />
-                            <dx:GridViewDataCheckColumn Caption="Activo" FieldName="" Visible="True" ReadOnly="false" VisibleIndex="5" Width="5%">
+                            <dx:GridViewDataColumn Caption="Id" FieldName="id_paquete" VisibleIndex="0" Visible="false" />
+                            <dx:GridViewDataColumn Caption="Nombre Paquete" FieldName="nombre" VisibleIndex="0" Width="10%" />
+                            <dx:GridViewDataColumn Caption="Servicio" FieldName="" Visible="False" VisibleIndex="0" Width="5%" />
+                            <dx:GridViewDataColumn Caption="Costo $" FieldName="costo" VisibleIndex="0" Width="5%" />
+                            <dx:GridViewDataColumn Caption="Descripción" FieldName="descripcion" VisibleIndex="0" Width="10%" />
+                            <dx:GridViewDataCheckColumn Caption="Activo" FieldName="activo" Visible="True" ReadOnly="false" VisibleIndex="5" Width="5%">
                                 <DataItemTemplate>
                                     <asp:CheckBox ID="chkActivo" runat="server" Enabled="false" Checked='<%#Bind("ACTIVO")%>' />
                                 </DataItemTemplate>
@@ -77,6 +78,18 @@
                             <PageSizeItemSettings Items="5" />
                         </SettingsPager>
                     </dx:ASPxGridView>
+
+                     <br />
+                        <asp:LinkButton ID="lnkBtnWord" runat="server" OnClick="lnkBtnWord_Click">[Exportar a Word]</asp:LinkButton>
+                        &nbsp;
+                <asp:LinkButton ID="lnkBtnExcel" runat="server" OnClick="lnkBtnExcel_Click">[Exportar a Excel]</asp:LinkButton>
+                        &nbsp;
+                <asp:LinkButton ID="lnkBtnPDF" runat="server" OnClick="lnkBtnPDF_Click">[Exportar a PDF]</asp:LinkButton>
+                        &nbsp;
+                <asp:LinkButton ID="lnkBtnImprimir" runat="server" OnClientClick="window.print();">[Imprimir]</asp:LinkButton>
+
+                        <dx:ASPxGridViewExporter ID="grdPaquetesExporter" runat="server" GridViewID="grdPaquetes">
+                        </dx:ASPxGridViewExporter>
                 </div>
             </div>
         </div>
@@ -128,7 +141,7 @@
 
 
     <!-- Modal Elimina  Paquete -->
-    <%--<dx:ASPxPopupControl ID="popUpEliminarSocio" runat="server" Modal="true" HeaderText="Eliminar Socio" AllowDragging="true"
+    <dx:ASPxPopupControl ID="popUpEliminarPaquete" runat="server" Modal="true" HeaderText="Eliminar Socio" AllowDragging="true"
         PopupHorizontalAlign="Center" PopupVerticalAlign="WindowCenter" ShowCloseButton="true" Width="700px" Height="280px" ScrollBars="Vertical"
         PopupAction="None" CloseAction="CloseButton" Theme="Office2010Silver">
         <ContentCollection>
@@ -140,13 +153,13 @@
                                 <div class="col-md-3">
                                     <div class="form-group">
                                         <label for="nombrepaquete">Nombre del Paquete</label>
-                                        <asp:TextBox ID="TextBox1" class="form-control" runat="server" Text="" ToolTip="Ingrese Nombre Del Paquete"></asp:TextBox>
+                                        <asp:TextBox ID="txtNombrePaqueteEliminar" class="form-control" runat="server" Text="" ToolTip="Ingrese Nombre Del Paquete"></asp:TextBox>
                                     </div>
                                 </div>
                                 <div class="col-md-3">
                                     <div class="form-group">
                                         <label for="costo">Costo del Paquete</label>
-                                        <asp:TextBox ID="TextBox2" class="form-control" runat="server" Text="" ToolTip="Ingrese el Costo del Paquete"></asp:TextBox>
+                                        <asp:TextBox ID="txtCostoEliminar" class="form-control" runat="server" Text="" ToolTip="Ingrese el Costo del Paquete"></asp:TextBox>
                                     </div>
                                 </div>
                             </div>
@@ -154,7 +167,7 @@
                                 <div class="col-md-5">
                                     <div class="form-group">
                                         <label for="Descripcion">Descripción del Paquete</label>
-                                        <asp:TextBox ID="TextBox3" class="form-control" runat="server" Text="" ToolTip="Descripción del Paquete" TextMode="MultiLine" Rows="3"></asp:TextBox>
+                                        <asp:TextBox ID="txtdescripcionPaqueteEliminar" class="form-control" runat="server" Text="" ToolTip="Descripción del Paquete" TextMode="MultiLine" Rows="3"></asp:TextBox>
                                     </div>
                                 </div>
                             </div>
@@ -166,7 +179,7 @@
                 </div>
             </dx:PopupControlContentControl>
         </ContentCollection>
-    </dx:ASPxPopupControl>--%>
+    </dx:ASPxPopupControl>
 
 
 
