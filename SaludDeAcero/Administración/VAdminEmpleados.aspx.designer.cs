@@ -49,13 +49,58 @@ namespace SaludDeAcero.Administración {
         protected global::System.Web.UI.WebControls.Button btnBorrarEmpleado;
         
         /// <summary>
-        /// GridViewRegistroEmpleados control.
+        /// grdEmpleados control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxGridView GridViewRegistroEmpleados;
+        protected global::DevExpress.Web.ASPxGridView grdEmpleados;
+        
+        /// <summary>
+        /// lnkBtnWord control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton lnkBtnWord;
+        
+        /// <summary>
+        /// lnkBtnExcel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton lnkBtnExcel;
+        
+        /// <summary>
+        /// lnkBtnPDF control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton lnkBtnPDF;
+        
+        /// <summary>
+        /// lnkBtnImprimir control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton lnkBtnImprimir;
+        
+        /// <summary>
+        /// grdEmpleadosExporter control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxGridViewExporter grdEmpleadosExporter;
         
         /// <summary>
         /// popUpEditarAgregarEmpleado control.
@@ -121,6 +166,15 @@ namespace SaludDeAcero.Administración {
         protected global::System.Web.UI.WebControls.TextBox TxtDireccion;
         
         /// <summary>
+        /// lblEstado control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblEstado;
+        
+        /// <summary>
         /// ddlEstado control.
         /// </summary>
         /// <remarks>
@@ -130,13 +184,13 @@ namespace SaludDeAcero.Administración {
         protected global::System.Web.UI.WebControls.DropDownList ddlEstado;
         
         /// <summary>
-        /// DDLperfil control.
+        /// ddlTipoUsuario control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DDLperfil;
+        protected global::System.Web.UI.WebControls.DropDownList ddlTipoUsuario;
         
         /// <summary>
         /// btnCancelar control.
@@ -211,40 +265,40 @@ namespace SaludDeAcero.Administración {
         protected global::DevExpress.Web.PopupControlContentControl PopupControlContentControl3;
         
         /// <summary>
-        /// TextBox1 control.
+        /// TxtBnumEmpleado control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox1;
+        protected global::System.Web.UI.WebControls.TextBox TxtBnumEmpleado;
         
         /// <summary>
-        /// TextBox2 control.
+        /// TxtBNombre control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox2;
+        protected global::System.Web.UI.WebControls.TextBox TxtBNombre;
         
         /// <summary>
-        /// TextBox3 control.
+        /// TxtBapPaterno control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox3;
+        protected global::System.Web.UI.WebControls.TextBox TxtBapPaterno;
         
         /// <summary>
-        /// TextBox4 control.
+        /// TxtBapMaterno control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox4;
+        protected global::System.Web.UI.WebControls.TextBox TxtBapMaterno;
         
         /// <summary>
         /// btnCancelarEliminar control.

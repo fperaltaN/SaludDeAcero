@@ -39,7 +39,7 @@
                 </div>
                 <div class="table-responsive">
                     <h3 class="page-header">Registro de Empleados</h3>
-                    <dx:ASPxGridView ID="GridViewRegistroEmpleados" runat="server" KeyFieldName="" AutoGenerateColumns="false" Theme="Office2010Silver" Width="100%">
+                    <dx:ASPxGridView ID="grdEmpleados" runat="server" KeyFieldName="" AutoGenerateColumns="false" Theme="Office2010Silver" Width="100%">
                         <Columns>
                             <dx:GridViewDataTextColumn Caption="Acciones" VisibleIndex="0" Width="15%">
                                 <DataItemTemplate>
@@ -56,6 +56,17 @@
                             </dx:GridViewDataCheckColumn>
                         </Columns>
                     </dx:ASPxGridView>
+                    <br />
+                        <asp:LinkButton ID="lnkBtnWord" runat="server" OnClick="lnkBtnWord_Click">[Exportar a Word]</asp:LinkButton>
+                        &nbsp;
+                <asp:LinkButton ID="lnkBtnExcel" runat="server" OnClick="lnkBtnExcel_Click">[Exportar a Excel]</asp:LinkButton>
+                        &nbsp;
+                <asp:LinkButton ID="lnkBtnPDF" runat="server" OnClick="lnkBtnPDF_Click">[Exportar a PDF]</asp:LinkButton>
+                        &nbsp;
+                <asp:LinkButton ID="lnkBtnImprimir" runat="server" OnClientClick="window.print();">[Imprimir]</asp:LinkButton>
+
+                        <dx:ASPxGridViewExporter ID="grdEmpleadosExporter" runat="server" GridViewID="grdEmpleados">
+                        </dx:ASPxGridViewExporter>
                 </div>
             </div>
         </div>
@@ -108,7 +119,7 @@
                             <div class="row">
                                 <div class="col-md-3">
                                     <div class="form-group">
-                                        <label for="paqueteSocio">Estado</label>
+                                        <asp:Label runat="server" ID="lblEstado" Text="Estado"></asp:Label>
                                         <div class="selectContainer">
                                             <asp:DropDownList class="form-control" ID="ddlEstado" runat="server">
                                                 <asp:ListItem>Activo</asp:ListItem>
@@ -121,9 +132,10 @@
                                 </div>
                                 <div class="col-md-3">
                                     <div class="form-group">
-                                        <label for="tipoUsuario">Perfil</label>
+                                        <label for="tipoUsuario">Tipo de Usuario</label>
                                         <div class="selectContainer">
-                                            <asp:DropDownList class="form-control" ID="DDLperfil" runat="server"></asp:DropDownList>
+                                            <asp:DropDownList class="form-control" ID="ddlTipoUsuario" runat="server"></asp:DropDownList>
+                                            <%-- <asp:RequiredFieldValidator ID="ValidatorTipoUsuario" runat="server" ErrorMessage="*Seleccionar un tipo de usuario" ControlToValidate="ddlTipoUsuario"></asp:RequiredFieldValidator>--%>
                                         </div>
                                     </div>
                                 </div>
@@ -157,7 +169,7 @@
                                             <%--<dx:GridViewCommandColumn ShowEditButton="true" VisibleIndex="0" />--%>
                                             <dx:GridViewDataTextColumn Caption="Acciones" VisibleIndex="0" Width="15%">
                                                 <DataItemTemplate>
-                                                    <asp:LinkButton ID="LinkButton1" Text="Editar" runat="server" Visible="true" ForeColor="#666666"
+                                                    <asp:LinkButton ID="LinkSeleccionarAsistencia" Text="Editar" runat="server" Visible="true" ForeColor="#666666"
                                                         Font-Size="Small" Font-Underline="True"></asp:LinkButton>
                                                 </DataItemTemplate>
                                             </dx:GridViewDataTextColumn>
@@ -201,14 +213,14 @@
                             <div class="row">
                                 <div class="col-md-2">
                                     <div class="form-group">
-                                        <label for="maternoSocio">Numero Empleado</label>
-                                        <asp:TextBox ID="TextBox1" class="form-control" runat="server" Text="" ToolTip="Ingrese Número  del Empleado"></asp:TextBox>
+                                        <label for="numeroSocio">Numero Empleado</label>
+                                        <asp:TextBox ID="TxtBnumEmpleado" class="form-control" runat="server" Text="" ToolTip="Ingrese Número  del Empleado"></asp:TextBox>
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label for="NombreEmpleado">Nombre(s) Empleado</label>
-                                        <asp:TextBox ID="TextBox2" class="form-control" runat="server" Text="" ToolTip="Ingrese Nombre(s) del Empleado"></asp:TextBox>
+                                        <asp:TextBox ID="TxtBNombre" class="form-control" runat="server" Text="" ToolTip="Ingrese Nombre(s) del Empleado"></asp:TextBox>
                                     </div>
                                 </div>
                             </div>
@@ -216,13 +228,13 @@
                                 <div class="col-md-3">
                                     <div class="form-group">
                                         <label for="ApPaterno">Apellido Paterno</label>
-                                        <asp:TextBox ID="TextBox3" class="form-control" runat="server" Text="" ToolTip="Ingrese Apellido Paterno del Empleado"></asp:TextBox>
+                                        <asp:TextBox ID="TxtBapPaterno" class="form-control" runat="server" Text="" ToolTip="Ingrese Apellido Paterno del Empleado"></asp:TextBox>
                                     </div>
                                 </div>
                                 <div class="col-md-3">
                                     <div class="form-group">
                                         <label for="maternoSocio">Apellido Materno</label>
-                                        <asp:TextBox ID="TextBox4" class="form-control" runat="server" Text="" ToolTip="Ingrese Apellido Paterno del Empleado"></asp:TextBox>
+                                        <asp:TextBox ID="TxtBapMaterno" class="form-control" runat="server" Text="" ToolTip="Ingrese Apellido Paterno del Empleado"></asp:TextBox>
                                     </div>
                                 </div>
                             </div>
