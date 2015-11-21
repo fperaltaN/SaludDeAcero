@@ -109,7 +109,7 @@ namespace Sisa
         protected void btnGuardar_Click(object sender, EventArgs e)
         {
             string mensaje = "";
-            int satisfactorio = objU.addPaquetes(txtNombrePaquete.Text, txtdescripcionPaquete.Text, txtCosto.Text, "3");
+            int satisfactorio = objU.addPaquetes(txtNombrePaquete.Text, txtdescripcionPaquete.Text, txtCosto.Text, Session["Id_Usuario"].ToString());
             if (satisfactorio == 1)
             {
                 mensaje = "<script language='javascript' type='text/javascript'>" +
@@ -121,6 +121,7 @@ namespace Sisa
                                   " alert('Se presentó un problema al guardar la información, favor de revisarla;');</script> ";
             }
             Page.ClientScript.RegisterStartupScript(typeof(Page), "PopupScript", mensaje);
+            cargaPaquetes();
         }
 
         /// <summary>
@@ -131,8 +132,8 @@ namespace Sisa
         protected void btnActualizar_Click(object sender, EventArgs e)
         {
             string mensaje = "";
-            int satisfactorio = objU.updtPaquete(Convert.ToInt32(Session["Row"].ToString()),txtNombrePaquete.Text, txtdescripcionPaquete.Text, txtCosto.Text, "1",true);
-            if (satisfactorio == 1)
+            int satisfactorio = objU.updtPaquete(Convert.ToInt32(Session["Row"].ToString()),txtNombrePaquete.Text, txtdescripcionPaquete.Text, txtCosto.Text, Session["Id_Usuario"].ToString(), true);
+            if (satisfactorio == 0)
             {
                 mensaje = "<script language='javascript' type='text/javascript'>" +
                                   " alert('Se guardo correctamente la información');</script> ";
@@ -143,6 +144,7 @@ namespace Sisa
                                   " alert('Se presentó un problema al guardar la información, favor de revisarla;');</script> ";
             }
             Page.ClientScript.RegisterStartupScript(typeof(Page), "PopupScript", mensaje);
+            cargaPaquetes();
         }
 
         /// <summary>
@@ -163,8 +165,8 @@ namespace Sisa
         protected void btnEliminarCambios_Click(object sender, EventArgs e)
         {
             string mensaje = "";
-            int satisfactorio = objU.updtPaquete(Convert.ToInt32(Session["Row"].ToString()), txtNombrePaquete.Text, txtdescripcionPaquete.Text, txtCosto.Text, Session["Usuario"].ToString(), false);
-            if (satisfactorio == 1)
+            int satisfactorio = objU.updtPaquete(Convert.ToInt32(Session["Row"].ToString()), txtNombrePaquete.Text, txtdescripcionPaquete.Text, txtCosto.Text, Session["Id_Usuario"].ToString(), false);
+            if (satisfactorio == 0)
             {
                 mensaje = "<script language='javascript' type='text/javascript'>" +
                                   " alert('Se guardo correctamente la información');</script> ";
@@ -175,6 +177,7 @@ namespace Sisa
                                   " alert('Se presentó un problema al guardar la información, favor de revisarla;');</script> ";
             }
             Page.ClientScript.RegisterStartupScript(typeof(Page), "PopupScript", mensaje);
+            cargaPaquetes();
         }
 
         /// <summary>
@@ -214,12 +217,12 @@ namespace Sisa
         {
             //Modificación popUP
             txtNombrePaquete.Text = empleado.Tables[0].Rows[0]["Nombre"].ToString();
-            txtCosto.Text = empleado.Tables[0].Rows[0]["Apellido_Pat"].ToString();
-            txtdescripcionPaquete.Text = empleado.Tables[0].Rows[0]["Apellido_Mat"].ToString();
+            txtCosto.Text = empleado.Tables[0].Rows[0]["Costo"].ToString();
+            txtdescripcionPaquete.Text = empleado.Tables[0].Rows[0]["Descripcion"].ToString();
             //Eliminacion popUP
             txtNombrePaquete.Text = empleado.Tables[0].Rows[0]["Nombre"].ToString();
-            txtCosto.Text = empleado.Tables[0].Rows[0]["Apellido_Pat"].ToString();
-            txtdescripcionPaquete.Text = empleado.Tables[0].Rows[0]["Apellido_Mat"].ToString();
+            txtCosto.Text = empleado.Tables[0].Rows[0]["Costo"].ToString();
+            txtdescripcionPaquete.Text = empleado.Tables[0].Rows[0]["Descripcion"].ToString();
         }
 
         /// <summary>

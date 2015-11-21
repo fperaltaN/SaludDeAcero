@@ -55,7 +55,7 @@
                             <%--<dx:GridViewCommandColumn ShowEditButton="true" VisibleIndex="0" />--%>
                             <dx:GridViewDataTextColumn Caption="Acciones" VisibleIndex="0" Width="5%">
                                 <DataItemTemplate>
-                                    <asp:LinkButton ID="linkEditar" Text="Editar" runat="server" Visible="true" ForeColor="#666666"
+                                    <asp:LinkButton ID="linkEditar" Text="Seleccionar" runat="server" Visible="true" ForeColor="#666666"
                                         Font-Size="Small" Font-Underline="True"></asp:LinkButton>
                                 </DataItemTemplate>
                             </dx:GridViewDataTextColumn>
