@@ -41,6 +41,8 @@ namespace Sisa
                 cargaUsuarios();
                 btnModificarEmplaedo.Visible = false;
                 btnEliminarEmpleado.Visible = false;
+                txtContraseñaAcceso.Attributes["type"] = "password";
+                txtConfContraseña.Attributes["type"] = "password";
             }
         }
 
@@ -55,23 +57,47 @@ namespace Sisa
         }
 
         /// <summary>
-        /// Evento que muestra el Dialog para dar de alta el Socio
+        /// Evento  para dar de alta el Socio
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         protected void btnGuardar_Click(object sender, EventArgs e)
         {
+            if (txtConfContraseña.Text == txtContraseñaAcceso.Text)
+            {
+                int satisfactorio = objU.addEmpleados(txtNombreUsuario.Text, txtApPaterno.Text, txtApMaterno.Text,
+                                       "1", txtNombreUsuario.Text, txtContraseñaAcceso.Text,
+                                       Convert.ToInt32(ddlTipoUsuario.SelectedItem.Value), Session["Usuario"].ToString());
+            }
+            else
+            {
+                string mensaje = "<script language='javascript' type='text/javascript'>" +
+                                  " alert('Las contraseñas no coinciden.Verifica las Contraseña');</script> ";
+                Page.ClientScript.RegisterStartupScript(typeof(Page), "PopupScript", mensaje);
+            }
+
 
         }
 
         /// <summary>
-        /// Evento que muestra el Dialog para Actualizar el Socio
+        /// Evento  para Actualizar el Socio
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         protected void btnActualizar_Click(object sender, EventArgs e)
         {
-
+            if (txtConfContraseña.Text == txtContraseñaAcceso.Text)
+            {
+                int satisfactorio = objU.updtEmpleados(Convert.ToInt32(Session["Row"]),txtNombreUsuario.Text, txtApPaterno.Text,
+                                        txtApMaterno.Text,"1", txtNombreUsuario.Text, txtContraseñaAcceso.Text,
+                                       Convert.ToInt32(ddlTipoUsuario.SelectedItem.Value), true, Session["Usuario"].ToString());
+            }
+            else
+            {
+                string mensaje = "<script language='javascript' type='text/javascript'>" +
+                                  " alert('Las contraseñas no coinciden.Verifica las Contraseña');</script> ";
+                Page.ClientScript.RegisterStartupScript(typeof(Page), "PopupScript", mensaje);
+            }
         }
 
 
@@ -132,6 +158,9 @@ namespace Sisa
             this.ddlTipoUsuario.Items.Insert(0, new ListItem("Elija una Opcion..", "0"));
         }
 
+        /// <summary>
+        /// Llenado de Usuario
+        /// </summary>
         protected void cargaUsuarios()
         {
             DataSet datosEmpleados = objU.getUsuariosGrid();
@@ -152,7 +181,7 @@ namespace Sisa
             LinkButton opLinkButton = (LinkButton)e.CommandSource;
             if (opLinkButton.Text == "Seleccionar")
             {
-                DataSet datosEmpleados = objU.getUsuariosGrid();
+                DataSet datosEmpleados = objU.getUsuariosById(Convert.ToInt32(id));
                 setDatosEmpleado(datosEmpleados);
                 btnModificarEmplaedo.Visible = true;
                 btnEliminarEmpleado.Visible = true;
@@ -164,7 +193,20 @@ namespace Sisa
         /// </summary>
         protected void setDatosEmpleado(DataSet empleado)
         {
-            txtNombre.Text = empleado.Tables[0].Rows[0]["nombre"].ToString();
+            //Modificación popUP
+            txtNombre.Text = empleado.Tables[0].Rows[0]["Nombre"].ToString();
+            txtApPaterno.Text = empleado.Tables[0].Rows[0]["Apellido_Pat"].ToString();
+            txtApMaterno.Text = empleado.Tables[0].Rows[0]["Apellido_Mat"].ToString();
+            txtTelefonoEmpleado.Text = empleado.Tables[0].Rows[0]["ID_Perfil"].ToString();
+            txtNombreUsuario.Text = empleado.Tables[0].Rows[0]["Usuario"].ToString();
+            txtContraseñaAcceso.Text = empleado.Tables[0].Rows[0]["Password"].ToString();
+            txtConfContraseña.Text = empleado.Tables[0].Rows[0]["Password"].ToString();
+            ddlTipoUsuario.SelectedValue = empleado.Tables[0].Rows[0]["Id_Perfil"].ToString();            
+            //Eliminacion popUP
+            txtNomSocioEliminar.Text = empleado.Tables[0].Rows[0]["Nombre"].ToString();
+            txtApPaternoEliminar.Text = empleado.Tables[0].Rows[0]["Apellido_Pat"].ToString();
+            txtApMaternoEliminar.Text = empleado.Tables[0].Rows[0]["Apellido_Mat"].ToString();
+            txtNomUsuarioEliminar.Text = empleado.Tables[0].Rows[0]["Usuario"].ToString();
         }
 
         /// <summary>
@@ -221,6 +263,18 @@ namespace Sisa
         protected void grdEmpleados_Load(object sender, EventArgs e)
         {
             cargaUsuarios();
+        }
+
+        /// <summary>
+        /// Evento  para Actualizar (Baja) el empleado
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        protected void btnEliminarSocio_Click(object sender, EventArgs e)
+        {
+            int satisfactorio = objU.updtEmpleados(Convert.ToInt32(Session["Row"]), txtNombreUsuario.Text, txtApPaterno.Text,
+                                       txtApMaterno.Text, "1", txtNombreUsuario.Text, txtContraseñaAcceso.Text,
+                                      Convert.ToInt32(ddlTipoUsuario.SelectedItem.Value), false, Session["Usuario"].ToString());
         }
     }
 }
