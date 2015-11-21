@@ -23,6 +23,7 @@ namespace Negocio
         private string getEmpleadoXId = "sel_byId_empleado"; 
         private string addEmpleado = "add_empleado";
         private string updEmpleado = "upd_empleado";
+        private string delEmpleado = "del_empleado";
         #endregion
 
         /// <summary>
@@ -130,6 +131,27 @@ namespace Negocio
                 transSucess = 1;
             }
 
+            return transSucess;
+        }
+        /// <summary>
+        /// Elimina de la Base de Datos
+        /// </summary>
+        /// <param name="idempleado"></param>
+        /// <returns></returns>
+        public int DelEmpleado(int idempleado)
+        {
+            DataSet datos = new DataSet();
+            SQLDatos obj = new SQLDatos();
+            SqlParameter[] param = new SqlParameter[1];
+            try
+            {
+                param[0] = new SqlParameter("@id_empleado", SqlDbType.Int, 10, ParameterDirection.Input, false, 0, 0, "", DataRowVersion.Current, idempleado);//tenia idEmpleado??
+                transSucess = obj.getDataFromSP(delEmpleado, param, "TblEmpleado", datos);
+            }
+            catch (Exception ex)
+            {
+                transSucess = 1;
+            }
             return transSucess;
         }
     }

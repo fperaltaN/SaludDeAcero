@@ -108,10 +108,10 @@ namespace Negocio
                 SQLDatos obj = new SQLDatos();
                 SqlParameter[] param = new SqlParameter[6];
                 param[0] = new SqlParameter("@id_paquete", SqlDbType.Int, 10, ParameterDirection.Input, false, 0, 0, "", DataRowVersion.Current, idpaquete);
-                param[1] = new SqlParameter("@nombre", SqlDbType.Int, 10, ParameterDirection.Input, false, 0, 0, "", DataRowVersion.Current, nombre);
+                param[1] = new SqlParameter("@nombre", SqlDbType.VarChar, 10, ParameterDirection.Input, false, 0, 0, "", DataRowVersion.Current, nombre);
                 param[2] = new SqlParameter("@descripcion", SqlDbType.VarChar, 50, ParameterDirection.Input, false, 0, 0, "", DataRowVersion.Current, descripcion);
-                param[3] = new SqlParameter("@costo", SqlDbType.VarChar, 50, ParameterDirection.Input, false, 0, 0, "", DataRowVersion.Current, costo);
-                param[4] = new SqlParameter("@id_empleado", SqlDbType.VarChar, 50, ParameterDirection.Input, false, 0, 0, "", DataRowVersion.Current, id_empleado);
+                param[3] = new SqlParameter("@costo", SqlDbType.VarChar, 50, ParameterDirection.Input, false, 0, 0, "", DataRowVersion.Current, costo.Replace(",","."));
+                param[4] = new SqlParameter("@id_empleado", SqlDbType.Int, 50, ParameterDirection.Input, false, 0, 0, "", DataRowVersion.Current, id_empleado);
                 param[5] = new SqlParameter("@activo", SqlDbType.VarChar, 250, ParameterDirection.Input, false, 0, 0, "", DataRowVersion.Current, activo);
                transSucess = obj.getDataFromSP(updPaquete, param, "TblPaquete", datos);
             }
