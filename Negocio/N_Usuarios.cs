@@ -43,12 +43,12 @@ namespace Negocio
         /// </summary>
         /// <param name="idEmpleado"></param>
         /// <returns></returns>
-        public int getUsuariosById(int idEmpleado)
+        public DataSet getUsuariosById(Int32 idEmpleado)
         {
+            DataSet datos = new DataSet();
+            SQLDatos obj = new SQLDatos();
             try
-            {
-                DataSet datos = new DataSet();
-                SQLDatos obj = new SQLDatos();
+            {                
                 SqlParameter[] param = new SqlParameter[1];
                 param[0] = new SqlParameter("@id_usuario", SqlDbType.Int, 10, ParameterDirection.Input, false, 0, 0, "", DataRowVersion.Current, idEmpleado);
                 transSucess = obj.getDataFromSP(getUsuarioXId, param, "TblUsuario", datos);
@@ -58,7 +58,7 @@ namespace Negocio
                 transSucess = 1;
             }
 
-            return transSucess;
+            return datos;
         }
 
         /// <summary>
@@ -73,7 +73,7 @@ namespace Negocio
         /// <param name="id_perfil"></param>
         /// <param name="creador"></param>
         /// <returns></returns>
-        public int addEmpleados(string nombre, string ap_paterno, string ap_materno, string id_area, string usuario, string password, int id_perfil,string creador)
+        public int addEmpleados(string nombre, string ap_paterno, string ap_materno, string id_area, string usuario, string password, Int32 id_perfil,string creador)
         {
             try
             {
@@ -113,7 +113,7 @@ namespace Negocio
         /// <param name="activo"></param>
         /// <param name="creador"></param>
         /// <returns></returns>
-        public int updtEmpleados(int id_usuario,  string nombre, string ap_paterno, string ap_materno, string id_area, string usuario, string password, int id_perfil, bool activo,string creador)
+        public int updtEmpleados(int id_usuario,  string nombre, string ap_paterno, string ap_materno, string id_area, string usuario, string password, Int32 id_perfil, bool activo,string creador)
         {
             try
             {

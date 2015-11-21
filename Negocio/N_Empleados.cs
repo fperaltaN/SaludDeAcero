@@ -2,7 +2,7 @@
 '' Autor:	Faleg A. Peralta
 '' Modificado por: 
 '' Fecha de Modificación: 06.10.2015
-'' Descripcion General: Valida el Inicio de Session
+'' Descripcion General: CRUD de Empleados
 '' =============================================*/
 using CapaDatos;
 using System;
@@ -22,7 +22,7 @@ namespace Negocio
         private string getEmpleados = "sel_empleado";
         private string getEmpleadoXId = "sel_byId_empleado"; 
         private string addEmpleado = "add_empleado";
-        private string updEmpleado = "add_empleado";
+        private string updEmpleado = "upd_empleado";
         #endregion
 
         /// <summary>
@@ -43,12 +43,12 @@ namespace Negocio
         /// </summary>
         /// <param name="idEmpleado"></param>
         /// <returns></returns>
-        public int getEmpleadoById(int idEmpleado)
+        public DataSet getEmpleadoById(int idEmpleado)
         {
+            DataSet datos = new DataSet();
+            SQLDatos obj = new SQLDatos();
             try
             {
-                DataSet datos = new DataSet();
-                SQLDatos obj = new SQLDatos();
                 SqlParameter[] param = new SqlParameter[1];
                 param[0] = new SqlParameter("@id_empleado", SqlDbType.Int, 10, ParameterDirection.Input, false, 0, 0, "", DataRowVersion.Current, idEmpleado);
                transSucess = obj.getDataFromSP(getEmpleadoXId, param, "TblEmpleado", datos);
@@ -58,7 +58,7 @@ namespace Negocio
                 transSucess = 1;
             }
 
-            return transSucess;
+            return datos;
         }
 
         /// <summary>
@@ -115,7 +115,7 @@ namespace Negocio
                 SQLDatos obj = new SQLDatos();
                 SqlParameter[] param = new SqlParameter[9];
                 param[0] = new SqlParameter("@id_empleado", SqlDbType.Int, 10, ParameterDirection.Input, false, 0, 0, "", DataRowVersion.Current, idEmpleado);
-                param[1] = new SqlParameter("@num_empleado", SqlDbType.Int, 10, ParameterDirection.Input, false, 0, 0, "", DataRowVersion.Current, idEmpleado);
+                param[1] = new SqlParameter("@num_empleado", SqlDbType.Int, 10, ParameterDirection.Input, false, 0, 0, "", DataRowVersion.Current, num_empleado);
                 param[2] = new SqlParameter("@nombre", SqlDbType.VarChar, 50, ParameterDirection.Input, false, 0, 0, "", DataRowVersion.Current, nombre);
                 param[3] = new SqlParameter("@ap_paterno", SqlDbType.VarChar, 50, ParameterDirection.Input, false, 0, 0, "", DataRowVersion.Current, ap_paterno);
                 param[4] = new SqlParameter("@ap_materno", SqlDbType.VarChar, 50, ParameterDirection.Input, false, 0, 0, "", DataRowVersion.Current, ap_materno);
