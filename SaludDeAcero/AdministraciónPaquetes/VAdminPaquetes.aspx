@@ -18,172 +18,174 @@
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="Content" runat="server">
+    <asp:ScriptManager ID="ScriptManager1"
+        runat="server" />
+    <asp:UpdatePanel ID="UpdateDatos" runat="server">
+        <ContentTemplate>
+            <%--esto lo voy aponer dentro del div--%>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-9">
+                        <h1 class="page-header">Administración de Paquetes
+                        </h1>
+                        <div class="container">
+                            <ul class="nav nav-pills">
+                                <li role="presentation">
+                                    <asp:Button ID="btnAgregarPaquete" class="btn btn-success btn-lg" runat="server" Text="Agregar Paquete" OnClick="btnAgregarPaquete_Click" />
+                                    <%--<button type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target="#myModalAddSocio">Agregar Socio</button>--%>
 
-    <%--esto lo voy aponer dentro del div--%>
-    <div class="container">
-        <div class="row">
-            <div class="col-md-9">
-                <h1 class="page-header">Administración de Paquetes
-                </h1>
-                <div class="container">
-                    <ul class="nav nav-pills">
-                        <li role="presentation">
-                            <asp:Button ID="btnAgregarPaquete" class="btn btn-success btn-lg" runat="server" Text="Agregar Paquete" OnClick="btnAgregarPaquete_Click" />
-                            <%--<button type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target="#myModalAddSocio">Agregar Socio</button>--%>
+                                </li>
+                                <li role="presentation">
+                                    <asp:Button ID="btnModificarPaquete" class="btn btn-info btn-lg" runat="server" Text="Modificar Paquete" OnClick="btnModificarPaquete_Click" />
+                                    <%--<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModalAUpdateSocio">Modificar Socio</button>--%>
+                                </li>
+                                <li role="presentation">
+                                    <asp:Button ID="btnctrlServicios" class="btn btn-primary btn-lg" runat="server" Text="Control de Servicios" OnClick="btnctrlServicios_Click" />
+                                    <%--<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModalEstadoSocio">Cambiar de Estado Socio</button>--%>
+                                </li>
 
-                        </li>
-                        <li role="presentation">
-                            <asp:Button ID="btnModificarPaquete" class="btn btn-info btn-lg" runat="server" Text="Modificar Paquete" OnClick="btnModificarPaquete_Click" />
-                            <%--<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModalAUpdateSocio">Modificar Socio</button>--%>
-                        </li>
-                        <li role="presentation">
-                            <asp:Button ID="btnctrlServicios" class="btn btn-primary btn-lg" runat="server" Text="Control de Servicios" OnClick="btnctrlServicios_Click" />
-                            <%--<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModalEstadoSocio">Cambiar de Estado Socio</button>--%>
-                        </li>
+                                <li role="presentation">
+                                    <asp:Button ID="btnEliminarPaquete" class="btn btn-danger btn-lg" runat="server" Text="Eliminar Paquete" OnClick="btnEliminarPaquete_Click" />
+                                    <%--<button type="button" class="btn btn-danger btn-lg" data-toggle="modal" data-target="#myModalDeleteSocio">Eliminar Socio</button>--%>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="table-responsive">
+                            <h3 class="page-header">Registro de Paquetes</h3>
+                            <dx:ASPxGridView ID="grdPaquetes" runat="server" AutoGenerateColumns="False" Theme="Office2010Silver" Width="100%"
+                                OnRowCommand="grdPaquetes_RowCommand" OnHtmlRowPrepared="grdPaquetes_HtmlRowPrepared" OnLoad="grdPaquetes_Load">
+                                <Columns>
+                                    <%--<dx:GridViewCommandColumn ShowEditButton="true" VisibleIndex="0" />--%>
+                                    <dx:GridViewDataTextColumn Caption="Acciones" VisibleIndex="0" Width="5%">
+                                        <DataItemTemplate>
+                                            <asp:LinkButton ID="linkEditar" Text="Seleccionar" runat="server" Visible="true" ForeColor="#666666"
+                                                Font-Size="Small" Font-Underline="True"></asp:LinkButton>
+                                        </DataItemTemplate>
+                                    </dx:GridViewDataTextColumn>
+                                    <dx:GridViewDataColumn Caption="Id" FieldName="id_paquete" VisibleIndex="0" Visible="false" />
+                                    <dx:GridViewDataColumn Caption="Nombre Paquete" FieldName="nombre" VisibleIndex="0" Width="10%" />
+                                    <dx:GridViewDataColumn Caption="Servicio" FieldName="" Visible="False" VisibleIndex="0" Width="5%" />
+                                    <dx:GridViewDataColumn Caption="Costo $" FieldName="costo" VisibleIndex="0" Width="5%" />
+                                    <dx:GridViewDataColumn Caption="Descripción" FieldName="descripcion" VisibleIndex="0" Width="10%" />
+                                    <dx:GridViewDataCheckColumn Caption="Activo" FieldName="activo" Visible="True" ReadOnly="false" VisibleIndex="5" Width="5%">
+                                        <DataItemTemplate>
+                                            <asp:CheckBox ID="chkActivo" runat="server" Enabled="false" Checked='<%#Bind("ACTIVO")%>' />
+                                        </DataItemTemplate>
+                                    </dx:GridViewDataCheckColumn>
+                                </Columns>
+                                <SettingsBehavior ConfirmDelete="True" />
+                                <SettingsText Title="Canales de comunicación" />
+                                <SettingsLoadingPanel Text="" />
+                                <Settings ShowTitlePanel="True" ShowFilterBar="Auto" ShowFilterRow="true" />
+                                <SettingsPager NumericButtonCount="5" PageSize="5">
+                                    <PageSizeItemSettings Items="5" />
+                                </SettingsPager>
+                            </dx:ASPxGridView>
 
-                        <li role="presentation">
-                            <asp:Button ID="btnEliminarPaquete" class="btn btn-danger btn-lg" runat="server" Text="Eliminar Paquete" OnClick="btnEliminarPaquete_Click" />
-                            <%--<button type="button" class="btn btn-danger btn-lg" data-toggle="modal" data-target="#myModalDeleteSocio">Eliminar Socio</button>--%>
-                        </li>
-                    </ul>
-                </div>
-                <div class="table-responsive">
-                    <h3 class="page-header">Registro de Paquetes</h3>
-                    <dx:ASPxGridView ID="grdPaquetes" runat="server"  AutoGenerateColumns="False" Theme="Office2010Silver" Width="100%"
-                         OnRowCommand="grdPaquetes_RowCommand" OnHtmlRowPrepared="grdPaquetes_HtmlRowPrepared" OnLoad="grdPaquetes_Load">
-                        <Columns>
-                            <%--<dx:GridViewCommandColumn ShowEditButton="true" VisibleIndex="0" />--%>
-                            <dx:GridViewDataTextColumn Caption="Acciones" VisibleIndex="0" Width="5%">
-                                <DataItemTemplate>
-                                    <asp:LinkButton ID="linkEditar" Text="Seleccionar" runat="server" Visible="true" ForeColor="#666666"
-                                        Font-Size="Small" Font-Underline="True"></asp:LinkButton>
-                                </DataItemTemplate>
-                            </dx:GridViewDataTextColumn>
-                            <dx:GridViewDataColumn Caption="Id" FieldName="id_paquete" VisibleIndex="0" Visible="false" />
-                            <dx:GridViewDataColumn Caption="Nombre Paquete" FieldName="nombre" VisibleIndex="0" Width="10%" />
-                            <dx:GridViewDataColumn Caption="Servicio" FieldName="" Visible="False" VisibleIndex="0" Width="5%" />
-                            <dx:GridViewDataColumn Caption="Costo $" FieldName="costo" VisibleIndex="0" Width="5%" />
-                            <dx:GridViewDataColumn Caption="Descripción" FieldName="descripcion" VisibleIndex="0" Width="10%" />
-                            <dx:GridViewDataCheckColumn Caption="Activo" FieldName="activo" Visible="True" ReadOnly="false" VisibleIndex="5" Width="5%">
-                                <DataItemTemplate>
-                                    <asp:CheckBox ID="chkActivo" runat="server" Enabled="false" Checked='<%#Bind("ACTIVO")%>' />
-                                </DataItemTemplate>
-                            </dx:GridViewDataCheckColumn>
-                        </Columns>
-                        <SettingsBehavior ConfirmDelete="True" />
-                        <SettingsText Title="Canales de comunicación" />
-                        <SettingsLoadingPanel Text="" />
-                        <Settings ShowTitlePanel="True" ShowFilterBar="Auto" ShowFilterRow="true" />
-                        <SettingsPager NumericButtonCount="5" PageSize="5">
-                            <PageSizeItemSettings Items="5" />
-                        </SettingsPager>
-                    </dx:ASPxGridView>
-
-                     <br />
-                        <asp:LinkButton ID="lnkBtnWord" runat="server" OnClick="lnkBtnWord_Click">[Exportar a Word]</asp:LinkButton>
-                        &nbsp;
+                            <br />
+                            <asp:LinkButton ID="lnkBtnWord" runat="server" OnClick="lnkBtnWord_Click">[Exportar a Word]</asp:LinkButton>
+                            &nbsp;
                 <asp:LinkButton ID="lnkBtnExcel" runat="server" OnClick="lnkBtnExcel_Click">[Exportar a Excel]</asp:LinkButton>
-                        &nbsp;
+                            &nbsp;
                 <asp:LinkButton ID="lnkBtnPDF" runat="server" OnClick="lnkBtnPDF_Click">[Exportar a PDF]</asp:LinkButton>
-                        &nbsp;
+                            &nbsp;
                 <asp:LinkButton ID="lnkBtnImprimir" runat="server" OnClientClick="window.print();">[Imprimir]</asp:LinkButton>
 
-                        <dx:ASPxGridViewExporter ID="grdPaquetesExporter" runat="server" GridViewID="grdPaquetes">
-                        </dx:ASPxGridViewExporter>
+                            <dx:ASPxGridViewExporter ID="grdPaquetesExporter" runat="server" GridViewID="grdPaquetes">
+                            </dx:ASPxGridViewExporter>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-    </div>
 
-    <!-- Modal Registrar Paquete -->
-    <dx:ASPxPopupControl ID="popUpEditarPaquete" runat="server" Modal="true" HeaderText="Registro de Paquetes" AllowDragging="true"
-        PopupHorizontalAlign="Center" PopupVerticalAlign="WindowCenter" ShowCloseButton="true" Width="700px" Height="320px" ScrollBars="Vertical"
-        PopupAction="None" CloseAction="CloseButton" Theme="Office2010Silver">
-        <ContentCollection>
-            <dx:PopupControlContentControl ID="PopupControlPaqutes" runat="server">
-                <div class="modal-content">
-                    <div class="modal-body">
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-md-3">
-                                    <div class="form-group">
-                                        <label for="nombrepaquete">Nombre del Paquete</label>
-                                        <asp:TextBox ID="txtNombrePaquete" class="form-control" runat="server" Text="" ToolTip="Ingrese Nombre Del Paquete"></asp:TextBox>
+            <!-- Modal Registrar Paquete -->
+            <dx:ASPxPopupControl ID="popUpEditarPaquete" runat="server" Modal="true" HeaderText="Registro de Paquetes" AllowDragging="true"
+                PopupHorizontalAlign="Center" PopupVerticalAlign="WindowCenter" ShowCloseButton="true" Width="700px" Height="320px" ScrollBars="Vertical"
+                PopupAction="None" CloseAction="CloseButton" Theme="Office2010Silver">
+                <ContentCollection>
+                    <dx:PopupControlContentControl ID="PopupControlPaqutes" runat="server">
+                        <div class="modal-content">
+                            <div class="modal-body">
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label for="nombrepaquete">Nombre del Paquete</label>
+                                                <asp:TextBox ID="txtNombrePaquete" class="form-control" runat="server" Text="" ToolTip="Ingrese Nombre Del Paquete"></asp:TextBox>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label for="costo">Costo del Paquete</label>
+                                                <asp:TextBox ID="txtCosto" class="form-control" runat="server" Text="" ToolTip="Ingrese el Costo del Paquete"></asp:TextBox>
+                                            </div>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col-md-3">
-                                    <div class="form-group">
-                                        <label for="costo">Costo del Paquete</label>
-                                        <asp:TextBox ID="txtCosto" class="form-control" runat="server" Text="" ToolTip="Ingrese el Costo del Paquete"></asp:TextBox>
+                                    <div class="row">
+                                        <div class="col-md-5">
+                                            <div class="form-group">
+                                                <label for="Descripcion">Descripción del Paquete</label>
+                                                <asp:TextBox ID="txtdescripcionPaquete" class="form-control" runat="server" Text="" ToolTip="Descripción del Paquete" TextMode="MultiLine" Rows="3"></asp:TextBox>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="row">
-                                <div class="col-md-5">
-                                    <div class="form-group">
-                                        <label for="Descripcion">Descripción del Paquete</label>
-                                        <asp:TextBox ID="txtdescripcionPaquete" class="form-control" runat="server" Text="" ToolTip="Descripción del Paquete" TextMode="MultiLine" Rows="3"></asp:TextBox>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <asp:Button class="btn btn-default" data-dismiss="modal" ID="btnCancelar" runat="server" Text="Cancelar" OnClick="btnCancelar_Click" />
-                        <asp:Button class="btn btn-success" ID="btnGuardar" runat="server" Text="Guardar Paquete" OnClick="btnGuardar_Click" />
-                        <asp:Button class="btn btn-info" ID="btnActualizar" runat="server" Text="Guardar Cambios" OnClick="btnActualizar_Click" />                        
-                        <asp:Button runat="server" Text="Eliminar Paquete" ID="btnEliminarCambios" class="btn btn-warning" OnClick="btnEliminarCambios_Click"></asp:Button>
-                    </div>
-                </div>
-            </dx:PopupControlContentControl>
-        </ContentCollection>
-    </dx:ASPxPopupControl>
-
-
-    <!-- Modal Elimina  Paquete -->
-    <dx:ASPxPopupControl ID="popUpEliminarPaquete" runat="server" Modal="true" HeaderText="Eliminar Socio" AllowDragging="true"
-        PopupHorizontalAlign="Center" PopupVerticalAlign="WindowCenter" ShowCloseButton="true" Width="700px" Height="280px" ScrollBars="Vertical"
-        PopupAction="None" CloseAction="CloseButton" Theme="Office2010Silver">
-        <ContentCollection>
-            <dx:PopupControlContentControl ID="PopupControlContentControl3" runat="server">
-                <div class="modal-content">
-                    <div class="modal-body">
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-md-3">
-                                    <div class="form-group">
-                                        <label for="nombrepaquete">Nombre del Paquete</label>
-                                        <asp:TextBox ID="txtNombrePaqueteEliminar" class="form-control" runat="server" Text="" ToolTip="Ingrese Nombre Del Paquete"></asp:TextBox>
-                                    </div>
-                                </div>
-                                <div class="col-md-3">
-                                    <div class="form-group">
-                                        <label for="costo">Costo del Paquete</label>
-                                        <asp:TextBox ID="txtCostoEliminar" class="form-control" runat="server" Text="" ToolTip="Ingrese el Costo del Paquete"></asp:TextBox>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-5">
-                                    <div class="form-group">
-                                        <label for="Descripcion">Descripción del Paquete</label>
-                                        <asp:TextBox ID="txtdescripcionPaqueteEliminar" class="form-control" runat="server" Text="" ToolTip="Descripción del Paquete" TextMode="MultiLine" Rows="3"></asp:TextBox>
-                                    </div>
-                                </div>
+                            <div class="modal-footer">
+                                <asp:Button class="btn btn-default" data-dismiss="modal" ID="btnCancelar" runat="server" Text="Cancelar" OnClick="btnCancelar_Click" />
+                                <asp:Button class="btn btn-success" ID="btnGuardar" runat="server" Text="Guardar Paquete" OnClick="btnGuardar_Click" />
+                                <asp:Button class="btn btn-info" ID="btnActualizar" runat="server" Text="Guardar Cambios" OnClick="btnActualizar_Click" />
+                                <asp:Button runat="server" Text="Eliminar Paquete" ID="btnEliminarCambios" class="btn btn-warning" OnClick="btnEliminarCambios_Click"></asp:Button>
                             </div>
                         </div>
-                    </div>
-                    <div class="modal-footer">
-                            <asp:Button class="btn btn-default" data-dismiss="modal" ID="btnCancelarEliminar" runat="server" Text="Cancelar Edición" OnClick="btnCancelarEliminar_Click" />
+                    </dx:PopupControlContentControl>
+                </ContentCollection>
+            </dx:ASPxPopupControl>
+
+
+            <!-- Modal Elimina  Paquete -->
+            <dx:ASPxPopupControl ID="popUpEliminarPaquete" runat="server" Modal="true" HeaderText="Eliminar Socio" AllowDragging="true"
+                PopupHorizontalAlign="Center" PopupVerticalAlign="WindowCenter" ShowCloseButton="true" Width="700px" Height="280px" ScrollBars="Vertical"
+                PopupAction="None" CloseAction="CloseButton" Theme="Office2010Silver">
+                <ContentCollection>
+                    <dx:PopupControlContentControl ID="PopupControlContentControl3" runat="server">
+                        <div class="modal-content">
+                            <div class="modal-body">
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label for="nombrepaquete">Nombre del Paquete</label>
+                                                <asp:TextBox ID="txtNombrePaqueteEliminar" class="form-control" runat="server" Text="" ToolTip="Ingrese Nombre Del Paquete"></asp:TextBox>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label for="costo">Costo del Paquete</label>
+                                                <asp:TextBox ID="txtCostoEliminar" class="form-control" runat="server" Text="" ToolTip="Ingrese el Costo del Paquete"></asp:TextBox>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-5">
+                                            <div class="form-group">
+                                                <label for="Descripcion">Descripción del Paquete</label>
+                                                <asp:TextBox ID="txtdescripcionPaqueteEliminar" class="form-control" runat="server" Text="" ToolTip="Descripción del Paquete" TextMode="MultiLine" Rows="3"></asp:TextBox>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <asp:Button class="btn btn-default" data-dismiss="modal" ID="btnCancelarEliminar" runat="server" Text="Cancelar Edición" OnClick="btnCancelarEliminar_Click" />
+                            </div>
                         </div>
-                </div>
-            </dx:PopupControlContentControl>
-        </ContentCollection>
-    </dx:ASPxPopupControl>
+                    </dx:PopupControlContentControl>
+                </ContentCollection>
+            </dx:ASPxPopupControl>
 
-
-
-
+        </ContentTemplate>
+    </asp:UpdatePanel>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="../Scripts/bootstrap.min.js"></script>
