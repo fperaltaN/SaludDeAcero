@@ -190,6 +190,8 @@ namespace Sisa
             grdPaquetes.DataBind();
             grdPaquetes.KeyFieldName = "id_paquete";
         }
+        
+
         /// <summary>
         /// Permite la edicion del usuario
         /// </summary>
@@ -241,7 +243,7 @@ namespace Sisa
         }
 
         /// <summary>
-        /// Exporta los datos a Excel
+        /// Exporta los datos a Word
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -252,7 +254,7 @@ namespace Sisa
         }
 
         /// <summary>
-        /// Exporta los datos a Word
+        /// Exporta los datos a Excel
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
