@@ -23,7 +23,21 @@ namespace Negocio
         private string getPaqueteXId = "sel_byId_paquete";
         private string addPaquete = "add_paquete";
         private string updPaquete = "upd_paquete";
+        private string spAllPaquete = "[sel_Allpaquete]";
         #endregion
+
+        /// <summary>
+        /// Obtiene todos los perfiles y regresa un dataSet
+        /// </summary>
+        /// <returns></returns>
+        public DataSet getAllPaquetes()
+        {
+            SQLDatos obj = new SQLDatos();
+            DataSet datos = new DataSet();
+            int opSatisfactoria = 0;
+            opSatisfactoria = obj.getDataFromSP(spAllPaquete, "TblPaquetes", datos);
+            return datos;
+        }
 
         /// <summary>
         /// Obtiene todos los Paquete de la BD

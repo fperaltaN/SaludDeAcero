@@ -2,7 +2,7 @@
 '' Autor:	Faleg A. Peralta
 '' Modificado por: 
 '' Fecha de Modificación: 06.10.2015
-'' Descripcion General: CRUD de Empleados
+'' Descripcion General: CRUD de Socios
 '' =============================================*/
 using CapaDatos;
 using System;
@@ -15,44 +15,45 @@ using System.Threading.Tasks;
 
 namespace Negocio
 {
-    public class N_Empleados
+    public class N_Socio
     {
+
         #region variables privadas
         private int transSucess = 0;
-        private string getEmpleados = "sel_empleado";
-        private string getEmpleadoXId = "sel_byId_empleado"; 
-        private string addEmpleado = "add_empleado";
-        private string updEmpleado = "upd_empleado";
-        private string delEmpleado = "del_empleado";
+        private string getSocios = "sel_Socio";
+        private string getSocioXId = "sel_byId_Socio";
+        private string addSocio = "add_Socio";
+        private string updSocio = "upd_Socio";
+        private string delSocio = "del_Socio";
         #endregion
 
         /// <summary>
-        /// Obtiene todos los empleados de la BD
+        /// Obtiene todos los Socios de la BD
         /// </summary>
         /// <returns></returns>
-        public DataSet getEmpleadosGrid()
+        public DataSet getSociosGrid()
         {
             SQLDatos obj = new SQLDatos();
             DataSet datos = new DataSet();
             int opSatisfactoria = 0;
-            opSatisfactoria = obj.getDataFromSP(getEmpleados, "TblEmpleado", datos);
+            opSatisfactoria = obj.getDataFromSP(getSocios, "TblSocio", datos);
             return datos;
         }
 
         /// <summary>
-        /// Obtiene  la información de un empleado
+        /// Obtiene  la información de un Socio
         /// </summary>
-        /// <param name="idEmpleado"></param>
+        /// <param name="idSocio"></param>
         /// <returns></returns>
-        public DataSet getEmpleadoById(int idEmpleado)
+        public DataSet getSocioById(int idSocio)
         {
             DataSet datos = new DataSet();
             SQLDatos obj = new SQLDatos();
             try
             {
                 SqlParameter[] param = new SqlParameter[1];
-                param[0] = new SqlParameter("@id_empleado", SqlDbType.Int, 10, ParameterDirection.Input, false, 0, 0, "", DataRowVersion.Current, idEmpleado);
-               transSucess = obj.getDataFromSP(getEmpleadoXId, param, "TblEmpleado", datos);
+                param[0] = new SqlParameter("@id_Socio", SqlDbType.Int, 10, ParameterDirection.Input, false, 0, 0, "", DataRowVersion.Current, idSocio);
+                transSucess = obj.getDataFromSP(getSocioXId, param, "TblSocio", datos);
             }
             catch (Exception ex)
             {
@@ -63,31 +64,30 @@ namespace Negocio
         }
 
         /// <summary>
-        /// Agregalos empleado en la base de datos
+        /// Agregalos Socio en la base de datos
         /// </summary>
-        /// <param name="idEmpleado"></param>
-        /// <param name="num_empleado"></param>
+        /// <param name="idSocio"></param>
+        /// <param name="num_Socio"></param>
         /// <param name="nombre"></param>
         /// <param name="ap_paterno"></param>
         /// <param name="ap_materno"></param>
         /// <param name="direccion"></param>
         /// <param name="id_perfil"></param>
         /// <returns></returns>
-        public int addEmpleados(string num_empleado, string nombre, string ap_paterno, string ap_materno, string telefono, string direccion, int id_perfil)
+        public int addSocios(string num_Socio, string nombre, string ap_paterno, string ap_materno, string direccion, int id_perfil)
         {
             try
             {
                 DataSet datos = new DataSet();
                 SQLDatos obj = new SQLDatos();
-                SqlParameter[] param = new SqlParameter[7];
-                param[0] = new SqlParameter("@num_empleado", SqlDbType.Int, 10, ParameterDirection.Input, false, 0, 0, "", DataRowVersion.Current, num_empleado);
+                SqlParameter[] param = new SqlParameter[6];
+                param[0] = new SqlParameter("@num_Socio", SqlDbType.Int, 10, ParameterDirection.Input, false, 0, 0, "", DataRowVersion.Current, num_Socio);
                 param[1] = new SqlParameter("@nombre", SqlDbType.VarChar, 50, ParameterDirection.Input, false, 0, 0, "", DataRowVersion.Current, nombre);
                 param[2] = new SqlParameter("@ap_paterno", SqlDbType.VarChar, 50, ParameterDirection.Input, false, 0, 0, "", DataRowVersion.Current, ap_paterno);
                 param[3] = new SqlParameter("@ap_materno", SqlDbType.VarChar, 50, ParameterDirection.Input, false, 0, 0, "", DataRowVersion.Current, ap_materno);
-                param[4] = new SqlParameter("@telefono", SqlDbType.VarChar, 250, ParameterDirection.Input, false, 0, 0, "", DataRowVersion.Current, telefono);
-                param[5] = new SqlParameter("@direccion", SqlDbType.VarChar, 250, ParameterDirection.Input, false, 0, 0, "", DataRowVersion.Current, direccion);
-                param[6] = new SqlParameter("@id_perfil", SqlDbType.VarChar, 250, ParameterDirection.Input, false, 0, 0, "", DataRowVersion.Current, id_perfil);
-                transSucess = obj.getDataFromSP(addEmpleado, param, "TblEmpleado", datos);
+                param[4] = new SqlParameter("@direccion", SqlDbType.VarChar, 250, ParameterDirection.Input, false, 0, 0, "", DataRowVersion.Current, direccion);
+                param[5] = new SqlParameter("@id_perfil", SqlDbType.VarChar, 250, ParameterDirection.Input, false, 0, 0, "", DataRowVersion.Current, id_perfil);
+                transSucess = obj.getDataFromSP(addSocio, param, "TblSocio", datos);
             }
             catch (Exception ex)
             {
@@ -98,10 +98,10 @@ namespace Negocio
         }
 
         /// <summary>
-        /// Actualiza la información de un empleado
+        /// Actualiza la información de un Socio
         /// </summary>
-        /// <param name="idEmpleado"></param>
-        /// <param name="num_empleado"></param>
+        /// <param name="idSocio"></param>
+        /// <param name="num_Socio"></param>
         /// <param name="nombre"></param>
         /// <param name="ap_paterno"></param>
         /// <param name="ap_materno"></param>
@@ -109,24 +109,23 @@ namespace Negocio
         /// <param name="activo"></param>
         /// <param name="id_perfil"></param>
         /// <returns></returns>
-        public int updtEmpleados(Int32 idEmpleado, string num_empleado, string nombre, string ap_paterno, string ap_materno, string telefono, string direccion, bool activo, int id_perfil)
+        public int updtSocios(int idSocio, string num_Socio, string nombre, string ap_paterno, string ap_materno, string direccion, bool activo, int id_perfil)
         {
             try
             {
                 DataSet datos = new DataSet();
                 SQLDatos obj = new SQLDatos();
                 SqlParameter[] param = new SqlParameter[9];
-                param[0] = new SqlParameter("@id_empleado", SqlDbType.Int, 10, ParameterDirection.Input, false, 0, 0, "", DataRowVersion.Current, idEmpleado);
-                param[1] = new SqlParameter("@num_empleado", SqlDbType.Int, 10, ParameterDirection.Input, false, 0, 0, "", DataRowVersion.Current, num_empleado);
+                param[0] = new SqlParameter("@id_Socio", SqlDbType.Int, 10, ParameterDirection.Input, false, 0, 0, "", DataRowVersion.Current, idSocio);
+                param[1] = new SqlParameter("@num_Socio", SqlDbType.Int, 10, ParameterDirection.Input, false, 0, 0, "", DataRowVersion.Current, num_Socio);
                 param[2] = new SqlParameter("@nombre", SqlDbType.VarChar, 50, ParameterDirection.Input, false, 0, 0, "", DataRowVersion.Current, nombre);
                 param[3] = new SqlParameter("@ap_paterno", SqlDbType.VarChar, 50, ParameterDirection.Input, false, 0, 0, "", DataRowVersion.Current, ap_paterno);
                 param[4] = new SqlParameter("@ap_materno", SqlDbType.VarChar, 50, ParameterDirection.Input, false, 0, 0, "", DataRowVersion.Current, ap_materno);
-                param[4] = new SqlParameter("@telefono", SqlDbType.VarChar, 250, ParameterDirection.Input, false, 0, 0, "", DataRowVersion.Current, telefono);
                 param[5] = new SqlParameter("@direccion", SqlDbType.VarChar, 250, ParameterDirection.Input, false, 0, 0, "", DataRowVersion.Current, direccion);
                 param[6] = new SqlParameter("@id_perfil", SqlDbType.VarChar, 250, ParameterDirection.Input, false, 0, 0, "", DataRowVersion.Current, id_perfil);
                 param[7] = new SqlParameter("@fecha_baja", SqlDbType.VarChar, 250, ParameterDirection.Input, false, 0, 0, "", DataRowVersion.Current, DateTime.Now);
                 param[8] = new SqlParameter("@activo", SqlDbType.VarChar, 250, ParameterDirection.Input, false, 0, 0, "", DataRowVersion.Current, activo);
-                transSucess = obj.getDataFromSP(updEmpleado, param, "TblEmpleado", datos);
+                transSucess = obj.getDataFromSP(updSocio, param, "TblSocio", datos);
             }
             catch (Exception ex)
             {
@@ -138,17 +137,17 @@ namespace Negocio
         /// <summary>
         /// Elimina de la Base de Datos
         /// </summary>
-        /// <param name="idempleado"></param>
+        /// <param name="idSocio"></param>
         /// <returns></returns>
-        public int DelEmpleado(Int32 idempleado)
+        public int DelSocio(int idSocio)
         {
             DataSet datos = new DataSet();
             SQLDatos obj = new SQLDatos();
             SqlParameter[] param = new SqlParameter[1];
             try
             {
-                param[0] = new SqlParameter("@id_empleado", SqlDbType.Int, 10, ParameterDirection.Input, false, 0, 0, "", DataRowVersion.Current, idempleado);//tenia idEmpleado??
-                transSucess = obj.getDataFromSP(delEmpleado, param, "TblEmpleado", datos);
+                param[0] = new SqlParameter("@id_Socio", SqlDbType.Int, 10, ParameterDirection.Input, false, 0, 0, "", DataRowVersion.Current, idSocio);//tenia idSocio??
+                transSucess = obj.getDataFromSP(delSocio, param, "TblSocio", datos);
             }
             catch (Exception ex)
             {
