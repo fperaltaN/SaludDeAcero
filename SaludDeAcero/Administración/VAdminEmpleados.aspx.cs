@@ -119,7 +119,7 @@ namespace SaludDeAcero.Administración
         protected void btnGuardar_Click(object sender, EventArgs e)
         {
             string mensaje = "";
-            int satisfactorio = 0;// objU.addPaquetes(txtNombrePaquete.Text, txtdescripcionPaquete.Text, txtCosto.Text, Session["Id_Usuario"].ToString());
+            int satisfactorio = objE.addEmpleados(txtNumero.Text, txtNombre.Text, txtApMaterno.Text, txtApPaterno.Text, txtTelefono.Text, txtDireccion.Text, 2);
             if (satisfactorio == 0)
             {
                 mensaje = "<script language='javascript' type='text/javascript'>" +
@@ -142,7 +142,7 @@ namespace SaludDeAcero.Administración
         protected void btnActualizar_Click(object sender, EventArgs e)
         {
             string mensaje = "";
-            int satisfactorio = 0;// objU.addPaquetes(txtNombrePaquete.Text, txtdescripcionPaquete.Text, txtCosto.Text, Session["Id_Usuario"].ToString());
+            int satisfactorio = objE.updtEmpleados(Convert.ToInt32(Session["Row"].ToString()), txtNumero.Text, txtNombre.Text, txtApPaterno.Text, txtApMaterno.Text, txtTelefono.Text, txtDireccion.Text, true, 2);
             if (satisfactorio == 0)
             {
                 mensaje = "<script language='javascript' type='text/javascript'>" +
@@ -165,7 +165,7 @@ namespace SaludDeAcero.Administración
         protected void btnEliminarSocio_Click(object sender, EventArgs e)
         {
             string mensaje = "";
-            int satisfactorio = 0;// objU.addPaquetes(txtNombrePaquete.Text, txtdescripcionPaquete.Text, txtCosto.Text, Session["Id_Usuario"].ToString());
+            int satisfactorio = objE.DelEmpleado(Convert.ToInt32(Session["Id_Usuario"].ToString()));
             if (satisfactorio == 0)
             {
                 mensaje = "<script language='javascript' type='text/javascript'>" +
@@ -238,7 +238,7 @@ namespace SaludDeAcero.Administración
 
             txtApMaterno.Text = empleado.Tables[0].Rows[0] ["ap_materno"].ToString();
             TxtBapMaterno.Text = empleado.Tables[0].Rows[0] ["ap_materno"].ToString();
-            TxtDireccion.Text = empleado.Tables[0].Rows[0] ["direccion"].ToString();
+            txtDireccion.Text = empleado.Tables[0].Rows[0] ["direccion"].ToString();
 
         }
         /// <summary>
@@ -286,7 +286,7 @@ namespace SaludDeAcero.Administración
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "alertIns", "alert('Falto Agregar Apellido Materno del Empleado, El empledo NO fue agregado al Sistema');", true);
                 return false;
             }
-            if (TxtDireccion.Text == "")
+            if (txtDireccion.Text == "")
             {
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "alertIns", "alert('Falto Agregar la Direccion del Empleado, El empledo NO fue agregado al Sistema');", true);
                 return false;
@@ -304,7 +304,7 @@ namespace SaludDeAcero.Administración
             txtNombre.Text = "";
             txtApPaterno.Text = "";
             txtApMaterno.Text = "";
-            TxtDireccion.Text = "";
+            txtDireccion.Text = "";
             ddlEstado.SelectedItem.Value = null;
             ddlTipoUsuario.SelectedItem.Value = null;
         }

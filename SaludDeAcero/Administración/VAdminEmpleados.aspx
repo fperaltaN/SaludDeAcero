@@ -118,37 +118,43 @@
                                         </div>
                                     </div>
                                     <div class="row">
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label for="telefonoSocio">Teléfono(s)</label>
+                                                <asp:TextBox ID="txtTelefono" class="form-control" runat="server" Text="" ToolTip="Ingrese Teléfono(s) del Socio"></asp:TextBox>
+                                            </div>
+                                        </div>
                                         <div class="col-md-5">
                                             <div class="form-group">
                                                 <label for="Domicilio">Dirección</label>
-                                                <asp:TextBox ID="TxtDireccion" class="form-control" runat="server" Text="" ToolTip="Ingrese el Domicilio del Empleado"></asp:TextBox>
+                                                <asp:TextBox ID="txtDireccion" class="form-control" runat="server" Text="" ToolTip="Ingrese el Domicilio del Empleado"></asp:TextBox>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="row">
-                                        <div class="col-md-3">
-                                            <div class="form-group">
-                                                <asp:Label runat="server" ID="lblEstado" Text="Estado"></asp:Label>
-                                                <div class="selectContainer">
-                                                    <asp:DropDownList class="form-control" ID="ddlEstado" runat="server">
-                                                        <asp:ListItem>Activo</asp:ListItem>
-                                                        <asp:ListItem>Suspendio</asp:ListItem>
-                                                        <asp:ListItem>Baja Temporal</asp:ListItem>
-                                                        <asp:ListItem>Baja Definitiva</asp:ListItem>
-                                                    </asp:DropDownList>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-3">
-                                            <div class="form-group">
-                                                <label for="tipoUsuario">Tipo de Usuario</label>
-                                                <div class="selectContainer">
-                                                    <asp:DropDownList class="form-control" ID="ddlTipoUsuario" runat="server"></asp:DropDownList>
-                                                    <%-- <asp:RequiredFieldValidator ID="ValidatorTipoUsuario" runat="server" ErrorMessage="*Seleccionar un tipo de usuario" ControlToValidate="ddlTipoUsuario"></asp:RequiredFieldValidator>--%>
-                                                </div>
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <asp:Label runat="server" ID="lblEstado" Text="Estado"></asp:Label>
+                                            <div class="selectContainer">
+                                                <asp:DropDownList class="form-control" ID="ddlEstado" runat="server">
+                                                    <asp:ListItem>Activo</asp:ListItem>
+                                                    <asp:ListItem>Suspendio</asp:ListItem>
+                                                    <asp:ListItem>Baja Temporal</asp:ListItem>
+                                                    <asp:ListItem>Baja Definitiva</asp:ListItem>
+                                                </asp:DropDownList>
                                             </div>
                                         </div>
                                     </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <label for="tipoUsuario">Tipo de Usuario</label>
+                                            <div class="selectContainer">
+                                                <asp:DropDownList class="form-control" ID="ddlTipoUsuario" runat="server"></asp:DropDownList>
+                                                <%-- <asp:RequiredFieldValidator ID="ValidatorTipoUsuario" runat="server" ErrorMessage="*Seleccionar un tipo de usuario" ControlToValidate="ddlTipoUsuario"></asp:RequiredFieldValidator>--%>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                                 </div>
                                 <div class="modal-footer">
                                     <asp:Button class="btn btn-default" data-dismiss="modal" ID="btnCancelar" runat="server" Text="Cancelar Edición" OnClick="btnCancelar_Click" />
