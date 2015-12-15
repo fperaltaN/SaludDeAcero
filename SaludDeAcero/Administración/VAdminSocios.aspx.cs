@@ -19,6 +19,8 @@ namespace SaludDeAcero.AdministraciónSocios
     {
         N_Empleados objU = new N_Empleados();
         N_Paquete objP = new N_Paquete();
+        N_Pago objPagos = new N_Pago();
+        N_Checador objChecador = new N_Checador();
 
         /// <summary>
         /// Evento de la Página cuando se termina de carga, este evento se genera por default
@@ -38,6 +40,7 @@ namespace SaludDeAcero.AdministraciónSocios
             {
                 cargaSocio();
                 cargaPaquetes();
+                cargaChecador();
                 btnModificarSocio.Visible = false;
                 btnEstadoSocio.Visible = false;
                 btnHistorialSocio.Visible = false;
@@ -162,6 +165,28 @@ namespace SaludDeAcero.AdministraciónSocios
             this.ddlPaquete.DataTextField = "Nombre";
             this.ddlPaquete.DataBind();
             this.ddlPaquete.Items.Insert(0, new ListItem("Elija una Opcion..", "0"));
+        }
+
+        /// <summary>
+        /// Llenado de Pago
+        /// </summary>
+        protected void cargaPago()
+        {
+            DataSet datosSocios = objPagos.getPagoById(1);
+            GVConsultaPagos.DataSource = datosSocios;
+            GVConsultaPagos.DataBind();
+            GVConsultaPagos.KeyFieldName = "id_Pago";
+        }
+
+        /// <summary>
+        /// Llenado de Pago
+        /// </summary>
+        protected void cargaChecador()
+        {
+            DataSet datosSocios = objChecador.getChecadorById(1);
+            GvAsistencia.DataSource = datosSocios;
+            GvAsistencia.DataBind();
+            GvAsistencia.KeyFieldName = "id_Checador";
         }
 
         /// <summary>
@@ -322,7 +347,20 @@ namespace SaludDeAcero.AdministraciónSocios
         /// <param name="e"></param>
         protected void btnGuardarEstado_Click(object sender, EventArgs e)
         {
-
+            string mensaje = "";
+            int satisfactorio = 0;// objU.updtEmpleados(Convert.ToInt32(Session["Row"].ToString()), txtNumero.Text, txtNombre.Text, txtApPaterno.Text, txtApMaterno.Text, txtTelefono.Text, txtDireccion.Text, true, 4);
+            if (satisfactorio == 0)
+            {
+                mensaje = "<script language='javascript' type='text/javascript'>" +
+                                  " alert('Se guardo correctamente la información');</script> ";
+            }
+            else
+            {
+                mensaje = "<script language='javascript' type='text/javascript'>" +
+                                  " alert('Se presentó un problema al guardar la información, favor de revisarla;');</script> ";
+            }
+            Page.ClientScript.RegisterStartupScript(typeof(Page), "PopupScript", mensaje);
+            cargaSocio();
         }
 
         /// <summary>
@@ -332,7 +370,20 @@ namespace SaludDeAcero.AdministraciónSocios
         /// <param name="e"></param>
         protected void btnConPago_Click(object sender, EventArgs e)
         {
-
+            string mensaje = "";
+            int satisfactorio = 0;//objU.updtEmpleados(Convert.ToInt32(Session["Row"].ToString()), txtNumero.Text, txtNombre.Text, txtApPaterno.Text, txtApMaterno.Text, txtTelefono.Text, txtDireccion.Text, true, 4);
+            if (satisfactorio == 0)
+            {
+                mensaje = "<script language='javascript' type='text/javascript'>" +
+                                  " alert('Se guardo correctamente la información');</script> ";
+            }
+            else
+            {
+                mensaje = "<script language='javascript' type='text/javascript'>" +
+                                  " alert('Se presentó un problema al guardar la información, favor de revisarla;');</script> ";
+            }
+            Page.ClientScript.RegisterStartupScript(typeof(Page), "PopupScript", mensaje);
+            cargaSocio();
         }
 
         protected void BtnReimprimir_Click(object sender, EventArgs e)
