@@ -73,6 +73,7 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="AdministraciónInvetario\VAdminInventario.aspx" />
     <Content Include="AdministraciónPaquetes\VAdminPaquetes.aspx" />
     <Content Include="Administración\VAdminEmpleados.aspx" />
     <Content Include="Administración\VAdminUsuarios.aspx" />
@@ -330,6 +331,13 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AdministraciónInvetario\VAdminInventario.aspx.cs">
+      <DependentUpon>VAdminInventario.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdministraciónInvetario\VAdminInventario.aspx.designer.cs">
+      <DependentUpon>VAdminInventario.aspx</DependentUpon>
+    </Compile>
     <Compile Include="AdministraciónPaquetes\VAdminPaquetes.aspx.cs">
       <DependentUpon>VAdminPaquetes.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
