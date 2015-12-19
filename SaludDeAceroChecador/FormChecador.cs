@@ -1,4 +1,10 @@
-﻿using System;
+﻿/*''=============================================
+'' Autor:	Faleg A. Peralta
+'' Modificado por: Luis Lazaro
+'' Fecha de Modificación: 25.09.2015
+'' Descripcion General: Valida el Inicio de Session
+'' =============================================*/
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -8,22 +14,34 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Negocio;
 
 namespace SaludDeAceroChecador
 {
     public partial class FormChecador : Form
     {
+        /// <summary>
+        /// Constructor del Form
+        /// </summary>
         public FormChecador()
         {
             InitializeComponent();
 
         }
 
+        /// <summary>
+        /// Evento defaul para carga del form
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void FormChecador_Load(object sender, EventArgs e)
         {
 
         }
 
+        /// <summary>
+        /// Crea el Formulario de Busqueda de Usuario
+        /// </summary>
         public void CreaFormBuscar()
         {
             // Create a new instance of the form.
@@ -101,9 +119,40 @@ namespace SaludDeAceroChecador
             formBusqueda.ShowDialog();
         }
 
+        /// <summary>
+        /// Crea el Formulario para la busqueda del Usuario
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void lnkBtnUsuarios_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             CreaFormBuscar();
+        }
+
+        /// <summary>
+        /// Evento que dispara el guardado de la asistencia del empleado
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void txtxClave_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Return)
+            {
+                if (Validate())
+                {
+                    N_Checador objChec = new N_Checador();
+                    objChec.addChecadors(txtxClave.Text);                 
+                }
+            }
+        }
+
+        /// <summary>
+        /// Valida Que el Numero de empleado no este vacio
+        /// </summary>
+        /// <returns></returns>
+        private Boolean valida()
+        {
+            return !(String.IsNullOrEmpty(txtxClave.Text));
         }
     }
 }
