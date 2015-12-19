@@ -73,20 +73,14 @@ namespace Negocio
         /// <param name="direccion"></param>
         /// <param name="id_perfil"></param>
         /// <returns></returns>
-        public int addChecadors(string num_Checador, string nombre, string ap_paterno, string ap_materno, string telefono, string direccion, int id_perfil)
+        public int addChecadors(string num_socio)
         {
             try
             {
                 DataSet datos = new DataSet();
                 SQLDatos obj = new SQLDatos();
-                SqlParameter[] param = new SqlParameter[7];
-                param[0] = new SqlParameter("@num_Checador", SqlDbType.Int, 10, ParameterDirection.Input, false, 0, 0, "", DataRowVersion.Current, num_Checador);
-                param[1] = new SqlParameter("@nombre", SqlDbType.VarChar, 50, ParameterDirection.Input, false, 0, 0, "", DataRowVersion.Current, nombre);
-                param[2] = new SqlParameter("@ap_paterno", SqlDbType.VarChar, 50, ParameterDirection.Input, false, 0, 0, "", DataRowVersion.Current, ap_paterno);
-                param[3] = new SqlParameter("@ap_materno", SqlDbType.VarChar, 50, ParameterDirection.Input, false, 0, 0, "", DataRowVersion.Current, ap_materno);
-                param[4] = new SqlParameter("@telefono", SqlDbType.VarChar, 250, ParameterDirection.Input, false, 0, 0, "", DataRowVersion.Current, telefono);
-                param[5] = new SqlParameter("@direccion", SqlDbType.VarChar, 250, ParameterDirection.Input, false, 0, 0, "", DataRowVersion.Current, direccion);
-                param[6] = new SqlParameter("@id_perfil", SqlDbType.VarChar, 250, ParameterDirection.Input, false, 0, 0, "", DataRowVersion.Current, id_perfil);
+                SqlParameter[] param = new SqlParameter[1];
+                param[0] = new SqlParameter("@num_empleado", SqlDbType.Int, 10, ParameterDirection.Input, false, 0, 0, "", DataRowVersion.Current, num_socio);
                 transSucess = obj.getDataFromSP(addChecador, param, "TblChecador", datos);
             }
             catch (Exception ex)
