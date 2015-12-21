@@ -8,6 +8,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    
 
     <%-- <link rel="icon" href="../../favicon.ico">--%>
     <!-- Bootstrap core CSS -->
@@ -41,7 +42,7 @@
                         <asp:TextBox ID="txtUser" class="form-control" runat="server" Text="" ToolTip="Introduce tu Usuario.."></asp:TextBox>
                     </div>
                     <div class="form-group">
-                         <asp:TextBox ID="txtPass" class="form-control" runat="server" Text="" ToolTip="Introduce tu password.." TextMode="Password"></asp:TextBox>
+                        <asp:TextBox ID="txtPass" class="form-control" runat="server" Text="" ToolTip="Introduce tu password.." TextMode="Password"></asp:TextBox>
                     </div>
                     <asp:Button ID="btnIniciarSession" runat="server" class="btn btn-success" Text="Iniciar Session" OnClick="btnIniciarSession_Click" />
                 </form>
@@ -50,13 +51,19 @@
         </div>
     </nav>
     <br />
-    
+
     <!-- Main jumbotron for a primary marketing message or call to action -->
     <div class="jumbotron">
         <div class="container">
             <h1>Hola, Bienvenido!</h1>
-            <p>En Salud de  Acero mantenemos un fuerte compromiso tanto con nuestros clientes como con la sociedad que nos rodea. La filosofía considera la actividad física como un medio para mantener un buen estado de salud en cualquier edad o condición.</p>
-            
+        </div>
+    </div>
+    <%--<iframe id="doc"  runat = "server"  width="100%" height="100%"    > 
+    </iframe>--%>
+    <div class="jumbotron">
+        <div class="container">
+            <p>&nbsp;&nbsp;&nbsp;En Salud de  Acero mantenemos un fuerte compromiso tanto con nuestros clientes como con la sociedad que nos rodea. La filosofía considera la actividad física como un medio para mantener un buen estado de salud en cualquier edad o condición.</p>
+
             <p><a class="btn btn-primary btn-lg" href="#" role="button">Aprende mas acerca de nosotros&raquo;</a></p>
         </div>
     </div>
@@ -69,8 +76,8 @@
                 <p>&nbsp; Contamos con diferentes planes, hechos especialmente para ponerte en forma y pensados de acuerdo a tus necesidades. &nbsp;</p>
                 <p><a class="btn btn-default" href="#" role="button">Ve mas detalles &raquo;</a></p>
             </div>
-             <!-- Example row of columns -->
-      
+            <!-- Example row of columns -->
+
             <div class="col-md-4">
                 <h2>Solicita una sesión gratis</h2>
                 <p>&nbsp; Te estamos esperando, nuestros  entrenadores altamente capacitados, la primer vista corre por nuestra cuenta&nbsp;</p>
@@ -84,20 +91,25 @@
 
         </div>
 
+
+        <hr>
+
+        <footer>
+
+            <a href="#">
+                <img src="Imagenes/facebook.png" alt="facebook" /></a>
+            <a href="#">
+                <img src="imagenes/flickr.png" alt="flickr" /></a>
+            <a href="#">
+                <img src="imagenes/myspace.png" alt="myspace" /></a>
+            <a href="#">
+                <img src="imagenes/twitter.png" alt="twitter" /></a>
+            <a href="#">
+                <img src="imagenes/youtube.png" alt="youtube" /></a>
+
+
+            <p>&copy; Salud de Acero  2015</p>
     </div>
-    <hr>
-
-    <footer>
-         	
-			<a href="#"><img src="Imagenes/facebook.png" alt="facebook" /></a>
-			<a href="#"><img src="imagenes/flickr.png" alt="flickr" /></a>
-			<a href="#"><img src="imagenes/myspace.png" alt="myspace" /></a>
-			<a href="#"><img src="imagenes/twitter.png" alt="twitter" /></a>
-			<a href="#"><img src="imagenes/youtube.png" alt="youtube" /></a>
-
-        
-        <p>&copy; Salud de Acero  2015</p>
-                 </div>
     </footer>
 
     <!-- Bootstrap core JavaScript
@@ -107,5 +119,6 @@
     <script src="Scripts/bootstrap.min.js"></script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="Scripts/ie10-viewport-bug-workaround.js"></script>
+    
 </body>
 </html>

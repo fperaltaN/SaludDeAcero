@@ -24,7 +24,7 @@ namespace SaludDeAcero
         /// <param name="e"></param>
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            //doc.Attributes["src"] = "Galeria.html";
         }
 
         /// <summary>
