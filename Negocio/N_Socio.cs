@@ -66,27 +66,28 @@ namespace Negocio
         /// <summary>
         /// Agregalos Socio en la base de datos
         /// </summary>
-        /// <param name="idSocio"></param>
         /// <param name="num_Socio"></param>
         /// <param name="nombre"></param>
         /// <param name="ap_paterno"></param>
         /// <param name="ap_materno"></param>
+        /// <param name="telefono"></param>
         /// <param name="direccion"></param>
-        /// <param name="id_perfil"></param>
+        /// <param name="fecha_nacimiento"></param>
         /// <returns></returns>
-        public int addSocios(string num_Socio, string nombre, string ap_paterno, string ap_materno, string direccion, int id_perfil)
+        public int addSocios(string num_Socio, string nombre, string ap_paterno, string ap_materno, string telefono, string direccion, string fecha_nacimiento)
         {
             try
             {
                 DataSet datos = new DataSet();
                 SQLDatos obj = new SQLDatos();
-                SqlParameter[] param = new SqlParameter[6];
+                SqlParameter[] param = new SqlParameter[7];
                 param[0] = new SqlParameter("@num_Socio", SqlDbType.Int, 10, ParameterDirection.Input, false, 0, 0, "", DataRowVersion.Current, num_Socio);
                 param[1] = new SqlParameter("@nombre", SqlDbType.VarChar, 50, ParameterDirection.Input, false, 0, 0, "", DataRowVersion.Current, nombre);
                 param[2] = new SqlParameter("@ap_paterno", SqlDbType.VarChar, 50, ParameterDirection.Input, false, 0, 0, "", DataRowVersion.Current, ap_paterno);
                 param[3] = new SqlParameter("@ap_materno", SqlDbType.VarChar, 50, ParameterDirection.Input, false, 0, 0, "", DataRowVersion.Current, ap_materno);
                 param[4] = new SqlParameter("@direccion", SqlDbType.VarChar, 250, ParameterDirection.Input, false, 0, 0, "", DataRowVersion.Current, direccion);
-                param[5] = new SqlParameter("@id_perfil", SqlDbType.VarChar, 250, ParameterDirection.Input, false, 0, 0, "", DataRowVersion.Current, id_perfil);
+                param[5] = new SqlParameter("@telefono", SqlDbType.VarChar, 250, ParameterDirection.Input, false, 0, 0, "", DataRowVersion.Current, telefono);
+                param[6] = new SqlParameter("@fecha_nacimiento", SqlDbType.DateTime, 250, ParameterDirection.Input, false, 0, 0, "", DataRowVersion.Current, fecha_nacimiento);
                 transSucess = obj.getDataFromSP(addSocio, param, "TblSocio", datos);
             }
             catch (Exception ex)
@@ -109,7 +110,7 @@ namespace Negocio
         /// <param name="activo"></param>
         /// <param name="id_perfil"></param>
         /// <returns></returns>
-        public int updtSocios(int idSocio, string num_Socio, string nombre, string ap_paterno, string ap_materno, string direccion, bool activo, int id_perfil)
+        public int updtSocios(int idSocio, string num_Socio, string nombre, string ap_paterno, string ap_materno, string telefono, string direccion, string fecha_nacimiento,bool activo)
         {
             try
             {
@@ -121,9 +122,9 @@ namespace Negocio
                 param[2] = new SqlParameter("@nombre", SqlDbType.VarChar, 50, ParameterDirection.Input, false, 0, 0, "", DataRowVersion.Current, nombre);
                 param[3] = new SqlParameter("@ap_paterno", SqlDbType.VarChar, 50, ParameterDirection.Input, false, 0, 0, "", DataRowVersion.Current, ap_paterno);
                 param[4] = new SqlParameter("@ap_materno", SqlDbType.VarChar, 50, ParameterDirection.Input, false, 0, 0, "", DataRowVersion.Current, ap_materno);
-                param[5] = new SqlParameter("@direccion", SqlDbType.VarChar, 250, ParameterDirection.Input, false, 0, 0, "", DataRowVersion.Current, direccion);
-                param[6] = new SqlParameter("@id_perfil", SqlDbType.VarChar, 250, ParameterDirection.Input, false, 0, 0, "", DataRowVersion.Current, id_perfil);
-                param[7] = new SqlParameter("@fecha_baja", SqlDbType.VarChar, 250, ParameterDirection.Input, false, 0, 0, "", DataRowVersion.Current, DateTime.Now);
+                param[5] = new SqlParameter("@telefono", SqlDbType.VarChar, 250, ParameterDirection.Input, false, 0, 0, "", DataRowVersion.Current, telefono);
+                param[6] = new SqlParameter("@fecha_nacimiento", SqlDbType.DateTime, 250, ParameterDirection.Input, false, 0, 0, "", DataRowVersion.Current, fecha_nacimiento);
+                param[7] = new SqlParameter("@direccion", SqlDbType.VarChar, 250, ParameterDirection.Input, false, 0, 0, "", DataRowVersion.Current, direccion);
                 param[8] = new SqlParameter("@activo", SqlDbType.VarChar, 250, ParameterDirection.Input, false, 0, 0, "", DataRowVersion.Current, activo);
                 transSucess = obj.getDataFromSP(updSocio, param, "TblSocio", datos);
             }

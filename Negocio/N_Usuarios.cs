@@ -22,7 +22,7 @@ namespace Negocio
         private string getUsuarios = "sel_usuario";
         private string getUsuarioXId = "sel_byId_usuario";
         private string addUsuarios = "add_usuario";
-        private string updUsuarios = "add_empleado";
+        private string updUsuarios = "upd_usuario";
         #endregion
 
         /// <summary>
@@ -81,8 +81,8 @@ namespace Negocio
                 SQLDatos obj = new SQLDatos();
                 SqlParameter[] param = new SqlParameter[9];
                 param[0] = new SqlParameter("@nombre", SqlDbType.VarChar, 50, ParameterDirection.Input, false, 0, 0, "", DataRowVersion.Current, nombre);
-                param[1] = new SqlParameter("@ap_paterno", SqlDbType.VarChar, 50, ParameterDirection.Input, false, 0, 0, "", DataRowVersion.Current, ap_paterno);
-                param[2] = new SqlParameter("@ap_materno", SqlDbType.VarChar, 50, ParameterDirection.Input, false, 0, 0, "", DataRowVersion.Current, ap_materno);
+                param[1] = new SqlParameter("@apellido_pat", SqlDbType.VarChar, 50, ParameterDirection.Input, false, 0, 0, "", DataRowVersion.Current, ap_paterno);
+                param[2] = new SqlParameter("@apellido_mat", SqlDbType.VarChar, 50, ParameterDirection.Input, false, 0, 0, "", DataRowVersion.Current, ap_materno);
                 param[3] = new SqlParameter("@id_area", SqlDbType.VarChar, 250, ParameterDirection.Input, false, 0, 0, "", DataRowVersion.Current, id_area);
                 param[4] = new SqlParameter("@usuario", SqlDbType.VarChar, 250, ParameterDirection.Input, false, 0, 0, "", DataRowVersion.Current, usuario);
                 param[5] = new SqlParameter("@password", SqlDbType.VarChar, 250, ParameterDirection.Input, false, 0, 0, "", DataRowVersion.Current, password);
@@ -122,8 +122,8 @@ namespace Negocio
                 SqlParameter[] param = new SqlParameter[10];
                 param[0] = new SqlParameter("@id_usuario", SqlDbType.Int, 10, ParameterDirection.Input, false, 0, 0, "", DataRowVersion.Current, id_usuario);
                 param[1] = new SqlParameter("@nombre", SqlDbType.VarChar, 50, ParameterDirection.Input, false, 0, 0, "", DataRowVersion.Current, nombre);
-                param[2] = new SqlParameter("@ap_paterno", SqlDbType.VarChar, 50, ParameterDirection.Input, false, 0, 0, "", DataRowVersion.Current, ap_paterno);
-                param[3] = new SqlParameter("@ap_materno", SqlDbType.VarChar, 50, ParameterDirection.Input, false, 0, 0, "", DataRowVersion.Current, ap_materno);
+                param[2] = new SqlParameter("@apellido_pat", SqlDbType.VarChar, 50, ParameterDirection.Input, false, 0, 0, "", DataRowVersion.Current, ap_paterno);
+                param[3] = new SqlParameter("@apellido_mat", SqlDbType.VarChar, 50, ParameterDirection.Input, false, 0, 0, "", DataRowVersion.Current, ap_materno);
                 param[4] = new SqlParameter("@id_area", SqlDbType.VarChar, 250, ParameterDirection.Input, false, 0, 0, "", DataRowVersion.Current, id_area);
                 param[5] = new SqlParameter("@usuario", SqlDbType.VarChar, 250, ParameterDirection.Input, false, 0, 0, "", DataRowVersion.Current, usuario);
                 param[6] = new SqlParameter("@password", SqlDbType.VarChar, 250, ParameterDirection.Input, false, 0, 0, "", DataRowVersion.Current, password);
