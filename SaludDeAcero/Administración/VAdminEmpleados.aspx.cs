@@ -12,6 +12,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using Negocio;
 using System.Data;
+using System.Drawing;
 
 namespace SaludDeAcero.Administración
 {
@@ -39,6 +40,7 @@ namespace SaludDeAcero.Administración
                 btnConsultarHistorialEmpleado.Visible = false;
                 btnBorrarEmpleado.Visible = false;
                 cargaPerfiles();
+                cargaUsuarios();
             }
         }
 
@@ -54,6 +56,7 @@ namespace SaludDeAcero.Administración
             btnGuardar.Visible = true;
             ddlEstado.Visible = false;
             lblEstado.Visible = false;
+            limpiarCampos();
         }
 
         /// <summary>
@@ -118,20 +121,49 @@ namespace SaludDeAcero.Administración
         /// <param name="e"></param>
         protected void btnGuardar_Click(object sender, EventArgs e)
         {
-            string mensaje = "";
-            int satisfactorio = objE.addEmpleados(txtNumero.Text, txtNombre.Text, txtApMaterno.Text, txtApPaterno.Text, txtTelefono.Text, txtDireccion.Text, 2);
-            if (satisfactorio == 0)
+            int satisfactorio = objE.addEmpleados(txtNumero.Text, txtNombre.Text, txtApMaterno.Text, txtApPaterno.Text, txtTelefono.Text, txtDireccion.Text, Convert.ToInt32(ddlTipoUsuario.SelectedItem.Value));
+            if (satisfactorio == 1)
             {
-                mensaje = "<script language='javascript' type='text/javascript'>" +
-                                  " alert('Se guardo correctamente la información');</script> ";
+                popUpMensajeAplicacion(2, "Se presentó un problema al guardar la información, Por Favor revisa e intenta de nuevo; =(");
             }
             else
             {
-                mensaje = "<script language='javascript' type='text/javascript'>" +
-                                  " alert('Se presentó un problema al guardar la información, favor de revisarla;');</script> ";
+                popUpMensajeAplicacion(1, "Información guardada con éxito; =)");
             }
-            Page.ClientScript.RegisterStartupScript(typeof(Page), "PopupScript", mensaje);
             cargaUsuarios();
+            limpiarCampos();
+        }
+
+        /// <summary>
+        /// controla el mensaje de la aplicación y el color de las letras
+        /// </summary>
+        /// <param name="opcion"></param>
+        /// <param name="Mensaje"></param>
+        private void popUpMensajeAplicacion(Int32 opcion, String Mensaje)
+        {
+            switch (opcion)
+            {
+                case 1:
+                    txtMensaje.Text = Mensaje;
+                    txtMensaje.ForeColor = Color.Green;
+                    txtMensaje.Font.Bold = true;
+                    this.popUpMensajeAplicación.ShowOnPageLoad = true;
+                    break;
+                case 2:
+                    txtMensaje.Text = Mensaje;
+                    txtMensaje.ForeColor = Color.Red;
+                    txtMensaje.Font.Bold = true;
+                    this.popUpMensajeAplicación.ShowOnPageLoad = true;
+                    break;
+                case 3:
+                    txtMensaje.Text = Mensaje;
+                    txtMensaje.ForeColor = Color.Yellow;
+                    txtMensaje.Font.Bold = true;
+                    this.popUpMensajeAplicación.ShowOnPageLoad = true;
+                    break;
+                default:
+                    break;
+            }
         }
 
         /// <summary>
@@ -141,19 +173,15 @@ namespace SaludDeAcero.Administración
         /// <param name="e"></param>
         protected void btnActualizar_Click(object sender, EventArgs e)
         {
-            string mensaje = "";
-            int satisfactorio = objE.updtEmpleados(Convert.ToInt32(Session["Row"].ToString()), txtNumero.Text, txtNombre.Text, txtApPaterno.Text, txtApMaterno.Text, txtTelefono.Text, txtDireccion.Text, true, 2);
-            if (satisfactorio == 0)
+            int satisfactorio = objE.updtEmpleados(Convert.ToInt32(Session["Row"].ToString()), txtNumero.Text, txtNombre.Text, txtApPaterno.Text, txtApMaterno.Text, txtTelefono.Text, txtDireccion.Text, true, Convert.ToInt32(ddlTipoUsuario.SelectedItem.Value));
+            if (satisfactorio == 1)
             {
-                mensaje = "<script language='javascript' type='text/javascript'>" +
-                                  " alert('Se guardo correctamente la información');</script> ";
+                popUpMensajeAplicacion(2, "Se presentó un problema al guardar la información, Por Favor revisa e intenta de nuevo; =(");
             }
             else
             {
-                mensaje = "<script language='javascript' type='text/javascript'>" +
-                                  " alert('Se presentó un problema al guardar la información, favor de revisarla;');</script> ";
+                popUpMensajeAplicacion(1, "Información guardada con éxito; =)");
             }
-            Page.ClientScript.RegisterStartupScript(typeof(Page), "PopupScript", mensaje);
             cargaUsuarios();
         }
 
@@ -164,20 +192,41 @@ namespace SaludDeAcero.Administración
         /// <param name="e"></param>
         protected void btnEliminarSocio_Click(object sender, EventArgs e)
         {
-            string mensaje = "";
-            int satisfactorio = objE.DelEmpleado(Convert.ToInt32(Session["Id_Usuario"].ToString()));
-            if (satisfactorio == 0)
+            int satisfactorio = objE.DelEmpleado(Convert.ToInt32(Session["Row"].ToString()));
+            if (satisfactorio == 1)
             {
-                mensaje = "<script language='javascript' type='text/javascript'>" +
-                                  " alert('Se guardo correctamente la información');</script> ";
+                popUpMensajeAplicacion(2, "Se presentó un problema al guardar la información, Por Favor revisa e intenta de nuevo; =(");
             }
             else
             {
-                mensaje = "<script language='javascript' type='text/javascript'>" +
-                                  " alert('Se presentó un problema al guardar la información, favor de revisarla;');</script> ";
+                popUpMensajeAplicacion(1, "Información guardada con éxito; =)");
             }
-            Page.ClientScript.RegisterStartupScript(typeof(Page), "PopupScript", mensaje);
             cargaUsuarios();
+            limpiarCampos();
+            btnAgregarEmpleado.Visible = false;
+            btnModificarEmpleado.Visible = true;
+            btnBorrarEmpleado.Visible = true;
+        }
+
+        /// <summary>
+        /// Limpia los controles de los datos obtenidos
+        /// </summary>
+        private void limpiarCampos()
+        {
+            //popup Agregar
+            txtNumero.Text = "";
+            txtNombre.Text = "";
+            txtApPaterno.Text = "";
+            txtApMaterno.Text = "";
+            txtTelefono.Text = "";
+            ddlEstado.SelectedIndex = 0;
+            ddlTipoUsuario.SelectedIndex = 0;
+            txtDireccion.Text = "";
+            //popup Eliminar
+            TxtBnumEmpleado.Text = "";
+            TxtBNombre.Text = "";
+            TxtBapPaterno.Text = "";
+            TxtBapMaterno.Text = "";
         }
 
         /// <summary>
@@ -214,32 +263,47 @@ namespace SaludDeAcero.Administración
             if (opLinkButton.Text == "Seleccionar")
             {
                 btnModificarEmpleado.Visible = true;
-                DataSet datosEmpleados = objE.getEmpleadosGrid();
+                DataSet datosEmpleados = objE.getEmpleadoById(Convert.ToInt32(id));
                 setDatosEmpleado(datosEmpleados);
-                btnActualizar.Visible = true;
-                //btnAgregarEmpleado.Visible = false;
-                //btnAgregarEmpleado.Enabled = false;
+                btnAgregarEmpleado.Visible = false;
+                btnModificarEmpleado.Visible = true;
+                btnBorrarEmpleado.Visible = true;
+            }
+            if (opLinkButton.Text == "Cancelar")
+            {
+                btnAgregarEmpleado.Visible = true;
+                btnModificarEmpleado.Visible = false;
+                btnBorrarEmpleado.Visible = false;
             }
 
-           }
+        }
         /// <summary>
         /// Pone los datos del empleado seleccionado
         /// </summary>
         protected void setDatosEmpleado(DataSet empleado)
         {
-            txtNumero.Text = empleado.Tables[0].Rows[0] ["num_empleado"].ToString();
-            TxtBnumEmpleado.Text = empleado.Tables[0].Rows[0] ["num_empleado"].ToString();
-
-            txtNombre.Text = empleado.Tables[0].Rows[0] ["nombre"].ToString();
-            TxtBNombre.Text = empleado.Tables[0].Rows[0] ["nombre"].ToString();
-
-            txtApPaterno.Text = empleado.Tables[0].Rows[0] ["ap_paterno"].ToString();
-            TxtBapPaterno.Text = empleado.Tables[0].Rows[0] ["ap_paterno"].ToString();
-
-            txtApMaterno.Text = empleado.Tables[0].Rows[0] ["ap_materno"].ToString();
-            TxtBapMaterno.Text = empleado.Tables[0].Rows[0] ["ap_materno"].ToString();
-            txtDireccion.Text = empleado.Tables[0].Rows[0] ["direccion"].ToString();
-
+            //popup Agregar
+            txtNumero.Text = empleado.Tables[0].Rows[0]["num_empleado"].ToString();
+            txtNombre.Text = empleado.Tables[0].Rows[0]["nombre"].ToString();
+            txtApPaterno.Text = empleado.Tables[0].Rows[0]["ap_paterno"].ToString();
+            txtApMaterno.Text = empleado.Tables[0].Rows[0]["ap_materno"].ToString();
+            txtTelefono.Text = empleado.Tables[0].Rows[0]["telefono"].ToString();            
+            if (Convert.ToBoolean(empleado.Tables[0].Rows[0]["activo"]))
+            {
+                ddlEstado.SelectedIndex = 1;
+            }
+            else
+            {
+                ddlEstado.SelectedIndex = 2;
+            }
+            ddlTipoUsuario.SelectedIndex = Convert.ToInt32(empleado.Tables[0].Rows[0]["id_Perfil"].ToString()); 
+            txtDireccion.Text = empleado.Tables[0].Rows[0]["direccion"].ToString();
+            //popup Eliminar
+            TxtBnumEmpleado.Text = empleado.Tables[0].Rows[0]["num_empleado"].ToString();
+            TxtBNombre.Text = empleado.Tables[0].Rows[0]["nombre"].ToString();
+            TxtBapPaterno.Text = empleado.Tables[0].Rows[0]["ap_paterno"].ToString();
+            TxtBapMaterno.Text = empleado.Tables[0].Rows[0]["ap_materno"].ToString();
+           
         }
         /// <summary>
         /// Cambia el Color de la celda seleccionada
@@ -293,22 +357,7 @@ namespace SaludDeAcero.Administración
             }
             return true;
         }
-
-        /// <summary>
-        /// Limpia los controles 
-        /// </summary>
-        public void Limpia()
-        {
-            //falta que limpie los dos ultimos
-            txtNumero.Text = "";
-            txtNombre.Text = "";
-            txtApPaterno.Text = "";
-            txtApMaterno.Text = "";
-            txtDireccion.Text = "";
-            ddlEstado.SelectedItem.Value = null;
-            ddlTipoUsuario.SelectedItem.Value = null;
-        }
-
+        
         /// <summary>
         /// Evento del grid que permite refrescar la información mostrada
         /// </summary>
@@ -347,6 +396,17 @@ namespace SaludDeAcero.Administración
         protected void lnkBtnPDF_Click(object sender, EventArgs e)
         {
             grdEmpleadosExporter.WritePdfToResponse();
+        }
+        /// <summary>
+        /// Oculta el popUp de Mensaje
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        protected void btnMensajeApp_Click(object sender, EventArgs e)
+        {
+            this.popUpMensajeAplicación.ShowOnPageLoad = false;
+            this.popUpEditarAgregarEmpleado.ShowOnPageLoad = false;
+            this.popUpEliminarEmpleado.ShowOnPageLoad = false;
         }
     }
 }

@@ -47,8 +47,10 @@
                                 <Columns>
                                     <dx:GridViewDataTextColumn Caption="Acciones" VisibleIndex="0" Width="15%">
                                         <DataItemTemplate>
-                                            <asp:LinkButton ID="linkEditar" Text="Seleccionar" runat="server" Visible="true" ForeColor="#666666"
-                                                Font-Size="Small" Font-Underline="True"></asp:LinkButton>
+                                            <asp:LinkButton ID="linkSeleccionar" Text="Seleccionar" runat="server" Visible="true" ForeColor="#666666"
+                                                Font-Size="X-Small" Font-Underline="True"></asp:LinkButton>
+                                            <asp:LinkButton ID="LinkCancelar" Text="Cancelar" runat="server" Visible="true" ForeColor="#666666"
+                                                Font-Size="X-Small" Font-Underline="True"></asp:LinkButton>
                                         </DataItemTemplate>
                                     </dx:GridViewDataTextColumn>
                                     <dx:GridViewDataColumn Caption="Id" FieldName="id_empleado" VisibleIndex="0" Visible="false" />
@@ -65,15 +67,6 @@
                                     </dx:GridViewDataCheckColumn>
                                 </Columns>
                             </dx:ASPxGridView>
-                            <br />
-                            <asp:LinkButton ID="lnkBtnWord" runat="server" OnClick="lnkBtnWord_Click">[Exportar a Word]</asp:LinkButton>
-                            &nbsp;
-                <asp:LinkButton ID="lnkBtnExcel" runat="server" OnClick="lnkBtnExcel_Click">[Exportar a Excel]</asp:LinkButton>
-                            &nbsp;
-                <asp:LinkButton ID="lnkBtnPDF" runat="server" OnClick="lnkBtnPDF_Click">[Exportar a PDF]</asp:LinkButton>
-                            &nbsp;
-                <asp:LinkButton ID="lnkBtnImprimir" runat="server" OnClientClick="window.print();">[Imprimir]</asp:LinkButton>
-
                             <dx:ASPxGridViewExporter ID="grdEmpleadosExporter" runat="server" GridViewID="grdEmpleados">
                             </dx:ASPxGridViewExporter>
                         </div>
@@ -82,7 +75,7 @@
             </div>
             <!-- Modal Registrar Empleado -->
             <dx:ASPxPopupControl ID="popUpEditarAgregarEmpleado" runat="server" Modal="true" HeaderText="Agregar Empleado" AllowDragging="true"
-                PopupHorizontalAlign="WindowCenter" PopupVerticalAlign="WindowCenter" ShowCloseButton="true" Width="550px" Height="440px" ScrollBars="Vertical"
+                PopupHorizontalAlign="WindowCenter" PopupVerticalAlign="WindowCenter" ShowCloseButton="true" Width="700px" Height="440px" ScrollBars="Vertical"
                 PopupAction="None" CloseAction="CloseButton" Theme="Office2010Silver">
                 <ContentCollection>
                     <dx:PopupControlContentControl ID="PopupControlEmpleado" runat="server">
@@ -118,43 +111,44 @@
                                         </div>
                                     </div>
                                     <div class="row">
-                                        <div class="col-md-3">
+                                        <div class="col-md-2">
                                             <div class="form-group">
                                                 <label for="telefonoSocio">Teléfono(s)</label>
                                                 <asp:TextBox ID="txtTelefono" class="form-control" runat="server" Text="" ToolTip="Ingrese Teléfono(s) del Socio"></asp:TextBox>
                                             </div>
                                         </div>
-                                        <div class="col-md-5">
+                                        <div class="col-md-4">
                                             <div class="form-group">
                                                 <label for="Domicilio">Dirección</label>
                                                 <asp:TextBox ID="txtDireccion" class="form-control" runat="server" Text="" ToolTip="Ingrese el Domicilio del Empleado"></asp:TextBox>
                                             </div>
                                         </div>
                                     </div>
-                                <div class="row">
-                                    <div class="col-md-3">
-                                        <div class="form-group">
-                                            <asp:Label runat="server" ID="lblEstado" Text="Estado"></asp:Label>
-                                            <div class="selectContainer">
-                                                <asp:DropDownList class="form-control" ID="ddlEstado" runat="server">
-                                                    <asp:ListItem>Activo</asp:ListItem>
-                                                    <asp:ListItem>Suspendio</asp:ListItem>
-                                                    <asp:ListItem>Baja Temporal</asp:ListItem>
-                                                    <asp:ListItem>Baja Definitiva</asp:ListItem>
-                                                </asp:DropDownList>
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <asp:Label runat="server" ID="lblEstado" Text="Estado" Font-Bold="true"></asp:Label>
+                                                <div class="selectContainer">
+                                                    <asp:DropDownList class="form-control" ID="ddlEstado" runat="server">
+                                                        <asp:ListItem>Elija una Opcion..</asp:ListItem>
+                                                        <asp:ListItem>Activo</asp:ListItem>
+                                                        <%--<asp:ListItem>Suspendio</asp:ListItem>--%>
+                                                        <asp:ListItem>Baja Temporal</asp:ListItem>
+                                                        <%--<asp:ListItem>Baja Definitiva</asp:ListItem>--%>
+                                                    </asp:DropDownList>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label for="tipoUsuario">Tipo de Usuario</label>
+                                                <div class="selectContainer">
+                                                    <asp:DropDownList class="form-control" ID="ddlTipoUsuario" runat="server"></asp:DropDownList>
+                                                    <%-- <asp:RequiredFieldValidator ID="ValidatorTipoUsuario" runat="server" ErrorMessage="*Seleccionar un tipo de usuario" ControlToValidate="ddlTipoUsuario"></asp:RequiredFieldValidator>--%>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-3">
-                                        <div class="form-group">
-                                            <label for="tipoUsuario">Tipo de Usuario</label>
-                                            <div class="selectContainer">
-                                                <asp:DropDownList class="form-control" ID="ddlTipoUsuario" runat="server"></asp:DropDownList>
-                                                <%-- <asp:RequiredFieldValidator ID="ValidatorTipoUsuario" runat="server" ErrorMessage="*Seleccionar un tipo de usuario" ControlToValidate="ddlTipoUsuario"></asp:RequiredFieldValidator>--%>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
                                 </div>
                                 <div class="modal-footer">
                                     <asp:Button class="btn btn-default" data-dismiss="modal" ID="btnCancelar" runat="server" Text="Cancelar Edición" OnClick="btnCancelar_Click" />
@@ -264,8 +258,43 @@
                 </ContentCollection>
             </dx:ASPxPopupControl>
 
+            <!-- Modal Mensaje  Usuario -->
+            <dx:ASPxPopupControl ID="popUpMensajeAplicación" runat="server" Modal="true" HeaderText="Mensaje de Aplicación" AllowDragging="true"
+                PopupHorizontalAlign="WindowCenter" PopupVerticalAlign="WindowCenter" ShowCloseButton="true" Width="500px" Height="190px" ScrollBars="Vertical"
+                PopupAction="None" CloseAction="CloseButton" Theme="Office2010Silver">
+                <ContentCollection>
+                    <dx:PopupControlContentControl ID="PopupControlContentControl1" runat="server">
+                        <div class="modal-content">
+                            <div class="modal-body">
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <label for="Mensaje">Estado de la Transacción:</label>
+                                            <br />
+                                            &nbsp;&nbsp;&nbsp;<asp:Label ID="txtMensaje" runat="server" Text="" ToolTip="Mensaje de la aplicación"></asp:Label>
+                                            <br />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <asp:Button class="btn btn-default" data-dismiss="modal" ID="btnMensajeApp" runat="server" Text="Entendido" OnClick="btnMensajeApp_Click" />
+                                </div>
+                            </div>
+                        </div>
+                    </dx:PopupControlContentControl>
+                </ContentCollection>
+            </dx:ASPxPopupControl>
+
         </ContentTemplate>
     </asp:UpdatePanel>
+    <br />
+    <asp:LinkButton ID="lnkBtnWord" runat="server" OnClick="lnkBtnWord_Click">[Exportar a Word]</asp:LinkButton>
+    &nbsp;
+                <asp:LinkButton ID="lnkBtnExcel" runat="server" OnClick="lnkBtnExcel_Click">[Exportar a Excel]</asp:LinkButton>
+    &nbsp;
+                <asp:LinkButton ID="lnkBtnPDF" runat="server" OnClick="lnkBtnPDF_Click">[Exportar a PDF]</asp:LinkButton>
+    &nbsp;
+                <asp:LinkButton ID="lnkBtnImprimir" runat="server" OnClientClick="window.print();">[Imprimir]</asp:LinkButton>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="../Scripts/bootstrap.min.js"></script>
