@@ -23,7 +23,15 @@ namespace CapaDatos
         #region Metodos de Conexion
         public SQLDatos()
         {
-            connString = ConfigurationSettings.AppSettings["SaludDeAceroConection"].ToString();
+            try
+            {
+                connString = ConfigurationManager.ConnectionStrings["SaludDeAceroConection"].ToString();
+            }
+            catch (Exception)
+            {
+                connString = ConfigurationManager.ConnectionStrings["SaludDeAcerConnectionString"].ToString();
+            }
+            
         }
 
         public SqlConnection CrearConexion()
