@@ -215,7 +215,7 @@
                 </ContentCollection>
             </dx:ASPxPopupControl>
 
-            <!-- Modal Elimina  Usuario -->
+            <!-- Modal Mensaje  Usuario -->
             <dx:ASPxPopupControl ID="popUpMensajeAplicación" runat="server" Modal="true" HeaderText="Mensaje de Aplicación" AllowDragging="true"
                 PopupHorizontalAlign="WindowCenter" PopupVerticalAlign="WindowCenter" ShowCloseButton="true" Width="500px" Height="190px" ScrollBars="Vertical"
                 PopupAction="None" CloseAction="CloseButton" Theme="Office2010Silver">

@@ -70,7 +70,7 @@ namespace Sisa
                                        Convert.ToInt32(ddlTipoUsuario.SelectedItem.Value), Session["Usuario"].ToString());
                 if (satisfactorio == 1)
                 {
-                    popUpMensajeAplicacion(2, "Existe un error en la información que ingresaste, Por Favor revisa e intenta de nuevo; =(");
+                    popUpMensajeAplicacion(2, "Se presentó un problema al guardar la información, Por Favor revisa e intenta de nuevo; =(");
                 }
                 else
                 {
@@ -83,8 +83,7 @@ namespace Sisa
                 popUpMensajeAplicacion(2, "Las contraseñas no coinciden. Verifica las Contraseña;");
             }
 
-
-
+            limpiarCampos();
         }
 
         /// <summary>
@@ -133,7 +132,7 @@ namespace Sisa
                                        Convert.ToInt32(ddlTipoUsuario.SelectedItem.Value), true, Session["Usuario"].ToString());
                 if (satisfactorio == 1)
                 {
-                    popUpMensajeAplicacion(2, "Existe un error en la información que ingresaste, Por Favor revisa e intenta de nuevo; =(");
+                    popUpMensajeAplicacion(2, "Se presentó un problema al guardar la información, Por Favor revisa e intenta de nuevo; =(");
                 }
                 else
                 {
@@ -369,6 +368,8 @@ namespace Sisa
         protected void btnMensajeApp_Click(object sender, EventArgs e)
         {
             this.popUpMensajeAplicación.ShowOnPageLoad = false;
+            this.popUpEditarEmpleado.ShowOnPageLoad = false;
+            this.popUpEliminarEmpleado.ShowOnPageLoad = false;
         }
     }
 }
