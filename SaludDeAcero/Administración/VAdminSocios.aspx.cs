@@ -17,11 +17,12 @@ namespace SaludDeAcero.AdministraciónSocios
 {
     public partial class VAdminSocios : System.Web.UI.Page
     {
-        N_Empleados objU = new N_Empleados();
+        N_Socio objU = new N_Socio();
         N_Paquete objP = new N_Paquete();
         N_Pago objPagos = new N_Pago();
         N_Checador objChecador = new N_Checador();
-
+        N_HistorialFisico objHF = new N_HistorialFisico();
+        N_HistorialMedico objHM = new N_HistorialMedico();
         /// <summary>
         /// Evento de la Página cuando se termina de carga, este evento se genera por default
         /// </summary>
@@ -59,6 +60,8 @@ namespace SaludDeAcero.AdministraciónSocios
             this.popUpRegistrar.ShowOnPageLoad = true;
             btnActualizar.Visible = false;
             btnGuardar.Visible = true;
+            ddlEstado.Visible = false;
+            lblEstado.Visible = false;
         }
 
         /// <summary>
@@ -81,6 +84,8 @@ namespace SaludDeAcero.AdministraciónSocios
             this.popUpRegistrar.ShowOnPageLoad = true;
             btnActualizar.Visible = false;
             btnGuardar.Visible = true;
+            ddlEstado.Visible = true;
+            lblEstado.Visible = true;
         }
 
         /// <summary>
@@ -148,7 +153,7 @@ namespace SaludDeAcero.AdministraciónSocios
         /// </summary>
         protected void cargaSocio()
         {
-            DataSet datosSocios = objU.getEmpleadosGrid();
+            DataSet datosSocios = objU.getSociosGrid();
             grdSocios.DataSource = datosSocios;
             grdSocios.DataBind();
             grdSocios.KeyFieldName = "id_Socio";
@@ -201,12 +206,21 @@ namespace SaludDeAcero.AdministraciónSocios
             LinkButton opLinkButton = (LinkButton)e.CommandSource;
             if (opLinkButton.Text == "Seleccionar")
             {
-                DataSet datosSocios = objU.getEmpleadoById(Convert.ToInt32(id));
+                DataSet datosSocios = objU.getSocioById(Convert.ToInt32(id));
                 setDatosSocio(datosSocios);
+                btnAgregarSocio.Visible = false;
                 btnModificarSocio.Visible = true;
                 btnEstadoSocio.Visible = true;
                 btnHistorialSocio.Visible = true;
                 btnCancelarSocio.Visible = true;
+            }
+            if (opLinkButton.Text == "Cancelar")
+            {
+                btnAgregarSocio.Visible = true;
+                btnModificarSocio.Visible = false;
+                btnEstadoSocio.Visible = false;
+                btnHistorialSocio.Visible = false;
+                btnCancelarSocio.Visible = false;
             }
         }
 
@@ -301,19 +315,18 @@ namespace SaludDeAcero.AdministraciónSocios
         /// <param name="e"></param>
         protected void btnGuardar_Click(object sender, EventArgs e)
         {
-            string mensaje = "";
-            int satisfactorio =  objU.addEmpleados(txtNumero.Text, txtNombre.Text, txtApMaterno.Text, txtApPaterno.Text,txtTelefono.Text,txtDireccion.Text, 4);
-            if (satisfactorio == 0)
+            int idSocio= 0;
+            int satisfactorio =  objU.addSocios(txtNumero.Text, txtNombre.Text, txtApPaterno.Text, txtApMaterno.Text, txtTelefono.Text,txtDireccion.Text,txtFecha.Text);
+            if (satisfactorio == 1)
             {
-                mensaje = "<script language='javascript' type='text/javascript'>" +
-                                  " alert('Se guardo correctamente la información');</script> ";
+                popUpMensajeAplicacion(2, "Se presentó un problema al guardar la información, Por Favor revisa e intenta de nuevo; =(");
             }
             else
             {
-                mensaje = "<script language='javascript' type='text/javascript'>" +
-                                  " alert('Se presentó un problema al guardar la información, favor de revisarla;');</script> ";
+                satisfactorio = objHF.addHistorialFisico(idSocio, txtFisicos.Text);
+                satisfactorio = objHM.addHistorialMedico(idSocio, txtFisicos.Text);
+                popUpMensajeAplicacion(1, "Información guardada con éxito; =)");
             }
-            Page.ClientScript.RegisterStartupScript(typeof(Page), "PopupScript", mensaje);
             cargaSocio();
         }
 
@@ -324,19 +337,18 @@ namespace SaludDeAcero.AdministraciónSocios
         /// <param name="e"></param>
         protected void btnActualizar_Click(object sender, EventArgs e)
         {
-            string mensaje = "";
-            int satisfactorio = objU.updtEmpleados(Convert.ToInt32(Session["Row"].ToString()), txtNumero.Text, txtNombre.Text, txtApPaterno.Text, txtApMaterno.Text, txtTelefono.Text, txtDireccion.Text,true, 4);
-            if (satisfactorio == 0)
+            int idSocio = 0;
+            int satisfactorio = objU.updtSocios(Convert.ToInt32(Session["Row"].ToString()),txtNumero.Text, txtNombre.Text, txtApPaterno.Text, txtApMaterno.Text, txtTelefono.Text, txtDireccion.Text, txtFecha.Text, Convert.ToInt32(ddlEstado.SelectedItem.Value));
+            if (satisfactorio == 1)
             {
-                mensaje = "<script language='javascript' type='text/javascript'>" +
-                                  " alert('Se guardo correctamente la información');</script> ";
+                popUpMensajeAplicacion(2, "Se presentó un problema al guardar la información, Por Favor revisa e intenta de nuevo; =(");
             }
             else
             {
-                mensaje = "<script language='javascript' type='text/javascript'>" +
-                                  " alert('Se presentó un problema al guardar la información, favor de revisarla;');</script> ";
+                satisfactorio = objHF.addHistorialFisico(idSocio, txtFisicos.Text);
+                satisfactorio = objHM.addHistorialMedico(idSocio, txtFisicos.Text);
+                popUpMensajeAplicacion(1, "Información guardada con éxito; =)");
             }
-            Page.ClientScript.RegisterStartupScript(typeof(Page), "PopupScript", mensaje);
             cargaSocio();
         }
 
@@ -385,6 +397,37 @@ namespace SaludDeAcero.AdministraciónSocios
             Page.ClientScript.RegisterStartupScript(typeof(Page), "PopupScript", mensaje);
             cargaSocio();
         }
+        /// <summary>
+        /// controla el mensaje de la aplicación y el color de las letras
+        /// </summary>
+        /// <param name="opcion"></param>
+        /// <param name="Mensaje"></param>
+        private void popUpMensajeAplicacion(Int32 opcion, String Mensaje)
+        {
+            switch (opcion)
+            {
+                case 1:
+                    txtMensaje.Text = Mensaje;
+                    txtMensaje.ForeColor = Color.Green;
+                    txtMensaje.Font.Bold = true;
+                    this.popUpMensajeAplicación.ShowOnPageLoad = true;
+                    break;
+                case 2:
+                    txtMensaje.Text = Mensaje;
+                    txtMensaje.ForeColor = Color.Red;
+                    txtMensaje.Font.Bold = true;
+                    this.popUpMensajeAplicación.ShowOnPageLoad = true;
+                    break;
+                case 3:
+                    txtMensaje.Text = Mensaje;
+                    txtMensaje.ForeColor = Color.Yellow;
+                    txtMensaje.Font.Bold = true;
+                    this.popUpMensajeAplicación.ShowOnPageLoad = true;
+                    break;
+                default:
+                    break;
+            }
+        }
 
         protected void BtnReimprimir_Click(object sender, EventArgs e)
         {
@@ -412,6 +455,20 @@ namespace SaludDeAcero.AdministraciónSocios
             }
             Page.ClientScript.RegisterStartupScript(typeof(Page), "PopupScript", mensaje);
             cargaPaquetes();
+        }
+
+        /// <summary>
+        /// Oculta el popUp de Mensaje
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        protected void btnMensajeApp_Click(object sender, EventArgs e)
+        {
+            this.popUpMensajeAplicación.ShowOnPageLoad = false;
+            this.popUpRegistrar.ShowOnPageLoad = false;
+            this.popUpEstadoSocio.ShowOnPageLoad = false;
+            this.popUpConsultaHistorial.ShowOnPageLoad = false;
+            this.popUpEliminarSocio.ShowOnPageLoad = false;
         }
     }
 }

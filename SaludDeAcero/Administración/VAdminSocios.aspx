@@ -84,14 +84,6 @@
                                     <PageSizeItemSettings Items="5" />
                                 </SettingsPager>
                             </dx:ASPxGridView>
-                            <br />
-                            <asp:LinkButton ID="lnkBtnWord" runat="server" OnClick="lnkBtnWord_Click">[Exportar a Word]</asp:LinkButton>
-                            &nbsp;
-                <asp:LinkButton ID="lnkBtnExcel" runat="server" OnClick="lnkBtnExcel_Click">[Exportar a Excel]</asp:LinkButton>
-                            &nbsp;
-                <asp:LinkButton ID="lnkBtnPDF" runat="server" OnClick="lnkBtnPDF_Click">[Exportar a PDF]</asp:LinkButton>
-                            &nbsp;
-                <asp:LinkButton ID="lnkBtnImprimir" runat="server" OnClientClick="window.print();">[Imprimir]</asp:LinkButton>
 
                             <dx:ASPxGridViewExporter ID="grdSociosExporter" runat="server" GridViewID="grdSocios">
                             </dx:ASPxGridViewExporter>
@@ -186,6 +178,22 @@
                                             <div class="form-group">
                                                 <label for="direccionSocio">Físicos</label>
                                                 <asp:TextBox ID="txtFisicos" class="form-control" runat="server" Text="" ToolTip="Ingrese los antecedentes Físicos" TextMode="MultiLine" Rows="3"></asp:TextBox>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <asp:Label runat="server" ID="lblEstado" Text="Estado" Font-Bold="true"></asp:Label>
+                                                <div class="selectContainer">
+                                                    <asp:DropDownList class="form-control" ID="DropDownList1" runat="server">
+                                                        <asp:ListItem>Elija una Opcion..</asp:ListItem>
+                                                        <asp:ListItem>Activo</asp:ListItem>
+                                                        <%--<asp:ListItem>Suspendio</asp:ListItem>--%>
+                                                        <asp:ListItem>Baja Temporal</asp:ListItem>
+                                                        <%--<asp:ListItem>Baja Definitiva</asp:ListItem>--%>
+                                                    </asp:DropDownList>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -462,8 +470,46 @@
                     </dx:PopupControlContentControl>
                 </ContentCollection>
             </dx:ASPxPopupControl>
+
+            <!-- Modal Mensaje  Usuario -->
+            <dx:ASPxPopupControl ID="popUpMensajeAplicación" runat="server" Modal="true" HeaderText="Mensaje de Aplicación" AllowDragging="true"
+                PopupHorizontalAlign="WindowCenter" PopupVerticalAlign="WindowCenter" ShowCloseButton="true" Width="500px" Height="190px" ScrollBars="Vertical"
+                PopupAction="None" CloseAction="CloseButton" Theme="Office2010Silver">
+                <ContentCollection>
+                    <dx:PopupControlContentControl ID="PopupControlContentControl4" runat="server">
+                        <div class="modal-content">
+                            <div class="modal-body">
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <label for="Mensaje">Estado de la Transacción:</label>
+                                            <br />
+                                            &nbsp;&nbsp;&nbsp;<asp:Label ID="txtMensaje" runat="server" Text="" ToolTip="Mensaje de la aplicación"></asp:Label>
+                                            <br />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <asp:Button class="btn btn-default" data-dismiss="modal" ID="btnMensajeApp" runat="server" Text="Entendido" OnClick="btnMensajeApp_Click" />
+                                </div>
+                            </div>
+                        </div>
+                    </dx:PopupControlContentControl>
+                </ContentCollection>
+            </dx:ASPxPopupControl>
+
         </ContentTemplate>
     </asp:UpdatePanel>
+
+    <br />
+    <asp:LinkButton ID="lnkBtnWord" runat="server" OnClick="lnkBtnWord_Click">[Exportar a Word]</asp:LinkButton>
+    &nbsp;
+                <asp:LinkButton ID="lnkBtnExcel" runat="server" OnClick="lnkBtnExcel_Click">[Exportar a Excel]</asp:LinkButton>
+    &nbsp;
+                <asp:LinkButton ID="lnkBtnPDF" runat="server" OnClick="lnkBtnPDF_Click">[Exportar a PDF]</asp:LinkButton>
+    &nbsp;
+                <asp:LinkButton ID="lnkBtnImprimir" runat="server" OnClientClick="window.print();">[Imprimir]</asp:LinkButton>
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="../Scripts/bootstrap.min.js"></script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
