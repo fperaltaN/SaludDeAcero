@@ -40,13 +40,13 @@ namespace Sisa {
         protected global::System.Web.UI.WebControls.Button btnAgregarEmpleado;
         
         /// <summary>
-        /// btnModificarEmplaedo control.
+        /// btnModificarEmpleado control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnModificarEmplaedo;
+        protected global::System.Web.UI.WebControls.Button btnModificarEmpleado;
         
         /// <summary>
         /// btnEliminarEmpleado control.
@@ -65,42 +65,6 @@ namespace Sisa {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::DevExpress.Web.ASPxGridView grdEmpleados;
-        
-        /// <summary>
-        /// lnkBtnWord control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton lnkBtnWord;
-        
-        /// <summary>
-        /// lnkBtnExcel control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton lnkBtnExcel;
-        
-        /// <summary>
-        /// lnkBtnPDF control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton lnkBtnPDF;
-        
-        /// <summary>
-        /// lnkBtnImprimir control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton lnkBtnImprimir;
         
         /// <summary>
         /// grdEmpleadosExporter control.
@@ -157,13 +121,13 @@ namespace Sisa {
         protected global::System.Web.UI.WebControls.TextBox txtApMaterno;
         
         /// <summary>
-        /// txtTelefonoEmpleado control.
+        /// txtNumeroArea control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtTelefonoEmpleado;
+        protected global::System.Web.UI.WebControls.TextBox txtNumeroArea;
         
         /// <summary>
         /// ddlTipoUsuario control.
@@ -299,5 +263,77 @@ namespace Sisa {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnEliminarSocio;
+        
+        /// <summary>
+        /// popUpMensajeAplicación control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxPopupControl popUpMensajeAplicación;
+        
+        /// <summary>
+        /// PopupControlContentControl1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.PopupControlContentControl PopupControlContentControl1;
+        
+        /// <summary>
+        /// txtMensaje control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label txtMensaje;
+        
+        /// <summary>
+        /// btnMensajeApp control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnMensajeApp;
+        
+        /// <summary>
+        /// lnkBtnWord control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton lnkBtnWord;
+        
+        /// <summary>
+        /// lnkBtnExcel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton lnkBtnExcel;
+        
+        /// <summary>
+        /// lnkBtnPDF control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton lnkBtnPDF;
+        
+        /// <summary>
+        /// lnkBtnImprimir control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton lnkBtnImprimir;
     }
 }

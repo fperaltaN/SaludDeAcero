@@ -33,7 +33,7 @@
 
                                 </li>
                                 <li role="presentation">
-                                    <asp:Button ID="btnModificarEmplaedo" class="btn btn-info btn-lg" runat="server" Text="Modificar Empleado" OnClick="btnModificarEmplaedo_Click" />
+                                    <asp:Button ID="btnModificarEmpleado" class="btn btn-info btn-lg" runat="server" Text="Modificar Empleado" OnClick="btnModificarEmplaedo_Click" />
                                     <%--<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModalAUpdateSocio">Modificar Socio</button>--%>
                                 </li>
                                 <li role="presentation">
@@ -50,15 +50,17 @@
                                     <dx:GridViewDataTextColumn Caption="Acciones" VisibleIndex="0" Width="15%">
                                         <DataItemTemplate>
                                             <asp:LinkButton ID="linkSeleccionar" Text="Seleccionar" runat="server" Visible="true" ForeColor="#666666"
-                                                Font-Size="Small" Font-Underline="True"></asp:LinkButton>
+                                                Font-Size="X-Small" Font-Underline="True"></asp:LinkButton>
+                                            <asp:LinkButton ID="LinkCancelar" Text="Cancelar" runat="server" Visible="true" ForeColor="#666666"
+                                                Font-Size="X-Small" Font-Underline="True"></asp:LinkButton>
                                         </DataItemTemplate>
                                     </dx:GridViewDataTextColumn>
                                     <dx:GridViewDataColumn Caption="Id" FieldName="ID_USUARIO" VisibleIndex="1" Visible="false" />
-                                    <dx:GridViewDataColumn Caption="Usuario" FieldName="USUARIO" VisibleIndex="2" Width="10%" />
                                     <dx:GridViewDataColumn Caption="Nombre" FieldName="NOMBRE" VisibleIndex="3" Width="20%" />
                                     <dx:GridViewDataColumn Caption="Ap Paterno" FieldName="APELLIDO_PAT" VisibleIndex="4" Width="20%" />
                                     <dx:GridViewDataColumn Caption="Ap Materno" FieldName="APELLIDO_MAT" VisibleIndex="5" Width="20%" />
-                                    <dx:GridViewDataColumn Caption="Tipo Empleado" FieldName="PERFIL" VisibleIndex="6" Width="10%" />
+                                    <dx:GridViewDataColumn Caption="Usuario" FieldName="USUARIO" VisibleIndex="6" Width="10%" />
+                                    <dx:GridViewDataColumn Caption="Tipo Empleado" FieldName="PERFIL" VisibleIndex="7" Width="10%" />
                                     <dx:GridViewDataColumn Caption="Password" FieldName="PASSWORD" Visible="False" VisibleIndex="6" Width="10%" />
                                     <dx:GridViewDataCheckColumn Caption="Activo" FieldName="ACTIVO" Visible="True" ReadOnly="false" VisibleIndex="20" Width="15%">
                                         <DataItemTemplate>
@@ -75,14 +77,7 @@
                                 </SettingsPager>
                             </dx:ASPxGridView>
                         </div>
-                        <br />
-                        <asp:LinkButton ID="lnkBtnWord" runat="server" OnClick="lnkBtnWord_Click">[Exportar a Word]</asp:LinkButton>
-                        &nbsp;
-                <asp:LinkButton ID="lnkBtnExcel" runat="server" OnClick="lnkBtnExcel_Click">[Exportar a Excel]</asp:LinkButton>
-                        &nbsp;
-                <asp:LinkButton ID="lnkBtnPDF" runat="server" OnClick="lnkBtnPDF_Click">[Exportar a PDF]</asp:LinkButton>
-                        &nbsp;
-                <asp:LinkButton ID="lnkBtnImprimir" runat="server" OnClientClick="window.print();">[Imprimir]</asp:LinkButton>
+
 
                         <dx:ASPxGridViewExporter ID="grdEmpleadosExporter" runat="server" GridViewID="grdEmpleados">
                         </dx:ASPxGridViewExporter>
@@ -92,7 +87,7 @@
 
             <!-- Modal Registrar Usuario -->
             <dx:ASPxPopupControl ID="popUpEditarEmpleado" runat="server" Modal="true" HeaderText="Registro de Empleados" AllowDragging="true"
-                PopupHorizontalAlign="Center" PopupVerticalAlign="WindowCenter" ShowCloseButton="true" Width="650px" Height="480px" ScrollBars="Vertical"
+                PopupHorizontalAlign="WindowCenter" PopupVerticalAlign="WindowCenter" ShowCloseButton="true" Width="650px" Height="480px" ScrollBars="Vertical"
                 PopupAction="None" CloseAction="CloseButton" Theme="Office2010Silver">
                 <ContentCollection>
                     <dx:PopupControlContentControl ID="PopupControlEmpleados" runat="server">
@@ -124,8 +119,8 @@
                                     <div class="row">
                                         <div class="col-md-3">
                                             <div class="form-group">
-                                                <label for="TelefonoEmpleado">Telefono</label>
-                                                <asp:TextBox ID="txtTelefonoEmpleado" class="form-control" runat="server" Text="" ToolTip="Ingrese Número Teléfonico del Empleado"></asp:TextBox>
+                                                <label for="Area">Número de Área (piso)</label>
+                                                <asp:TextBox ID="txtNumeroArea" class="form-control" runat="server" Text="" ToolTip="Ingrese Número de Área (piso)"></asp:TextBox>
                                             </div>
                                         </div>
                                         <div class="col-md-3">
@@ -149,13 +144,13 @@
                                         <div class="col-md-3">
                                             <div class="form-group">
                                                 <label for="ContraseñaEmpleado">Contraseña de Acceso</label>
-                                                <asp:TextBox ID="txtContraseñaAcceso"  class="form-control" runat="server" ToolTip="Ingrese Contraseña de Acceso"></asp:TextBox>
+                                                <asp:TextBox ID="txtContraseñaAcceso" class="form-control" runat="server" ToolTip="Ingrese Contraseña de Acceso"></asp:TextBox>
                                             </div>
                                         </div>
                                         <div class="col-md-3">
                                             <div class="form-group">
                                                 <label for="ConfirmarContraseña">Confirmar Contraseña</label>
-                                                <asp:TextBox ID="txtConfContraseña"  class="form-control" runat="server" ToolTip="Confirma Contraseña"></asp:TextBox>
+                                                <asp:TextBox ID="txtConfContraseña" class="form-control" runat="server" ToolTip="Confirma Contraseña"></asp:TextBox>
                                             </div>
                                         </div>
                                     </div>
@@ -173,7 +168,7 @@
 
             <!-- Modal Elimina  Usuario -->
             <dx:ASPxPopupControl ID="popUpEliminarEmpleado" runat="server" Modal="true" HeaderText="Eliminar Empleado" AllowDragging="true"
-                PopupHorizontalAlign="Center" PopupVerticalAlign="WindowCenter" ShowCloseButton="true" Width="700px" Height="280px" ScrollBars="Vertical"
+                PopupHorizontalAlign="WindowCenter" PopupVerticalAlign="WindowCenter" ShowCloseButton="true" Width="700px" Height="280px" ScrollBars="Vertical"
                 PopupAction="None" CloseAction="CloseButton" Theme="Office2010Silver">
                 <ContentCollection>
                     <dx:PopupControlContentControl ID="PopupControlContentControl3" runat="server">
@@ -220,9 +215,43 @@
                 </ContentCollection>
             </dx:ASPxPopupControl>
 
+            <!-- Modal Elimina  Usuario -->
+            <dx:ASPxPopupControl ID="popUpMensajeAplicación" runat="server" Modal="true" HeaderText="Mensaje de Aplicación" AllowDragging="true"
+                PopupHorizontalAlign="WindowCenter" PopupVerticalAlign="WindowCenter" ShowCloseButton="true" Width="500px" Height="190px" ScrollBars="Vertical"
+                PopupAction="None" CloseAction="CloseButton" Theme="Office2010Silver">
+                <ContentCollection>
+                    <dx:PopupControlContentControl ID="PopupControlContentControl1" runat="server">
+                        <div class="modal-content">
+                            <div class="modal-body">
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <label for="Mensaje">Estado de la Transacción:</label>
+                                            <br />
+                                            &nbsp;&nbsp;&nbsp;<asp:Label ID="txtMensaje" runat="server" Text="" ToolTip="Mensaje de la aplicación"></asp:Label>
+                                            <br />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <asp:Button class="btn btn-default" data-dismiss="modal" ID="btnMensajeApp" runat="server" Text="Entendido" OnClick="btnMensajeApp_Click" />
+                                </div>
+                            </div>
+                        </div>
+                    </dx:PopupControlContentControl>
+                </ContentCollection>
+            </dx:ASPxPopupControl>
+
         </ContentTemplate>
     </asp:UpdatePanel>
-
+    <br />
+    <asp:LinkButton ID="lnkBtnWord" runat="server" OnClick="lnkBtnWord_Click">[Exportar a Word]</asp:LinkButton>
+    &nbsp;
+                <asp:LinkButton ID="lnkBtnExcel" runat="server" OnClick="lnkBtnExcel_Click">[Exportar a Excel]</asp:LinkButton>
+    &nbsp;
+                <asp:LinkButton ID="lnkBtnPDF" runat="server" OnClick="lnkBtnPDF_Click">[Exportar a PDF]</asp:LinkButton>
+    &nbsp;
+                <asp:LinkButton ID="lnkBtnImprimir" runat="server" OnClientClick="window.print();">[Imprimir]</asp:LinkButton>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="../Scripts/bootstrap.min.js"></script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->

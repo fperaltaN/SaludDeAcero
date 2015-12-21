@@ -39,7 +39,7 @@ namespace Sisa
             {
                 cargaPerfiles();
                 cargaUsuarios();
-                btnModificarEmplaedo.Visible = false;
+                btnModificarEmpleado.Visible = false;
                 btnEliminarEmpleado.Visible = false;
                 txtContraseñaAcceso.Attributes["type"] = "password";
                 txtConfContraseña.Attributes["type"] = "password";
@@ -66,17 +66,57 @@ namespace Sisa
             if (txtConfContraseña.Text == txtContraseñaAcceso.Text)
             {
                 int satisfactorio = objU.addEmpleados(txtNombreUsuario.Text, txtApPaterno.Text, txtApMaterno.Text,
-                                       "1", txtNombreUsuario.Text, txtContraseñaAcceso.Text,
+                                       txtNumeroArea.Text, txtNombreUsuario.Text, txtContraseñaAcceso.Text,
                                        Convert.ToInt32(ddlTipoUsuario.SelectedItem.Value), Session["Usuario"].ToString());
+                if (satisfactorio == 1)
+                {
+                    popUpMensajeAplicacion(2, "Existe un error en la información que ingresaste, Por Favor revisa e intenta de nuevo; =(");
+                }
+                else
+                {
+                    popUpMensajeAplicacion(1, "Información guardada con éxito; =)");
+                }
+
             }
             else
             {
-                string mensaje = "<script language='javascript' type='text/javascript'>" +
-                                  " alert('Las contraseñas no coinciden.Verifica las Contraseña');</script> ";
-                Page.ClientScript.RegisterStartupScript(typeof(Page), "PopupScript", mensaje);
+                popUpMensajeAplicacion(2, "Las contraseñas no coinciden. Verifica las Contraseña;");
             }
 
 
+
+        }
+
+        /// <summary>
+        /// controla el mensaje de la aplicación y el color de las letras
+        /// </summary>
+        /// <param name="opcion"></param>
+        /// <param name="Mensaje"></param>
+        private void popUpMensajeAplicacion(Int32 opcion, String Mensaje)
+        {
+            switch (opcion)
+            {
+                case 1:
+                    txtMensaje.Text = Mensaje;
+                    txtMensaje.ForeColor = Color.Green;
+                    txtMensaje.Font.Bold = true;
+                    this.popUpMensajeAplicación.ShowOnPageLoad = true;
+                    break;
+                case 2:
+                    txtMensaje.Text = Mensaje;
+                    txtMensaje.ForeColor = Color.Red;
+                    txtMensaje.Font.Bold = true;
+                    this.popUpMensajeAplicación.ShowOnPageLoad = true;
+                    break;
+                case 3:
+                    txtMensaje.Text = Mensaje;
+                    txtMensaje.ForeColor = Color.Yellow;
+                    txtMensaje.Font.Bold = true;
+                    this.popUpMensajeAplicación.ShowOnPageLoad = true;
+                    break;
+                default:
+                    break;
+            }
         }
 
         /// <summary>
@@ -88,15 +128,22 @@ namespace Sisa
         {
             if (txtConfContraseña.Text == txtContraseñaAcceso.Text)
             {
-                int satisfactorio = objU.updtEmpleados(Convert.ToInt32(Session["Row"]),txtNombreUsuario.Text, txtApPaterno.Text,
-                                        txtApMaterno.Text,"1", txtNombreUsuario.Text, txtContraseñaAcceso.Text,
+                int satisfactorio = objU.updtEmpleados(Convert.ToInt32(Session["Row"]),txtNombre.Text, txtApPaterno.Text,
+                                        txtApMaterno.Text,txtNumeroArea.Text, txtNombreUsuario.Text, txtContraseñaAcceso.Text,
                                        Convert.ToInt32(ddlTipoUsuario.SelectedItem.Value), true, Session["Usuario"].ToString());
+                if (satisfactorio == 1)
+                {
+                    popUpMensajeAplicacion(2, "Existe un error en la información que ingresaste, Por Favor revisa e intenta de nuevo; =(");
+                }
+                else
+                {
+                    popUpMensajeAplicacion(1, "Información guardada con éxito; =)");
+                }
+
             }
             else
             {
-                string mensaje = "<script language='javascript' type='text/javascript'>" +
-                                  " alert('Las contraseñas no coinciden.Verifica las Contraseña');</script> ";
-                Page.ClientScript.RegisterStartupScript(typeof(Page), "PopupScript", mensaje);
+                popUpMensajeAplicacion(2, "Las contraseñas no coinciden. Verifica las Contraseña;");
             }
         }
 
@@ -111,6 +158,28 @@ namespace Sisa
             this.popUpEditarEmpleado.ShowOnPageLoad = true;
             btnActualizar.Visible = false;
             btnGuardar.Visible = true;
+            limpiarCampos();
+        }
+
+        /// <summary>
+        /// Limpia los controles de los datos obtenidos
+        /// </summary>
+        private void limpiarCampos()
+        {
+            //popup Agregar
+            txtNombre.Text = "";
+            txtApPaterno.Text = "";
+            txtApMaterno.Text = "";
+            txtNumeroArea.Text = "";
+            ddlTipoUsuario.SelectedIndex = 0;
+            txtNombreUsuario.Text = "";
+            txtContraseñaAcceso.Text = "";
+            txtConfContraseña.Text = "";
+            //popup Eliminar
+            txtNomUsuarioEliminar.Text = "";
+            txtNomSocioEliminar.Text = "";
+            txtApPaternoEliminar.Text = "";
+            txtApMaternoEliminar.Text = "";
         }
 
         /// <summary>
@@ -183,9 +252,16 @@ namespace Sisa
             {
                 DataSet datosEmpleados = objU.getUsuariosById(Convert.ToInt32(id));
                 setDatosEmpleado(datosEmpleados);
-                btnModificarEmplaedo.Visible = true;
+                btnAgregarEmpleado.Visible = false;
+                btnModificarEmpleado.Visible = true;
                 btnEliminarEmpleado.Visible = true;
             }
+            if (opLinkButton.Text == "Cancelar")
+            {
+                btnAgregarEmpleado.Visible = true;
+                btnModificarEmpleado.Visible = false;
+                btnEliminarEmpleado.Visible = false;
+            }            
         }
 
         /// <summary>
@@ -197,7 +273,7 @@ namespace Sisa
             txtNombre.Text = empleado.Tables[0].Rows[0]["Nombre"].ToString();
             txtApPaterno.Text = empleado.Tables[0].Rows[0]["Apellido_Pat"].ToString();
             txtApMaterno.Text = empleado.Tables[0].Rows[0]["Apellido_Mat"].ToString();
-            txtTelefonoEmpleado.Text = empleado.Tables[0].Rows[0]["ID_Perfil"].ToString();
+            txtNumeroArea.Text = empleado.Tables[0].Rows[0]["ID_Area"].ToString();
             txtNombreUsuario.Text = empleado.Tables[0].Rows[0]["Usuario"].ToString();
             txtContraseñaAcceso.Text = empleado.Tables[0].Rows[0]["Password"].ToString();
             txtConfContraseña.Text = empleado.Tables[0].Rows[0]["Password"].ToString();
@@ -272,9 +348,27 @@ namespace Sisa
         /// <param name="e"></param>
         protected void btnEliminarSocio_Click(object sender, EventArgs e)
         {
-            int satisfactorio = objU.updtEmpleados(Convert.ToInt32(Session["Row"]), txtNombreUsuario.Text, txtApPaterno.Text,
-                                       txtApMaterno.Text, "1", txtNombreUsuario.Text, txtContraseñaAcceso.Text,
+            int satisfactorio = objU.updtEmpleados(Convert.ToInt32(Session["Row"]), txtNombre.Text, txtApPaterno.Text,
+                                       txtApMaterno.Text, txtNumeroArea.Text, txtNombreUsuario.Text, txtContraseñaAcceso.Text,
                                       Convert.ToInt32(ddlTipoUsuario.SelectedItem.Value), false, Session["Usuario"].ToString());
+            if (satisfactorio == 1)
+            {
+                popUpMensajeAplicacion(2, "Existe un error en la información que ingresaste, Por Favor revisa e intenta de nuevo; =(");
+            }
+            else
+            {
+                popUpMensajeAplicacion(3, "Información guardada con éxito;El usuario se encuentra inactivo =)");
+            }
+        }
+
+        /// <summary>
+        /// Oculta el popUp de Mensaje
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        protected void btnMensajeApp_Click(object sender, EventArgs e)
+        {
+            this.popUpMensajeAplicación.ShowOnPageLoad = false;
         }
     }
 }
