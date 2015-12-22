@@ -74,7 +74,7 @@ namespace Negocio
         /// <param name="direccion"></param>
         /// <param name="fecha_nacimiento"></param>
         /// <returns></returns>
-        public int addSocios(string num_Socio, string nombre, string ap_paterno, string ap_materno, string telefono, string direccion, string fecha_nacimiento)
+        public int addSocios(string num_Socio, string nombre, string ap_paterno, string ap_materno, string telefono, string direccion, string fecha_nacimiento, ref Int32 idSocio)
         {
             try
             {
@@ -89,6 +89,7 @@ namespace Negocio
                 param[5] = new SqlParameter("@telefono", SqlDbType.VarChar, 250, ParameterDirection.Input, false, 0, 0, "", DataRowVersion.Current, telefono);
                 param[6] = new SqlParameter("@fecha_nacimiento", SqlDbType.DateTime, 250, ParameterDirection.Input, false, 0, 0, "", DataRowVersion.Current, fecha_nacimiento);
                 transSucess = obj.getDataFromSP(addSocio, param, "TblSocio", datos);
+                idSocio = Convert.ToInt32(datos.Tables[0].Rows[0]["id_socio"].ToString());
             }
             catch (Exception ex)
             {
@@ -110,7 +111,7 @@ namespace Negocio
         /// <param name="activo"></param>
         /// <param name="id_perfil"></param>
         /// <returns></returns>
-        public int updtSocios(int idSocio, string num_Socio, string nombre, string ap_paterno, string ap_materno, string telefono, string direccion, string fecha_nacimiento,bool activo)
+        public int updtSocios(int idSocio, string num_Socio, string nombre, string ap_paterno, string ap_materno, string telefono, string direccion, string fecha_nacimiento,Int32 activo)
         {
             try
             {
@@ -125,7 +126,7 @@ namespace Negocio
                 param[5] = new SqlParameter("@telefono", SqlDbType.VarChar, 250, ParameterDirection.Input, false, 0, 0, "", DataRowVersion.Current, telefono);
                 param[6] = new SqlParameter("@fecha_nacimiento", SqlDbType.DateTime, 250, ParameterDirection.Input, false, 0, 0, "", DataRowVersion.Current, fecha_nacimiento);
                 param[7] = new SqlParameter("@direccion", SqlDbType.VarChar, 250, ParameterDirection.Input, false, 0, 0, "", DataRowVersion.Current, direccion);
-                param[8] = new SqlParameter("@activo", SqlDbType.VarChar, 250, ParameterDirection.Input, false, 0, 0, "", DataRowVersion.Current, activo);
+                param[8] = new SqlParameter("@activo", SqlDbType.Bit, 250, ParameterDirection.Input, false, 0, 0, "", DataRowVersion.Current, activo);
                 transSucess = obj.getDataFromSP(updSocio, param, "TblSocio", datos);
             }
             catch (Exception ex)

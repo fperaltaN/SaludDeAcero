@@ -116,5 +116,26 @@ namespace Negocio
 
             return transSucess;
         }
+        /// <summary>
+        /// Elimina de la Base de Datos
+        /// </summary>
+        /// <param name="idSocio"></param>
+        /// <returns></returns>
+        public int DelHistorialMedico(int idSocio)
+        {
+            DataSet datos = new DataSet();
+            SQLDatos obj = new SQLDatos();
+            SqlParameter[] param = new SqlParameter[1];
+            try
+            {
+                param[0] = new SqlParameter("@id_Socio", SqlDbType.Int, 10, ParameterDirection.Input, false, 0, 0, "", DataRowVersion.Current, idSocio);//tenia idSocio??
+                transSucess = obj.getDataFromSP(delHMSocio, param, "TblHistorialMedico", datos);
+            }
+            catch (Exception ex)
+            {
+                transSucess = 1;
+            }
+            return transSucess;
+        }
     }
 }

@@ -52,7 +52,7 @@ namespace Negocio
             {
                 SqlParameter[] param = new SqlParameter[1];
                 param[0] = new SqlParameter("@id_socio", SqlDbType.Int, 10, ParameterDirection.Input, false, 0, 0, "", DataRowVersion.Current, idSocio);
-                transSucess = obj.getDataFromSP(getHFSocioXId, param, "TblHistorialMedico", datos);
+                transSucess = obj.getDataFromSP(getHFSocioXId, param, "TblHistorialFisico", datos);
             }
             catch (Exception ex)
             {
@@ -80,7 +80,7 @@ namespace Negocio
                 param[0] = new SqlParameter("@id_socio", SqlDbType.Int, 50, ParameterDirection.Input, false, 0, 0, "", DataRowVersion.Current, idSocio);
                 param[1] = new SqlParameter("@descripcion", SqlDbType.VarChar, 100, ParameterDirection.Input, false, 0, 0, "", DataRowVersion.Current, descripcion);
 
-                transSucess = obj.getDataFromSP(addHFSocio, param, "TblHistorialMedico", datos);
+                transSucess = obj.getDataFromSP(addHFSocio, param, "TblHistorialFisico", datos);
             }
             catch (Exception ex)
             {
@@ -107,13 +107,35 @@ namespace Negocio
                 param[0] = new SqlParameter("@id_socio", SqlDbType.Int, 10, ParameterDirection.Input, false, 0, 0, "", DataRowVersion.Current, idSocio);
                 param[1] = new SqlParameter("@descripcion", SqlDbType.VarChar, 10, ParameterDirection.Input, false, 0, 0, "", DataRowVersion.Current, descripcion);
                 param[2] = new SqlParameter("@activo", SqlDbType.Bit, 250, ParameterDirection.Input, false, 0, 0, "", DataRowVersion.Current, activo);
-                transSucess = obj.getDataFromSP(updHFSocio, param, "TblHistorialMedico", datos);
+                transSucess = obj.getDataFromSP(updHFSocio, param, "TblHistorialFisico", datos);
             }
             catch (Exception ex)
             {
                 transSucess = 1;
             }
 
+            return transSucess;
+        }
+
+        /// <summary>
+        /// Elimina de la Base de Datos
+        /// </summary>
+        /// <param name="idSocio"></param>
+        /// <returns></returns>
+        public int DelHistorialFisico(int idSocio)
+        {
+            DataSet datos = new DataSet();
+            SQLDatos obj = new SQLDatos();
+            SqlParameter[] param = new SqlParameter[1];
+            try
+            {
+                param[0] = new SqlParameter("@id_Socio", SqlDbType.Int, 10, ParameterDirection.Input, false, 0, 0, "", DataRowVersion.Current, idSocio);//tenia idSocio??
+                transSucess = obj.getDataFromSP(delHFSocio, param, "TblHistorialMedico", datos);
+            }
+            catch (Exception ex)
+            {
+                transSucess = 1;
+            }
             return transSucess;
         }
     }
