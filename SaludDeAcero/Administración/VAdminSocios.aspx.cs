@@ -12,6 +12,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using Negocio;
+using System.Drawing;
 
 namespace SaludDeAcero.AdministraciónSocios
 {
@@ -20,9 +21,10 @@ namespace SaludDeAcero.AdministraciónSocios
         N_Socio objU = new N_Socio();
         N_Paquete objP = new N_Paquete();
         N_Pago objPagos = new N_Pago();
-        N_Checador objChecador = new N_Checador();
+        N_ChecadorSocio objChecador = new N_ChecadorSocio();
         N_HistorialFisico objHF = new N_HistorialFisico();
         N_HistorialMedico objHM = new N_HistorialMedico();
+        N_SocioMembresia objSM = new N_SocioMembresia();
         /// <summary>
         /// Evento de la Página cuando se termina de carga, este evento se genera por default
         /// </summary>
@@ -39,6 +41,7 @@ namespace SaludDeAcero.AdministraciónSocios
             }
             if (!IsPostBack)
             {
+                txtFecha.Value = DateTime.Now.AddYears(-26);
                 cargaSocio();
                 cargaPaquetes();
                 cargaChecador();
@@ -60,8 +63,6 @@ namespace SaludDeAcero.AdministraciónSocios
             this.popUpRegistrar.ShowOnPageLoad = true;
             btnActualizar.Visible = false;
             btnGuardar.Visible = true;
-            ddlEstado.Visible = false;
-            lblEstado.Visible = false;
         }
 
         /// <summary>
@@ -82,10 +83,8 @@ namespace SaludDeAcero.AdministraciónSocios
         protected void btnModificarSocio_Click(object sender, EventArgs e)
         {
             this.popUpRegistrar.ShowOnPageLoad = true;
-            btnActualizar.Visible = false;
-            btnGuardar.Visible = true;
-            ddlEstado.Visible = true;
-            lblEstado.Visible = true;
+            btnGuardar.Visible = false;
+            btnActualizar.Visible = true;
         }
 
         /// <summary>
@@ -95,7 +94,7 @@ namespace SaludDeAcero.AdministraciónSocios
         /// <param name="e"></param>
         protected void btnEstadoSocio_Click(object sender, EventArgs e)
         {
-            this.popUpEstadoSocio.ShowOnPageLoad = true;
+            //this.popUpEstadoSocio.ShowOnPageLoad = true;
         }
 
         /// <summary>
@@ -105,7 +104,7 @@ namespace SaludDeAcero.AdministraciónSocios
         /// <param name="e"></param>
         protected void btnCancelarSocio_Click(object sender, EventArgs e)
         {
-            this.popUpEliminarSocio.ShowOnPageLoad = true;
+            // this.popUpEliminarSocio.ShowOnPageLoad = true;
         }
 
         /// <summary>
@@ -115,7 +114,7 @@ namespace SaludDeAcero.AdministraciónSocios
         /// <param name="e"></param>
         protected void btnCancelarEliminar_Click(object sender, EventArgs e)
         {
-            this.popUpEliminarSocio.ShowOnPageLoad = false;
+            //this.popUpEliminarSocio.ShowOnPageLoad = false;
         }
 
         /// <summary>
@@ -125,7 +124,7 @@ namespace SaludDeAcero.AdministraciónSocios
         /// <param name="e"></param>
         protected void btnCancelarEstado_Click(object sender, EventArgs e)
         {
-            this.popUpEstadoSocio.ShowOnPageLoad = false;
+            //this.popUpEstadoSocio.ShowOnPageLoad = false;
         }
 
         /// <summary>
@@ -135,7 +134,7 @@ namespace SaludDeAcero.AdministraciónSocios
         /// <param name="e"></param>
         protected void btnHistorialSocio_Click(object sender, EventArgs e)
         {
-            popUpConsultaHistorial.ShowOnPageLoad = true;
+            //popUpConsultaHistorial.ShowOnPageLoad = true;
         }
 
         /// <summary>
@@ -156,7 +155,7 @@ namespace SaludDeAcero.AdministraciónSocios
             DataSet datosSocios = objU.getSociosGrid();
             grdSocios.DataSource = datosSocios;
             grdSocios.DataBind();
-            grdSocios.KeyFieldName = "id_Socio";
+            grdSocios.KeyFieldName = "id_socio";
         }
 
         /// <summary>
@@ -178,9 +177,9 @@ namespace SaludDeAcero.AdministraciónSocios
         protected void cargaPago()
         {
             DataSet datosSocios = objPagos.getPagoById(1);
-            GVConsultaPagos.DataSource = datosSocios;
-            GVConsultaPagos.DataBind();
-            GVConsultaPagos.KeyFieldName = "id_Pago";
+            //GVConsultaPagos.DataSource = datosSocios;
+            //GVConsultaPagos.DataBind();
+            //GVConsultaPagos.KeyFieldName = "id_Pago";
         }
 
         /// <summary>
@@ -188,10 +187,10 @@ namespace SaludDeAcero.AdministraciónSocios
         /// </summary>
         protected void cargaChecador()
         {
-            DataSet datosSocios = objChecador.getChecadorById(1);
-            GvAsistencia.DataSource = datosSocios;
-            GvAsistencia.DataBind();
-            GvAsistencia.KeyFieldName = "id_Checador";
+            DataSet datosSocios = objChecador.getChecadorSocioById(1);
+            //GvAsistencia.DataSource = datosSocios;
+            //GvAsistencia.DataBind();
+            //GvAsistencia.KeyFieldName = "id_Checador";
         }
 
         /// <summary>
@@ -228,29 +227,37 @@ namespace SaludDeAcero.AdministraciónSocios
         /// Pone los datos del Socio seleccionado
         /// </summary>
         protected void setDatosSocio(DataSet Socio)
-        {
+        {            
             //Modificación popUP
-            txtNumero.Text = Socio.Tables[0].Rows[0]["num_empleado"].ToString();
+            txtNumero.Text = Socio.Tables[0].Rows[0]["num_socio"].ToString();
             txtNombre.Text = Socio.Tables[0].Rows[0]["Nombre"].ToString();
             txtApMaterno.Text = Socio.Tables[0].Rows[0]["ap_materno"].ToString();
             txtApPaterno.Text = Socio.Tables[0].Rows[0]["ap_paterno"].ToString();
             txtTelefono.Text = Socio.Tables[0].Rows[0]["telefono"].ToString();
             txtDireccion.Text = Socio.Tables[0].Rows[0]["direccion"].ToString();
-            txtFecha.Text = Socio.Tables[0].Rows[0]["direccion"].ToString();
-            txtMedicos.Text = Socio.Tables[0].Rows[0]["HistorialMedico"].ToString();
-            txtFisicos.Text = Socio.Tables[0].Rows[0]["HistorialFisico"].ToString();
+            txtFecha.Value = Socio.Tables[0].Rows[0]["fecha_nacimiento"].ToString();
 
             //Estado
-            txtNumeroEstado.Text = Socio.Tables[0].Rows[0]["num_empleado"].ToString();
-            txtNombreEstado.Text= Socio.Tables[0].Rows[0]["Nombre"].ToString();
-            txtApPaternoEstado.Text = Socio.Tables[0].Rows[0]["ap_materno"].ToString();
-            txtApMaternoEstado.Text = Socio.Tables[0].Rows[0]["ap_paterno"].ToString();
+            //txtNumeroEstado.Text = Socio.Tables[0].Rows[0]["num_empleado"].ToString();
+            //txtNombreEstado.Text= Socio.Tables[0].Rows[0]["Nombre"].ToString();
+            //txtApPaternoEstado.Text = Socio.Tables[0].Rows[0]["ap_materno"].ToString();
+            //txtApMaternoEstado.Text = Socio.Tables[0].Rows[0]["ap_paterno"].ToString();
+            //ddlEstado.SelectedIndex = 1;
 
-            //Eliminacion popUP
-            txtNumSocioEliminar.Text = Socio.Tables[0].Rows[0]["num_empleado"].ToString();
-            txtNomSocioEliminar.Text = Socio.Tables[0].Rows[0]["Nombre"].ToString();
-            txtApPaternoEliminar.Text = Socio.Tables[0].Rows[0]["ap_materno"].ToString();
-            txtApMaternoEliminar.Text = Socio.Tables[0].Rows[0]["ap_paterno"].ToString();
+            ////Eliminacion popUP
+            //txtNumSocioEliminar.Text = Socio.Tables[0].Rows[0]["num_empleado"].ToString();
+            //txtNomSocioEliminar.Text = Socio.Tables[0].Rows[0]["Nombre"].ToString();
+            //txtApPaternoEliminar.Text = Socio.Tables[0].Rows[0]["ap_materno"].ToString();
+            //txtApMaternoEliminar.Text = Socio.Tables[0].Rows[0]["ap_paterno"].ToString();
+
+            DataSet datosSocios = objHM.getHistorialMedicoById(Convert.ToInt32(Session["Row"].ToString()));
+            txtMedicos.Text = datosSocios.Tables[0].Rows[0]["descripcion"].ToString();
+            datosSocios = objHF.getHistorialFisicoById(Convert.ToInt32(Session["Row"].ToString()));
+            txtFisicos.Text = datosSocios.Tables[0].Rows[0]["descripcion"].ToString();
+            datosSocios = objSM.getSocioMembresiaPaqueteById(Convert.ToInt32(Session["Row"].ToString()));
+            ddlPaquete.SelectedIndex = Convert.ToInt32(datosSocios.Tables[0].Rows[0]["id_paquete"].ToString());
+
+            
         }
 
         /// <summary>
@@ -315,17 +322,29 @@ namespace SaludDeAcero.AdministraciónSocios
         /// <param name="e"></param>
         protected void btnGuardar_Click(object sender, EventArgs e)
         {
-            int idSocio= 0;
-            int satisfactorio =  objU.addSocios(txtNumero.Text, txtNombre.Text, txtApPaterno.Text, txtApMaterno.Text, txtTelefono.Text,txtDireccion.Text,txtFecha.Text);
-            if (satisfactorio == 1)
+            int idSocio = 0;
+            int satisfactorio = objU.addSocios(txtNumero.Text, txtNombre.Text, txtApPaterno.Text, txtApMaterno.Text, txtTelefono.Text, txtDireccion.Text, txtFecha.Text, ref idSocio);
+            if (idSocio == 0)
             {
                 popUpMensajeAplicacion(2, "Se presentó un problema al guardar la información, Por Favor revisa e intenta de nuevo; =(");
             }
             else
             {
                 satisfactorio = objHF.addHistorialFisico(idSocio, txtFisicos.Text);
+                if (satisfactorio == 1)
+                    popUpMensajeAplicacion(2, "Se presentó un problema al guardar la información, Por Favor revisa e intenta de nuevo; =(");
                 satisfactorio = objHM.addHistorialMedico(idSocio, txtFisicos.Text);
-                popUpMensajeAplicacion(1, "Información guardada con éxito; =)");
+                if (satisfactorio == 1)
+                    popUpMensajeAplicacion(2, "Se presentó un problema al guardar la información, Por Favor revisa e intenta de nuevo; =(");
+                satisfactorio = objSM.addSocioMembresia(idSocio, Convert.ToInt32(ddlPaquete.SelectedItem.Value));
+                if (satisfactorio == 1)
+                {
+                    popUpMensajeAplicacion(2, "Se presentó un problema al guardar la información, Por Favor revisa e intenta de nuevo; =(");
+                }
+                else
+                {
+                    popUpMensajeAplicacion(1, "Información guardada con éxito; =)");
+                }
             }
             cargaSocio();
         }
@@ -337,17 +356,29 @@ namespace SaludDeAcero.AdministraciónSocios
         /// <param name="e"></param>
         protected void btnActualizar_Click(object sender, EventArgs e)
         {
-            int idSocio = 0;
-            int satisfactorio = objU.updtSocios(Convert.ToInt32(Session["Row"].ToString()),txtNumero.Text, txtNombre.Text, txtApPaterno.Text, txtApMaterno.Text, txtTelefono.Text, txtDireccion.Text, txtFecha.Text, Convert.ToInt32(ddlEstado.SelectedItem.Value));
-            if (satisfactorio == 1)
+            int idSocio = Convert.ToInt32(Session["Row"].ToString());
+            int satisfactorio = objU.updtSocios(idSocio,txtNumero.Text, txtNombre.Text, txtApPaterno.Text, txtApMaterno.Text, txtTelefono.Text, txtDireccion.Text, txtFecha.Text, Convert.ToInt32(ddlEstado.SelectedIndex) == 2 ? 0 : 1);
+            if (idSocio == 0)
             {
                 popUpMensajeAplicacion(2, "Se presentó un problema al guardar la información, Por Favor revisa e intenta de nuevo; =(");
             }
             else
             {
-                satisfactorio = objHF.addHistorialFisico(idSocio, txtFisicos.Text);
-                satisfactorio = objHM.addHistorialMedico(idSocio, txtFisicos.Text);
-                popUpMensajeAplicacion(1, "Información guardada con éxito; =)");
+                satisfactorio = objHF.updtHistorialFisico(idSocio, txtFisicos.Text, Convert.ToInt32(ddlEstado.SelectedIndex) == 2 ? 0 : 1);
+                if (satisfactorio == 1)
+                    popUpMensajeAplicacion(2, "Se presentó un problema al guardar la información, Por Favor revisa e intenta de nuevo; =(");
+                satisfactorio = objHM.updtHistorialMedico(idSocio, txtFisicos.Text, Convert.ToInt32(ddlEstado.SelectedIndex) == 2 ? 0 : 1);
+                if (satisfactorio == 1)
+                    popUpMensajeAplicacion(2, "Se presentó un problema al guardar la información, Por Favor revisa e intenta de nuevo; =(");
+                satisfactorio = objSM.updtSocioMembresia(idSocio, Convert.ToInt32(ddlPaquete.SelectedItem.Value), Convert.ToInt32(ddlEstado.SelectedIndex) == 2 ? 0 : 1);
+                if (satisfactorio == 1)
+                {
+                    popUpMensajeAplicacion(2, "Se presentó un problema al guardar la información, Por Favor revisa e intenta de nuevo; =(");
+                }
+                else
+                {
+                    popUpMensajeAplicacion(1, "Información guardada con éxito; =)");
+                }
             }
             cargaSocio();
         }
@@ -359,19 +390,30 @@ namespace SaludDeAcero.AdministraciónSocios
         /// <param name="e"></param>
         protected void btnGuardarEstado_Click(object sender, EventArgs e)
         {
-            string mensaje = "";
-            int satisfactorio = 0;// objU.updtEmpleados(Convert.ToInt32(Session["Row"].ToString()), txtNumero.Text, txtNombre.Text, txtApPaterno.Text, txtApMaterno.Text, txtTelefono.Text, txtDireccion.Text, true, 4);
-            if (satisfactorio == 0)
+            int idSocio = Convert.ToInt32(Session["Row"].ToString());
+            int satisfactorio = objU.updtSocios(idSocio, txtNumero.Text, txtNombre.Text, txtApPaterno.Text, txtApMaterno.Text, txtTelefono.Text, txtDireccion.Text, txtFecha.Text, Convert.ToInt32(ddlEstado.SelectedIndex) == 2 ? 0 : 2);
+            if (idSocio == 0)
             {
-                mensaje = "<script language='javascript' type='text/javascript'>" +
-                                  " alert('Se guardo correctamente la información');</script> ";
+                popUpMensajeAplicacion(2, "Se presentó un problema al guardar la información, Por Favor revisa e intenta de nuevo; =(");
             }
             else
             {
-                mensaje = "<script language='javascript' type='text/javascript'>" +
-                                  " alert('Se presentó un problema al guardar la información, favor de revisarla;');</script> ";
+                satisfactorio = objHF.updtHistorialFisico(idSocio, txtFisicos.Text, Convert.ToInt32(ddlEstado.SelectedIndex) == 2 ? 0 : 2);
+                if (satisfactorio == 1)
+                    popUpMensajeAplicacion(2, "Se presentó un problema al guardar la información, Por Favor revisa e intenta de nuevo; =(");
+                satisfactorio = objHM.updtHistorialMedico(idSocio, txtFisicos.Text, Convert.ToInt32(ddlEstado.SelectedIndex) == 2 ? 0 : 2);
+                if (satisfactorio == 1)
+                    popUpMensajeAplicacion(2, "Se presentó un problema al guardar la información, Por Favor revisa e intenta de nuevo; =(");
+                satisfactorio = objSM.updtSocioMembresia(idSocio, Convert.ToInt32(ddlPaquete.SelectedItem.Value), Convert.ToInt32(ddlEstado.SelectedIndex) == 2 ? 0 : 2);
+                if (satisfactorio == 1)
+                {
+                    popUpMensajeAplicacion(2, "Se presentó un problema al guardar la información, Por Favor revisa e intenta de nuevo; =(");
+                }
+                else
+                {
+                    popUpMensajeAplicacion(1, "Información guardada con éxito; =)");
+                }
             }
-            Page.ClientScript.RegisterStartupScript(typeof(Page), "PopupScript", mensaje);
             cargaSocio();
         }
 
@@ -382,19 +424,18 @@ namespace SaludDeAcero.AdministraciónSocios
         /// <param name="e"></param>
         protected void btnConPago_Click(object sender, EventArgs e)
         {
-            string mensaje = "";
-            int satisfactorio = 0;//objU.updtEmpleados(Convert.ToInt32(Session["Row"].ToString()), txtNumero.Text, txtNombre.Text, txtApPaterno.Text, txtApMaterno.Text, txtTelefono.Text, txtDireccion.Text, true, 4);
-            if (satisfactorio == 0)
+            int idSocio = 0;
+            int satisfactorio = objU.updtSocios(Convert.ToInt32(Session["Row"].ToString()), txtNumero.Text, txtNombre.Text, txtApPaterno.Text, txtApMaterno.Text, txtTelefono.Text, txtDireccion.Text, txtFecha.Text, Convert.ToInt32(ddlEstado.SelectedItem.Value) == 2 ? 0 : 2);
+            if (satisfactorio == 1)
             {
-                mensaje = "<script language='javascript' type='text/javascript'>" +
-                                  " alert('Se guardo correctamente la información');</script> ";
+                popUpMensajeAplicacion(2, "Se presentó un problema al guardar la información, Por Favor revisa e intenta de nuevo; =(");
             }
             else
             {
-                mensaje = "<script language='javascript' type='text/javascript'>" +
-                                  " alert('Se presentó un problema al guardar la información, favor de revisarla;');</script> ";
+                //satisfactorio = objHF.updtHistorialFisico(idSocio, txtFisicos.Text, Convert.ToInt32(ddlEstado.SelectedItem.Value) == 2 ? 0 : 2);
+                //satisfactorio = objHM.updtHistorialMedico(idSocio, txtFisicos.Text, Convert.ToInt32(ddlEstado.SelectedItem.Value) == 2 ? 0 : 2);
+                //popUpMensajeAplicacion(1, "Información guardada con éxito; =)");
             }
-            Page.ClientScript.RegisterStartupScript(typeof(Page), "PopupScript", mensaje);
             cargaSocio();
         }
         /// <summary>
@@ -441,20 +482,18 @@ namespace SaludDeAcero.AdministraciónSocios
         /// <param name="e"></param>
         protected void btnEliminarSocio_Click(object sender, EventArgs e)
         {
-            string mensaje = "";
-            int satisfactorio =  objU.DelEmpleado(Convert.ToInt32(Session["Id_Usuario"].ToString()));
-            if (satisfactorio == 0)
+            int satisfactorio = objHF.DelHistorialFisico(Convert.ToInt32(Session["Row"].ToString()));
+            satisfactorio = objHM.DelHistorialMedico(Convert.ToInt32(Session["Row"].ToString()));
+            if (satisfactorio == 1)
             {
-                mensaje = "<script language='javascript' type='text/javascript'>" +
-                                  " alert('Se guardo correctamente la información');</script> ";
+                popUpMensajeAplicacion(2, "Se presentó un problema al guardar la información, Por Favor revisa e intenta de nuevo; =(");
             }
             else
             {
-                mensaje = "<script language='javascript' type='text/javascript'>" +
-                                  " alert('Se presentó un problema al guardar la información, favor de revisarla;');</script> ";
+                satisfactorio = objU.DelSocio(Convert.ToInt32(Session["Row"].ToString()));
+                popUpMensajeAplicacion(1, "Información guardada con éxito; =)");
             }
-            Page.ClientScript.RegisterStartupScript(typeof(Page), "PopupScript", mensaje);
-            cargaPaquetes();
+            cargaSocio();
         }
 
         /// <summary>
@@ -466,9 +505,9 @@ namespace SaludDeAcero.AdministraciónSocios
         {
             this.popUpMensajeAplicación.ShowOnPageLoad = false;
             this.popUpRegistrar.ShowOnPageLoad = false;
-            this.popUpEstadoSocio.ShowOnPageLoad = false;
-            this.popUpConsultaHistorial.ShowOnPageLoad = false;
-            this.popUpEliminarSocio.ShowOnPageLoad = false;
+            //this.popUpEstadoSocio.ShowOnPageLoad = false;
+            //this.popUpConsultaHistorial.ShowOnPageLoad = false;
+            //this.popUpEliminarSocio.ShowOnPageLoad = false;
         }
     }
 }
