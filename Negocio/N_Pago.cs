@@ -44,14 +44,14 @@ namespace Negocio
         /// </summary>
         /// <param name="idPago"></param>
         /// <returns></returns>
-        public DataSet getPagoById(int idPago)
+        public DataSet getPagoById(int idSocio)
         {
             DataSet datos = new DataSet();
             SQLDatos obj = new SQLDatos();
             try
             {
                 SqlParameter[] param = new SqlParameter[1];
-                param[0] = new SqlParameter("@id_Pago", SqlDbType.Int, 10, ParameterDirection.Input, false, 0, 0, "", DataRowVersion.Current, idPago);
+                param[0] = new SqlParameter("@id_Socio", SqlDbType.Int, 10, ParameterDirection.Input, false, 0, 0, "", DataRowVersion.Current, idSocio);
                transSucess = obj.getDataFromSP(getPagoXId, param, "TblPago", datos);
             }
             catch (Exception ex)
