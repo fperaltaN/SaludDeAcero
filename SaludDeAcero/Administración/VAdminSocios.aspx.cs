@@ -42,6 +42,8 @@ namespace SaludDeAcero.AdministraciónSocios
             if (!IsPostBack)
             {
                 txtFecha.Value = DateTime.Now.AddYears(-26);
+                FechaInicioConPago.Value = DateTime.Now;
+                FechaFinalConPago.Value = DateTime.Now;
                 cargaSocio();
                 cargaPaquetes();
                 cargaChecador();
@@ -94,7 +96,7 @@ namespace SaludDeAcero.AdministraciónSocios
         /// <param name="e"></param>
         protected void btnEstadoSocio_Click(object sender, EventArgs e)
         {
-            //this.popUpEstadoSocio.ShowOnPageLoad = true;
+            this.popUpEstadoSocio.ShowOnPageLoad = true;
         }
 
         /// <summary>
@@ -104,7 +106,7 @@ namespace SaludDeAcero.AdministraciónSocios
         /// <param name="e"></param>
         protected void btnCancelarSocio_Click(object sender, EventArgs e)
         {
-            // this.popUpEliminarSocio.ShowOnPageLoad = true;
+            this.popUpEliminarSocio.ShowOnPageLoad = true;
         }
 
         /// <summary>
@@ -114,7 +116,7 @@ namespace SaludDeAcero.AdministraciónSocios
         /// <param name="e"></param>
         protected void btnCancelarEliminar_Click(object sender, EventArgs e)
         {
-            //this.popUpEliminarSocio.ShowOnPageLoad = false;
+            this.popUpEliminarSocio.ShowOnPageLoad = false;
         }
 
         /// <summary>
@@ -124,7 +126,7 @@ namespace SaludDeAcero.AdministraciónSocios
         /// <param name="e"></param>
         protected void btnCancelarEstado_Click(object sender, EventArgs e)
         {
-            //this.popUpEstadoSocio.ShowOnPageLoad = false;
+            this.popUpEstadoSocio.ShowOnPageLoad = false;
         }
 
         /// <summary>
@@ -134,7 +136,7 @@ namespace SaludDeAcero.AdministraciónSocios
         /// <param name="e"></param>
         protected void btnHistorialSocio_Click(object sender, EventArgs e)
         {
-            //popUpConsultaHistorial.ShowOnPageLoad = true;
+            popUpConsultaHistorial.ShowOnPageLoad = true;
         }
 
         /// <summary>
@@ -144,7 +146,7 @@ namespace SaludDeAcero.AdministraciónSocios
         /// <param name="e"></param>
         protected void btnCanConPago_Click(object sender, EventArgs e)
         {
-
+            popUpConsultaHistorial.ShowOnPageLoad = false;
         }
 
         /// <summary>
@@ -235,20 +237,26 @@ namespace SaludDeAcero.AdministraciónSocios
             txtApPaterno.Text = Socio.Tables[0].Rows[0]["ap_paterno"].ToString();
             txtTelefono.Text = Socio.Tables[0].Rows[0]["telefono"].ToString();
             txtDireccion.Text = Socio.Tables[0].Rows[0]["direccion"].ToString();
-            txtFecha.Value = Socio.Tables[0].Rows[0]["fecha_nacimiento"].ToString();
+            txtFecha.Value = Convert.ToDateTime(Socio.Tables[0].Rows[0]["fecha_nacimiento"].ToString());
 
             //Estado
-            //txtNumeroEstado.Text = Socio.Tables[0].Rows[0]["num_empleado"].ToString();
-            //txtNombreEstado.Text= Socio.Tables[0].Rows[0]["Nombre"].ToString();
-            //txtApPaternoEstado.Text = Socio.Tables[0].Rows[0]["ap_materno"].ToString();
-            //txtApMaternoEstado.Text = Socio.Tables[0].Rows[0]["ap_paterno"].ToString();
-            //ddlEstado.SelectedIndex = 1;
+            txtNumeroEstado.Text = Socio.Tables[0].Rows[0]["num_socio"].ToString();
+            txtNombreEstado.Text= Socio.Tables[0].Rows[0]["Nombre"].ToString();
+            txtApPaternoEstado.Text = Socio.Tables[0].Rows[0]["ap_paterno"].ToString();
+            txtApMaternoEstado.Text = Socio.Tables[0].Rows[0]["ap_materno"].ToString();
+            ddlEstado.SelectedIndex = (Convert.ToBoolean(Socio.Tables[0].Rows[0]["activo"].ToString()) == false ? 0 : 1);
 
             ////Eliminacion popUP
-            //txtNumSocioEliminar.Text = Socio.Tables[0].Rows[0]["num_empleado"].ToString();
-            //txtNomSocioEliminar.Text = Socio.Tables[0].Rows[0]["Nombre"].ToString();
-            //txtApPaternoEliminar.Text = Socio.Tables[0].Rows[0]["ap_materno"].ToString();
-            //txtApMaternoEliminar.Text = Socio.Tables[0].Rows[0]["ap_paterno"].ToString();
+            txtNumSocioEliminar.Text = Socio.Tables[0].Rows[0]["num_socio"].ToString();
+            txtNomSocioEliminar.Text = Socio.Tables[0].Rows[0]["Nombre"].ToString();
+            txtApPaternoEliminar.Text = Socio.Tables[0].Rows[0]["ap_paterno"].ToString();
+            txtApMaternoEliminar.Text = Socio.Tables[0].Rows[0]["ap_materno"].ToString();
+
+            //HistorialPago
+            txtNumeroSocioConPago.Text = Socio.Tables[0].Rows[0]["num_socio"].ToString();
+            txtNombreSocioConPago.Text = Socio.Tables[0].Rows[0]["Nombre"].ToString();
+            txtApeidoPaternoConPago.Text = Socio.Tables[0].Rows[0]["ap_paterno"].ToString();
+            txtApeidoMaternoConPago.Text = Socio.Tables[0].Rows[0]["ap_materno"].ToString();
 
             DataSet datosSocios = objHM.getHistorialMedicoById(Convert.ToInt32(Session["Row"].ToString()));
             txtMedicos.Text = datosSocios.Tables[0].Rows[0]["descripcion"].ToString();
@@ -424,7 +432,7 @@ namespace SaludDeAcero.AdministraciónSocios
         /// <param name="e"></param>
         protected void btnConPago_Click(object sender, EventArgs e)
         {
-            int idSocio = 0;
+            int idSocio = Convert.ToInt32(Session["Row"].ToString());
             int satisfactorio = objU.updtSocios(Convert.ToInt32(Session["Row"].ToString()), txtNumero.Text, txtNombre.Text, txtApPaterno.Text, txtApMaterno.Text, txtTelefono.Text, txtDireccion.Text, txtFecha.Text, Convert.ToInt32(ddlEstado.SelectedItem.Value) == 2 ? 0 : 2);
             if (satisfactorio == 1)
             {
@@ -482,8 +490,10 @@ namespace SaludDeAcero.AdministraciónSocios
         /// <param name="e"></param>
         protected void btnEliminarSocio_Click(object sender, EventArgs e)
         {
-            int satisfactorio = objHF.DelHistorialFisico(Convert.ToInt32(Session["Row"].ToString()));
-            satisfactorio = objHM.DelHistorialMedico(Convert.ToInt32(Session["Row"].ToString()));
+            int idSocio = Convert.ToInt32(Session["Row"].ToString());
+            int satisfactorio = objHF.DelHistorialFisico(idSocio);
+            satisfactorio = objHM.DelHistorialMedico(idSocio);
+            satisfactorio = objSM.DelSocioMembresia(idSocio, Convert.ToInt32(ddlPaquete.SelectedItem.Value));
             if (satisfactorio == 1)
             {
                 popUpMensajeAplicacion(2, "Se presentó un problema al guardar la información, Por Favor revisa e intenta de nuevo; =(");
@@ -505,9 +515,9 @@ namespace SaludDeAcero.AdministraciónSocios
         {
             this.popUpMensajeAplicación.ShowOnPageLoad = false;
             this.popUpRegistrar.ShowOnPageLoad = false;
-            //this.popUpEstadoSocio.ShowOnPageLoad = false;
+            this.popUpEstadoSocio.ShowOnPageLoad = false;
             //this.popUpConsultaHistorial.ShowOnPageLoad = false;
-            //this.popUpEliminarSocio.ShowOnPageLoad = false;
+            this.popUpEliminarSocio.ShowOnPageLoad = false;
         }
     }
 }

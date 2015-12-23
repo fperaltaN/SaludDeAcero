@@ -194,6 +194,152 @@
                 </ContentCollection>
             </dx:ASPxPopupControl>
 
+             <!-- Modal Consulta historal Pagos Socio -->
+            <dx:ASPxPopupControl ID="popUpConsultaHistorial" runat="server" Modal="true" HeaderText="Consultar de Historial de Socio por Periodo " AllowDragging="true"
+                PopupHorizontalAlign="WindowCenter" PopupVerticalAlign="WindowCenter" ShowCloseButton="true" Width="900px" Height="550px" ScrollBars="Vertical"
+                PopupAction="None" CloseAction="CloseButton" Theme="Office2010Silver">
+                <ContentCollection>
+                    <dx:PopupControlContentControl ID="PopupControlConsultaHistorialSocio" runat="server">
+                        <div>
+                            <div class="modal-content">
+                                <div class="modal-body">
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-md-2">
+                                                <div class="form-group">
+                                                    <label for="maternoSocio">Numero Socio</label>
+                                                    <asp:TextBox ID="txtNumeroSocioConPago" class="form-control" runat="server" Text="" ToolTip="Ingrese Número  del Socio"></asp:TextBox>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <div class="form-group">
+                                                    <label for="Nombre">Nombre(s) Socio</label>
+                                                    <asp:TextBox ID="txtNombreSocioConPago" class="form-control" runat="server" Text="" ToolTip="Ingrese Nombre del Socio"></asp:TextBox>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <div class="form-group">
+                                                    <label for="Nombre">Apellido Paterno</label>
+                                                    <asp:TextBox ID="txtApeidoPaternoConPago" class="form-control" runat="server" Text="" ToolTip="Ingrese Apellido Paterno"></asp:TextBox>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <div class="form-group">
+                                                    <label for="Nombre">Apellido Materno</label>
+                                                    <asp:TextBox ID="txtApeidoMaternoConPago" class="form-control" runat="server" Text="" ToolTip="Ingrese Apellido Materno"></asp:TextBox>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label for="Inicio">Inicio</label>
+                                                    <dx:ASPxDateEdit ID="FechaInicioConPago" runat="server" Theme="Metropolis" Width="260px" Height="33px"></dx:ASPxDateEdit>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label for="Inicio">Final</label>
+                                                    <dx:ASPxDateEdit ID="FechaFinalConPago" runat="server" Theme="Metropolis" Width="260px" Height="33px"></dx:ASPxDateEdit>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <asp:Button runat="server" Text="Cancelar" ID="btnCanConPago" class="btn btn-default" data-dismiss="modal" OnClick="btnCanConPago_Click"></asp:Button>
+                                    <asp:Button runat="server" Text="Consultar Periodo" ID="btnConPago" class="btn btn-success" OnClick="btnConPago_Click"></asp:Button>
+                                </div>
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col-md-8">
+                                            <div class="form-group">
+                                                <fieldset>
+                                                    <legend>Consulta de Pagos</legend>
+                                                    <dx:ASPxGridView ID="GVConsultaPagos" runat="server" KeyFieldName="" AutoGenerateColumns="False" Theme="Office2010Silver" Width="100%">
+                                                        <Columns>
+                                                            <%--<dx:GridViewCommandColumn ShowEditButton="true" VisibleIndex="0" />--%>
+                                                            <dx:GridViewDataTextColumn Caption="Acciones" VisibleIndex="0" Width="15%">
+                                                                <DataItemTemplate>
+                                                                    <asp:LinkButton ID="linkEditar" Text="Editar" runat="server" Visible="true" ForeColor="#666666"
+                                                                        Font-Size="Small" Font-Underline="True"></asp:LinkButton>
+                                                                </DataItemTemplate>
+                                                            </dx:GridViewDataTextColumn>
+                                                            <dx:GridViewDataColumn Caption="Id" FieldName="" VisibleIndex="0" Visible="false" />
+                                                            <dx:GridViewDataColumn Caption="Fecha Pago" FieldName="" VisibleIndex="0" Width="10%" />
+                                                            <dx:GridViewDataColumn Caption="Vencimineto" FieldName="" VisibleIndex="0" Width="10%" />
+                                                            <dx:GridViewDataColumn Caption="Paquete" FieldName="" VisibleIndex="0" Width="10%" />
+                                                            <dx:GridViewDataColumn Caption="Monto" FieldName="" VisibleIndex="0" Width="10%" />
+                                                            <dx:GridViewDataColumn Caption="Efectivo" FieldName="" VisibleIndex="0" Width="10%" />
+                                                            <dx:GridViewDataCheckColumn Caption="Activo" FieldName="" Visible="True" ReadOnly="false" VisibleIndex="20" Width="15%">
+                                                                <DataItemTemplate>
+                                                                    <asp:CheckBox ID="chkActivo" runat="server" Enabled="false" Checked='<%#Bind("ACTIVO")%>' />
+                                                                </DataItemTemplate>
+                                                            </dx:GridViewDataCheckColumn>
+                                                        </Columns>
+                                                        <SettingsBehavior ConfirmDelete="True" />
+                                                        <SettingsText Title="Canales de comunicación" />
+                                                        <SettingsLoadingPanel Text="" />
+                                                        <Settings ShowTitlePanel="True" ShowFilterBar="Auto" ShowFilterRow="true" />
+                                                        <SettingsPager NumericButtonCount="5" PageSize="5">
+                                                            <PageSizeItemSettings Items="5" />
+                                                        </SettingsPager>
+                                                    </dx:ASPxGridView>
+                                                    <br />
+                                                    <div style="text-align: right">
+                                                        <asp:Button runat="server" Text="Reimprimir Comprobante Seleccionado" ID="BtnReimprimir" class="btn-warning" OnClick="BtnReimprimir_Click"></asp:Button>
+
+                                                    </div>
+                                                </fieldset>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col-md-8">
+                                            <div class="form-group">
+
+                                                <fieldset>
+                                                    <legend>Asistencias</legend>
+                                                    <dx:ASPxGridView ID="GvAsistencia" runat="server" KeyFieldName="" AutoGenerateColumns="False" Theme="Office2010Silver" Width="100%">
+                                                        <Columns>
+                                                            <%--<dx:GridViewCommandColumn ShowEditButton="true" VisibleIndex="0" />--%>
+                                                            <dx:GridViewDataTextColumn Caption="Acciones" VisibleIndex="0" Width="15%">
+                                                                <DataItemTemplate>
+                                                                    <asp:LinkButton ID="linkEditar" Text="Editar" runat="server" Visible="true" ForeColor="#666666"
+                                                                        Font-Size="Small" Font-Underline="True"></asp:LinkButton>
+                                                                </DataItemTemplate>
+                                                            </dx:GridViewDataTextColumn>
+                                                            <dx:GridViewDataColumn Caption="Id" FieldName="" VisibleIndex="0" Visible="false" />
+                                                            <dx:GridViewDataColumn Caption="Identificador de Sesión" FieldName="" VisibleIndex="0" Width="10%" />
+                                                            <dx:GridViewDataColumn Caption="Fecha" FieldName="" VisibleIndex="0" Width="10%" />
+                                                            <dx:GridViewDataColumn Caption="Hora Inicio" FieldName="" VisibleIndex="0" Width="10%" />
+                                                            <dx:GridViewDataCheckColumn Caption="Activo" FieldName="" Visible="True" ReadOnly="false" VisibleIndex="20" Width="15%">
+                                                                <DataItemTemplate>
+                                                                    <asp:CheckBox ID="chkActivo" runat="server" Enabled="false" Checked='<%#Bind("ACTIVO")%>' />
+                                                                </DataItemTemplate>
+                                                            </dx:GridViewDataCheckColumn>
+                                                        </Columns>
+                                                        <SettingsBehavior ConfirmDelete="True" />
+                                                        <SettingsText Title="Canales de comunicación" />
+                                                        <SettingsLoadingPanel Text="" />
+                                                        <Settings ShowTitlePanel="True" ShowFilterBar="Auto" ShowFilterRow="true" />
+                                                        <SettingsPager NumericButtonCount="5" PageSize="5">
+                                                            <PageSizeItemSettings Items="5" />
+                                                        </SettingsPager>
+                                                    </dx:ASPxGridView>
+                                                </fieldset>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </dx:PopupControlContentControl>
+                </ContentCollection>
+            </dx:ASPxPopupControl>
+
               <!-- Actualizar Estado Socio -->
             <dx:ASPxPopupControl ID="popUpEstadoSocio" runat="server" Modal="true" HeaderText="Actualizar Estado Socio" AllowDragging="true"
                 PopupHorizontalAlign="WindowCenter" PopupVerticalAlign="WindowCenter" ShowCloseButton="true" Width="700px" Height="350px" ScrollBars="Vertical"
@@ -266,6 +412,55 @@
                                 </div>
                             </div>
                         </div>
+                        </div>
+                    </dx:PopupControlContentControl>
+                </ContentCollection>
+            </dx:ASPxPopupControl>
+
+            <!-- Modal Elimina  Socio -->
+            <dx:ASPxPopupControl ID="popUpEliminarSocio" runat="server" Modal="true" HeaderText="Eliminar Socio" AllowDragging="true"
+                PopupHorizontalAlign="WindowCenter" PopupVerticalAlign="WindowCenter" ShowCloseButton="true" Width="700px" Height="280px" ScrollBars="Vertical"
+                PopupAction="None" CloseAction="CloseButton" Theme="Office2010Silver">
+                <ContentCollection>
+                    <dx:PopupControlContentControl ID="PopupControlContentControl3" runat="server">
+                        <div class="modal-content">
+                            <div class="modal-body">
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col-md-2">
+                                            <div class="form-group">
+                                                <label for="numeroSocio">Número Socio</label>
+                                                <asp:TextBox ID="txtNumSocioEliminar" class="form-control" runat="server" Text="" ToolTip="Ingrese Número  del Socio"></asp:TextBox>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label for="nombreSocio">Nombre(s) Socio</label>
+                                                <asp:TextBox ID="txtNomSocioEliminar" class="form-control" runat="server" Text="" ToolTip="Ingrese Nombre(s) del Socio"></asp:TextBox>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label for="maternoSocio">Apellido Paterno</label>
+                                                <asp:TextBox ID="txtApPaternoEliminar" class="form-control" runat="server" Text="" ToolTip="Ingrese Apellido Paterno del Socio"></asp:TextBox>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label for="paternoSocio">Apellido Materno</label>
+                                                <asp:TextBox ID="txtApMaternoEliminar" class="form-control" runat="server" Text="" ToolTip="Ingrese Apellido Materno del Socio"></asp:TextBox>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <asp:Button class="btn btn-default" data-dismiss="modal" ID="btnCancelarEliminar" runat="server" Text="Cancelar Edición" OnClick="btnCancelarEliminar_Click" />
+                                    <asp:Button class="btn btn-warning" ID="btnEliminarSocio" runat="server" Text="Guardar Cambios" OnClick="btnEliminarSocio_Click" />
+                                </div>
+                            </div>
                         </div>
                     </dx:PopupControlContentControl>
                 </ContentCollection>
