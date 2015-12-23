@@ -46,7 +46,6 @@ namespace SaludDeAcero.AdministraciónSocios
                 FechaFinalConPago.Value = DateTime.Now;
                 cargaSocio();
                 cargaPaquetes();
-                cargaChecador();
                 btnModificarSocio.Visible = false;
                 btnEstadoSocio.Visible = false;
                 btnHistorialSocio.Visible = false;
@@ -178,10 +177,10 @@ namespace SaludDeAcero.AdministraciónSocios
         /// </summary>
         protected void cargaPago()
         {
-            DataSet datosSocios = objPagos.getPagoById(1);
-            //GVConsultaPagos.DataSource = datosSocios;
-            //GVConsultaPagos.DataBind();
-            //GVConsultaPagos.KeyFieldName = "id_Pago";
+            DataSet datosSocios = objPagos.getPagoById(Convert.ToInt32(Session["Row"].ToString()));
+            GVConsultaPagos.DataSource = datosSocios;
+            GVConsultaPagos.DataBind();
+            GVConsultaPagos.KeyFieldName = "id_Socio";
         }
 
         /// <summary>
@@ -189,10 +188,10 @@ namespace SaludDeAcero.AdministraciónSocios
         /// </summary>
         protected void cargaChecador()
         {
-            DataSet datosSocios = objChecador.getChecadorSocioById(1);
-            //GvAsistencia.DataSource = datosSocios;
-            //GvAsistencia.DataBind();
-            //GvAsistencia.KeyFieldName = "id_Checador";
+            DataSet datosSocios = objChecador.getChecadorSocioById(Convert.ToInt32(Session["Row"].ToString()));
+            GvAsistencia.DataSource = datosSocios;
+            GvAsistencia.DataBind();
+            GvAsistencia.KeyFieldName = "id_Checador";
         }
 
         /// <summary>
@@ -229,7 +228,9 @@ namespace SaludDeAcero.AdministraciónSocios
         /// Pone los datos del Socio seleccionado
         /// </summary>
         protected void setDatosSocio(DataSet Socio)
-        {            
+        {
+            cargaPago();
+            cargaChecador();
             //Modificación popUP
             txtNumero.Text = Socio.Tables[0].Rows[0]["num_socio"].ToString();
             txtNombre.Text = Socio.Tables[0].Rows[0]["Nombre"].ToString();

@@ -194,7 +194,7 @@
                 </ContentCollection>
             </dx:ASPxPopupControl>
 
-             <!-- Modal Consulta historal Pagos Socio -->
+            <!-- Modal Consulta historal Pagos Socio -->
             <dx:ASPxPopupControl ID="popUpConsultaHistorial" runat="server" Modal="true" HeaderText="Consultar de Historial de Socio por Periodo " AllowDragging="true"
                 PopupHorizontalAlign="WindowCenter" PopupVerticalAlign="WindowCenter" ShowCloseButton="true" Width="900px" Height="550px" ScrollBars="Vertical"
                 PopupAction="None" CloseAction="CloseButton" Theme="Office2010Silver">
@@ -261,17 +261,19 @@
                                                             <%--<dx:GridViewCommandColumn ShowEditButton="true" VisibleIndex="0" />--%>
                                                             <dx:GridViewDataTextColumn Caption="Acciones" VisibleIndex="0" Width="15%">
                                                                 <DataItemTemplate>
-                                                                    <asp:LinkButton ID="linkEditar" Text="Editar" runat="server" Visible="true" ForeColor="#666666"
-                                                                        Font-Size="Small" Font-Underline="True"></asp:LinkButton>
+                                                                    <asp:LinkButton ID="linkSeleccionar" Text="Seleccionar" runat="server" Visible="true" ForeColor="#666666"
+                                                                        Font-Size="X-Small" Font-Underline="True"></asp:LinkButton>
+                                                                    <asp:LinkButton ID="LinkCancelar" Text="Cancelar" runat="server" Visible="true" ForeColor="#666666"
+                                                                        Font-Size="X-Small" Font-Underline="True"></asp:LinkButton>
                                                                 </DataItemTemplate>
                                                             </dx:GridViewDataTextColumn>
-                                                            <dx:GridViewDataColumn Caption="Id" FieldName="" VisibleIndex="0" Visible="false" />
-                                                            <dx:GridViewDataColumn Caption="Fecha Pago" FieldName="" VisibleIndex="0" Width="10%" />
-                                                            <dx:GridViewDataColumn Caption="Vencimineto" FieldName="" VisibleIndex="0" Width="10%" />
-                                                            <dx:GridViewDataColumn Caption="Paquete" FieldName="" VisibleIndex="0" Width="10%" />
-                                                            <dx:GridViewDataColumn Caption="Monto" FieldName="" VisibleIndex="0" Width="10%" />
+                                                            <dx:GridViewDataColumn Caption="Id" FieldName="id_socio" VisibleIndex="0" Visible="false" />
+                                                            <dx:GridViewDataColumn Caption="Fecha Pago" FieldName="fecha_pago" VisibleIndex="0" Width="10%" />
+                                                            <dx:GridViewDataColumn Caption="Importe" FieldName="importe" VisibleIndex="0" Width="10%" />
+                                                            <dx:GridViewDataColumn Caption="Paquete" FieldName="descripcion" VisibleIndex="0" Width="10%" />
+                                                            <dx:GridViewDataColumn Caption="Empleado Cobro" FieldName="nombre" VisibleIndex="0" Width="20%" />
                                                             <dx:GridViewDataColumn Caption="Efectivo" FieldName="" VisibleIndex="0" Width="10%" />
-                                                            <dx:GridViewDataCheckColumn Caption="Activo" FieldName="" Visible="True" ReadOnly="false" VisibleIndex="20" Width="15%">
+                                                            <dx:GridViewDataCheckColumn Caption="Activo" FieldName="activo" Visible="True" ReadOnly="false" VisibleIndex="20" Width="15%">
                                                                 <DataItemTemplate>
                                                                     <asp:CheckBox ID="chkActivo" runat="server" Enabled="false" Checked='<%#Bind("ACTIVO")%>' />
                                                                 </DataItemTemplate>
@@ -307,15 +309,17 @@
                                                             <%--<dx:GridViewCommandColumn ShowEditButton="true" VisibleIndex="0" />--%>
                                                             <dx:GridViewDataTextColumn Caption="Acciones" VisibleIndex="0" Width="15%">
                                                                 <DataItemTemplate>
-                                                                    <asp:LinkButton ID="linkEditar" Text="Editar" runat="server" Visible="true" ForeColor="#666666"
-                                                                        Font-Size="Small" Font-Underline="True"></asp:LinkButton>
+                                                                    <asp:LinkButton ID="linkSeleccionar" Text="Seleccionar" runat="server" Visible="true" ForeColor="#666666"
+                                                                        Font-Size="X-Small" Font-Underline="True"></asp:LinkButton>
+                                                                    <asp:LinkButton ID="LinkCancelar" Text="Cancelar" runat="server" Visible="true" ForeColor="#666666"
+                                                                        Font-Size="X-Small" Font-Underline="True"></asp:LinkButton>
                                                                 </DataItemTemplate>
                                                             </dx:GridViewDataTextColumn>
-                                                            <dx:GridViewDataColumn Caption="Id" FieldName="" VisibleIndex="0" Visible="false" />
-                                                            <dx:GridViewDataColumn Caption="Identificador de Sesión" FieldName="" VisibleIndex="0" Width="10%" />
-                                                            <dx:GridViewDataColumn Caption="Fecha" FieldName="" VisibleIndex="0" Width="10%" />
-                                                            <dx:GridViewDataColumn Caption="Hora Inicio" FieldName="" VisibleIndex="0" Width="10%" />
-                                                            <dx:GridViewDataCheckColumn Caption="Activo" FieldName="" Visible="True" ReadOnly="false" VisibleIndex="20" Width="15%">
+                                                            <dx:GridViewDataColumn Caption="Id" FieldName="id_socio" VisibleIndex="0" Visible="false" />
+                                                            <dx:GridViewDataColumn Caption="Entrada" FieldName="entrada" VisibleIndex="0" Width="10%" />
+                                                            <dx:GridViewDataColumn Caption="Fecha Registro" FieldName="fecha_registro" VisibleIndex="0" Width="10%" />
+                                                            <%--<dx:GridViewDataColumn Caption="Hora Inicio" FieldName="" VisibleIndex="0" Width="10%" />--%>
+                                                            <dx:GridViewDataCheckColumn Caption="Activo" FieldName="activo" Visible="True" ReadOnly="false" VisibleIndex="20" Width="15%">
                                                                 <DataItemTemplate>
                                                                     <asp:CheckBox ID="chkActivo" runat="server" Enabled="false" Checked='<%#Bind("ACTIVO")%>' />
                                                                 </DataItemTemplate>
@@ -340,7 +344,7 @@
                 </ContentCollection>
             </dx:ASPxPopupControl>
 
-              <!-- Actualizar Estado Socio -->
+            <!-- Actualizar Estado Socio -->
             <dx:ASPxPopupControl ID="popUpEstadoSocio" runat="server" Modal="true" HeaderText="Actualizar Estado Socio" AllowDragging="true"
                 PopupHorizontalAlign="WindowCenter" PopupVerticalAlign="WindowCenter" ShowCloseButton="true" Width="700px" Height="350px" ScrollBars="Vertical"
                 PopupAction="None" CloseAction="CloseButton" Theme="Office2010Silver">
@@ -492,7 +496,7 @@
                     </dx:PopupControlContentControl>
                 </ContentCollection>
             </dx:ASPxPopupControl>
-            
+
         </ContentTemplate>
     </asp:UpdatePanel>
     <br />
