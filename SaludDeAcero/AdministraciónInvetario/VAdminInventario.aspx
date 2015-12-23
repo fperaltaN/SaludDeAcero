@@ -216,7 +216,7 @@
                                                     <div class="form-group">
                                                         <label for="producto">Seleccione Producto</label>
                                                         <div class="selectContainer">
-                                                            <asp:DropDownList class="form-control" ID="ddlProducto" runat="server"></asp:DropDownList>
+                                                            <asp:DropDownList class="form-control" ID="ddlProducto" runat="server" AutoPostBack="True" OnSelectedIndexChanged="ddlProducto_SelectedIndexChanged"></asp:DropDownList>
                                                             <%-- <asp:RequiredFieldValidator ID="ValidatorTipoUsuario" runat="server" ErrorMessage="*Seleccionar un tipo de usuario" ControlToValidate="ddlTipoUsuario"></asp:RequiredFieldValidator>--%>
                                                         </div>
                                                     </div>
@@ -226,7 +226,7 @@
                                                 <div class="col-md-2">
                                                     <div class="form-group">
                                                         <label for="Descripcion">Nombre</label>
-                                                        <asp:TextBox ID="txtVentadescripcion" class="form-control" runat="server" Text="" ToolTip="Ingrese Nombre del Socio"></asp:TextBox>
+                                                        <asp:TextBox ID="txtVentaNombre" class="form-control" runat="server" Text="" ToolTip="Ingrese Nombre del Socio"></asp:TextBox>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-2">
@@ -238,7 +238,7 @@
                                                 <div class="col-md-4">
                                                     <div class="form-group">
                                                         <label for="nombre">Descripcion</label>
-                                                        <asp:TextBox ID="TxtNombreProducto" class="form-control" runat="server" Text="" ToolTip="Ingrese Número  del Socio"></asp:TextBox>
+                                                        <asp:TextBox ID="TxtVentaDescripcion" class="form-control" runat="server" Text="" ToolTip="Ingrese Número  del Socio"></asp:TextBox>
                                                     </div>
                                                 </div>
                                             </div>
@@ -254,7 +254,7 @@
                                                 <div class="col-md-2">
                                                     <div class="form-group">
                                                         <label for="Cantidad">Cantidad</label>
-                                                        <asp:TextBox ID="TextBox1" class="form-control" runat="server" Text="" ToolTip="Ingrese Nombre del Socio"></asp:TextBox>
+                                                        <asp:TextBox ID="txtVentaCantidad" class="form-control" runat="server" Text="" ToolTip="Ingrese Nombre del Socio"></asp:TextBox>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-2">

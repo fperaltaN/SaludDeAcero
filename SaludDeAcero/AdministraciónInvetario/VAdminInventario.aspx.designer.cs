@@ -292,13 +292,13 @@ namespace Sisa.AdministraciónInvetario {
         protected global::System.Web.UI.WebControls.DropDownList ddlProducto;
         
         /// <summary>
-        /// txtVentadescripcion control.
+        /// txtVentaNombre control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtVentadescripcion;
+        protected global::System.Web.UI.WebControls.TextBox txtVentaNombre;
         
         /// <summary>
         /// TxtFechaVenta control.
@@ -310,13 +310,13 @@ namespace Sisa.AdministraciónInvetario {
         protected global::System.Web.UI.WebControls.TextBox TxtFechaVenta;
         
         /// <summary>
-        /// TxtNombreProducto control.
+        /// TxtVentaDescripcion control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TxtNombreProducto;
+        protected global::System.Web.UI.WebControls.TextBox TxtVentaDescripcion;
         
         /// <summary>
         /// txtVentaCosto control.
@@ -328,13 +328,13 @@ namespace Sisa.AdministraciónInvetario {
         protected global::System.Web.UI.WebControls.TextBox txtVentaCosto;
         
         /// <summary>
-        /// TextBox1 control.
+        /// txtVentaCantidad control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox1;
+        protected global::System.Web.UI.WebControls.TextBox txtVentaCantidad;
         
         /// <summary>
         /// txtTotalVenta control.

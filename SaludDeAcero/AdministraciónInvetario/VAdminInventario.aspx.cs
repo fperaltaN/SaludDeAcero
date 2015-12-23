@@ -404,5 +404,23 @@ namespace Sisa.AdministraciónInvetario
 
         }
 
+        /// <summary>
+        /// Carga los datos del producto seleccionado
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        protected void ddlProducto_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            DataSet producto = new DataSet();
+            N_Inventario ob = new N_Inventario();
+            producto = ob.getEmpleadoById(Convert.ToInt32(ddlProducto.SelectedItem.Value));
+            //popup Ventas
+            txtVentaNombre.Text = producto.Tables[0].Rows[0]["nombre"].ToString();
+            TxtFechaVenta.Text = DateTime.Now.ToShortDateString();
+            TxtVentaDescripcion.Text = producto.Tables[0].Rows[0]["descripcion"].ToString();
+            txtVentaCosto.Text = producto.Tables[0].Rows[0]["costo"].ToString();
+            txtVentaCantidad.Text = producto.Tables[0].Rows[0]["existencia"].ToString();
+            txtTotalVenta.Text = (Convert.ToDecimal(txtVentaCosto.Text) * Convert.ToDecimal(txtVentaCantidad.Text)).ToString();
+        }
     }
 }
