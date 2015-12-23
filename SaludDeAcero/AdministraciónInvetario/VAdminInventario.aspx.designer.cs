@@ -112,6 +112,15 @@ namespace Sisa.AdministraciónInvetario {
         protected global::System.Web.UI.WebControls.TextBox txtNombre;
         
         /// <summary>
+        /// TxtClave control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TxtClave;
+        
+        /// <summary>
         /// TxtDescripcion control.
         /// </summary>
         /// <remarks>
@@ -139,22 +148,22 @@ namespace Sisa.AdministraciónInvetario {
         protected global::System.Web.UI.WebControls.TextBox Txtcantidad;
         
         /// <summary>
-        /// FechaEntrada control.
+        /// lblEstado control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxDateEdit FechaEntrada;
+        protected global::System.Web.UI.WebControls.Label lblEstado;
         
         /// <summary>
-        /// Txttotal control.
+        /// ddlEstado control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox Txttotal;
+        protected global::System.Web.UI.WebControls.DropDownList ddlEstado;
         
         /// <summary>
         /// btnCancelar control.
@@ -211,15 +220,6 @@ namespace Sisa.AdministraciónInvetario {
         protected global::System.Web.UI.WebControls.TextBox TxteNombre;
         
         /// <summary>
-        /// TxteDescripcion control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TxteDescripcion;
-        
-        /// <summary>
         /// TxteCosto control.
         /// </summary>
         /// <remarks>
@@ -238,13 +238,13 @@ namespace Sisa.AdministraciónInvetario {
         protected global::System.Web.UI.WebControls.TextBox TxteCantidad;
         
         /// <summary>
-        /// FechaEliminacion control.
+        /// TxteDescripcion control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxDateEdit FechaEliminacion;
+        protected global::System.Web.UI.WebControls.TextBox TxteDescripcion;
         
         /// <summary>
         /// BtnCancelarEliminacion control.
@@ -283,22 +283,13 @@ namespace Sisa.AdministraciónInvetario {
         protected global::DevExpress.Web.PopupControlContentControl PopupControlVenta;
         
         /// <summary>
-        /// txtclaveproducto control.
+        /// ddlProducto control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtclaveproducto;
-        
-        /// <summary>
-        /// TxtNombreProducto control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TxtNombreProducto;
+        protected global::System.Web.UI.WebControls.DropDownList ddlProducto;
         
         /// <summary>
         /// txtVentadescripcion control.
@@ -308,6 +299,24 @@ namespace Sisa.AdministraciónInvetario {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtVentadescripcion;
+        
+        /// <summary>
+        /// TxtFechaVenta control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TxtFechaVenta;
+        
+        /// <summary>
+        /// TxtNombreProducto control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TxtNombreProducto;
         
         /// <summary>
         /// txtVentaCosto control.
@@ -326,15 +335,6 @@ namespace Sisa.AdministraciónInvetario {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox TextBox1;
-        
-        /// <summary>
-        /// FechaVenta control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::DevExpress.Web.ASPxDateEdit FechaVenta;
         
         /// <summary>
         /// txtTotalVenta control.
