@@ -301,7 +301,6 @@
                                     <div class="row">
                                         <div class="col-md-8">
                                             <div class="form-group">
-
                                                 <fieldset>
                                                     <legend>Asistencias</legend>
                                                     <dx:ASPxGridView ID="GvAsistencia" runat="server" KeyFieldName="" AutoGenerateColumns="False" Theme="Office2010Silver" Width="100%">
@@ -409,13 +408,13 @@
                                             </div>
                                         </div>
                                     </div>
+                                    <div class="modal-footer">
+                                        <asp:Button class="btn btn-default" data-dismiss="modal" ID="btnCancelarEstado" runat="server" Text="Cancelar Edición" OnClick="btnCancelarEstado_Click" />
+                                        <asp:Button class="btn btn-success" ID="btnGuardarEstado" runat="server" Text="Guardar Cambios" OnClick="btnGuardarEstado_Click" />
+                                    </div>
                                 </div>
-                                <div class="modal-footer">
-                                    <asp:Button class="btn btn-default" data-dismiss="modal" ID="btnCancelarEstado" runat="server" Text="Cancelar Edición" OnClick="btnCancelarEstado_Click" />
-                                    <asp:Button class="btn btn-success" ID="btnGuardarEstado" runat="server" Text="Guardar Cambios" OnClick="btnGuardarEstado_Click" />
-                                </div>
+
                             </div>
-                        </div>
                         </div>
                     </dx:PopupControlContentControl>
                 </ContentCollection>
