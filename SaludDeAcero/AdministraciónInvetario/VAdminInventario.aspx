@@ -203,7 +203,7 @@
 
                 <%--inicia Pop de Ventas--%>
                 <dx:ASPxPopupControl ID="popVenta" runat="server" Modal="true" HeaderText="Venta de productos Salud de Acero " AllowDragging="true"
-                    PopupHorizontalAlign="Center" PopupVerticalAlign="WindowCenter" ShowCloseButton="true" Width="900px" Height="550px" ScrollBars="Vertical"
+                    PopupHorizontalAlign="WindowCenter" PopupVerticalAlign="WindowCenter" ShowCloseButton="true" Width="900px" Height="550px" ScrollBars="Vertical"
                     PopupAction="None" CloseAction="CloseButton" Theme="Office2010Silver">
                     <ContentCollection>
                         <dx:PopupControlContentControl ID="PopupControlVenta" runat="server">
@@ -266,8 +266,8 @@
                                             </div>
                                         </div>
                                         <div class="modal-footer">
-                                            <asp:Button runat="server" Text="Limpiar Información" ID="btnLimpiain" class="btn btn-default" data-dismiss="modal"></asp:Button>
-                                            <asp:Button runat="server" Text="Realizar Venta" ID="btnagregar" class="btn btn-success"></asp:Button>
+                                            <asp:Button runat="server" Text="Limpiar Información" ID="btnLimpiain" class="btn btn-default" data-dismiss="modal" OnClick="btnLimpiain_Click"></asp:Button>
+                                            <asp:Button runat="server" Text="Agregar Producto" ID="btnagregar" class="btn btn-success" OnClick="btnagregar_Click"></asp:Button>
                                         </div>
                                         <div class="container">
                                             <div class="row">
@@ -275,26 +275,29 @@
                                                     <div class="form-group">
                                                         <fieldset>
                                                             <legend>Información productos</legend>
-                                                            <dx:ASPxGridView ID="GVListaProductos" runat="server" KeyFieldName="" AutoGenerateColumns="False" Theme="Office2010Silver" Width="100%">
+                                                            <dx:ASPxGridView ID="GVListaProductos" runat="server" KeyFieldName="id" AutoGenerateColumns="False" Theme="Office2010Silver" Width="100%" OnRowCommand="GVListaProductos_RowCommand">
+                                                                <TotalSummary>
+                                                                    <dx:ASPxSummaryItem FieldName="IVA" ShowInColumn="Subtotal" Tag="IVA" />
+                                                                </TotalSummary>
                                                                 <Columns>
                                                                     <%--<dx:GridViewCommandColumn ShowEditButton="true" VisibleIndex="0" />--%>
-                                                                    <dx:GridViewDataTextColumn Caption="Acciones" VisibleIndex="0" Width="15%">
-                                                                        <DataItemTemplate>
-                                                                            <asp:LinkButton ID="linkEditar" Text="Editar" runat="server" Visible="true" ForeColor="#666666"
-                                                                                Font-Size="Small" Font-Underline="True"></asp:LinkButton>
-                                                                        </DataItemTemplate>
-                                                                    </dx:GridViewDataTextColumn>
-                                                                    <dx:GridViewDataColumn Caption="Id" FieldName="" VisibleIndex="0" Visible="false" />
-                                                                    <dx:GridViewDataColumn Caption="Producto" FieldName="" VisibleIndex="0" Width="10%" />
-                                                                    <dx:GridViewDataColumn Caption="Descripción" FieldName="" VisibleIndex="0" Width="10%" />
-                                                                    <dx:GridViewDataColumn Caption="Cantidad" FieldName="" VisibleIndex="0" Width="10%" />
-                                                                    <dx:GridViewDataColumn Caption="Costo" FieldName="" VisibleIndex="0" Width="10%" />
-
-                                                                    <dx:GridViewDataCheckColumn Caption="Activo" FieldName="" Visible="True" ReadOnly="false" VisibleIndex="20" Width="15%">
+                                                                    <%--<dx:GridViewDataCheckColumn Caption="Activo" FieldName="" Visible="True" ReadOnly="false" VisibleIndex="20" Width="15%">
                                                                         <DataItemTemplate>
                                                                             <asp:CheckBox ID="chkActivo" runat="server" Enabled="false" Checked='<%#Bind("ACTIVO")%>' />
                                                                         </DataItemTemplate>
-                                                                    </dx:GridViewDataCheckColumn>
+                                                                    </dx:GridViewDataCheckColumn>--%>
+                                                                    <dx:GridViewDataTextColumn Caption="Acciones" VisibleIndex="0" Width="15%">
+                                                                        <DataItemTemplate>
+                                                                            <asp:LinkButton ID="linkEditar" Text="Eliminar Producto" runat="server" Visible="true" ForeColor="#666666"
+                                                                                Font-Size="Small" Font-Underline="True"></asp:LinkButton>
+                                                                        </DataItemTemplate>
+                                                                    </dx:GridViewDataTextColumn>
+                                                                    <dx:GridViewDataColumn Caption="Clave" FieldName="Clave" VisibleIndex="1" Visible="false" />
+                                                                    <dx:GridViewDataColumn Caption="Producto" FieldName="Producto" VisibleIndex="2" Width="10%" />
+                                                                    <dx:GridViewDataColumn Caption="Descripción" FieldName="Descripcion" VisibleIndex="3" Width="10%" />
+                                                                    <dx:GridViewDataColumn Caption="Cantidad" FieldName="Cantidad" VisibleIndex="4" Width="10%" />
+                                                                    <dx:GridViewDataColumn Caption="Costo" FieldName="Costo" VisibleIndex="5" Width="10%" />
+                                                                    <dx:GridViewDataColumn Caption="Subtotal" FieldName="Subtotal" VisibleIndex="6" Width="10%" />
                                                                 </Columns>
                                                                 <SettingsBehavior ConfirmDelete="True" />
                                                                 <SettingsText Title="Canales de comunicación" />
@@ -307,7 +310,7 @@
                                                             <br />
                                                             <div style="text-align: right">
                                                                 <%--<asp:Button runat="server" Text="Realizar Venta" ID="Btnrealizar Venta" class="btn-warning"></asp:Button>--%>
-                                                                <asp:Button ID="btnRealizarVenta" runat="server" Text="Realizar Venta" CssClass="btn-warning" />
+                                                                <asp:Button ID="btnRealizarVenta" runat="server" Text="Realizar Venta" CssClass="btn btn-warning" OnClick="btnRealizarVenta_Click" />
                                                             </div>
                                                         </fieldset>
                                                     </div>

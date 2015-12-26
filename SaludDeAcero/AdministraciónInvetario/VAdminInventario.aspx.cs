@@ -419,8 +419,123 @@ namespace Sisa.AdministraciónInvetario
             TxtFechaVenta.Text = DateTime.Now.ToShortDateString();
             TxtVentaDescripcion.Text = producto.Tables[0].Rows[0]["descripcion"].ToString();
             txtVentaCosto.Text = producto.Tables[0].Rows[0]["costo"].ToString();
-            txtVentaCantidad.Text = producto.Tables[0].Rows[0]["existencia"].ToString();
+            txtVentaCantidad.Text = "1";//producto.Tables[0].Rows[0]["existencia"].ToString();
             txtTotalVenta.Text = (Convert.ToDecimal(txtVentaCosto.Text) * Convert.ToDecimal(txtVentaCantidad.Text)).ToString();
+        }
+
+        /// <summary>
+        /// agrega los productos temporalmente al grid para realizar la venta
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        protected void btnagregar_Click(object sender, EventArgs e)
+        {
+            //agregar
+            DataTable dt;
+            if (Session["datos"] == null)
+            {
+                dt = new DataTable();
+                dt.Columns.Add(new DataColumn("Clave", typeof(String)));
+                dt.Columns.Add(new DataColumn("Producto", typeof(String)));
+                dt.Columns.Add(new DataColumn("Descripcion", typeof(String)));
+                dt.Columns.Add(new DataColumn("Cantidad", typeof(Int32)));
+                dt.Columns.Add(new DataColumn("Costo", typeof(Decimal)));
+                dt.Columns.Add(new DataColumn("Total", typeof(Decimal)));
+                dt.Columns.Add(new DataColumn("Subtotal", typeof(Decimal)));
+                dt.Columns.Add(new DataColumn("Iva", typeof(String)));
+                dt.Columns.Add(new DataColumn("id", typeof(Int32)));
+                dt.PrimaryKey = new DataColumn[] { dt.Columns["id"]};
+
+            }
+            else
+            {
+                dt = Session["datos"] as DataTable;
+            }
+            
+            DataRow drNewRow = dt.NewRow();
+            drNewRow["Clave"] = this.txtVentaNombre.Text;
+            drNewRow["Producto"] = ddlProducto.SelectedItem.Text;
+            drNewRow["Descripcion"] = this.TxtVentaDescripcion.Text;
+            drNewRow["Cantidad"] = txtVentaCantidad.Text;
+            drNewRow["Costo"] = txtVentaCosto.Text;
+            if (drNewRow["Subtotal"] == null || drNewRow["Subtotal"].ToString() == "")
+            {
+                drNewRow["Total"] = (Convert.ToDecimal(txtVentaCosto.Text) * Convert.ToDecimal(txtVentaCantidad.Text)).ToString();
+            }
+            else
+            {
+                drNewRow["Total"] = (Convert.ToDecimal(drNewRow["Subtotal"].ToString()) * Convert.ToDecimal(txtVentaCantidad.Text)).ToString();
+            }
+            drNewRow["Subtotal"] = (Convert.ToDecimal(txtVentaCosto.Text) * Convert.ToDecimal(txtVentaCantidad.Text)).ToString();
+            drNewRow["Iva"] = "16 %";
+            if (drNewRow["id"] == null || drNewRow["id"].ToString() == "")
+            {
+                drNewRow["id"] = 1;
+            }
+            else
+            {
+                drNewRow["id"] = (1 + Convert.ToInt32(drNewRow["id"].ToString())).ToString();                
+            }
+
+            dt.Rows.Add(drNewRow);
+            Session["datos"] = dt;
+            GVListaProductos.DataSource = dt;
+            GVListaProductos.DataBind();
+            GVListaProductos.KeyFieldName = "id";
+        }
+
+        /// <summary>
+        /// Limpia los campos del popOut Ventas
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        protected void btnLimpiain_Click(object sender, EventArgs e)
+        {
+            ddlProducto.SelectedIndex = 0;
+            txtVentaNombre.Text = "";
+            TxtFechaVenta.Text = "";
+            TxtVentaDescripcion.Text = "";
+            txtVentaCosto.Text = "0";
+            txtVentaCantidad.Text = "0";//producto.Tables[0].Rows[0]["existencia"].ToString();
+            txtTotalVenta.Text = "0";
+        }
+
+        /// <summary>
+        /// ELimina el producto de la popOut de a venta
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        protected void GVListaProductos_RowCommand(object sender, DevExpress.Web.ASPxGridViewRowCommandEventArgs e)
+        {
+            object id = e.KeyValue;
+            DataTable dt = Session["datos"] as DataTable;
+            int idColumn = Convert.ToInt32(dt.Rows[0]["id"].ToString());
+            LinkButton opLinkButton = (LinkButton)e.CommandSource;
+            if (id != null || id.ToString() != "")
+            {
+                if (opLinkButton.Text == "Eliminar Producto")
+                {
+                    for (int i = 0; i < dt.Rows.Count; i++)
+                    {
+                        if (Convert.ToInt32(dt.Rows[i]["id"].ToString()) == idColumn)
+                        {
+                            dt.Rows[i].Delete();
+                            GVListaProductos.DataSource = dt;
+                            GVListaProductos.DataBind();
+                        }                        
+                    }
+                }
+            } 
+        }
+
+        /// <summary>
+        /// Guarda en la Base de datos la venta del producto.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        protected void btnRealizarVenta_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
