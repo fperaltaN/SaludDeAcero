@@ -15,7 +15,7 @@ using CapaDatos;
 
 namespace Negocio
 {
-    class N_VentaProducto
+    public class N_VentaProducto
     {
         private int transSucess = 0;
 
@@ -84,7 +84,7 @@ namespace Negocio
         /// <param name="idProducto"></param>
         /// <param name="cantidad"></param>
         /// <returns></returns>
-        public int AddVentaProducto(int idVenta, string idProducto, int cantidad)
+        public int AddVentaProducto(int idVenta, int idProducto, int cantidad)
         {
             try
             {
@@ -112,14 +112,14 @@ namespace Negocio
         /// <param name="cantidad"></param>
         /// <param name="activo"></param>
         /// <returns></returns>
-        public int updtInventario(int venta,int id_producto, int cantidad,int activo)
+        public int updtVentaProducto(int venta,int id_producto, int cantidad,int activo)
         {
             try
             {
                 DataSet datos = new DataSet();
                 SQLDatos obj = new SQLDatos();
                 SqlParameter[] param = new SqlParameter[4];
-                param[0] = new SqlParameter("@id_venta", SqlDbType.Int, 10, ParameterDirection.Input, false, 0, 0, "", DataRowVersion.Current, ven);
+                param[0] = new SqlParameter("@id_venta", SqlDbType.Int, 10, ParameterDirection.Input, false, 0, 0, "", DataRowVersion.Current, venta);
                 param[1] = new SqlParameter("@id_producto", SqlDbType.Int, 10, ParameterDirection.Input, false, 0, 0, "", DataRowVersion.Current, id_producto);
                 param[2] = new SqlParameter("@cantidad", SqlDbType.VarChar, 10, ParameterDirection.Input, false, 0, 0, "", DataRowVersion.Current, cantidad);
                 param[3] = new SqlParameter("@activo", SqlDbType.VarChar, 10, ParameterDirection.Input, false, 0, 0, "", DataRowVersion.Current, activo);

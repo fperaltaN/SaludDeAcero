@@ -15,7 +15,7 @@ using CapaDatos;
 
 namespace Negocio
 {
-    class N_Venta
+    public class N_Venta
     {
         private int transSucess = 0;
 
@@ -58,7 +58,7 @@ namespace Negocio
         /// <param name="idVenta"></param>
         /// <param name="idProductos"></param>
         /// <returns></returns>
-        public DataSet getVentaProductosById(int idVenta, int idProducto)
+        public DataSet getVentaById(int idVenta, int idProducto)
         {
             DataSet datos = new DataSet();
             SQLDatos obj = new SQLDatos();
@@ -82,7 +82,7 @@ namespace Negocio
         /// <param name="total"></param>
         /// <param name="idEmpleado"></param>
         /// <returns></returns>
-        public int AddVentaProducto(int foliodiario, string total, int idEmpleado)
+        public int AddVentas(int foliodiario, string total, int idEmpleado, ref int idVenta)
         {
             try
             {
@@ -90,9 +90,10 @@ namespace Negocio
                 SQLDatos obj = new SQLDatos();
                 SqlParameter[] param = new SqlParameter[3];
                 param[0] = new SqlParameter("@folio_diario", SqlDbType.VarChar, 50, ParameterDirection.Input, false, 0, 0, "", DataRowVersion.Current, foliodiario);
-                param[1] = new SqlParameter("@total", SqlDbType.VarChar, 100, ParameterDirection.Input, false, 0, 0, "", DataRowVersion.Current, total);
+                param[1] = new SqlParameter("@total", SqlDbType.Decimal, 100, ParameterDirection.Input, false, 0, 0, "", DataRowVersion.Current, total);
                 param[2] = new SqlParameter("@id_empleado", SqlDbType.VarChar, 50, ParameterDirection.Input, false, 0, 0, "", DataRowVersion.Current, idEmpleado);
                 transSucess = obj.getDataFromSP(addVenta, param, "TblVenta", datos);
+                idVenta = Convert.ToInt32(datos.Tables[0].Rows[0]["id_venta"].ToString());
             }
             catch (Exception ex)
             {
@@ -110,7 +111,7 @@ namespace Negocio
         /// <param name="cantidad"></param>
         /// <param name="activo"></param>
         /// <returns></returns>
-        public int updtInventario(int venta, int foliodiario, string total, int idEmpleado, int activo)
+        public int updtVentas(int venta, int foliodiario, string total, int idEmpleado, int activo)
         {
             try
             {
@@ -138,7 +139,7 @@ namespace Negocio
         /// </summary>
         /// <param name="idVenta"></param>
         /// <returns></returns>
-        public int DelVentaProducto(int idVenta)
+        public int DelVenta(int idVenta)
         {
             DataSet datos = new DataSet();
             SQLDatos obj = new SQLDatos();
