@@ -73,292 +73,292 @@
 
                     </div>
                 </div>
-
-                <%--Agrega o Edita el produto--%>
-                <dx:ASPxPopupControl ID="PopupControlInvetarioEntrada" runat="server" Modal="true" HeaderText="Inventario Entradas" AllowDragging="true"
-                    PopupHorizontalAlign="WindowCenter" PopupVerticalAlign="WindowCenter" ShowCloseButton="true" Width="660px" Height="410px" ScrollBars="Vertical"
-                    PopupAction="None" CloseAction="CloseButton" Theme="Office2010Silver">
-                    <ContentCollection>
-                        <dx:PopupControlContentControl ID="PopupControlConsultaHistorialSocio" runat="server">
-                            <div>
-                                <div class="modal-content">
-                                    <div class="modal-body">
-                                        <div class="container">
-                                            <div class="row">
-                                                <div class="col-md-3">
-                                                    <div class="form-group">
-                                                        <label for="nombre">Nombre</label>
-                                                        <asp:TextBox runat="server" ToolTip="Ingrese el nombre producto" ID="txtNombre" class="form-control"></asp:TextBox>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-3">
-                                                    <div class="form-group">
-                                                        <label for="dclave">Clave</label>
-                                                        <asp:TextBox runat="server" ToolTip="Ingrese una descripción del producto" ID="TxtClave" class="form-control"></asp:TextBox>
-                                                    </div>
+            </div>
+            <%--Agrega o Edita el produto--%>
+            <dx:ASPxPopupControl ID="PopupControlInvetarioEntrada" runat="server" Modal="true" HeaderText="Inventario Entradas" AllowDragging="true"
+                PopupHorizontalAlign="WindowCenter" PopupVerticalAlign="WindowCenter" ShowCloseButton="true" Width="660px" Height="410px" ScrollBars="Vertical"
+                PopupAction="None" CloseAction="CloseButton" Theme="Office2010Silver">
+                <ContentCollection>
+                    <dx:PopupControlContentControl ID="PopupControlConsultaHistorialSocio" runat="server">
+                        <div>
+                            <div class="modal-content">
+                                <div class="modal-body">
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label for="nombre">Nombre</label>
+                                                    <asp:TextBox runat="server" ToolTip="Ingrese el nombre producto" ID="txtNombre" class="form-control"></asp:TextBox>
                                                 </div>
                                             </div>
-                                            <div class="row">
-                                                <div class="col-md-4">
-                                                    <div class="form-group">
-                                                        <label for="descripcion">Descripción</label>
-                                                        <asp:TextBox runat="server" ToolTip="Ingrese una descripción del producto" ID="TxtDescripcion" class="form-control"></asp:TextBox>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-md-3">
-                                                    <div class="form-group">
-                                                        <label for="Costo">Costo Unitario</label>
-                                                        <asp:TextBox runat="server" ToolTip="Ingrese Costo del producto" ID="Txtcosto" class="form-control"></asp:TextBox>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-3">
-                                                    <div class="form-group">
-                                                        <label for="cantidad">Cantidad</label>
-                                                        <asp:TextBox runat="server" ToolTip="Ingrese la catidad de productos" ID="Txtcantidad" class="form-control"></asp:TextBox>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-md-4">
-                                                    <div class="form-group">
-                                                        <asp:Label runat="server" ID="lblEstado" Text="Estado" Font-Bold="true"></asp:Label>
-                                                        <div class="selectContainer">
-                                                            <asp:DropDownList class="form-control" ID="ddlEstado" runat="server">
-                                                                <asp:ListItem>Elija una Opcion..</asp:ListItem>
-                                                                <asp:ListItem>Activo</asp:ListItem>
-                                                                <%--<asp:ListItem>Suspendio</asp:ListItem>--%>
-                                                                <asp:ListItem>Baja Temporal</asp:ListItem>
-                                                                <%--<asp:ListItem>Baja Definitiva</asp:ListItem>--%>
-                                                            </asp:DropDownList>
-                                                        </div>
-                                                    </div>
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label for="dclave">Clave</label>
+                                                    <asp:TextBox runat="server" ToolTip="Ingrese una descripción del producto" ID="TxtClave" class="form-control"></asp:TextBox>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="modal-footer">
-                                            <asp:Button class="btn btn-default" data-dismiss="modal" ID="btnCancelar" runat="server" Text="Cancelar Edición" OnClick="btnCancelar_Click" />
-                                            <asp:Button class="btn btn-success" ID="btnGuardar" runat="server" Text="Guardar Cambios" OnClick="btnGuardar_Click" />
-                                            <asp:Button class="btn btn-info" ID="btnActualizar" runat="server" Text="Actualizar Cambios" OnClick="btnActualizar_Click" />
-                                        </div>
-                                    </div>
-
-                                </div>
-                            </div>
-                        </dx:PopupControlContentControl>
-                    </ContentCollection>
-                </dx:ASPxPopupControl>
-
-
-                <%--eliminar prdoducto--%>
-                <dx:ASPxPopupControl ID="popEliminarProducto" runat="server" Modal="true" HeaderText="Eliminar producto" AllowDragging="true"
-                    PopupHorizontalAlign="WindowCenter" PopupVerticalAlign="WindowCenter" ShowCloseButton="true" Width="650px" Height="300px" ScrollBars="Vertical"
-                    PopupAction="None" CloseAction="CloseButton" Theme="Office2010Silver">
-                    <ContentCollection>
-                        <dx:PopupControlContentControl ID="PopupControlEliminarProducto" runat="server">
-                            <div>
-                                <div class="modal-content">
-                                    <div class="modal-body">
-                                        <div class="container">
-                                            <div class="row">
-                                                <div class="col-md-2">
-                                                    <div class="form-group">
-                                                        <label for="nombre">Nombre</label>
-                                                        <asp:TextBox runat="server" ToolTip="Ingrese el nombre producto" ID="TxteNombre" class="form-control"></asp:TextBox>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-2">
-                                                    <div class="form-group">
-                                                        <label for="Costo">Costo Unitario</label>
-                                                        <asp:TextBox runat="server" ToolTip="Ingrese Costo del producto" ID="TxteCosto" class="form-control"></asp:TextBox>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-2">
-                                                    <div class="form-group">
-                                                        <label for="cantidad">Cantidad</label>
-                                                        <asp:TextBox runat="server" ToolTip="Ingrese la catidad de productos" ID="TxteCantidad" class="form-control"></asp:TextBox>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-md-5">
-                                                    <div class="form-group">
-                                                        <label for="descripcion">Descripción</label>
-                                                        <asp:TextBox runat="server" ToolTip="Ingrese una descripción del producto" ID="TxteDescripcion" class="form-control"></asp:TextBox>
-                                                    </div>
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label for="descripcion">Descripción</label>
+                                                    <asp:TextBox runat="server" ToolTip="Ingrese una descripción del producto" ID="TxtDescripcion" class="form-control"></asp:TextBox>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="modal-footer">
-                                            <asp:Button class="btn btn-default" data-dismiss="modal" ID="BtnCancelarEliminacion" runat="server" Text="Cancelar Edición" OnClick="BtnCancelarEliminacion_Click" />
-                                            <asp:Button runat="server" Text="Guardar Cambios" ID="BtnEliminar" class="btn btn-warning" OnClick="BtnEliminar_Click"></asp:Button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </dx:PopupControlContentControl>
-                    </ContentCollection>
-                </dx:ASPxPopupControl>
-
-                <%--inicia Pop de Ventas--%>
-                <dx:ASPxPopupControl ID="popVenta" runat="server" Modal="true" HeaderText="Venta de productos Salud de Acero " AllowDragging="true"
-                    PopupHorizontalAlign="WindowCenter" PopupVerticalAlign="WindowCenter" ShowCloseButton="true" Width="900px" Height="550px" ScrollBars="Vertical"
-                    PopupAction="None" CloseAction="CloseButton" Theme="Office2010Silver">
-                    <ContentCollection>
-                        <dx:PopupControlContentControl ID="PopupControlVenta" runat="server">
-                            <div>
-                                <div class="modal-content">
-                                    <div class="modal-body">
-                                        <div class="container">
-                                            <div class="row">
-                                                <div class="col-md-4">
-                                                    <div class="form-group">
-                                                        <label for="producto">Seleccione Producto</label>
-                                                        <div class="selectContainer">
-                                                            <asp:DropDownList class="form-control" ID="ddlProducto" runat="server" AutoPostBack="True" OnSelectedIndexChanged="ddlProducto_SelectedIndexChanged"></asp:DropDownList>
-                                                            <%-- <asp:RequiredFieldValidator ID="ValidatorTipoUsuario" runat="server" ErrorMessage="*Seleccionar un tipo de usuario" ControlToValidate="ddlTipoUsuario"></asp:RequiredFieldValidator>--%>
-                                                        </div>
-                                                    </div>
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label for="Costo">Costo Unitario</label>
+                                                    <asp:TextBox runat="server" ToolTip="Ingrese Costo del producto" ID="Txtcosto" class="form-control"></asp:TextBox>
                                                 </div>
                                             </div>
-                                            <div class="row">
-                                                <div class="col-md-2">
-                                                    <div class="form-group">
-                                                        <label for="Descripcion">Nombre</label>
-                                                        <asp:TextBox ID="txtVentaNombre" class="form-control" runat="server" Text="" ToolTip="Ingrese Nombre del Socio"></asp:TextBox>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-2">
-                                                    <div class="form-group">
-                                                        <label for="Inicio">Fecha venta</label>
-                                                        <asp:TextBox ID="TxtFechaVenta" class="form-control" runat="server" Text="" ToolTip="Ingrese Número  del Socio"></asp:TextBox>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-4">
-                                                    <div class="form-group">
-                                                        <label for="nombre">Descripcion</label>
-                                                        <asp:TextBox ID="TxtVentaDescripcion" class="form-control" runat="server" Text="" ToolTip="Ingrese Número  del Socio"></asp:TextBox>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-
-
-                                                <div class="col-md-2">
-                                                    <div class="form-group">
-                                                        <label for="Nombre">Costo</label>
-                                                        <asp:TextBox ID="txtVentaCosto" class="form-control" runat="server" Text="" ToolTip="Ingrese Apellido Paterno"></asp:TextBox>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-2">
-                                                    <div class="form-group">
-                                                        <label for="Cantidad">Cantidad</label>
-                                                        <asp:TextBox ID="txtVentaCantidad" class="form-control" runat="server" Text="" ToolTip="Ingrese Nombre del Socio"></asp:TextBox>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-2">
-                                                    <div class="form-group">
-                                                        <label for="Total">Total</label>
-                                                        <asp:TextBox ID="txtTotalVenta" class="form-control" runat="server" Text="" ToolTip="Ingrese Nombre del Socio"></asp:TextBox>
-                                                    </div>
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label for="cantidad">Cantidad</label>
+                                                    <asp:TextBox runat="server" ToolTip="Ingrese la catidad de productos" ID="Txtcantidad" class="form-control"></asp:TextBox>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="modal-footer">
-                                            <asp:Button runat="server" Text="Limpiar Información" ID="btnLimpiain" class="btn btn-default" data-dismiss="modal" OnClick="btnLimpiain_Click"></asp:Button>
-                                            <asp:Button runat="server" Text="Agregar Producto" ID="btnagregar" class="btn btn-success" OnClick="btnagregar_Click"></asp:Button>
-                                        </div>
-                                        <div class="container">
-                                            <div class="row">
-                                                <div class="col-md-8">
-                                                    <div class="form-group">
-                                                        <fieldset>
-                                                            <legend>Información productos</legend>
-                                                            <dx:ASPxGridView ID="GVListaProductos" runat="server" KeyFieldName="id" AutoGenerateColumns="False" Theme="Office2010Silver" Width="100%" OnRowCommand="GVListaProductos_RowCommand" OnCustomUnboundColumnData="GVListaProductos_CustomUnboundColumnData">
-                                                                <TotalSummary>
-                                                                    <dx:ASPxSummaryItem FieldName="IVA" ShowInColumn="Subtotal" Tag="IVA" />
-                                                                    <dx:ASPxSummaryItem FieldName="Total" SummaryType="Sum" />
-                                                                    <dx:ASPxSummaryItem FieldName="IVA" />
-                                                                    <dx:ASPxSummaryItem FieldName="Quantity" SummaryType="Average" />
-                                                                    <dx:ASPxSummaryItem FieldName="Quantity" SummaryType="Max" />
-                                                                </TotalSummary>
-                                                                <Columns>
-                                                                    <%--<dx:GridViewCommandColumn ShowEditButton="true" VisibleIndex="0" />--%>
-                                                                    <%--<dx:GridViewDataCheckColumn Caption="Activo" FieldName="" Visible="True" ReadOnly="false" VisibleIndex="20" Width="15%">
-                                                                        <DataItemTemplate>
-                                                                            <asp:CheckBox ID="chkActivo" runat="server" Enabled="false" Checked='<%#Bind("ACTIVO")%>' />
-                                                                        </DataItemTemplate>
-                                                                    </dx:GridViewDataCheckColumn>--%>
-                                                                    <dx:GridViewDataTextColumn Caption="Acciones" VisibleIndex="0" Width="15%">
-                                                                        <DataItemTemplate>
-                                                                            <asp:LinkButton ID="linkEditar" Text="Eliminar Producto" runat="server" Visible="true" ForeColor="#666666"
-                                                                                Font-Size="Small" Font-Underline="True"></asp:LinkButton>
-                                                                        </DataItemTemplate>
-                                                                    </dx:GridViewDataTextColumn>
-                                                                    <dx:GridViewDataColumn Caption="Clave" FieldName="Clave" VisibleIndex="1" Visible="false" />
-                                                                    <dx:GridViewDataColumn Caption="Producto" FieldName="Producto" VisibleIndex="2" Width="10%" />
-                                                                    <dx:GridViewDataColumn Caption="Descripción" FieldName="Descripcion" VisibleIndex="3" Width="10%" />
-                                                                    <dx:GridViewDataColumn Caption="Cantidad" FieldName="Cantidad" VisibleIndex="4" Width="10%" />
-                                                                    <dx:GridViewDataColumn Caption="Costo" FieldName="Costo" VisibleIndex="5" Width="10%" />
-                                                                    <dx:GridViewDataColumn Caption="Subtotal" FieldName="Subtotal" VisibleIndex="6" Width="10%" />
-                                                                </Columns>
-                                                                <TotalSummary>
-                                                                    <dx:ASPxSummaryItem FieldName="IVA" ShowInColumn ="Subtotal" />
-                                                                    <dx:ASPxSummaryItem FieldName="Total" ShowInColumn ="Subtotal" SummaryType="Sum" />
-                                                                </TotalSummary>
-                                                                <SettingsBehavior ConfirmDelete="True" />
-                                                                <SettingsText Title="Canales de comunicación" />
-                                                                <SettingsLoadingPanel Text="" />
-                                                                <Settings ShowTitlePanel="True" ShowFilterBar="Auto" ShowFilterRow="true" ShowFooter="True" />
-                                                                <SettingsPager NumericButtonCount="5" PageSize="5">
-                                                                    <PageSizeItemSettings Items="5" />
-                                                                </SettingsPager>
-                                                            </dx:ASPxGridView>
-                                                            <br />
-                                                            <div style="text-align: right">
-                                                                <%--<asp:Button runat="server" Text="Realizar Venta" ID="Btnrealizar Venta" class="btn-warning"></asp:Button>--%>
-                                                                <asp:Button ID="btnRealizarVenta" runat="server" Text="Realizar Venta" CssClass="btn btn-warning" OnClick="btnRealizarVenta_Click" />
-                                                            </div>
-                                                        </fieldset>
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <asp:Label runat="server" ID="lblEstado" Text="Estado" Font-Bold="true"></asp:Label>
+                                                    <div class="selectContainer">
+                                                        <asp:DropDownList class="form-control" ID="ddlEstado" runat="server">
+                                                            <asp:ListItem>Elija una Opcion..</asp:ListItem>
+                                                            <asp:ListItem>Activo</asp:ListItem>
+                                                            <%--<asp:ListItem>Suspendio</asp:ListItem>--%>
+                                                            <asp:ListItem>Baja Temporal</asp:ListItem>
+                                                            <%--<asp:ListItem>Baja Definitiva</asp:ListItem>--%>
+                                                        </asp:DropDownList>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
+                                    <div class="modal-footer">
+                                        <asp:Button class="btn btn-default" data-dismiss="modal" ID="btnCancelar" runat="server" Text="Cancelar Edición" OnClick="btnCancelar_Click" />
+                                        <asp:Button class="btn btn-success" ID="btnGuardar" runat="server" Text="Guardar Cambios" OnClick="btnGuardar_Click" />
+                                        <asp:Button class="btn btn-info" ID="btnActualizar" runat="server" Text="Actualizar Cambios" OnClick="btnActualizar_Click" />
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </dx:PopupControlContentControl>
+                </ContentCollection>
+            </dx:ASPxPopupControl>
+
+
+            <%--eliminar prdoducto--%>
+            <dx:ASPxPopupControl ID="popEliminarProducto" runat="server" Modal="true" HeaderText="Eliminar producto" AllowDragging="true"
+                PopupHorizontalAlign="WindowCenter" PopupVerticalAlign="WindowCenter" ShowCloseButton="true" Width="650px" Height="300px" ScrollBars="Vertical"
+                PopupAction="None" CloseAction="CloseButton" Theme="Office2010Silver">
+                <ContentCollection>
+                    <dx:PopupControlContentControl ID="PopupControlEliminarProducto" runat="server">
+                        <div>
+                            <div class="modal-content">
+                                <div class="modal-body">
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-md-2">
+                                                <div class="form-group">
+                                                    <label for="nombre">Nombre</label>
+                                                    <asp:TextBox runat="server" ToolTip="Ingrese el nombre producto" ID="TxteNombre" class="form-control"></asp:TextBox>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <div class="form-group">
+                                                    <label for="Costo">Costo Unitario</label>
+                                                    <asp:TextBox runat="server" ToolTip="Ingrese Costo del producto" ID="TxteCosto" class="form-control"></asp:TextBox>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <div class="form-group">
+                                                    <label for="cantidad">Cantidad</label>
+                                                    <asp:TextBox runat="server" ToolTip="Ingrese la catidad de productos" ID="TxteCantidad" class="form-control"></asp:TextBox>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5">
+                                                <div class="form-group">
+                                                    <label for="descripcion">Descripción</label>
+                                                    <asp:TextBox runat="server" ToolTip="Ingrese una descripción del producto" ID="TxteDescripcion" class="form-control"></asp:TextBox>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <asp:Button class="btn btn-default" data-dismiss="modal" ID="BtnCancelarEliminacion" runat="server" Text="Cancelar Edición" OnClick="BtnCancelarEliminacion_Click" />
+                                        <asp:Button runat="server" Text="Guardar Cambios" ID="BtnEliminar" class="btn btn-warning" OnClick="BtnEliminar_Click"></asp:Button>
+                                    </div>
                                 </div>
                             </div>
-                        </dx:PopupControlContentControl>
-                    </ContentCollection>
-                </dx:ASPxPopupControl>
+                        </div>
+                    </dx:PopupControlContentControl>
+                </ContentCollection>
+            </dx:ASPxPopupControl>
 
-                <!-- Modal Mensaje  Usuario -->
-                <dx:ASPxPopupControl ID="popUpMensajeAplicación" runat="server" Modal="true" HeaderText="Mensaje de Aplicación" AllowDragging="true"
-                    PopupHorizontalAlign="WindowCenter" PopupVerticalAlign="WindowCenter" ShowCloseButton="true" Width="500px" Height="190px" ScrollBars="Vertical"
-                    PopupAction="None" CloseAction="CloseButton" Theme="Office2010Silver">
-                    <ContentCollection>
-                        <dx:PopupControlContentControl ID="PopupControlContentControl4" runat="server">
+            <%--inicia Pop de Ventas--%>
+            <dx:ASPxPopupControl ID="popVenta" runat="server" Modal="true" HeaderText="Venta de productos Salud de Acero " AllowDragging="true"
+                PopupHorizontalAlign="WindowCenter" PopupVerticalAlign="WindowCenter" ShowCloseButton="true" Width="900px" Height="550px" ScrollBars="Vertical"
+                PopupAction="None" CloseAction="CloseButton" Theme="Office2010Silver">
+                <ContentCollection>
+                    <dx:PopupControlContentControl ID="PopupControlVenta" runat="server">
+                        <div>
                             <div class="modal-content">
                                 <div class="modal-body">
                                     <div class="container">
                                         <div class="row">
                                             <div class="col-md-4">
-                                                <label for="Mensaje">Estado de la Transacción:</label>
-                                                <br />
-                                                &nbsp;&nbsp;&nbsp;<asp:Label ID="txtMensaje" runat="server" Text="" ToolTip="Mensaje de la aplicación"></asp:Label>
-                                                <br />
+                                                <div class="form-group">
+                                                    <label for="producto">Seleccione Producto</label>
+                                                    <div class="selectContainer">
+                                                        <asp:DropDownList class="form-control" ID="ddlProducto" runat="server" AutoPostBack="True" OnSelectedIndexChanged="ddlProducto_SelectedIndexChanged"></asp:DropDownList>
+                                                        <%-- <asp:RequiredFieldValidator ID="ValidatorTipoUsuario" runat="server" ErrorMessage="*Seleccionar un tipo de usuario" ControlToValidate="ddlTipoUsuario"></asp:RequiredFieldValidator>--%>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-2">
+                                                <div class="form-group">
+                                                    <label for="Descripcion">Nombre</label>
+                                                    <asp:TextBox ID="txtVentaNombre" class="form-control" runat="server" Text="" ToolTip="Ingrese Nombre del Socio"></asp:TextBox>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <div class="form-group">
+                                                    <label for="Inicio">Fecha venta</label>
+                                                    <asp:TextBox ID="TxtFechaVenta" class="form-control" runat="server" Text="" ToolTip="Ingrese Número  del Socio"></asp:TextBox>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label for="nombre">Descripcion</label>
+                                                    <asp:TextBox ID="TxtVentaDescripcion" class="form-control" runat="server" Text="" ToolTip="Ingrese Número  del Socio"></asp:TextBox>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+
+
+                                            <div class="col-md-2">
+                                                <div class="form-group">
+                                                    <label for="Nombre">Costo</label>
+                                                    <asp:TextBox ID="txtVentaCosto" class="form-control" runat="server" Text="" ToolTip="Ingrese Apellido Paterno"></asp:TextBox>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <div class="form-group">
+                                                    <label for="Cantidad">Cantidad</label>
+                                                    <asp:TextBox ID="txtVentaCantidad" class="form-control" runat="server" Text="" ToolTip="Ingrese Nombre del Socio"></asp:TextBox>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <div class="form-group">
+                                                    <label for="Total">Total</label>
+                                                    <asp:TextBox ID="txtTotalVenta" class="form-control" runat="server" Text="" ToolTip="Ingrese Nombre del Socio"></asp:TextBox>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="modal-footer">
-                                        <asp:Button class="btn btn-default" data-dismiss="modal" ID="btnMensajeApp" runat="server" Text="Entendido" OnClick="btnMensajeApp_Click" />
+                                        <asp:Button runat="server" Text="Limpiar Información" ID="btnLimpiain" class="btn btn-default" data-dismiss="modal" OnClick="btnLimpiain_Click"></asp:Button>
+                                        <asp:Button runat="server" Text="Agregar Producto" ID="btnagregar" class="btn btn-success" OnClick="btnagregar_Click"></asp:Button>
+                                    </div>
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-md-8">
+                                                <div class="form-group">
+                                                    <fieldset>
+                                                        <legend>Información productos</legend>
+                                                        <dx:ASPxGridView ID="GVListaProductos" runat="server" KeyFieldName="id" AutoGenerateColumns="False" Theme="Office2010Silver" Width="100%" OnRowCommand="GVListaProductos_RowCommand" OnCustomUnboundColumnData="GVListaProductos_CustomUnboundColumnData">
+                                                            <TotalSummary>
+                                                                <dx:ASPxSummaryItem FieldName="IVA" ShowInColumn="Subtotal" Tag="IVA" />
+                                                                <dx:ASPxSummaryItem FieldName="Total" SummaryType="Sum" />
+                                                                <dx:ASPxSummaryItem FieldName="IVA" />
+                                                                <dx:ASPxSummaryItem FieldName="Quantity" SummaryType="Average" />
+                                                                <dx:ASPxSummaryItem FieldName="Quantity" SummaryType="Max" />
+                                                            </TotalSummary>
+                                                            <Columns>
+                                                                <%--<dx:GridViewCommandColumn ShowEditButton="true" VisibleIndex="0" />--%>
+                                                                <%--<dx:GridViewDataCheckColumn Caption="Activo" FieldName="" Visible="True" ReadOnly="false" VisibleIndex="20" Width="15%">
+                                                                        <DataItemTemplate>
+                                                                            <asp:CheckBox ID="chkActivo" runat="server" Enabled="false" Checked='<%#Bind("ACTIVO")%>' />
+                                                                        </DataItemTemplate>
+                                                                    </dx:GridViewDataCheckColumn>--%>
+                                                                <dx:GridViewDataTextColumn Caption="Acciones" VisibleIndex="0" Width="15%">
+                                                                    <DataItemTemplate>
+                                                                        <asp:LinkButton ID="linkEditar" Text="Eliminar Producto" runat="server" Visible="true" ForeColor="#666666"
+                                                                            Font-Size="Small" Font-Underline="True"></asp:LinkButton>
+                                                                    </DataItemTemplate>
+                                                                </dx:GridViewDataTextColumn>
+                                                                <dx:GridViewDataColumn Caption="Clave" FieldName="Clave" VisibleIndex="1" Visible="false" />
+                                                                <dx:GridViewDataColumn Caption="Producto" FieldName="Producto" VisibleIndex="2" Width="10%" />
+                                                                <dx:GridViewDataColumn Caption="Descripción" FieldName="Descripcion" VisibleIndex="3" Width="10%" />
+                                                                <dx:GridViewDataColumn Caption="Cantidad" FieldName="Cantidad" VisibleIndex="4" Width="10%" />
+                                                                <dx:GridViewDataColumn Caption="Costo" FieldName="Costo" VisibleIndex="5" Width="10%" />
+                                                                <dx:GridViewDataColumn Caption="Subtotal" FieldName="Subtotal" VisibleIndex="6" Width="10%" />
+                                                            </Columns>
+                                                            <TotalSummary>
+                                                                <dx:ASPxSummaryItem FieldName="IVA" ShowInColumn="Subtotal" />
+                                                                <dx:ASPxSummaryItem FieldName="Total" ShowInColumn="Subtotal" SummaryType="Sum" />
+                                                            </TotalSummary>
+                                                            <SettingsBehavior ConfirmDelete="True" />
+                                                            <SettingsText Title="Canales de comunicación" />
+                                                            <SettingsLoadingPanel Text="" />
+                                                            <Settings ShowTitlePanel="True" ShowFilterBar="Auto" ShowFilterRow="true" ShowFooter="True" />
+                                                            <SettingsPager NumericButtonCount="5" PageSize="5">
+                                                                <PageSizeItemSettings Items="5" />
+                                                            </SettingsPager>
+                                                        </dx:ASPxGridView>
+                                                        <br />
+                                                        <div style="text-align: right">
+                                                            <%--<asp:Button runat="server" Text="Realizar Venta" ID="Btnrealizar Venta" class="btn-warning"></asp:Button>--%>
+                                                            <asp:Button ID="btnRealizarVenta" runat="server" Text="Realizar Venta" CssClass="btn btn-warning" OnClick="btnRealizarVenta_Click" />
+                                                        </div>
+                                                    </fieldset>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </dx:PopupControlContentControl>
-                    </ContentCollection>
-                </dx:ASPxPopupControl>
-            </div>
+                        </div>
+                    </dx:PopupControlContentControl>
+                </ContentCollection>
+            </dx:ASPxPopupControl>
+
+            <!-- Modal Mensaje  Usuario -->
+            <dx:ASPxPopupControl ID="popUpMensajeAplicación" runat="server" Modal="true" HeaderText="Mensaje de Aplicación" AllowDragging="true"
+                PopupHorizontalAlign="WindowCenter" PopupVerticalAlign="WindowCenter" ShowCloseButton="true" Width="500px" Height="190px" ScrollBars="Vertical"
+                PopupAction="None" CloseAction="CloseButton" Theme="Office2010Silver">
+                <ContentCollection>
+                    <dx:PopupControlContentControl ID="PopupControlContentControl4" runat="server">
+                        <div class="modal-content">
+                            <div class="modal-body">
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <label for="Mensaje">Estado de la Transacción:</label>
+                                            <br />
+                                            &nbsp;&nbsp;&nbsp;<asp:Label ID="txtMensaje" runat="server" Text="" ToolTip="Mensaje de la aplicación"></asp:Label>
+                                            <br />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <asp:Button class="btn btn-default" data-dismiss="modal" ID="btnMensajeApp" runat="server" Text="Entendido" OnClick="btnMensajeApp_Click" />
+                                </div>
+                            </div>
+                        </div>
+                    </dx:PopupControlContentControl>
+                </ContentCollection>
+            </dx:ASPxPopupControl>
+
 
         </ContentTemplate>
     </asp:UpdatePanel>
