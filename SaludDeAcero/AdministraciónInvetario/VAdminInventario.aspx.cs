@@ -213,11 +213,12 @@ namespace Sisa.AdministraciónInvetario
                 informacion = obj.updtInventario(Convert.ToInt32(Session["Row"].ToString()), txtNombre.Text, TxtDescripcion.Text, Txtcosto.Text, Txtcantidad.Text, TxtClave.Text, Convert.ToInt32(ddlEstado.SelectedIndex) == 2 ? 0 : 1);
                 if (informacion == 1)
                 {
-                    popUpMensajeAplicacion(2, "Se presentó un problema al guardar la información, Por Favor revisa e intenta de nuevo; =(");
+                    popUpMensajeAplicacion(1, "Información guardada con éxito; =)");
+                    
                 }
                 else
                 {
-                    popUpMensajeAplicacion(1, "Información guardada con éxito; =)");
+                    popUpMensajeAplicacion(2, "Se presentó un problema al guardar la información, Por Favor revisa e intenta de nuevo; =(");
                 }
             }
             cargaProducto();
@@ -413,7 +414,7 @@ namespace Sisa.AdministraciónInvetario
         {
             DataSet producto = new DataSet();
             N_Inventario ob = new N_Inventario();
-            producto = ob.getEmpleadoById(Convert.ToInt32(ddlProducto.SelectedItem.Value));
+            producto = ob.getProductoById(Convert.ToInt32(ddlProducto.SelectedItem.Value));
             //popup Ventas
             txtVentaNombre.Text = producto.Tables[0].Rows[0]["nombre"].ToString();
             TxtFechaVenta.Text = DateTime.Now.ToShortDateString();
@@ -436,6 +437,7 @@ namespace Sisa.AdministraciónInvetario
             {
                 dt = new DataTable();
                 dt.Columns.Add(new DataColumn("Clave", typeof(String)));
+                dt.Columns.Add(new DataColumn("IdProducto", typeof(String)));
                 dt.Columns.Add(new DataColumn("Producto", typeof(String)));
                 dt.Columns.Add(new DataColumn("Descripcion", typeof(String)));
                 dt.Columns.Add(new DataColumn("Cantidad", typeof(Int32)));
@@ -444,16 +446,17 @@ namespace Sisa.AdministraciónInvetario
                 dt.Columns.Add(new DataColumn("Subtotal", typeof(Decimal)));
                 dt.Columns.Add(new DataColumn("Iva", typeof(String)));
                 dt.Columns.Add(new DataColumn("id", typeof(Int32)));
-                dt.PrimaryKey = new DataColumn[] { dt.Columns["id"]};
+                dt.PrimaryKey = new DataColumn[] { dt.Columns["id"] };
 
             }
             else
             {
                 dt = Session["datos"] as DataTable;
             }
-            
+
             DataRow drNewRow = dt.NewRow();
             drNewRow["Clave"] = this.txtVentaNombre.Text;
+            drNewRow["IdProducto"] = ddlProducto.SelectedItem.Value;
             drNewRow["Producto"] = ddlProducto.SelectedItem.Text;
             drNewRow["Descripcion"] = this.TxtVentaDescripcion.Text;
             drNewRow["Cantidad"] = txtVentaCantidad.Text;
@@ -474,7 +477,7 @@ namespace Sisa.AdministraciónInvetario
             }
             else
             {
-                drNewRow["id"] = (1 + Convert.ToInt32(drNewRow["id"].ToString())).ToString();                
+                drNewRow["id"] = (1 + Convert.ToInt32(drNewRow["id"].ToString())).ToString();
             }
 
             dt.Rows.Add(drNewRow);
@@ -522,10 +525,10 @@ namespace Sisa.AdministraciónInvetario
                             dt.Rows[i].Delete();
                             GVListaProductos.DataSource = dt;
                             GVListaProductos.DataBind();
-                        }                        
+                        }
                     }
                 }
-            } 
+            }
         }
 
         /// <summary>
@@ -535,7 +538,55 @@ namespace Sisa.AdministraciónInvetario
         /// <param name="e"></param>
         protected void btnRealizarVenta_Click(object sender, EventArgs e)
         {
+            Int32 informacion = 0;
+            N_Venta objV = new N_Venta();
+            N_VentaProducto objVP = new N_VentaProducto();
+            DataTable dt = Session["datos"] as DataTable;
+            for (int i = 0; i < dt.Rows.Count; i++)
+            {
+                Int32 idVenta = 0;
+                informacion = objV.AddVentas(Convert.ToInt32(DateTime.Now.ToShortDateString().Replace("/", "")), dt.Rows[i]["Total"].ToString(),  Convert.ToInt32(Session["Id_Usuario"].ToString()),ref idVenta);
+                if (informacion == 1)
+                {
+                    informacion = objVP.AddVentaProducto(idVenta, Convert.ToInt32(dt.Rows[i]["IdProducto"].ToString()), Convert.ToInt32(dt.Rows[i]["Cantidad"].ToString()));
+                    popUpMensajeAplicacion(1, "Información guardada con éxito; =)");                   
+                }
+                else
+                {
+                    popUpMensajeAplicacion(2, "Se presentó un problema al guardar la información, Por Favor revisa e intenta de nuevo; =(");
+                }
 
+            }
+            DataTable tempTable = new DataTable();
+            GVListaProductos.DataSource = tempTable;
+            GVListaProductos.DataBind();
+            ddlProducto.SelectedIndex = 0;
+            txtVentaNombre.Text = "";
+            TxtFechaVenta.Text = "";
+            TxtVentaDescripcion.Text = "";
+            txtVentaCosto.Text = "0";
+            txtVentaCantidad.Text = "0";//producto.Tables[0].Rows[0]["existencia"].ToString();
+            txtTotalVenta.Text = "0";
+            Session["datos"] = null;
+        }
+
+        /// <summary>
+        /// Calcula el total de los Productos
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        protected void GVListaProductos_CustomUnboundColumnData(object sender, DevExpress.Web.ASPxGridViewColumnDataEventArgs e)
+        {
+            if (e.Column.FieldName == "Total")
+            {
+                decimal price = (decimal)e.GetListSourceFieldValue("Costo");
+                int quantity = Convert.ToInt32(e.GetListSourceFieldValue("Cantidad"));
+                e.Value = price * quantity;
+            }
+            if (e.Column.FieldName == "IVA")
+            {
+                e.Value = "IVA 16 %";
+            }
         }
     }
 }

@@ -275,9 +275,13 @@
                                                     <div class="form-group">
                                                         <fieldset>
                                                             <legend>Información productos</legend>
-                                                            <dx:ASPxGridView ID="GVListaProductos" runat="server" KeyFieldName="id" AutoGenerateColumns="False" Theme="Office2010Silver" Width="100%" OnRowCommand="GVListaProductos_RowCommand">
+                                                            <dx:ASPxGridView ID="GVListaProductos" runat="server" KeyFieldName="id" AutoGenerateColumns="False" Theme="Office2010Silver" Width="100%" OnRowCommand="GVListaProductos_RowCommand" OnCustomUnboundColumnData="GVListaProductos_CustomUnboundColumnData">
                                                                 <TotalSummary>
                                                                     <dx:ASPxSummaryItem FieldName="IVA" ShowInColumn="Subtotal" Tag="IVA" />
+                                                                    <dx:ASPxSummaryItem FieldName="Total" SummaryType="Sum" />
+                                                                    <dx:ASPxSummaryItem FieldName="IVA" />
+                                                                    <dx:ASPxSummaryItem FieldName="Quantity" SummaryType="Average" />
+                                                                    <dx:ASPxSummaryItem FieldName="Quantity" SummaryType="Max" />
                                                                 </TotalSummary>
                                                                 <Columns>
                                                                     <%--<dx:GridViewCommandColumn ShowEditButton="true" VisibleIndex="0" />--%>
@@ -299,10 +303,14 @@
                                                                     <dx:GridViewDataColumn Caption="Costo" FieldName="Costo" VisibleIndex="5" Width="10%" />
                                                                     <dx:GridViewDataColumn Caption="Subtotal" FieldName="Subtotal" VisibleIndex="6" Width="10%" />
                                                                 </Columns>
+                                                                <TotalSummary>
+                                                                    <dx:ASPxSummaryItem FieldName="IVA" ShowInColumn ="Subtotal" />
+                                                                    <dx:ASPxSummaryItem FieldName="Total" ShowInColumn ="Subtotal" SummaryType="Sum" />
+                                                                </TotalSummary>
                                                                 <SettingsBehavior ConfirmDelete="True" />
                                                                 <SettingsText Title="Canales de comunicación" />
                                                                 <SettingsLoadingPanel Text="" />
-                                                                <Settings ShowTitlePanel="True" ShowFilterBar="Auto" ShowFilterRow="true" />
+                                                                <Settings ShowTitlePanel="True" ShowFilterBar="Auto" ShowFilterRow="true" ShowFooter="True" />
                                                                 <SettingsPager NumericButtonCount="5" PageSize="5">
                                                                     <PageSizeItemSettings Items="5" />
                                                                 </SettingsPager>
