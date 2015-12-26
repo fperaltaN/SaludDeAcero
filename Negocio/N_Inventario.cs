@@ -1,4 +1,10 @@
-﻿using System;
+﻿/*''=============================================
+'' Autor:	Faleg A. Peralta
+'' Modificado por: 
+'' Fecha de Modificación: 06.10.2015
+'' Descripcion General: CRUD de Pago
+'' =============================================*/
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -53,14 +59,14 @@ namespace Negocio
         /// </summary>
         /// <param name="idEmpleado"></param>
         /// <returns></returns>
-        public DataSet getEmpleadoById(int idEmpleado)
+        public DataSet getProductoById(int idProducto)
         {
             DataSet datos = new DataSet();
             try
             {
                 SQLDatos obj = new SQLDatos();
                 SqlParameter[] param = new SqlParameter[1];
-                param[0] = new SqlParameter("@id_producto", SqlDbType.Int, 10, ParameterDirection.Input, false, 0, 0, "", DataRowVersion.Current, idEmpleado);
+                param[0] = new SqlParameter("@id_producto", SqlDbType.Int, 10, ParameterDirection.Input, false, 0, 0, "", DataRowVersion.Current, idProducto);
                 transSucess = obj.getDataFromSP(getProductoXId, param, "TblProducto", datos);
             }
             catch (Exception ex)
