@@ -140,8 +140,8 @@ namespace SaludDeAceroChecador
             {
                 if (Validate())
                 {
-                    N_Checador objChec = new N_Checador();
-                    objChec.addChecadors(txtxClave.Text);                 
+                    N_ChecadorSocio objChec = new N_ChecadorSocio();
+                    objChec.addChecadorSocios(txtxClave.Text);                 
                 }
             }
         }
