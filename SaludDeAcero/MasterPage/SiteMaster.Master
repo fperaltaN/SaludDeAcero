@@ -55,10 +55,10 @@
                             <a id="Socios" href="../Administración/VAdminSocios.aspx">Socios</a>
                         </li>
                         <li>
-                            <a id="Pagos" href="../AdministraciónPagos/VAdminSocios.aspx">Pagos</a>
+                            <a id="Pagos" href="../AdministraciónPagos/VAdminControlPagos.aspx">Pago de Paquete</a>
                         </li>
                         <li>
-                            <a id="Inventario" href="../AdministraciónInvetario/VAdminInventario.aspx">Inventario</a>
+                            <a id="Inventario" href="../AdministraciónInvetario/VAdminInventario.aspx">Ventas y Productos</a>
                         </li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
