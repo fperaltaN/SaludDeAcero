@@ -20,6 +20,8 @@ namespace Sisa
     {
         N_Paquete objPa = new N_Paquete();
         N_Pago objp = new N_Pago();
+        N_PagoRecargo objPR = new N_PagoRecargo();
+        N_Recargo objR = new N_Recargo();
         /// <summary>
         /// Evento de la Página cuando se termina de carga, este evento se genera por default
         /// </summary>
@@ -92,7 +94,7 @@ namespace Sisa
         /// <param name="e"></param>
         protected void btnGuardar_Click(object sender, EventArgs e)
         {
-            int idPago = 0;
+            int idPago = 0,idRecargo = 0;
             int satisfactorio = objp.addPagos(Convert.ToInt32(ddlPaquete.SelectedItem.Value), Convert.ToInt32(txtNumero.Text), Convert.ToInt32(Session["Id_Usuario"].ToString()), Convert.ToInt32(txtTotalRecibido.Text), ref idPago);
             if (idPago == 0)
             {
@@ -100,13 +102,10 @@ namespace Sisa
             }
             else
             {
-                satisfactorio = objHF.addHistorialFisico(idPago, txtFisicos.Text);
+                satisfactorio = objR.addRecargos(Convert.ToInt32(ddlPaquete.SelectedItem.Value), Convert.ToInt32(txtNumero.Text), false, Convert.ToInt32(txtTotalRecibido.Text), ref idRecargo);
                 if (satisfactorio == 1)
                     popUpMensajeAplicacion(2, "Se presentó un problema al guardar la información, Por Favor revisa e intenta de nuevo; =(");
-                satisfactorio = objHM.addHistorialMedico(idPago, txtFisicos.Text);
-                if (satisfactorio == 1)
-                    popUpMensajeAplicacion(2, "Se presentó un problema al guardar la información, Por Favor revisa e intenta de nuevo; =(");
-                satisfactorio = objSM.addSocioMembresia(idPago, Convert.ToInt32(ddlPaquete.SelectedItem.Value));
+                satisfactorio = objPR.addPagoRecargo(idPago, idRecargo);
                 if (satisfactorio == 1)
                 {
                     popUpMensajeAplicacion(2, "Se presentó un problema al guardar la información, Por Favor revisa e intenta de nuevo; =(");
@@ -126,7 +125,28 @@ namespace Sisa
         /// <param name="e"></param>
         protected void btnActualizar_Click(object sender, EventArgs e)
         {
-
+            int idPago = 0, idRecargo = 0;
+            int satisfactorio = objp.updtPagos(Convert.ToInt32(ddlPaquete.SelectedItem.Value), Convert.ToInt32(txtNumero.Text), Convert.ToInt32(Session["Id_Usuario"].ToString()), Convert.ToInt32(txtTotalRecibido.Text), Convert.ToInt32(ddlEstado.SelectedIndex) == 2 ? 0 : 1);
+            if (idPago == 0)
+            {
+                popUpMensajeAplicacion(2, "Se presentó un problema al guardar la información, Por Favor revisa e intenta de nuevo; =(");
+            }
+            else
+            {
+                satisfactorio = objR.updtRecargos(idRecargo,Convert.ToInt32(ddlPaquete.SelectedItem.Value), Convert.ToInt32(txtNumero.Text), true, Convert.ToInt32(txtTotalRecibido.Text), Convert.ToInt32(ddlEstado.SelectedIndex) == 2 ? 0 : 1);
+                if (satisfactorio == 1)
+                    popUpMensajeAplicacion(2, "Se presentó un problema al guardar la información, Por Favor revisa e intenta de nuevo; =(");
+                satisfactorio = objPR.updtPagoRecargo(idRecargo,idPago, idRecargo, Convert.ToInt32(ddlEstado.SelectedIndex) == 2 ? 0 : 1);
+                if (satisfactorio == 1)
+                {
+                    popUpMensajeAplicacion(2, "Se presentó un problema al guardar la información, Por Favor revisa e intenta de nuevo; =(");
+                }
+                else
+                {
+                    popUpMensajeAplicacion(1, "Información guardada con éxito; =)");
+                }
+            }
+            cargaPagos();
         }
 
 

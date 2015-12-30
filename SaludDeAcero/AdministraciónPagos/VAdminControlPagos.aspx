@@ -75,7 +75,7 @@
             </div>
 
             <%--  aki inicia informacion de pago --%>
-             <!-- Modal Registrar Socio -->
+            <!-- Modal Registrar Socio -->
             <dx:ASPxPopupControl ID="popUpRegistrar" runat="server" Modal="true" HeaderText="Registro de Socios" AllowDragging="true"
                 PopupHorizontalAlign="WindowCenter" PopupVerticalAlign="WindowCenter" ShowCloseButton="true" Width="700px" Height="570px" ScrollBars="Vertical"
                 PopupAction="None" CloseAction="CloseButton" Theme="Office2010Silver">
@@ -156,18 +156,34 @@
                                             </div>
                                         </div>
                                     </div>
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <asp:Label runat="server" ID="lblEstado" Text="Estado" Font-Bold="true"></asp:Label>
+                                                <div class="selectContainer">
+                                                    <asp:DropDownList class="form-control" ID="ddlEstado" runat="server">
+                                                        <asp:ListItem>Elija una Opcion..</asp:ListItem>
+                                                        <asp:ListItem>Activo</asp:ListItem>
+                                                        <%--<asp:ListItem>Suspendio</asp:ListItem>--%>
+                                                        <asp:ListItem>Baja Temporal</asp:ListItem>
+                                                        <%--<asp:ListItem>Baja Definitiva</asp:ListItem>--%>
+                                                    </asp:DropDownList>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                             <div class="modal-footer">
-                                    <asp:Button class="btn btn-default" data-dismiss="modal" ID="btnCancelar" runat="server" Text="Cancelar" OnClick="btnCancelar_Click" />
-                                    <asp:Button class="btn btn-success" ID="btnGuardar" runat="server" Text="Guardar Socio" OnClick="btnGuardar_Click" />
-                                    <asp:Button class="btn btn-info" ID="btnActualizar" runat="server" Text="Actualiar Cambios" OnClick="btnActualizar_Click" />
-                                </div>
+                                <asp:Button class="btn btn-default" data-dismiss="modal" ID="btnCancelar" runat="server" Text="Cancelar" OnClick="btnCancelar_Click" />
+                                <asp:Button class="btn btn-success" ID="btnGuardar" runat="server" Text="Guardar Socio" OnClick="btnGuardar_Click" />
+                                <asp:Button class="btn btn-info" ID="btnActualizar" runat="server" Text="Actualiar Cambios" OnClick="btnActualizar_Click" />
+                            </div>
                         </div>
                     </dx:PopupControlContentControl>
                 </ContentCollection>
             </dx:ASPxPopupControl>
-            
+
 
             <dx:ASPxPopupControl ID="popupcontrolConsultaPagos" runat="server" Modal="true" HeaderText="Consultar de Historial de Pagos " AllowDragging="true"
                 PopupHorizontalAlign="Center" PopupVerticalAlign="WindowCenter" ShowCloseButton="true" Width="800px" Height="350px" ScrollBars="Vertical"
