@@ -36,7 +36,7 @@ namespace SaludDeAceroChecador
         /// <param name="e"></param>
         private void FormChecador_Load(object sender, EventArgs e)
         {
-
+            limpiaCampos();
         }
 
         /// <summary>
@@ -140,9 +140,59 @@ namespace SaludDeAceroChecador
             {
                 if (Validate())
                 {
+                    N_Socio objSocio = new N_Socio();
                     N_ChecadorSocio objChec = new N_ChecadorSocio();
-                    objChec.addChecadorSocios(txtxClave.Text);                 
+
+                    DataSet obj = objSocio.getSociosGrid();
+                    objChec.addChecadorSocios(txtxClave.Text);
+
+                    foreach (DataRow temp in obj.Tables[0].Rows)
+                    {
+                        if (Convert.ToInt32(temp["num_socio"].ToString()) == Convert.ToInt32(txtxClave.Text))
+                        {
+                            imgSocio.Visible = true;
+                            lblBienvenidos.Visible = true;
+                            lblDias.Visible = true;
+                            lblNombre.Visible = true;
+                            lblSetDias.Visible = true;
+                            lblSetNombreSocio.Visible = true;
+                            lblSetNombreSocio.Text = temp["nombre"].ToString() + "" + temp["ap_paterno"].ToString() + " " + temp["ap_Materno"].ToString();
+                            lblSetDias.Text = "27";
+                            Image image = Image.FromFile(System.Windows.Forms.Application.StartupPath.Replace("\\bin\\Debug", "\\fotos\\" + txtxClave.Text  + ".jpg"));
+                            // Set the position  on the form.
+                            //imgSocio.Location = new Point(10, 60);
+                            imgSocio.SizeMode = PictureBoxSizeMode.StretchImage;
+                            //imgSocio.Size = new System.Drawing.Size(250, 180);
+                            imgSocio.Image = image;
+                            break;                          
+                        }
+                    }
+                    pausa(5000);
+                    limpiaCampos();
                 }
+            }
+        }
+
+        /// <summary>
+        /// Limpia los campos
+        /// </summary>
+        public void limpiaCampos()
+        {
+            lblBienvenidos.Visible = false;
+            lblDias.Visible = false;
+            lblNombre.Visible = false;
+            lblSetDias.Visible = false;
+            lblSetNombreSocio.Visible = false;
+            txtxClave.Text = "";
+            imgSocio.Visible = false;
+        }
+
+        public void pausa(int pSegundos)
+        {
+            int vInicio = Environment.TickCount;
+            while((Environment.TickCount - vInicio) <= pSegundos)
+            {                
+                Application.DoEvents();
             }
         }
 
@@ -154,5 +204,26 @@ namespace SaludDeAceroChecador
         {
             return !(String.IsNullOrEmpty(txtxClave.Text));
         }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click_2(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtxClave_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+        
     }
 }
