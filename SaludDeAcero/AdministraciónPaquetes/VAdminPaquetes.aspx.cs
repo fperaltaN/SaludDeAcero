@@ -120,7 +120,7 @@ namespace Sisa
             {
                 popUpMensajeAplicacion(1, "Información guardada con éxito; =)");
             }
-            Page.ClientScript.RegisterStartupScript(typeof(Page), "PopupScript", mensaje);
+            //Page.ClientScript.RegisterStartupScript(typeof(Page), "PopupScript", mensaje);
             cargaPaquetes();
         }
 
@@ -185,6 +185,7 @@ namespace Sisa
             txtNombrePaquete.Text = "";
             txtCosto.Text = "";
             txtdescripcionPaquete.Text = "";
+            txtDiasPaquete.Text = "";
             //popup Eliminar
             txtNombrePaqueteEliminar.Text = "";
             txtCostoEliminar.Text = "";
