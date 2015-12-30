@@ -89,7 +89,7 @@ namespace Negocio
             {
                 DataSet datos = new DataSet();
                 SQLDatos obj = new SQLDatos();
-                SqlParameter[] param = new SqlParameter[4];
+                SqlParameter[] param = new SqlParameter[5];
                 param[0] = new SqlParameter("@nombre", SqlDbType.VarChar, 50, ParameterDirection.Input, false, 0, 0, "", DataRowVersion.Current, nombre);
                 param[1] = new SqlParameter("@descripcion", SqlDbType.VarChar, 100, ParameterDirection.Input, false, 0, 0, "", DataRowVersion.Current, descripcion);
                 param[2] = new SqlParameter("@costo", SqlDbType.VarChar, 50, ParameterDirection.Input, false, 0, 0, "", DataRowVersion.Current, costo);
