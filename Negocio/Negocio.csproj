@@ -48,7 +48,9 @@
     <Compile Include="N_Inventario.cs" />
     <Compile Include="N_Login.cs" />
     <Compile Include="N_Menu.cs" />
+    <Compile Include="N_Recargo.cs" />
     <Compile Include="N_Pago.cs" />
+    <Compile Include="N_PagoRecargo.cs" />
     <Compile Include="N_Paquete.cs" />
     <Compile Include="N_Perfiles.cs" />
     <Compile Include="N_Socio.cs" />
