@@ -22,7 +22,7 @@ namespace SaludDeAcero.MasterPage
         /// <param name="e"></param>
         protected void Page_Init(object sender, EventArgs e)
         {
-            if (Session["Username"] == null)
+            if (Session["Usuario"] == null)
             {
                 Session.Abandon();
                 Response.Cookies.Add(new HttpCookie("ASP.NET_SessionId", ""));
@@ -53,7 +53,7 @@ namespace SaludDeAcero.MasterPage
                 lblUsuario.Text = Session["Nombre"].ToString();
             }
 
-            if (Convert.ToString(Session["Perfil"]) != "Administrador")
+            if (Convert.ToString(Session["Perfil"]) != "1")
             {
                 lblMenuPaquetes.Visible = false;
                 lblMenuEmpleados.Visible = false;
