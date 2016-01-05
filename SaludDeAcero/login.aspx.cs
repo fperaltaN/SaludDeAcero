@@ -47,7 +47,7 @@ namespace SaludDeAcero
                     string app = Convert.ToString(row["APELLIDO_PAT"]);
                     string nombre = name + " " + app;
                     Session["Nombre"] = nombre;
-                    Session["Perfil"] = Convert.ToString(row["ID_PERFIL"]);
+                    Session["Perfil"] = Convert.ToString(row["ID_PERFIL"]);                    
                     Session["Usuario"] = Convert.ToString(row["USUARIO"]);
                     Session["Id_Usuario"] = Convert.ToInt32(row["ID_USUARIO"]);
                 }
