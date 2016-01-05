@@ -23,27 +23,27 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-9">
-                        <h1 class="page-header">Administración de Empleados
+                        <h1 class="page-header">Administración de Usuarios
                         </h1>
                         <div class="container">
                             <ul class="nav nav-pills">
                                 <li role="presentation">
-                                    <asp:Button ID="btnAgregarEmpleado" class="btn btn-success btn-lg" runat="server" Text="Agregar Empleado" OnClick="btnAgregarEmpleado_Click" />
+                                    <asp:Button ID="btnAgregarEmpleado" class="btn btn-success btn-lg" runat="server" Text="Agregar Usuario" OnClick="btnAgregarEmpleado_Click" />
                                     <%--<button type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target="#myModalAddSocio">Agregar Socio</button>--%>
 
                                 </li>
                                 <li role="presentation">
-                                    <asp:Button ID="btnModificarEmpleado" class="btn btn-info btn-lg" runat="server" Text="Modificar Empleado" OnClick="btnModificarEmplaedo_Click" />
+                                    <asp:Button ID="btnModificarEmpleado" class="btn btn-info btn-lg" runat="server" Text="Modificar Usuario" OnClick="btnModificarEmplaedo_Click" />
                                     <%--<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModalAUpdateSocio">Modificar Socio</button>--%>
                                 </li>
                                 <li role="presentation">
-                                    <asp:Button ID="btnEliminarEmpleado" class="btn btn-danger btn-lg" runat="server" Text="Eliminar Empleado" OnClick="btnEliminarEmpleado_Click" />
+                                    <asp:Button ID="btnEliminarEmpleado" class="btn btn-danger btn-lg" runat="server" Text="Eliminar Usuario" OnClick="btnEliminarEmpleado_Click" />
                                     <%--<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModalEstadoSocio">Cambiar de Estado Socio</button>--%>
                                 </li>
                             </ul>
                         </div>
                         <div class="table-responsive">
-                            <h3 class="page-header">Registro de Empleados</h3>
+                            <h3 class="page-header">Registro de Usuario</h3>
                             <dx:ASPxGridView ID="grdEmpleados" runat="server" AutoGenerateColumns="False" Theme="Office2010Silver" Width="100%" OnRowCommand="grdEmpleados_RowCommand" OnHtmlRowPrepared="grdEmpleados_HtmlRowPrepared" OnLoad="grdEmpleados_Load">
                                 <Columns>
                                     <%--<dx:GridViewCommandColumn ShowEditButton="true" VisibleIndex="0" />--%>
@@ -86,7 +86,7 @@
             </div>
 
             <!-- Modal Registrar Usuario -->
-            <dx:ASPxPopupControl ID="popUpEditarEmpleado" runat="server" Modal="true" HeaderText="Registro de Empleados" AllowDragging="true"
+            <dx:ASPxPopupControl ID="popUpEditarEmpleado" runat="server" Modal="true" HeaderText="Registro de Usuarios" AllowDragging="true"
                 PopupHorizontalAlign="WindowCenter" PopupVerticalAlign="WindowCenter" ShowCloseButton="true" Width="650px" Height="480px" ScrollBars="Vertical"
                 PopupAction="None" CloseAction="CloseButton" Theme="Office2010Silver">
                 <ContentCollection>
@@ -97,7 +97,7 @@
                                     <div class="row">
                                         <div class="col-md-5">
                                             <div class="form-group">
-                                                <label for="NumEmpleado">Nombre(s) Empleado</label>
+                                                <label for="NumEmpleado">Nombre(s) Usuario</label>
                                                 <asp:TextBox ID="txtNombre" class="form-control" runat="server" Text="" ToolTip="Ingrese Nombre(s) del Empleado"></asp:TextBox>
                                             </div>
                                         </div>
@@ -167,7 +167,7 @@
             </dx:ASPxPopupControl>
 
             <!-- Modal Elimina  Usuario -->
-            <dx:ASPxPopupControl ID="popUpEliminarEmpleado" runat="server" Modal="true" HeaderText="Eliminar Empleado" AllowDragging="true"
+            <dx:ASPxPopupControl ID="popUpEliminarEmpleado" runat="server" Modal="true" HeaderText="Eliminar Usuario" AllowDragging="true"
                 PopupHorizontalAlign="WindowCenter" PopupVerticalAlign="WindowCenter" ShowCloseButton="true" Width="700px" Height="280px" ScrollBars="Vertical"
                 PopupAction="None" CloseAction="CloseButton" Theme="Office2010Silver">
                 <ContentCollection>

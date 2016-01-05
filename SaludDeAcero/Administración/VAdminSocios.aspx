@@ -471,7 +471,7 @@
 
             <!-- Modal Mensaje  Usuario -->
             <dx:ASPxPopupControl ID="popUpMensajeAplicación" runat="server" Modal="true" HeaderText="Mensaje de Aplicación" AllowDragging="true"
-                PopupHorizontalAlign="WindowCenter" PopupVerticalAlign="WindowCenter" ShowCloseButton="true" Width="500px" Height="190px" ScrollBars="Vertical"
+                PopupHorizontalAlign="WindowCenter" PopupVerticalAlign="WindowCenter" ShowCloseButton="true" Width="500px" Height="210px" ScrollBars="Vertical"
                 PopupAction="None" CloseAction="CloseButton" Theme="Office2010Silver">
                 <ContentCollection>
                     <dx:PopupControlContentControl ID="PopupControlContentControl4" runat="server">
@@ -488,6 +488,8 @@
                                     </div>
                                 </div>
                                 <div class="modal-footer">
+                                    <asp:Button class="btn btn-danger" data-dismiss="modal" ID="btnMensajeAppCancelar" runat="server" Text="Cancelar" OnClick="btnMensajeAppCancelar_Click"  />
+                                    <asp:Button class="btn btn-warning" data-dismiss="modal" ID="btnMensajeAppContinuar" runat="server" Text="Continuar" OnClick="btnMensajeAppContinuar_Click" />
                                     <asp:Button class="btn btn-default" data-dismiss="modal" ID="btnMensajeApp" runat="server" Text="Entendido" OnClick="btnMensajeApp_Click" />
                                 </div>
                             </div>

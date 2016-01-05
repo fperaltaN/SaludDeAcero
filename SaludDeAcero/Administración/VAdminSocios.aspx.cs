@@ -32,12 +32,15 @@ namespace SaludDeAcero.AdministraciónSocios
         /// <param name="e"></param>
         protected void Page_Load(object sender, EventArgs e)
         {
-            Response.AddHeader("Refresh", Convert.ToString((Session.Timeout * 60) + 5));
             if (Session["Usuario"] == null)
             {
                 Session.Abandon();
                 Response.Cookies.Add(new HttpCookie("ASP.NET_SessionId", ""));
                 Response.Redirect("~/Login.aspx");
+            }
+            else
+            {
+                Response.AddHeader("Refresh", Convert.ToString((Session.Timeout * 60) + 5));
             }
             if (!IsPostBack)
             {
@@ -242,7 +245,7 @@ namespace SaludDeAcero.AdministraciónSocios
 
             //Estado
             txtNumeroEstado.Text = Socio.Tables[0].Rows[0]["num_socio"].ToString();
-            txtNombreEstado.Text= Socio.Tables[0].Rows[0]["Nombre"].ToString();
+            txtNombreEstado.Text = Socio.Tables[0].Rows[0]["Nombre"].ToString();
             txtApPaternoEstado.Text = Socio.Tables[0].Rows[0]["ap_paterno"].ToString();
             txtApMaternoEstado.Text = Socio.Tables[0].Rows[0]["ap_materno"].ToString();
             ddlEstado.SelectedIndex = (Convert.ToBoolean(Socio.Tables[0].Rows[0]["activo"].ToString()) == false ? 0 : 1);
@@ -266,7 +269,7 @@ namespace SaludDeAcero.AdministraciónSocios
             datosSocios = objSM.getSocioMembresiaPaqueteById(Convert.ToInt32(Session["Row"].ToString()));
             ddlPaquete.SelectedIndex = Convert.ToInt32(datosSocios.Tables[0].Rows[0]["id_paquete"].ToString());
 
-            
+
         }
 
         /// <summary>
@@ -330,6 +333,23 @@ namespace SaludDeAcero.AdministraciónSocios
         /// <param name="sender"></param>
         /// <param name="e"></param>
         protected void btnGuardar_Click(object sender, EventArgs e)
+        {           
+            string valNum = objU.valNumSocio(Convert.ToInt32(txtNumero.Text));
+            string valSocio = objU.valSocio(txtNombre.Text, txtApPaterno.Text, txtApMaterno.Text);
+            if (valNum != "" || valSocio != "")
+            {
+                popUpMensajeAplicacion(3, valNum + " - " + valSocio );
+            }
+            else
+            {
+                guardaSocio();
+            }
+        }
+
+        /// <summary>
+        /// Guarda el Socio si este no existe
+        /// </summary>
+        public void guardaSocio()
         {
             int idSocio = 0;
             int satisfactorio = objU.addSocios(txtNumero.Text, txtNombre.Text, txtApPaterno.Text, txtApMaterno.Text, txtTelefono.Text, txtDireccion.Text, txtFecha.Text, ref idSocio);
@@ -366,7 +386,7 @@ namespace SaludDeAcero.AdministraciónSocios
         protected void btnActualizar_Click(object sender, EventArgs e)
         {
             int idSocio = Convert.ToInt32(Session["Row"].ToString());
-            int satisfactorio = objU.updtSocios(idSocio,txtNumero.Text, txtNombre.Text, txtApPaterno.Text, txtApMaterno.Text, txtTelefono.Text, txtDireccion.Text, txtFecha.Text, Convert.ToInt32(ddlEstado.SelectedIndex) == 2 ? 0 : 1);
+            int satisfactorio = objU.updtSocios(idSocio, txtNumero.Text, txtNombre.Text, txtApPaterno.Text, txtApMaterno.Text, txtTelefono.Text, txtDireccion.Text, txtFecha.Text, Convert.ToInt32(ddlEstado.SelectedIndex) == 2 ? 0 : 1);
             if (idSocio == 0)
             {
                 popUpMensajeAplicacion(2, "Se presentó un problema al guardar la información, Por Favor revisa e intenta de nuevo; =(");
@@ -460,18 +480,24 @@ namespace SaludDeAcero.AdministraciónSocios
                     txtMensaje.Text = Mensaje;
                     txtMensaje.ForeColor = Color.Green;
                     txtMensaje.Font.Bold = true;
-                    this.popUpMensajeAplicación.ShowOnPageLoad = true;
+                    btnMensajeAppContinuar.Visible = false;
+                    btnMensajeApp.Visible = true;
+                    this.popUpMensajeAplicación.ShowOnPageLoad = true;                    
                     break;
                 case 2:
                     txtMensaje.Text = Mensaje;
                     txtMensaje.ForeColor = Color.Red;
                     txtMensaje.Font.Bold = true;
+                    btnMensajeAppContinuar.Visible = false;
+                    btnMensajeApp.Visible = true;
                     this.popUpMensajeAplicación.ShowOnPageLoad = true;
                     break;
                 case 3:
                     txtMensaje.Text = Mensaje;
-                    txtMensaje.ForeColor = Color.Yellow;
+                    txtMensaje.ForeColor = Color.LightGoldenrodYellow;
                     txtMensaje.Font.Bold = true;
+                    btnMensajeAppContinuar.Visible = false;
+                    btnMensajeApp.Visible = true;
                     this.popUpMensajeAplicación.ShowOnPageLoad = true;
                     break;
                 default:
@@ -519,6 +545,26 @@ namespace SaludDeAcero.AdministraciónSocios
             this.popUpEstadoSocio.ShowOnPageLoad = false;
             //this.popUpConsultaHistorial.ShowOnPageLoad = false;
             this.popUpEliminarSocio.ShowOnPageLoad = false;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        protected void btnMensajeAppCancelar_Click(object sender, EventArgs e)
+        {
+            this.popUpMensajeAplicación.ShowOnPageLoad = false;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        protected void btnMensajeAppContinuar_Click(object sender, EventArgs e)
+        {
+            guardaSocio();
         }
     }
 }
