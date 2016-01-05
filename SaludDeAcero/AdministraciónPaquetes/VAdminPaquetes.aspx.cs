@@ -26,14 +26,18 @@ namespace Sisa
         /// <param name="sender"></param>
         /// <param name="e"></param>
         protected void Page_Load(object sender, EventArgs e)
-        {
-            Response.AddHeader("Refresh", Convert.ToString((Session.Timeout * 60) + 5));
+        {            
             if (Session["Usuario"] == null)
             {
                 Session.Abandon();
                 Response.Cookies.Add(new HttpCookie("ASP.NET_SessionId", ""));
                 Response.Redirect("~/Login.aspx");
             }
+            else
+            {
+                Response.AddHeader("Refresh", Convert.ToString((Session.Timeout * 60) + 5));
+            }
+
             if (!IsPostBack)
             {
                 cargaPaquetes();
