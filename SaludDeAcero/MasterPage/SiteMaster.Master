@@ -43,22 +43,34 @@
                 <nav id="bs-navbar" class="collapse navbar-collapse">
                     <ul class="nav navbar-nav">
                         <li>
-                            <a id="Inicio" href="../MasterPage/default.aspx">Inicio</a>
+                            <a id="Inicio" href="../MasterPage/default.aspx">
+                                <asp:Label ID="lblMenuInicio" runat="server" Text="Inicio"></asp:Label>
+                            </a>
                         </li>
                         <li>
-                            <a id="Usuarios" href="../Administración/VAdminEmpleados.aspx">Empleados</a>
+                            <a id="Usuarios" href="../Administración/VAdminEmpleados.aspx">
+                                <asp:Label ID="lblMenuEmpleados" runat="server" Text="Empleados"></asp:Label>
+                            </a>
                         </li>
                         <li>
-                            <a id="Paquetes" href="../AdministraciónPaquetes/VAdminPaquetes.aspx">Paquetes</a>
+                            <a id="Paquetes" href="../AdministraciónPaquetes/VAdminPaquetes.aspx">
+                                <asp:Label ID="lblMenuPaquetes" runat="server" Text="Paquetes"></asp:Label>
+                            </a>
                         </li>
                         <li>
-                            <a id="Socios" href="../Administración/VAdminSocios.aspx">Socios</a>
+                            <a id="Socios" href="../Administración/VAdminSocios.aspx">
+                                <asp:Label ID="lblMenuSocios" runat="server" Text="Socios"></asp:Label>
+                            </a>
                         </li>
                         <li>
-                            <a id="Pagos" href="../AdministraciónPagos/VAdminControlPagos.aspx">Pago de Paquete</a>
+                            <a id="Pagos" href="../AdministraciónPagos/VAdminControlPagos.aspx">
+                                <asp:Label ID="lblMenuPagoPaquete" runat="server" Text="Pago de Paquete"></asp:Label>
+                            </a>
                         </li>
                         <li>
-                            <a id="Inventario" href="../AdministraciónInvetario/VAdminInventario.aspx">Ventas y Productos</a>
+                            <a id="Inventario" href="../AdministraciónInvetario/VAdminInventario.aspx">
+                                <asp:Label ID="lblMenuVentasProductos" runat="server" Text="Ventas y Productos"></asp:Label>
+                            </a>
                         </li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">

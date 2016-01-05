@@ -16,6 +16,24 @@ namespace SaludDeAcero.MasterPage
     public partial class SiteMaster : System.Web.UI.MasterPage
     {
         /// <summary>
+        /// Verifica el inicio de session por error en la master page
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        protected void Page_Init(object sender, EventArgs e)
+        {
+            if (Session["Username"] == null)
+            {
+                Session.Abandon();
+                Response.Cookies.Add(new HttpCookie("ASP.NET_SessionId", ""));
+                Response.Redirect("~/Login.aspx");
+            }
+            else
+            {
+                lblUsuario.Text = Session["Nombre"].ToString();
+            }
+        }
+        /// <summary>
         /// Evento de la Página cuando se termina de carga, este evento se genera por default
         /// </summary>
         /// <param name="sender"></param>
@@ -34,7 +52,14 @@ namespace SaludDeAcero.MasterPage
             {
                 lblUsuario.Text = Session["Nombre"].ToString();
             }
-            
+
+            if (Convert.ToString(Session["Perfil"]) != "Administrador")
+            {
+                lblMenuPaquetes.Visible = false;
+                lblMenuEmpleados.Visible = false;
+                lblMenuVentasProductos.Visible = false;
+            }
+
         }
 
         /// <summary>
