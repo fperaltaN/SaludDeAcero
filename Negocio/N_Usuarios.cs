@@ -19,6 +19,7 @@ namespace Negocio
     {
         #region variables privadas
         private int transSucess = 0;
+        private string valUsuarios = "ValidaUsuario";
         private string getUsuarios = "sel_usuario";
         private string getUsuarioXId = "sel_byId_usuario";
         private string addUsuarios = "add_usuario";
@@ -52,6 +53,31 @@ namespace Negocio
                 SqlParameter[] param = new SqlParameter[1];
                 param[0] = new SqlParameter("@id_usuario", SqlDbType.Int, 10, ParameterDirection.Input, false, 0, 0, "", DataRowVersion.Current, idEmpleado);
                 transSucess = obj.getDataFromSP(getUsuarioXId, param, "TblUsuario", datos);
+            }
+            catch (Exception ex)
+            {
+                transSucess = 1;
+            }
+
+            return datos;
+        }
+
+
+        /// <summary>
+        ///  Valida que el nombre de un usuario no se repita
+        /// </summary>
+        /// <param name="nombre"></param>
+        /// <param name=""></param>
+        /// <returns></returns>
+        public DataSet valEmpleado(string nombre)
+        {
+            DataSet datos = new DataSet();
+            SQLDatos obj = new SQLDatos();
+            try
+            {
+                SqlParameter[] param = new SqlParameter[3];
+                param[0] = new SqlParameter("@nombre", SqlDbType.VarChar, 50, ParameterDirection.Input, false, 0, 0, "", DataRowVersion.Current, nombre);
+               transSucess = obj.getDataFromSP(valUsuarios, param, "TblUsuarios", datos);
             }
             catch (Exception ex)
             {

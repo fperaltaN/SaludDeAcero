@@ -19,6 +19,8 @@ namespace Negocio
     {
         #region variables privadas
         private int transSucess = 0;
+        private string valNumEmpleados = "ValidaNumEmpleado";
+        private string valEmpleados = "ValidaEmpleado";
         private string getEmpleados = "sel_empleado";
         private string getEmpleadoXId = "sel_byId_empleado"; 
         private string addEmpleado = "add_empleado";
@@ -53,6 +55,57 @@ namespace Negocio
                 SqlParameter[] param = new SqlParameter[1];
                 param[0] = new SqlParameter("@id_empleado", SqlDbType.Int, 10, ParameterDirection.Input, false, 0, 0, "", DataRowVersion.Current, idEmpleado);
                transSucess = obj.getDataFromSP(getEmpleadoXId, param, "TblEmpleado", datos);
+            }
+            catch (Exception ex)
+            {
+                transSucess = 1;
+            }
+
+            return datos;
+        }
+
+        /// <summary>
+        /// Valida el numero de un empleado no se repita
+        /// </summary>
+        /// <param name="NumEmpleado"></param>
+        /// <returns></returns>
+        public DataSet valNumEmpleado(int NumEmpleado)
+        {
+            DataSet datos = new DataSet();
+            SQLDatos obj = new SQLDatos();
+            try
+            {
+                SqlParameter[] param = new SqlParameter[1];
+                param[0] = new SqlParameter("@num_empleado", SqlDbType.Int, 10, ParameterDirection.Input, false, 0, 0, "", DataRowVersion.Current, NumEmpleado);
+                transSucess = obj.getDataFromSP(valNumEmpleados, param, "TblEmpleado", datos);
+            }
+            catch (Exception ex)
+            {
+                transSucess = 1;
+            }
+
+            return datos;
+        }
+
+        /// <summary>
+        ///  Valida que el nombre de un empleado no se repita
+        /// </summary>
+        /// <param name="nombre"></param>
+        /// <param name="ap_paterno"></param>
+        /// <param name="ap_materno"></param>
+        /// <param name=""></param>
+        /// <returns></returns>
+        public DataSet valEmpleado(string nombre, string ap_paterno, string ap_materno)
+        {
+            DataSet datos = new DataSet();
+            SQLDatos obj = new SQLDatos();
+            try
+            {
+                SqlParameter[] param = new SqlParameter[3];
+                param[0] = new SqlParameter("@nombre", SqlDbType.VarChar, 50, ParameterDirection.Input, false, 0, 0, "", DataRowVersion.Current, nombre);
+                param[1] = new SqlParameter("@ap_paterno", SqlDbType.VarChar, 50, ParameterDirection.Input, false, 0, 0, "", DataRowVersion.Current, ap_paterno);
+                param[2] = new SqlParameter("@ap_materno", SqlDbType.VarChar, 50, ParameterDirection.Input, false, 0, 0, "", DataRowVersion.Current, ap_materno);
+                transSucess = obj.getDataFromSP(valEmpleados, param, "TblEmpleado", datos);
             }
             catch (Exception ex)
             {

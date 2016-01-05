@@ -20,6 +20,8 @@ namespace Negocio
 
         #region variables privadas
         private int transSucess = 0;
+        private string valNumSocios = "ValidaNumSocio";
+        private string valSocios = "ValidaSocio";
         private string getSocios = "sel_Socio";
         private string getSocioXId = "sel_byId_Socio";
         private string addSocio = "add_Socio";
@@ -61,6 +63,57 @@ namespace Negocio
             }
 
             return datos;
+        }
+
+        /// <summary>
+        /// Valida el numero de un empleado no se repita
+        /// </summary>
+        /// <param name="NumSocio"></param>
+        /// <returns></returns>
+        public string valNumSocio(int NumSocio)
+        {
+            DataSet datos = new DataSet();
+            SQLDatos obj = new SQLDatos();
+            string mensaje="";
+            try
+            {
+                SqlParameter[] param = new SqlParameter[1];
+                param[0] = new SqlParameter("@num_socio", SqlDbType.Int, 10, ParameterDirection.Input, false, 0, 0, "", DataRowVersion.Current, NumSocio);
+                transSucess = obj.getDataFromSP(valNumSocios, param, "TblSocio", datos);
+            }
+            catch (Exception ex)
+            {
+                mensaje = "Este numero de SOCIO ya existe, Favor de modificarlo;";
+            }
+            return mensaje;
+        }
+
+        /// <summary>
+        ///  Valida que el nombre de un socio no se repita
+        /// </summary>
+        /// <param name="nombre"></param>
+        /// <param name="ap_paterno"></param>
+        /// <param name="ap_materno"></param>
+        /// <param name=""></param>
+        /// <returns></returns>
+        public string valSocio(string nombre, string ap_paterno, string ap_materno)
+        {
+            DataSet datos = new DataSet();
+            SQLDatos obj = new SQLDatos();
+            string mensaje = "";
+            try
+            {
+                SqlParameter[] param = new SqlParameter[3];
+                param[0] = new SqlParameter("@nombre", SqlDbType.VarChar, 50, ParameterDirection.Input, false, 0, 0, "", DataRowVersion.Current, nombre);
+                param[1] = new SqlParameter("@ap_paterno", SqlDbType.VarChar, 50, ParameterDirection.Input, false, 0, 0, "", DataRowVersion.Current, ap_paterno);
+                param[2] = new SqlParameter("@ap_materno", SqlDbType.VarChar, 50, ParameterDirection.Input, false, 0, 0, "", DataRowVersion.Current, ap_materno);
+                transSucess = obj.getDataFromSP(valSocios, param, "TblSocio", datos);
+            }
+            catch (Exception ex)
+            {
+                mensaje = "Al paracer este SOCIO esta duplicado revisa la información;Si estas seguro de agregarlo Has clic en continuar!!!;";
+            }
+            return mensaje;
         }
 
         /// <summary>
