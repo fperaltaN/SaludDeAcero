@@ -105,7 +105,7 @@ namespace Negocio
                 SQLDatos obj = new SQLDatos();
                 SqlParameter[] param = new SqlParameter[3];
                 param[0] = new SqlParameter("@id_socio", SqlDbType.Int, 10, ParameterDirection.Input, false, 0, 0, "", DataRowVersion.Current, idSocio);
-                param[1] = new SqlParameter("@descripcion", SqlDbType.VarChar, 10, ParameterDirection.Input, false, 0, 0, "", DataRowVersion.Current, descripcion);
+                param[1] = new SqlParameter("@descripcion", SqlDbType.VarChar, 100, ParameterDirection.Input, false, 0, 0, "", DataRowVersion.Current, descripcion);
                 param[2] = new SqlParameter("@activo", SqlDbType.Bit, 250, ParameterDirection.Input, false, 0, 0, "", DataRowVersion.Current, activo);
                 transSucess = obj.getDataFromSP(updHMSocio, param, "TblHistorialMedico", datos);
             }

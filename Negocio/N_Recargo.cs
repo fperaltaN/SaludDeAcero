@@ -81,7 +81,7 @@ namespace Negocio
                 param[0] = new SqlParameter("@id_paquete", SqlDbType.Int, 10, ParameterDirection.Input, false, 0, 0, "", DataRowVersion.Current, id_paquete);
                 param[1] = new SqlParameter("@id_socio", SqlDbType.VarChar, 50, ParameterDirection.Input, false, 0, 0, "", DataRowVersion.Current, id_socio);
                 param[2] = new SqlParameter("@liberacion", SqlDbType.VarChar, 50, ParameterDirection.Input, false, 0, 0, "", DataRowVersion.Current, liberacion);
-                param[3] = new SqlParameter("@importe", SqlDbType.VarChar, 50, ParameterDirection.Input, false, 0, 0, "", DataRowVersion.Current, importe);
+                param[3] = new SqlParameter("@importe", SqlDbType.Decimal, 50, ParameterDirection.Input, false, 0, 0, "", DataRowVersion.Current, importe);
                 transSucess = obj.getDataFromSP(addRecargo, param, "Tblrecargo", datos);
                 idrecargo = Convert.ToInt32(datos.Tables[0].Rows[0]["id_recargo"].ToString());
             }
@@ -113,7 +113,7 @@ namespace Negocio
                 param[1] = new SqlParameter("@id_paquete", SqlDbType.Int, 10, ParameterDirection.Input, false, 0, 0, "", DataRowVersion.Current, id_paquete);
                 param[2] = new SqlParameter("@id_socio", SqlDbType.VarChar, 50, ParameterDirection.Input, false, 0, 0, "", DataRowVersion.Current, id_socio);
                 param[3] = new SqlParameter("@liberacion", SqlDbType.VarChar, 50, ParameterDirection.Input, false, 0, 0, "", DataRowVersion.Current, liberacion);
-                param[4] = new SqlParameter("@importe", SqlDbType.VarChar, 50, ParameterDirection.Input, false, 0, 0, "", DataRowVersion.Current, importe);
+                param[4] = new SqlParameter("@importe", SqlDbType.Decimal, 50, ParameterDirection.Input, false, 0, 0, "", DataRowVersion.Current, importe);
                 param[5] = new SqlParameter("@activo", SqlDbType.Bit, 250, ParameterDirection.Input, false, 0, 0, "", DataRowVersion.Current, activo);
                 transSucess = obj.getDataFromSP(updRecargo, param, "Tblrecargo", datos);
             }
