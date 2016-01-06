@@ -69,10 +69,11 @@ namespace Negocio
         /// </summary>
         /// <param name="NumEmpleado"></param>
         /// <returns></returns>
-        public DataSet valNumEmpleado(int NumEmpleado)
+        public string valNumEmpleado(int NumEmpleado)
         {
             DataSet datos = new DataSet();
             SQLDatos obj = new SQLDatos();
+            string mensaje = "";
             try
             {
                 SqlParameter[] param = new SqlParameter[1];
@@ -81,10 +82,9 @@ namespace Negocio
             }
             catch (Exception ex)
             {
-                transSucess = 1;
+                mensaje = "Este numero de Empleado ya existe, Favor de modificarlo;";
             }
-
-            return datos;
+            return mensaje;
         }
 
         /// <summary>
@@ -95,10 +95,11 @@ namespace Negocio
         /// <param name="ap_materno"></param>
         /// <param name=""></param>
         /// <returns></returns>
-        public DataSet valEmpleado(string nombre, string ap_paterno, string ap_materno)
+        public string valEmpleado(string nombre, string ap_paterno, string ap_materno)
         {
             DataSet datos = new DataSet();
             SQLDatos obj = new SQLDatos();
+            string mensaje = "";
             try
             {
                 SqlParameter[] param = new SqlParameter[3];
@@ -109,10 +110,9 @@ namespace Negocio
             }
             catch (Exception ex)
             {
-                transSucess = 1;
+                mensaje = "Al paracer este Empleado esta duplicado revisa la información;Si estas seguro de agregarlo Has clic en continuar!!!;";
             }
-
-            return datos;
+            return mensaje;
         }
 
         /// <summary>
