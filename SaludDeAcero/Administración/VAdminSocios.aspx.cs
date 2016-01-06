@@ -338,6 +338,16 @@ namespace SaludDeAcero.AdministraciónSocios
             string valSocio = objU.valSocio(txtNombre.Text, txtApPaterno.Text, txtApMaterno.Text);
             if (valNum != "" || valSocio != "")
             {
+                if (valNum =="")
+                {
+                    btnMensajeAppContinuar.Visible = true;
+                    btnMensajeApp.Visible = false;
+                }
+                else
+                {
+                    btnMensajeAppContinuar.Visible = false;
+                    btnMensajeApp.Visible = true;
+                }
                 popUpMensajeAplicacion(3, valNum + " - " + valSocio );
             }
             else
@@ -369,10 +379,14 @@ namespace SaludDeAcero.AdministraciónSocios
                 if (satisfactorio == 1)
                 {
                     popUpMensajeAplicacion(2, "Se presentó un problema al guardar la información, Por Favor revisa e intenta de nuevo; =(");
+                    btnMensajeAppContinuar.Visible = false;
+                    btnMensajeApp.Visible = true;
                 }
                 else
                 {
                     popUpMensajeAplicacion(1, "Información guardada con éxito; =)");
+                    btnMensajeAppContinuar.Visible = false;
+                    btnMensajeApp.Visible = true;
                 }
             }
             cargaSocio();
@@ -480,24 +494,18 @@ namespace SaludDeAcero.AdministraciónSocios
                     txtMensaje.Text = Mensaje;
                     txtMensaje.ForeColor = Color.Green;
                     txtMensaje.Font.Bold = true;
-                    btnMensajeAppContinuar.Visible = false;
-                    btnMensajeApp.Visible = true;
                     this.popUpMensajeAplicación.ShowOnPageLoad = true;                    
                     break;
                 case 2:
                     txtMensaje.Text = Mensaje;
                     txtMensaje.ForeColor = Color.Red;
                     txtMensaje.Font.Bold = true;
-                    btnMensajeAppContinuar.Visible = false;
-                    btnMensajeApp.Visible = true;
                     this.popUpMensajeAplicación.ShowOnPageLoad = true;
                     break;
                 case 3:
                     txtMensaje.Text = Mensaje;
-                    txtMensaje.ForeColor = Color.LightGoldenrodYellow;
+                    txtMensaje.ForeColor = Color.DarkRed;
                     txtMensaje.Font.Bold = true;
-                    btnMensajeAppContinuar.Visible = false;
-                    btnMensajeApp.Visible = true;
                     this.popUpMensajeAplicación.ShowOnPageLoad = true;
                     break;
                 default:
