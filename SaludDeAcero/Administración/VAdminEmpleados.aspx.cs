@@ -124,6 +124,33 @@ namespace SaludDeAcero.Administración
         /// <param name="e"></param>
         protected void btnGuardar_Click(object sender, EventArgs e)
         {
+            string valNum = objE.valNumEmpleado(Convert.ToInt32(txtNumero.Text));
+            string valSocio = objE.valEmpleado(txtNombre.Text, txtApPaterno.Text, txtApMaterno.Text);
+            if (valNum != "" || valSocio != "")
+            {
+                if (valNum == "")
+                {
+                    btnMensajeAppContinuar.Visible = true;
+                    btnMensajeApp.Visible = false;
+                }
+                else
+                {
+                    btnMensajeAppContinuar.Visible = false;
+                    btnMensajeApp.Visible = true;
+                }
+                popUpMensajeAplicacion(3, valNum + " - " + valSocio);
+            }
+            else
+            {
+                guardaEmpleado();
+            }
+        }
+
+        /// <summary>
+        /// Guarda el Socio si este no existe
+        /// </summary>
+        public void guardaEmpleado()
+        {
             int satisfactorio = objE.addEmpleados(txtNumero.Text, txtNombre.Text, txtApMaterno.Text, txtApPaterno.Text, txtTelefono.Text, txtDireccion.Text, Convert.ToInt32(ddlTipoUsuario.SelectedItem.Value));
             if (satisfactorio == 1)
             {
@@ -160,7 +187,7 @@ namespace SaludDeAcero.Administración
                     break;
                 case 3:
                     txtMensaje.Text = Mensaje;
-                    txtMensaje.ForeColor = Color.Yellow;
+                    txtMensaje.ForeColor = Color.DarkRed;
                     txtMensaje.Font.Bold = true;
                     this.popUpMensajeAplicación.ShowOnPageLoad = true;
                     break;
@@ -410,6 +437,26 @@ namespace SaludDeAcero.Administración
             this.popUpMensajeAplicación.ShowOnPageLoad = false;
             this.popUpEditarAgregarEmpleado.ShowOnPageLoad = false;
             this.popUpEliminarEmpleado.ShowOnPageLoad = false;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        protected void btnMensajeAppCancelar_Click(object sender, EventArgs e)
+        {
+            this.popUpMensajeAplicación.ShowOnPageLoad = false;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        protected void btnMensajeAppContinuar_Click(object sender, EventArgs e)
+        {
+            guardaEmpleado();
         }
     }
 }

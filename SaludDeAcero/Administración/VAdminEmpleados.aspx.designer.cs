@@ -337,6 +337,24 @@ namespace SaludDeAcero.Administración {
         protected global::System.Web.UI.WebControls.Label txtMensaje;
         
         /// <summary>
+        /// btnMensajeAppCancelar control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnMensajeAppCancelar;
+        
+        /// <summary>
+        /// btnMensajeAppContinuar control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnMensajeAppContinuar;
+        
+        /// <summary>
         /// btnMensajeApp control.
         /// </summary>
         /// <remarks>

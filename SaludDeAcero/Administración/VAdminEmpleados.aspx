@@ -277,6 +277,8 @@
                                     </div>
                                 </div>
                                 <div class="modal-footer">
+                                    <asp:Button class="btn btn-danger" data-dismiss="modal" ID="btnMensajeAppCancelar" runat="server" Text="Cancelar" OnClick="btnMensajeAppCancelar_Click"  />
+                                    <asp:Button class="btn btn-warning" data-dismiss="modal" ID="btnMensajeAppContinuar" runat="server" Text="Continuar" OnClick="btnMensajeAppContinuar_Click" />
                                     <asp:Button class="btn btn-default" data-dismiss="modal" ID="btnMensajeApp" runat="server" Text="Entendido" OnClick="btnMensajeApp_Click" />
                                 </div>
                             </div>
