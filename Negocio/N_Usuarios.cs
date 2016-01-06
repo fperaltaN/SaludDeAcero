@@ -69,22 +69,22 @@ namespace Negocio
         /// <param name="nombre"></param>
         /// <param name=""></param>
         /// <returns></returns>
-        public DataSet valEmpleado(string nombre)
+        public string valUsuario(string nombre)
         {
             DataSet datos = new DataSet();
             SQLDatos obj = new SQLDatos();
+            string mensaje = "";
             try
             {
-                SqlParameter[] param = new SqlParameter[3];
+                SqlParameter[] param = new SqlParameter[1];
                 param[0] = new SqlParameter("@nombre", SqlDbType.VarChar, 50, ParameterDirection.Input, false, 0, 0, "", DataRowVersion.Current, nombre);
                transSucess = obj.getDataFromSP(valUsuarios, param, "TblUsuarios", datos);
             }
             catch (Exception ex)
             {
-                transSucess = 1;
+                mensaje = "Al paracer este Empleado esta duplicado revisa la información;Si estas seguro de agregarlo Has clic en continuar!!!;";
             }
-
-            return datos;
+            return mensaje;
         }
 
         /// <summary>
