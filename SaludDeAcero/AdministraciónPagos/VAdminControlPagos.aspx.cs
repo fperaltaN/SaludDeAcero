@@ -5,6 +5,7 @@
 '' Descripcion General: Valida el Inicio de Session
 '' =============================================*/
 using Negocio;
+using SaludDeAcero.AdministraciónPagos;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -22,6 +23,7 @@ namespace Sisa
         N_Pago objp = new N_Pago();
         N_PagoRecargo objPR = new N_PagoRecargo();
         N_Recargo objR = new N_Recargo();
+        N_Socio objS = new N_Socio();
         /// <summary>
         /// Evento de la Página cuando se termina de carga, este evento se genera por default
         /// </summary>
@@ -31,7 +33,7 @@ namespace Sisa
         {
             if (Session["Usuario"] == null)
             {
-                Session.Abandon();
+                //Session.Abandon();
                 Response.Cookies.Add(new HttpCookie("ASP.NET_SessionId", ""));
                 Response.Redirect("~/Login.aspx");
             }
@@ -43,6 +45,7 @@ namespace Sisa
             {
                 cargaPagos();
                 cargaPaquetes();
+                cargaUsuarios();
                 btnModificarPago.Visible = false;
                 btnEliminarPago.Visible = false;
             }
@@ -57,6 +60,10 @@ namespace Sisa
         {
             this.popUpRegistrar.ShowOnPageLoad = true;
             limpiarCampos();
+            btnGuardar.Visible = true;
+            btnActualizar.Visible = false;
+            lblEstado.Visible = false;
+            ddlEstado.Visible = false;
         }
 
         /// <summary>
@@ -67,6 +74,10 @@ namespace Sisa
         protected void btnModificarPago_Click(object sender, EventArgs e)
         {
             this.popUpRegistrar.ShowOnPageLoad = true;
+            btnGuardar.Visible = true;
+            btnActualizar.Visible = true;
+            lblEstado.Visible = true;
+            ddlEstado.Visible = true;
         }
 
 
@@ -77,7 +88,10 @@ namespace Sisa
         /// <param name="e"></param>
         protected void btnEliminarPago_Click(object sender, EventArgs e)
         {
-            popupcontrolConsultaPagos.ShowOnPageLoad = true;
+            // popupcontrolConsultaPagos.ShowOnPageLoad = true;
+            popUpMensajeAplicacion(1, "Información guardada con éxito; =)");
+            TicketSocio objTicket = new TicketSocio();
+            objTicket.imprimirTicket();
         }
 
         /// <summary>
@@ -97,15 +111,16 @@ namespace Sisa
         /// <param name="e"></param>
         protected void btnGuardar_Click(object sender, EventArgs e)
         {
-            int idPago = 0,idRecargo = 0;
-            int satisfactorio = objp.addPagos(Convert.ToInt32(ddlPaquete.SelectedItem.Value), Convert.ToInt32(txtNumero.Text), Convert.ToInt32(Session["Id_Usuario"].ToString()), Convert.ToInt32(txtTotalRecibido.Text), ref idPago);
+            int idPago = 0, idRecargo = 0;
+            int satisfactorio = objp.addPagos(Convert.ToInt32(ddlPaquete.SelectedItem.Value), Convert.ToInt32(ddlNumero.SelectedItem.Value), Convert.ToInt32(Session["Id_Usuario"].ToString()), Convert.ToDouble(txtTotalRecibido.Text), ref idPago);
             if (idPago == 0)
             {
                 popUpMensajeAplicacion(2, "Se presentó un problema al guardar la información, Por Favor revisa e intenta de nuevo; =(");
             }
             else
             {
-                satisfactorio = objR.addRecargos(Convert.ToInt32(ddlPaquete.SelectedItem.Value), Convert.ToInt32(txtNumero.Text), false, Convert.ToInt32(txtTotalRecibido.Text), ref idRecargo);
+                double adeudos = Convert.ToDouble(txtTotalRecibido.Text) + Convert.ToDouble(txtAdeudos.Text) - Convert.ToDouble(txtTotalPagar.Text);
+                satisfactorio = objR.addRecargos(Convert.ToInt32(ddlPaquete.SelectedItem.Value), Convert.ToInt32(ddlNumero.SelectedItem.Value), true, adeudos, ref idRecargo);
                 if (satisfactorio == 1)
                     popUpMensajeAplicacion(2, "Se presentó un problema al guardar la información, Por Favor revisa e intenta de nuevo; =(");
                 satisfactorio = objPR.addPagoRecargo(idPago, idRecargo);
@@ -114,7 +129,9 @@ namespace Sisa
                     popUpMensajeAplicacion(2, "Se presentó un problema al guardar la información, Por Favor revisa e intenta de nuevo; =(");
                 }
                 else
-                {
+                {                    
+                    TicketSocio objTicket = new TicketSocio();
+                    objTicket.imprimirTicket();
                     popUpMensajeAplicacion(1, "Información guardada con éxito; =)");
                 }
             }
@@ -129,17 +146,18 @@ namespace Sisa
         protected void btnActualizar_Click(object sender, EventArgs e)
         {
             int idPago = 0, idRecargo = 0;
-            int satisfactorio = objp.updtPagos(Convert.ToInt32(ddlPaquete.SelectedItem.Value), Convert.ToInt32(txtNumero.Text), Convert.ToInt32(Session["Id_Usuario"].ToString()), Convert.ToInt32(txtTotalRecibido.Text), Convert.ToInt32(ddlEstado.SelectedIndex) == 2 ? 0 : 1);
+            int satisfactorio = objp.updtPagos(Convert.ToInt32(ddlPaquete.SelectedItem.Value), Convert.ToInt32(ddlNumero.SelectedItem.Value), Convert.ToInt32(Session["Id_Usuario"].ToString()), Convert.ToInt32(txtTotalRecibido.Text), Convert.ToDouble(ddlEstado.SelectedIndex) == 2 ? 0 : 1);
             if (idPago == 0)
             {
                 popUpMensajeAplicacion(2, "Se presentó un problema al guardar la información, Por Favor revisa e intenta de nuevo; =(");
             }
             else
             {
-                satisfactorio = objR.updtRecargos(idRecargo,Convert.ToInt32(ddlPaquete.SelectedItem.Value), Convert.ToInt32(txtNumero.Text), true, Convert.ToInt32(txtTotalRecibido.Text), Convert.ToInt32(ddlEstado.SelectedIndex) == 2 ? 0 : 1);
+                double adeudos = Convert.ToDouble(txtTotalRecibido.Text) + Convert.ToDouble(txtAdeudos.Text) - Convert.ToDouble(txtTotalPagar.Text);
+                satisfactorio = objR.updtRecargos(idRecargo, Convert.ToInt32(ddlPaquete.SelectedItem.Value), Convert.ToInt32(ddlNumero.SelectedItem.Value), Convert.ToInt32(ddlEstado.SelectedIndex) == 2 ? 0 : 1, adeudos, Convert.ToInt32(ddlEstado.SelectedIndex) == 2 ? 0 : 1);
                 if (satisfactorio == 1)
                     popUpMensajeAplicacion(2, "Se presentó un problema al guardar la información, Por Favor revisa e intenta de nuevo; =(");
-                satisfactorio = objPR.updtPagoRecargo(idRecargo,idPago, idRecargo, Convert.ToInt32(ddlEstado.SelectedIndex) == 2 ? 0 : 1);
+                satisfactorio = objPR.updtPagoRecargo(idRecargo, idPago, idRecargo, Convert.ToInt32(ddlEstado.SelectedIndex) == 2 ? 0 : 1);
                 if (satisfactorio == 1)
                 {
                     popUpMensajeAplicacion(2, "Se presentó un problema al guardar la información, Por Favor revisa e intenta de nuevo; =(");
@@ -190,19 +208,17 @@ namespace Sisa
             LinkButton opLinkButton = (LinkButton)e.CommandSource;
             if (opLinkButton.Text == "Seleccionar")
             {
-                //DataSet datosEmpleados = objU.getPaqueteById(Convert.ToInt32(id));
-                //setDatosEmpleado(datosEmpleados);
-                //btnAgregarPaquete.Visible = false;
-                //btnModificarPaquete.Visible = true;
-                //btnctrlServicios.Visible = false;
-                //btnEliminarPaquete.Visible = true;
+                DataSet datosSocio = objp.getPagoById(Convert.ToInt32(id));
+                setDatosEmpleado(datosSocio);
+                btnAgregarPago.Visible = false;
+                btnModificarPago.Visible = true;
+                btnEliminarPago.Visible = true;
             }
             if (opLinkButton.Text == "Cancelar")
             {
-                //btnAgregarPaquete.Visible = true;
-                //btnModificarPaquete.Visible = false;
-                //btnctrlServicios.Visible = false;
-                //btnEliminarPaquete.Visible = false;
+                btnAgregarPago.Visible = true;
+                btnModificarPago.Visible = false;
+                btnEliminarPago.Visible = false;
             }
         }
 
@@ -244,7 +260,7 @@ namespace Sisa
         private void limpiarCampos()
         {
             //popup Agregar
-            txtNumero.Text = "";
+            ddlNumero.SelectedIndex = 0;
             txtNombre.Text = "";
             txtApPaterno.Text = "";
             txtApMaterno.Text = "";
@@ -262,21 +278,86 @@ namespace Sisa
         protected void setDatosEmpleado(DataSet pagos)
         {
             //Modificación popUP
-            txtNumero.Text = pagos.Tables[0].Rows[0]["Numero"].ToString();
+            ddlNumero.SelectedItem.Value = pagos.Tables[0].Rows[0]["num_socio"].ToString();
             txtNombre.Text = pagos.Tables[0].Rows[0]["Nombre"].ToString();
             txtApPaterno.Text = pagos.Tables[0].Rows[0]["Ap_Paterno"].ToString();
             txtApMaterno.Text = pagos.Tables[0].Rows[0]["Ap_Paterno"].ToString();
-            txtFecha.Text = DateTime.Now + pagos.Tables[0].Rows[0]["dias"].ToString();
             ddlPaquete.SelectedIndex = Convert.ToInt32(pagos.Tables[0].Rows[0]["id_paquete"].ToString());
-            txtAdeudos.Text = pagos.Tables[0].Rows[0]["Adeudos"].ToString();
-            txtTotalPagar.Text = pagos.Tables[0].Rows[0]["Adeudos"].ToString();
-            txtTotalRecibido.Text = pagos.Tables[0].Rows[0]["Adeudos"].ToString();
+            DataSet datosSocio = objp.getPagoById(Convert.ToInt32(ddlNumero.SelectedItem.Value));
+            if (datosSocio.Tables[0].Rows.Count > 0)
+            {
+                DateTime diasadeudos = Convert.ToDateTime(datosSocio.Tables[0].Rows[0]["fecha_expiracion"].ToString());
+                double adeudos = (DateTime.Now - diasadeudos).TotalDays;
+                if (adeudos >= 0)
+                {
+                    if (adeudos >= 7)
+                    {
+                        txtAdeudos.Text = 50.ToString() + Convert.ToDouble(datosSocio.Tables[0].Rows[0]["Adeudos"].ToString()); ;
+                    }
+                    else if
+                        (adeudos >= 15)
+                    {
+                        txtAdeudos.Text = 100.ToString();
+                    }
+                    else
+                    {
+                        txtAdeudos.Text = 0.ToString();
+                    }
+                }
+                else
+                {
+                    txtAdeudos.Text = 0.ToString();
+                }
+                DataSet datosPaquete = objPa.getPaqueteById(Convert.ToInt32(ddlPaquete.SelectedIndex));
+                int dias = Convert.ToInt32(datosPaquete.Tables[0].Rows[0]["diaspaquetes"].ToString());
+                if (dias == 14 || dias == 28)
+                {
+                    txtFecha.Value = DateTime.Now.AddMonths(dias == 14 ? 3 : 6);
+                }
+                else
+                {
+                    txtFecha.Value = DateTime.Now.AddDays(dias);
+                }
+                txtTotalPagar.Text = datosPaquete.Tables[0].Rows[0]["Costo"].ToString();
+                txtTotalRecibido.Text = (Convert.ToDouble(datosPaquete.Tables[0].Rows[0]["Costo"].ToString()) + Convert.ToDouble(txtAdeudos.Text)).ToString();
+            }
+            else
+            {
+                txtAdeudos.Text = "0";
+                DataSet datosPaquete = objPa.getPaqueteById(Convert.ToInt32(ddlPaquete.SelectedIndex));
+                int dias = Convert.ToInt32(datosPaquete.Tables[0].Rows[0]["diaspaquetes"].ToString());
+                if (dias == 14 || dias == 28)
+                {
+                    txtFecha.Value = DateTime.Now.AddMonths(dias == 14 ? 3 : 6);
+                }
+                else
+                {
+                    txtFecha.Value = DateTime.Now.AddDays(dias);
+                }
+                txtTotalPagar.Text = datosPaquete.Tables[0].Rows[0]["Costo"].ToString();
+                txtTotalRecibido.Text = datosPaquete.Tables[0].Rows[0]["Costo"].ToString();
+            }
+
             ////Eliminacion popUP
             //txtNombrePaqueteEliminar.Text = empleado.Tables[0].Rows[0]["Nombre"].ToString();
             //txtCostoEliminar.Text = empleado.Tables[0].Rows[0]["Costo"].ToString();
             //txtDiasPaquete.Text = empleado.Tables[0].Rows[0]["diaspaquetes"].ToString();
             //txtdescripcionPaqueteEliminar.Text = empleado.Tables[0].Rows[0]["Descripcion"].ToString();
         }
+
+        /// <summary>
+        /// Llena el dropdown de los perfiles
+        /// </summary>
+        protected void cargaUsuarios()
+        {
+            DataSet datosSocio = objS.getAllSocios();
+            this.ddlNumero.DataSource = datosSocio;
+            this.ddlNumero.DataValueField = "id_socio";
+            this.ddlNumero.DataTextField = "nombre";
+            this.ddlNumero.DataBind();
+            this.ddlNumero.Items.Insert(0, new ListItem("Elija una Opcion..", "0"));
+        }
+
 
         /// <summary>
         /// Cambia el Color de la celda seleccionada
@@ -347,5 +428,15 @@ namespace Sisa
         }
 
 
+        /// <summary>
+        /// Llena los campos de para el pago
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        protected void ddlNumero_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            DataSet datosSocio = objS.getSocioById(Convert.ToInt32(ddlNumero.SelectedItem.Value));
+            setDatosEmpleado(datosSocio);
+        }
     }
 }

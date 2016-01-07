@@ -94,13 +94,13 @@ namespace Sisa {
         protected global::DevExpress.Web.PopupControlContentControl PopupControlContentControl2;
         
         /// <summary>
-        /// txtNumero control.
+        /// ddlNumero control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtNumero;
+        protected global::System.Web.UI.WebControls.DropDownList ddlNumero;
         
         /// <summary>
         /// txtNombre control.

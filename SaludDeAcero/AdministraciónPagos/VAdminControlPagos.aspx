@@ -53,12 +53,12 @@
                                                 Font-Size="X-Small" Font-Underline="True"></asp:LinkButton>
                                         </DataItemTemplate>
                                     </dx:GridViewDataTextColumn>
-                                    <dx:GridViewDataColumn Caption="Pago" FieldName="id_pago" VisibleIndex="0" Visible="true" />
-                                    <dx:GridViewDataColumn Caption="Socio" FieldName="Socio" VisibleIndex="0" Width="10%" />
-                                    <dx:GridViewDataColumn Caption="Registro_Pago" FieldName="Registro_Pago" VisibleIndex="0" Width="20%" />
-                                    <dx:GridViewDataColumn Caption="importe" FieldName="importe" VisibleIndex="0" Width="10%" />
-                                    <dx:GridViewDataColumn Caption="paquete" FieldName="paquete" VisibleIndex="0" Width="10%" />
-                                    <dx:GridViewDataCheckColumn Caption="Activo" FieldName="activo" Visible="True" ReadOnly="false" VisibleIndex="20" Width="15%">
+                                    <dx:GridViewDataColumn Caption="Pago" FieldName="id_pago" VisibleIndex="0" Visible="true" Width="5%" />
+                                    <dx:GridViewDataColumn Caption="Socio" FieldName="Socio" VisibleIndex="0" Width="15%" />
+                                    <dx:GridViewDataColumn Caption="Registro_Pago" FieldName="Registro_Pago" VisibleIndex="0" Width="15%" />                                    
+                                    <dx:GridViewDataColumn Caption="Paquete" FieldName="paquete" VisibleIndex="0" Width="25%" />
+                                    <dx:GridViewDataColumn Caption="Importe" FieldName="importe" VisibleIndex="0" Width="10%" />
+                                    <dx:GridViewDataCheckColumn Caption="Activo" FieldName="activo" Visible="True" ReadOnly="false" VisibleIndex="10" Width="10%">
                                         <DataItemTemplate>
                                             <asp:CheckBox ID="chkActivo" runat="server" Enabled="false" Checked='<%#Bind("ACTIVO")%>' />
                                         </DataItemTemplate>
@@ -76,7 +76,7 @@
 
             <%--  aki inicia informacion de pago --%>
             <!-- Modal Registrar Socio -->
-            <dx:ASPxPopupControl ID="popUpRegistrar" runat="server" Modal="true" HeaderText="Registro de Socios" AllowDragging="true"
+            <dx:ASPxPopupControl ID="popUpRegistrar" runat="server" Modal="true" HeaderText="Registro de Pagos" AllowDragging="true"
                 PopupHorizontalAlign="WindowCenter" PopupVerticalAlign="WindowCenter" ShowCloseButton="true" Width="700px" Height="570px" ScrollBars="Vertical"
                 PopupAction="None" CloseAction="CloseButton" Theme="Office2010Silver">
                 <ContentCollection>
@@ -85,13 +85,15 @@
                             <div class="modal-body">
                                 <div class="container">
                                     <div class="row">
-                                        <div class="col-md-2">
+                                        <div class="col-md-3">
                                             <div class="form-group">
                                                 <label for="txtNumero">Número Socio</label>
-                                                <asp:TextBox ID="txtNumero" class="form-control" runat="server" Text="" ToolTip="Ingrese Número  del Socio"></asp:TextBox>
+                                                 <div class="selectContainer">
+                                                    <asp:DropDownList class="form-control" ID="ddlNumero" runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddlNumero_SelectedIndexChanged"></asp:DropDownList>
+                                                </div>                                               
                                             </div>
                                         </div>
-                                        <div class="col-md-4">
+                                        <div class="col-md-3">
                                             <div class="form-group">
                                                 <label for="nombreSocio">Nombre(s) Socio</label>
                                                 <asp:TextBox ID="txtNombre" class="form-control" runat="server" Text="" ToolTip="Ingrese Nombre(s) del Socio"></asp:TextBox>
@@ -131,7 +133,7 @@
                                         <div class="col-md-3">
                                             <div class="form-group">
                                                 <label for="FechaVence">Fecha Vencimiento</label>
-                                                <dx:ASPxDateEdit ID="txtFecha" runat="server"></dx:ASPxDateEdit>
+                                                <dx:ASPxDateEdit ID="txtFecha" runat="server" Theme="Metropolis" Width="260px" Height="33px"></dx:ASPxDateEdit>
                                             </div>
                                         </div>
                                         <div class="col-md-2">
@@ -151,7 +153,7 @@
                                         </div>
                                         <div class="col-md-3">
                                             <div class="form-group">
-                                                <label for="total">Total a Recibido</label>
+                                                <label for="total">Total Recibido</label>
                                                 <asp:TextBox ID="txtTotalRecibido" class="form-control" runat="server" Text="" ToolTip="Total Recibido"></asp:TextBox>
                                             </div>
                                         </div>
@@ -176,7 +178,7 @@
                             </div>
                             <div class="modal-footer">
                                 <asp:Button class="btn btn-default" data-dismiss="modal" ID="btnCancelar" runat="server" Text="Cancelar" OnClick="btnCancelar_Click" />
-                                <asp:Button class="btn btn-success" ID="btnGuardar" runat="server" Text="Guardar Socio" OnClick="btnGuardar_Click" />
+                                <asp:Button class="btn btn-success" ID="btnGuardar" runat="server" Text="Guardar Pago" OnClick="btnGuardar_Click" />
                                 <asp:Button class="btn btn-info" ID="btnActualizar" runat="server" Text="Actualiar Cambios" OnClick="btnActualizar_Click" />
                             </div>
                         </div>
