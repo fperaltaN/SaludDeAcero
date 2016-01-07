@@ -71,7 +71,7 @@ namespace Negocio
         /// <param name="importe"></param>
         /// <param name="idPago"></param>
         /// <returns></returns>
-        public int addPagos(int id_paquete, int id_socio, int id_empleado, int importe,ref int idPago)
+        public int addPagos(int id_paquete, int id_socio, int id_empleado, double importe,ref int idPago)
         {
             try
             {
@@ -102,7 +102,7 @@ namespace Negocio
         /// <param name="importe"></param>
         /// <param name="activo"></param>
         /// <returns></returns>
-        public int updtPagos(int id_paquete, int id_socio, int id_empleado, int importe , int activo)
+        public int updtPagos(int id_paquete, int id_socio, int id_empleado, double importe , int activo)
         {
             try
             {

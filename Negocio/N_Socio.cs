@@ -27,7 +27,21 @@ namespace Negocio
         private string addSocio = "add_Socio";
         private string updSocio = "upd_Socio";
         private string delSocio = "del_Socio";
+        private string selALLSocio = "sel_AllSocios";
         #endregion
+
+        /// <summary>
+        /// Obtiene todos los socios y regresa un dataSet
+        /// </summary>
+        /// <returns></returns>
+        public DataSet getAllSocios()
+        {
+            SQLDatos obj = new SQLDatos();
+            DataSet datos = new DataSet();
+            int opSatisfactoria = 0;
+            opSatisfactoria = obj.getDataFromSP(selALLSocio, "TblSocios", datos);
+            return datos;
+        }
 
         /// <summary>
         /// Obtiene todos los Socios de la BD

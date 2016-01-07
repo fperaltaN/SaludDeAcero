@@ -71,7 +71,7 @@ namespace Negocio
         /// <param name="importe"></param>
         /// <param name="idrecargo"></param>
         /// <returns></returns>
-        public int addRecargos(int id_paquete, int id_socio, Boolean liberacion,  int importe, ref int idrecargo)
+        public int addRecargos(int id_paquete, int id_socio, Boolean liberacion,  double importe, ref int idrecargo)
         {
             try
             {
@@ -102,7 +102,7 @@ namespace Negocio
         /// <param name="importe"></param>
         /// <param name="activo"></param>
         /// <returns></returns>
-        public int updtRecargos(int idrecargo,int id_paquete, int id_socio, Boolean liberacion, int importe, int activo)
+        public int updtRecargos(int idrecargo,int id_paquete, int id_socio, int liberacion, double importe, int activo)
         {
             try
             {
