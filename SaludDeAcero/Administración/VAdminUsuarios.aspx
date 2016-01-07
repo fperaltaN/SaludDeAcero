@@ -158,7 +158,7 @@
                             </div>
                             <div class="modal-footer">
                                 <asp:Button class="btn btn-default" data-dismiss="modal" ID="btnCancelar" runat="server" Text="Cancelar" OnClick="btnCancelar_Click" />
-                                <asp:Button class="btn btn-success" ID="btnGuardar" runat="server" Text="Guardar Empleado" OnClick="btnGuardar_Click" />
+                                <asp:Button class="btn btn-success" ID="btnGuardar" runat="server" Text="Guardar Usuario" OnClick="btnGuardar_Click" />
                                 <asp:Button class="btn btn-info" ID="btnActualizar" runat="server" Text="Actualizar Cambios" OnClick="btnActualizar_Click" />
                             </div>
                         </div>
