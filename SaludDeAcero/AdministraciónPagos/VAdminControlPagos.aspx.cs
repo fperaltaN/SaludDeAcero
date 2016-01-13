@@ -91,7 +91,7 @@ namespace Sisa
             // popupcontrolConsultaPagos.ShowOnPageLoad = true;
             popUpMensajeAplicacion(1, "Información guardada con éxito; =)");
             TicketSocio objTicket = new TicketSocio();
-            objTicket.imprimirTicket();
+            objTicket.imprimirTicket(Session["Row"].ToString(), ddlNumero.SelectedItem.Value, txtNombre.Text + " " + txtApPaterno.Text, Session["Nombre"].ToString(), ddlPaquete.SelectedItem.Text, txtFecha.Text, txtTotalPagar.Text, txtTotalRecibido.Text, txtAdeudos.Text);
         }
 
         /// <summary>
@@ -131,7 +131,7 @@ namespace Sisa
                 else
                 {                    
                     TicketSocio objTicket = new TicketSocio();
-                    objTicket.imprimirTicket();
+                    objTicket.imprimirTicket(idPago.ToString(), ddlNumero.SelectedItem.Value, txtNombre.Text + " " +txtApPaterno.Text, Session["Nombre"].ToString(), ddlPaquete.SelectedItem.Text, txtFecha.Text, txtTotalPagar.Text, txtTotalRecibido.Text, txtAdeudos.Text);
                     popUpMensajeAplicacion(1, "Información guardada con éxito; =)");
                 }
             }
