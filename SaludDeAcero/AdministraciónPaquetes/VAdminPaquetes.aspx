@@ -76,7 +76,7 @@
                                     </dx:GridViewDataCheckColumn>
                                 </Columns>
                                 <SettingsBehavior ConfirmDelete="True" />
-                                <SettingsText Title="Canales de comunicación" />
+                                <SettingsText Title="Administración de Paquetes" />
                                 <SettingsLoadingPanel Text="" />
                                 <Settings ShowTitlePanel="True" ShowFilterBar="Auto" ShowFilterRow="true" />
                                 <SettingsPager NumericButtonCount="5" PageSize="5">
