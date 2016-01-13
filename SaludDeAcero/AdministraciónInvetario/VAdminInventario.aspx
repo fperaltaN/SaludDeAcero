@@ -65,6 +65,13 @@
                                         </DataItemTemplate>
                                     </dx:GridViewDataCheckColumn>
                                 </Columns>
+                                <SettingsBehavior ConfirmDelete="True" />
+                                <SettingsText Title="Administración de Productos" />
+                                <SettingsLoadingPanel Text="" />
+                                <Settings ShowTitlePanel="True" ShowFilterBar="Auto" ShowFilterRow="true" />
+                                <SettingsPager NumericButtonCount="5" PageSize="5">
+                                    <PageSizeItemSettings Items="5" />
+                                </SettingsPager>
                             </dx:ASPxGridView>
 
                             <dx:ASPxGridViewExporter ID="grdProductosExporter" runat="server" GridViewID="grdProductos">
