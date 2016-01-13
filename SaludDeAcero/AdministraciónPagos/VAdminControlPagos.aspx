@@ -64,6 +64,13 @@
                                         </DataItemTemplate>
                                     </dx:GridViewDataCheckColumn>
                                 </Columns>
+                                <SettingsBehavior ConfirmDelete="True" />
+                                <SettingsText Title="Administración de Control de Pagos" />
+                                <SettingsLoadingPanel Text="" />
+                                <Settings ShowTitlePanel="True" ShowFilterBar="Auto" ShowFilterRow="true" />
+                                <SettingsPager NumericButtonCount="5" PageSize="5">
+                                    <PageSizeItemSettings Items="5" />
+                                </SettingsPager>
                             </dx:ASPxGridView>
 
                             <dx:ASPxGridViewExporter ID="grdPagosExporter" runat="server" GridViewID="grdProductos">
