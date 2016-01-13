@@ -66,6 +66,13 @@
                                         </DataItemTemplate>
                                     </dx:GridViewDataCheckColumn>
                                 </Columns>
+                                <SettingsBehavior ConfirmDelete="True" />
+                                <SettingsText Title="Administración de Empleados" />
+                                <SettingsLoadingPanel Text="" />
+                                <Settings ShowTitlePanel="True" ShowFilterBar="Auto" ShowFilterRow="true" />
+                                <SettingsPager NumericButtonCount="5" PageSize="5">
+                                    <PageSizeItemSettings Items="5" />
+                                </SettingsPager>
                             </dx:ASPxGridView>
                             <dx:ASPxGridViewExporter ID="grdEmpleadosExporter" runat="server" GridViewID="grdEmpleados">
                             </dx:ASPxGridViewExporter>
@@ -277,7 +284,7 @@
                                     </div>
                                 </div>
                                 <div class="modal-footer">
-                                    <asp:Button class="btn btn-danger" data-dismiss="modal" ID="btnMensajeAppCancelar" runat="server" Text="Cancelar" OnClick="btnMensajeAppCancelar_Click"  />
+                                    <asp:Button class="btn btn-danger" data-dismiss="modal" ID="btnMensajeAppCancelar" runat="server" Text="Cancelar" OnClick="btnMensajeAppCancelar_Click" />
                                     <asp:Button class="btn btn-warning" data-dismiss="modal" ID="btnMensajeAppContinuar" runat="server" Text="Continuar" OnClick="btnMensajeAppContinuar_Click" />
                                     <asp:Button class="btn btn-default" data-dismiss="modal" ID="btnMensajeApp" runat="server" Text="Entendido" OnClick="btnMensajeApp_Click" />
                                 </div>

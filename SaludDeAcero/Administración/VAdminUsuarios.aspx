@@ -68,8 +68,8 @@
                                         </DataItemTemplate>
                                     </dx:GridViewDataCheckColumn>
                                 </Columns>
-                                <SettingsBehavior AllowSelectByRowClick="true" ConfirmDelete="True" AllowSelectSingleRowOnly="True" />
-                                <SettingsText Title="Administración de Empleados" />
+                                <SettingsBehavior ConfirmDelete="True" />
+                                <SettingsText Title="Administración de Usuarios" />
                                 <SettingsLoadingPanel Text="" />
                                 <Settings ShowTitlePanel="True" ShowFilterBar="Auto" ShowFilterRow="true" />
                                 <SettingsPager NumericButtonCount="5" PageSize="5">
