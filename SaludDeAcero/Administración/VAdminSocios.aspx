@@ -80,9 +80,9 @@
                                 <SettingsBehavior ConfirmDelete="True" />
                                 <SettingsText Title="Administración de Socios" />
                                 <SettingsLoadingPanel Text="" />
-                                <Settings ShowTitlePanel="True" ShowFilterBar="Auto" ShowFilterRow="true" />
-                                <SettingsPager NumericButtonCount="5" PageSize="5">
-                                    <PageSizeItemSettings Items="5" />
+                                <Settings ShowTitlePanel="True" ShowFilterBar="Auto" ShowFilterRow="true" VerticalScrollableHeight="300" />
+                                <SettingsPager NumericButtonCount="20" PageSize="20">
+                                     <PageSizeItemSettings Visible="true" ShowAllItem="true" />
                                 </SettingsPager>
                             </dx:ASPxGridView>
 
@@ -208,38 +208,38 @@
                                             <div class="col-md-2">
                                                 <div class="form-group">
                                                     <label for="maternoSocio">Numero Socio</label>
-                                                    <asp:TextBox ID="txtNumeroSocioConPago" class="form-control" runat="server" Text="" ToolTip="Ingrese Número  del Socio"></asp:TextBox>
+                                                    <asp:TextBox ID="txtNumeroSocioConPago" class="disabled form-control" runat="server" Text="" ToolTip="Ingrese Número  del Socio"></asp:TextBox>
                                                 </div>
                                             </div>
                                             <div class="col-md-2">
                                                 <div class="form-group">
                                                     <label for="Nombre">Nombre(s) Socio</label>
-                                                    <asp:TextBox ID="txtNombreSocioConPago" class="form-control" runat="server" Text="" ToolTip="Ingrese Nombre del Socio"></asp:TextBox>
+                                                    <asp:TextBox ID="txtNombreSocioConPago" class="disabled form-control" runat="server" Text="" ToolTip="Ingrese Nombre del Socio"></asp:TextBox>
                                                 </div>
                                             </div>
                                             <div class="col-md-2">
                                                 <div class="form-group">
                                                     <label for="Nombre">Apellido Paterno</label>
-                                                    <asp:TextBox ID="txtApeidoPaternoConPago" class="form-control" runat="server" Text="" ToolTip="Ingrese Apellido Paterno"></asp:TextBox>
+                                                    <asp:TextBox ID="txtApeidoPaternoConPago" class="disabled form-control" runat="server" Text="" ToolTip="Ingrese Apellido Paterno"></asp:TextBox>
                                                 </div>
                                             </div>
                                             <div class="col-md-2">
                                                 <div class="form-group">
                                                     <label for="Nombre">Apellido Materno</label>
-                                                    <asp:TextBox ID="txtApeidoMaternoConPago" class="form-control" runat="server" Text="" ToolTip="Ingrese Apellido Materno"></asp:TextBox>
+                                                    <asp:TextBox ID="txtApeidoMaternoConPago" class="disabled form-control" runat="server" Text="" ToolTip="Ingrese Apellido Materno"></asp:TextBox>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="row">
                                             <div class="col-md-3">
                                                 <div class="form-group">
-                                                    <label for="Inicio">Inicio</label>
+                                                    <%--<label for="Inicio">Inicio</label>--%>
                                                     <dx:ASPxDateEdit ID="FechaInicioConPago" runat="server" Theme="Metropolis" Width="260px" Height="33px"></dx:ASPxDateEdit>
                                                 </div>
                                             </div>
                                             <div class="col-md-3">
                                                 <div class="form-group">
-                                                    <label for="Inicio">Final</label>
+                                                   <%-- <label for="Inicio">Final</label>--%>
                                                     <dx:ASPxDateEdit ID="FechaFinalConPago" runat="server" Theme="Metropolis" Width="260px" Height="33px"></dx:ASPxDateEdit>
                                                 </div>
                                             </div>
@@ -247,8 +247,8 @@
                                     </div>
                                 </div>
                                 <div class="modal-footer">
-                                    <asp:Button runat="server" Text="Cancelar" ID="btnCanConPago" class="btn btn-default" data-dismiss="modal" OnClick="btnCanConPago_Click"></asp:Button>
-                                    <asp:Button runat="server" Text="Consultar Periodo" ID="btnConPago" class="btn btn-success" OnClick="btnConPago_Click"></asp:Button>
+                                    <%--<asp:Button runat="server" Text="Cancelar" ID="btnCanConPago" class="btn btn-default" data-dismiss="modal" OnClick="btnCanConPago_Click"></asp:Button>
+                                    <asp:Button runat="server" Text="Consultar Periodo" ID="btnConPago" class="btn btn-success" OnClick="btnConPago_Click"></asp:Button>--%>
                                 </div>
                                 <div class="container">
                                     <div class="row">
@@ -256,7 +256,7 @@
                                             <div class="form-group">
                                                 <fieldset>
                                                     <legend>Consulta de Pagos</legend>
-                                                    <dx:ASPxGridView ID="GVConsultaPagos" runat="server" KeyFieldName="" AutoGenerateColumns="False" Theme="Office2010Silver" Width="100%">
+                                                    <dx:ASPxGridView ID="GVConsultaPagos" runat="server" KeyFieldName="" AutoGenerateColumns="False" Theme="Office2010Silver" Width="100%" OnLoad="GVConsultaPagos_Load" OnRowCommand="GVConsultaPagos_RowCommand" OnHtmlRowPrepared="GVConsultaPagos_HtmlRowPrepared">
                                                         <Columns>
                                                             <%--<dx:GridViewCommandColumn ShowEditButton="true" VisibleIndex="0" />--%>
                                                             <dx:GridViewDataTextColumn Caption="Acciones" VisibleIndex="0" Width="15%">
@@ -267,17 +267,18 @@
                                                                         Font-Size="X-Small" Font-Underline="True"></asp:LinkButton>
                                                                 </DataItemTemplate>
                                                             </dx:GridViewDataTextColumn>
-                                                            <dx:GridViewDataColumn Caption="Id" FieldName="id_socio" VisibleIndex="0" Visible="false" />
-                                                            <dx:GridViewDataColumn Caption="Fecha Pago" FieldName="fecha_pago" VisibleIndex="0" Width="10%" />
-                                                            <dx:GridViewDataColumn Caption="Importe" FieldName="importe" VisibleIndex="0" Width="10%" />
-                                                            <dx:GridViewDataColumn Caption="Paquete" FieldName="descripcion" VisibleIndex="0" Width="10%" />
-                                                            <dx:GridViewDataColumn Caption="Empleado Cobro" FieldName="nombre" VisibleIndex="0" Width="20%" />
-                                                            <dx:GridViewDataColumn Caption="Efectivo" FieldName="" VisibleIndex="0" Width="10%" />
-                                                            <dx:GridViewDataCheckColumn Caption="Activo" FieldName="activo" Visible="True" ReadOnly="false" VisibleIndex="20" Width="15%">
+                                                            <dx:GridViewDataColumn Caption="IdSocio" FieldName="id_socio" VisibleIndex="0" Visible="false" />
+                                                            <dx:GridViewDataColumn Caption="IdEmpleado" FieldName="id_empleado" VisibleIndex="0" Visible="false" />
+                                                            <dx:GridViewDataColumn Caption="Fecha Pago" FieldName="fecha_expiracion" VisibleIndex="0" Width="10%" />                                                            
+                                                            <dx:GridViewDataColumn Caption="IdPaquete" FieldName="id_paquete" VisibleIndex="0" Width="10%" />
+                                                            <dx:GridViewDataColumn Caption="Importe" FieldName="TotalRecibido" VisibleIndex="0" Width="10%" />
+                                                            <dx:GridViewDataColumn Caption="Adeudos" FieldName="Adeudos" VisibleIndex="0" Width="10%" />
+                                                            <%--<dx:GridViewDataColumn Caption="Efectivo" FieldName="" VisibleIndex="0" Width="10%" />--%>
+                                                            <%--<dx:GridViewDataCheckColumn Caption="Activo" FieldName="activo" Visible="True" ReadOnly="false" VisibleIndex="20" Width="15%">
                                                                 <DataItemTemplate>
                                                                     <asp:CheckBox ID="chkActivo" runat="server" Enabled="false" Checked='<%#Bind("ACTIVO")%>' />
                                                                 </DataItemTemplate>
-                                                            </dx:GridViewDataCheckColumn>
+                                                            </dx:GridViewDataCheckColumn>--%>
                                                         </Columns>
                                                         <SettingsBehavior ConfirmDelete="True" />
                                                         <SettingsText Title="Administración de Socios" />

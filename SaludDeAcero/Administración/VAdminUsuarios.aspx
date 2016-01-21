@@ -71,9 +71,9 @@
                                 <SettingsBehavior ConfirmDelete="True" />
                                 <SettingsText Title="Administración de Usuarios" />
                                 <SettingsLoadingPanel Text="" />
-                                <Settings ShowTitlePanel="True" ShowFilterBar="Auto" ShowFilterRow="true" />
-                                <SettingsPager NumericButtonCount="5" PageSize="5">
-                                    <PageSizeItemSettings Items="5" />
+                                <Settings ShowTitlePanel="True" ShowFilterBar="Auto" ShowFilterRow="true" VerticalScrollableHeight="300" />
+                                <SettingsPager NumericButtonCount="20" PageSize="20">
+                                     <PageSizeItemSettings Visible="true" ShowAllItem="true" />
                                 </SettingsPager>
                             </dx:ASPxGridView>
                         </div>

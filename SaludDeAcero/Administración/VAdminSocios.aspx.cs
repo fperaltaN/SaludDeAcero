@@ -13,6 +13,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using Negocio;
 using System.Drawing;
+using SaludDeAcero.AdministraciónPagos;
 
 namespace SaludDeAcero.AdministraciónSocios
 {
@@ -45,6 +46,8 @@ namespace SaludDeAcero.AdministraciónSocios
             if (!IsPostBack)
             {
                 txtFecha.Value = DateTime.Now.AddYears(-26);
+                FechaInicioConPago.Visible = false;
+                FechaFinalConPago.Visible = false;
                 FechaInicioConPago.Value = DateTime.Now;
                 FechaFinalConPago.Value = DateTime.Now;
                 cargaSocio();
@@ -53,6 +56,7 @@ namespace SaludDeAcero.AdministraciónSocios
                 btnEstadoSocio.Visible = false;
                 btnHistorialSocio.Visible = false;
                 btnCancelarSocio.Visible = false;
+                BtnReimprimir.Visible = false;
             }
         }
 
@@ -183,7 +187,7 @@ namespace SaludDeAcero.AdministraciónSocios
             DataSet datosSocios = objPagos.getPagoById(Convert.ToInt32(Session["Row"].ToString()));
             GVConsultaPagos.DataSource = datosSocios;
             GVConsultaPagos.DataBind();
-            GVConsultaPagos.KeyFieldName = "id_Socio";
+            GVConsultaPagos.KeyFieldName = "id_Pago";
         }
 
         /// <summary>
@@ -267,7 +271,7 @@ namespace SaludDeAcero.AdministraciónSocios
             datosSocios = objHF.getHistorialFisicoById(Convert.ToInt32(Session["Row"].ToString()));
             txtFisicos.Text = datosSocios.Tables[0].Rows[0]["descripcion"].ToString();
             datosSocios = objSM.getSocioMembresiaPaqueteById(Convert.ToInt32(Session["Row"].ToString()));
-            ddlPaquete.SelectedIndex = Convert.ToInt32(datosSocios.Tables[0].Rows[0]["id_paquete"].ToString());
+            ddlPaquete.SelectedValue = datosSocios.Tables[0].Rows[0]["id_paquete"].ToString();
 
 
         }
@@ -372,7 +376,7 @@ namespace SaludDeAcero.AdministraciónSocios
                 satisfactorio = objHF.addHistorialFisico(idSocio, txtFisicos.Text);
                 if (satisfactorio == 1)
                     popUpMensajeAplicacion(2, "Se presentó un problema al guardar la información, Por Favor revisa e intenta de nuevo; =(");
-                satisfactorio = objHM.addHistorialMedico(idSocio, txtFisicos.Text);
+                satisfactorio = objHM.addHistorialMedico(idSocio, txtMedicos.Text);
                 if (satisfactorio == 1)
                     popUpMensajeAplicacion(2, "Se presentó un problema al guardar la información, Por Favor revisa e intenta de nuevo; =(");
                 satisfactorio = objSM.addSocioMembresia(idSocio, Convert.ToInt32(ddlPaquete.SelectedItem.Value));
@@ -410,17 +414,21 @@ namespace SaludDeAcero.AdministraciónSocios
                 satisfactorio = objHF.updtHistorialFisico(idSocio, txtFisicos.Text, Convert.ToInt32(ddlEstado.SelectedIndex) == 2 ? 0 : 1);
                 if (satisfactorio == 1)
                     popUpMensajeAplicacion(2, "Se presentó un problema al guardar la información, Por Favor revisa e intenta de nuevo; =(");
-                satisfactorio = objHM.updtHistorialMedico(idSocio, txtFisicos.Text, Convert.ToInt32(ddlEstado.SelectedIndex) == 2 ? 0 : 1);
+                satisfactorio = objHM.updtHistorialMedico(idSocio, txtMedicos.Text, Convert.ToInt32(ddlEstado.SelectedIndex) == 2 ? 0 : 1);
                 if (satisfactorio == 1)
                     popUpMensajeAplicacion(2, "Se presentó un problema al guardar la información, Por Favor revisa e intenta de nuevo; =(");
                 satisfactorio = objSM.updtSocioMembresia(idSocio, Convert.ToInt32(ddlPaquete.SelectedItem.Value), Convert.ToInt32(ddlEstado.SelectedIndex) == 2 ? 0 : 1);
                 if (satisfactorio == 1)
                 {
                     popUpMensajeAplicacion(2, "Se presentó un problema al guardar la información, Por Favor revisa e intenta de nuevo; =(");
+                    btnMensajeAppContinuar.Visible = false;
+                    btnMensajeApp.Visible = true;
                 }
                 else
                 {
                     popUpMensajeAplicacion(1, "Información guardada con éxito; =)");
+                    btnMensajeAppContinuar.Visible = false;
+                    btnMensajeApp.Visible = true;
                 }
             }
             cargaSocio();
@@ -444,7 +452,7 @@ namespace SaludDeAcero.AdministraciónSocios
                 satisfactorio = objHF.updtHistorialFisico(idSocio, txtFisicos.Text, Convert.ToInt32(ddlEstado.SelectedIndex) == 2 ? 0 : 2);
                 if (satisfactorio == 1)
                     popUpMensajeAplicacion(2, "Se presentó un problema al guardar la información, Por Favor revisa e intenta de nuevo; =(");
-                satisfactorio = objHM.updtHistorialMedico(idSocio, txtFisicos.Text, Convert.ToInt32(ddlEstado.SelectedIndex) == 2 ? 0 : 2);
+                satisfactorio = objHM.updtHistorialMedico(idSocio, txtMedicos.Text, Convert.ToInt32(ddlEstado.SelectedIndex) == 2 ? 0 : 2);
                 if (satisfactorio == 1)
                     popUpMensajeAplicacion(2, "Se presentó un problema al guardar la información, Por Favor revisa e intenta de nuevo; =(");
                 satisfactorio = objSM.updtSocioMembresia(idSocio, Convert.ToInt32(ddlPaquete.SelectedItem.Value), Convert.ToInt32(ddlEstado.SelectedIndex) == 2 ? 0 : 2);
@@ -511,12 +519,7 @@ namespace SaludDeAcero.AdministraciónSocios
                 default:
                     break;
             }
-        }
-
-        protected void BtnReimprimir_Click(object sender, EventArgs e)
-        {
-
-        }
+        }        
 
         /// <summary>
         /// Elimina el Socio de la BD
@@ -573,6 +576,63 @@ namespace SaludDeAcero.AdministraciónSocios
         protected void btnMensajeAppContinuar_Click(object sender, EventArgs e)
         {
             guardaSocio();
+        }
+
+        /// <summary>
+        /// Permite la edicion del usuario
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        protected void GVConsultaPagos_RowCommand(object sender, DevExpress.Web.ASPxGridViewRowCommandEventArgs e)
+        {
+            object id = e.KeyValue;
+            Session["RowPago"] = id;
+            LinkButton opLinkButton = (LinkButton)e.CommandSource;
+            if (opLinkButton.Text == "Seleccionar")
+            {
+                BtnReimprimir.Visible = true;
+            }
+            if (opLinkButton.Text == "Cancelar")
+            {
+                BtnReimprimir.Visible = false;
+            }
+        }
+        /// <summary>
+        /// Cambia el Color de la celda seleccionada
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        protected void GVConsultaPagos_HtmlRowPrepared(object sender, DevExpress.Web.ASPxGridViewTableRowEventArgs e)
+        {
+            object id = e.KeyValue;
+            if (id != null && Session["RowPago"] != null)
+            {
+                if (Session["RowPago"].ToString() == id.ToString())
+                    e.Row.BackColor = System.Drawing.Color.LightGray;
+            }
+        }
+
+        /// <summary>
+        /// Permite la busqueda y el paginado
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        protected void GVConsultaPagos_Load(object sender, EventArgs e)
+        {
+            //cargaPago();
+        }
+
+        /// <summary>
+        /// Re-imprime el pago 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        protected void BtnReimprimir_Click(object sender, EventArgs e)
+        {
+            TicketSocio objTicket = new TicketSocio();
+            DataSet datosPago = objPagos.getPagoById(Convert.ToInt32(Session["Row"].ToString()));
+            objTicket.imprimirTicket(Session["RowPago"].ToString(), txtNumeroSocioConPago.Text, txtNombre.Text + " " + txtApPaterno.Text, Session["Nombre"].ToString(), ddlPaquete.SelectedItem.Text, datosPago.Tables[0].Rows[0]["fecha_expiracion"].ToString(), datosPago.Tables[0].Rows[0]["TotalPagar"].ToString(),datosPago.Tables[0].Rows[0]["TotalRecibido"].ToString(), datosPago.Tables[0].Rows[0]["Adeudos"].ToString());
+            popUpMensajeAplicacion(1, "Recibo Reimpreso Satisfactoriamente; =)");
         }
     }
 }
