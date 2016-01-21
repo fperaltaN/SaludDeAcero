@@ -1,4 +1,10 @@
-﻿using System;
+﻿/*''=============================================
+'' Autor:	Faleg A. Peralta
+'' Modificado por: 
+'' Fecha de Modificación: 06.10.2015
+'' Descripcion General: Ticket socio
+'' =============================================*/
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -7,7 +13,7 @@ using System.Data;
 
 namespace Sisa.AdministraciónInvetario
 {
-    public class TiketInventario
+    public class TicketInventario
     {
         public void imprimirTiket(String IdVenta, String nombreEmpleado, DataTable datos)
         {

@@ -67,10 +67,11 @@
                                 </Columns>
                                 <SettingsBehavior ConfirmDelete="True" />
                                 <SettingsText Title="Administración de Productos" />
-                                <SettingsLoadingPanel Text="" />
-                                <Settings ShowTitlePanel="True" ShowFilterBar="Auto" ShowFilterRow="true" VerticalScrollableHeight="300" />
-                                <SettingsPager NumericButtonCount="20" PageSize="20">
+                                <SettingsLoadingPanel Text="Cargando..." />
+                                <Settings ShowTitlePanel="True" ShowFilterBar="Auto" ShowFilterRow="true" VerticalScrollableHeight="300"  VerticalScrollBarMode ="Visible"/>
+                                <SettingsPager NumericButtonCount="10" PageSize="10">
                                      <PageSizeItemSettings Visible="true" ShowAllItem="true" />
+                                </SettingsPager>
                                 </SettingsPager>
                             </dx:ASPxGridView>
 

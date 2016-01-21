@@ -1,4 +1,10 @@
-﻿using System;
+﻿/*''=============================================
+'' Autor:	Faleg A. Peralta
+'' Modificado por: 
+'' Fecha de Modificación: 06.10.2015
+'' Descripcion General: Ticket socio
+'' =============================================*/
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -7,6 +13,7 @@ using System.Web.UI.WebControls;
 using System.Data;
 using Negocio;
 using System.Drawing;
+using SaludDeAcero.AdministraciónPagos;
 
 namespace Sisa.AdministraciónInvetario
 {
@@ -552,7 +559,9 @@ namespace Sisa.AdministraciónInvetario
                 if (informacion == 1)
                 {
                     informacion = objVP.AddVentaProducto(idVenta, Convert.ToInt32(dt.Rows[i]["IdProducto"].ToString()), Convert.ToInt32(dt.Rows[i]["Cantidad"].ToString()));
-                    popUpMensajeAplicacion(1, "Información guardada con éxito; =)");                   
+                    popUpMensajeAplicacion(1, "Información guardada con éxito; =)");
+                    TicketInventario obj = new TicketInventario();
+                    obj.imprimirTiket(idVenta.ToString(), Session["Nombre"].ToString(), Session["datos"] as DataTable);          
                 }
                 else
                 {
