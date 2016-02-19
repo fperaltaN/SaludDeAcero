@@ -119,6 +119,8 @@ namespace Sisa
                 default:
                     break;
             }
+            this.popUpEditarEmpleado.ShowOnPageLoad = false;
+            this.popUpEliminarEmpleado.ShowOnPageLoad = false;
         }
 
         /// <summary>
@@ -371,8 +373,6 @@ namespace Sisa
         protected void btnMensajeApp_Click(object sender, EventArgs e)
         {
             this.popUpMensajeAplicación.ShowOnPageLoad = false;
-            this.popUpEditarEmpleado.ShowOnPageLoad = false;
-            this.popUpEliminarEmpleado.ShowOnPageLoad = false;
         }
     }
 }

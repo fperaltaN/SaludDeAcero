@@ -114,7 +114,6 @@ namespace Sisa
         /// <param name="e"></param>
         protected void btnGuardar_Click(object sender, EventArgs e)
         {
-            string mensaje = "";
             int satisfactorio = objU.addPaquetes(txtNombrePaquete.Text, txtdescripcionPaquete.Text, txtCosto.Text, txtDiasPaquete.Text, Session["Id_Usuario"].ToString());
             if (satisfactorio == 1)
             {
@@ -135,7 +134,6 @@ namespace Sisa
         /// <param name="e"></param>
         protected void btnActualizar_Click(object sender, EventArgs e)
         {
-            string mensaje = "";
             int satisfactorio = objU.updtPaquete(Convert.ToInt32(Session["Row"].ToString()),txtNombrePaquete.Text, txtdescripcionPaquete.Text, txtCosto.Text, txtDiasPaquete.Text, Session["Id_Usuario"].ToString(), true);
             if (satisfactorio == 1)
             {
@@ -178,6 +176,8 @@ namespace Sisa
                 default:
                     break;
             }
+            this.popUpEditarPaquete.ShowOnPageLoad = false;
+            this.popUpEliminarPaquete.ShowOnPageLoad = false;
         }
 
         /// <summary>
@@ -213,7 +213,6 @@ namespace Sisa
         /// <param name="e"></param>
         protected void btnEliminarCambios_Click(object sender, EventArgs e)
         {
-            string mensaje = "";
             int satisfactorio = objU.updtPaquete(Convert.ToInt32(Session["Row"].ToString()), txtNombrePaquete.Text, txtdescripcionPaquete.Text, txtCosto.Text, txtDiasPaquete.Text, Session["Id_Usuario"].ToString(), false);
             if (satisfactorio == 1)
             {
@@ -347,8 +346,8 @@ namespace Sisa
         protected void btnMensajeApp_Click(object sender, EventArgs e)
         {
             this.popUpMensajeAplicación.ShowOnPageLoad = false;
-            this.popUpEditarPaquete.ShowOnPageLoad = false;
-            this.popUpEliminarPaquete.ShowOnPageLoad = false;
+            //this.popUpEditarPaquete.ShowOnPageLoad = false;
+            //this.popUpEliminarPaquete.ShowOnPageLoad = false;
         }
     }
 }

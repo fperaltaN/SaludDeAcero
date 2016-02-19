@@ -10,6 +10,7 @@ using System.Linq;
 using System.Web;
 using LibPrintTicket;
 using System.Data;
+using System.Configuration;
 
 namespace Sisa.AdministraciónInvetario
 {
@@ -55,15 +56,20 @@ namespace Sisa.AdministraciónInvetario
             ticket.AddTotal("IVA", "0");
             ticket.AddTotal("TOTAL", total.ToString());
             ticket.AddTotal("", ""); //Ponemos un total en blanco que sirve de espacio
-           // ticket.AddTotal("RECIBIDO", recibido);
-          //  ticket.AddTotal("CAMBIO", (Convert.ToDouble(recibido) - Convert.ToDouble(Costo)).ToString());
+                                     // ticket.AddTotal("RECIBIDO", recibido);
+                                     //  ticket.AddTotal("CAMBIO", (Convert.ToDouble(recibido) - Convert.ToDouble(Costo)).ToString());
             ticket.AddTotal("", "");//Ponemos un total en blanco que sirve de espacio
-
+            ticket.AddTotal("USTED AHORRO", "0.00");
 
             //El metodo AddFooterLine funciona igual que la cabecera
-         //  ticket.AddFooterLine("TU SALUD ES NUESTRA PASION...");
-           // ticket.AddFooterLine("VIVE LA EXPERIENCIA SALUD DE ACERO");
-            ticket.AddFooterLine("GRACIAS POR SU COMPRA");
+            ticket.AddFooterLine("TU SALUD ES NUESTRA PASION...");
+            ticket.AddFooterLine("VIVE LA EXPERIENCIA SALUD DE ACERO");
+            ticket.AddFooterLine("GRACIAS POR SU PREFERENCIA");
+
+            //Y por ultimo llamamos al metodo PrintTicket para imprimir el ticket, este metodo necesita un
+            //parametro de tipo string que debe de ser el nombre de la impresora.
+            // ticket.PrintTicket("Epson 720X");
+            ticket.PrintTicket(ConfigurationManager.AppSettings["Impresora"]);
 
         }
     }

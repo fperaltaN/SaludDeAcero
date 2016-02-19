@@ -50,6 +50,9 @@
     <Reference Include="DevExpress.Web.ASPxThemes.v14.2, Version=14.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Web.v14.2, Version=14.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraPrinting.v14.2, Version=14.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="LibPrintTicket">
+      <HintPath>..\..\LibPrintTicket\Release\LibPrintTicket.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
       <Private>True</Private>
@@ -74,6 +77,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="AdministraciónInvetario\VAdminInventario.aspx" />
+    <Content Include="AdministraciónPagos\VAdminControlPagos.aspx" />
     <Content Include="AdministraciónPaquetes\VAdminPaquetes.aspx" />
     <Content Include="Administración\VAdminEmpleados.aspx" />
     <Content Include="Administración\VAdminUsuarios.aspx" />
@@ -91,6 +95,7 @@
     <Content Include="css\style.css" />
     <Content Include="css\tooplate_style.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Galeria.html" />
     <Content Include="Imagenes\1Rgur %281%29.jpg" />
     <Content Include="Imagenes\1Rgur.jpg" />
     <Content Include="Imagenes\998885_171005126406651_111173835_n.jpg" />
@@ -331,12 +336,21 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AdministraciónInvetario\TiketInventario.cs" />
     <Compile Include="AdministraciónInvetario\VAdminInventario.aspx.cs">
       <DependentUpon>VAdminInventario.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="AdministraciónInvetario\VAdminInventario.aspx.designer.cs">
       <DependentUpon>VAdminInventario.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AdministraciónPagos\TicketSocio.cs" />
+    <Compile Include="AdministraciónPagos\VAdminControlPagos.aspx.cs">
+      <DependentUpon>VAdminControlPagos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdministraciónPagos\VAdminControlPagos.aspx.designer.cs">
+      <DependentUpon>VAdminControlPagos.aspx</DependentUpon>
     </Compile>
     <Compile Include="AdministraciónPaquetes\VAdminPaquetes.aspx.cs">
       <DependentUpon>VAdminPaquetes.aspx</DependentUpon>

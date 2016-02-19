@@ -26,7 +26,7 @@ namespace SaludDeAcero.MasterPage
 
             if (Session["Usuario"] == null)
             {
-                Session.Abandon();
+                //Session.Abandon();
                 Response.Cookies.Add(new HttpCookie("ASP.NET_SessionId", ""));
                 Response.Redirect("~/Login.aspx");
             }

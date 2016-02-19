@@ -44,6 +44,7 @@ namespace Sisa.AdministraciónInvetario
                 cargaProductos();
                 btnModificarProducto.Visible = false;
                 btnEliminarProducto.Visible = false;
+                btnImprimir.Visible = false;
                 lblEstado.Visible = false;
                 ddlEstado.Visible = false;
             }
@@ -60,6 +61,7 @@ namespace Sisa.AdministraciónInvetario
             btnActualizar.Visible = false;
             btnGuardar.Visible = true;
             limpiarCampos();
+            cargaProductos();
         }
 
         /// <summary>
@@ -153,7 +155,9 @@ namespace Sisa.AdministraciónInvetario
             }
             return true;
         }
-        // carga y los muestra en el Grid
+        /// <summary>
+        /// carga y los muestra en el Grid
+        /// </summary>
         protected void cargaProducto()
         {
             DataSet datos = objE.getProductosGrid();
@@ -161,7 +165,11 @@ namespace Sisa.AdministraciónInvetario
             grdProductos.DataBind();
             grdProductos.KeyFieldName = "id_producto";
         }
-        // selecciona los datos en el grid
+        /// <summary>
+        /// selecciona los datos en el grid
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void grdProductos_RowCommand(object sender, DevExpress.Web.ASPxGridViewRowCommandEventArgs e)
         {
             object id = e.KeyValue;
@@ -332,10 +340,6 @@ namespace Sisa.AdministraciónInvetario
         protected void btnMensajeApp_Click(object sender, EventArgs e)
         {
             this.popUpMensajeAplicación.ShowOnPageLoad = false;
-            this.popVenta.ShowOnPageLoad = false;
-            this.popEliminarProducto.ShowOnPageLoad = false;
-            this.popEliminarProducto.ShowOnPageLoad = false;
-            this.PopupControlInvetarioEntrada.ShowOnPageLoad = false;
         }
 
         /// <summary>
@@ -352,6 +356,7 @@ namespace Sisa.AdministraciónInvetario
                     txtMensaje.ForeColor = Color.Green;
                     txtMensaje.Font.Bold = true;
                     this.popUpMensajeAplicación.ShowOnPageLoad = true;
+                    btnImprimir.Visible = true;
                     break;
                 case 2:
                     txtMensaje.Text = Mensaje;
@@ -368,6 +373,10 @@ namespace Sisa.AdministraciónInvetario
                 default:
                     break;
             }
+            this.popVenta.ShowOnPageLoad = false;
+            this.popEliminarProducto.ShowOnPageLoad = false;
+            this.popEliminarProducto.ShowOnPageLoad = false;
+            this.PopupControlInvetarioEntrada.ShowOnPageLoad = false;
         }
 
         /// <summary>
@@ -431,6 +440,7 @@ namespace Sisa.AdministraciónInvetario
             TxtVentaDescripcion.Text = producto.Tables[0].Rows[0]["descripcion"].ToString();
             txtVentaCosto.Text = producto.Tables[0].Rows[0]["costo"].ToString();
             txtVentaCantidad.Text = "1";//producto.Tables[0].Rows[0]["existencia"].ToString();
+            lblExistencias.Text = producto.Tables[0].Rows[0]["existencia"].ToString();
             txtTotalVenta.Text = (Convert.ToDecimal(txtVentaCosto.Text) * Convert.ToDecimal(txtVentaCantidad.Text)).ToString();
         }
 
@@ -560,8 +570,8 @@ namespace Sisa.AdministraciónInvetario
                 {
                     informacion = objVP.AddVentaProducto(idVenta, Convert.ToInt32(dt.Rows[i]["IdProducto"].ToString()), Convert.ToInt32(dt.Rows[i]["Cantidad"].ToString()));
                     popUpMensajeAplicacion(1, "Información guardada con éxito; =)");
-                    TicketInventario obj = new TicketInventario();
-                    obj.imprimirTiket(idVenta.ToString(), Session["Nombre"].ToString(), Session["datos"] as DataTable);          
+                    Session["idVenta"] = idVenta.ToString();
+                    Session["datosTemp"] = Session["datos"];
                 }
                 else
                 {
@@ -599,6 +609,17 @@ namespace Sisa.AdministraciónInvetario
             {
                 e.Value = "IVA 16 %";
             }
+        }
+
+        /// <summary>
+        /// Imprime Ticket de Venta
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        protected void btnImprimir_Click(object sender, EventArgs e)
+        {
+            TicketInventario obj = new TicketInventario();
+            obj.imprimirTiket(Session["idVenta"].ToString(), Session["Nombre"].ToString(), Session["datosTemp"] as DataTable);
         }
     }
 }

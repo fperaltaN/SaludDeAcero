@@ -519,6 +519,10 @@ namespace SaludDeAcero.AdministraciónSocios
                 default:
                     break;
             }
+            this.popUpRegistrar.ShowOnPageLoad = false;
+            this.popUpEstadoSocio.ShowOnPageLoad = false;
+            //this.popUpConsultaHistorial.ShowOnPageLoad = false;
+            this.popUpEliminarSocio.ShowOnPageLoad = false;
         }        
 
         /// <summary>
@@ -551,11 +555,7 @@ namespace SaludDeAcero.AdministraciónSocios
         /// <param name="e"></param>
         protected void btnMensajeApp_Click(object sender, EventArgs e)
         {
-            this.popUpMensajeAplicación.ShowOnPageLoad = false;
-            this.popUpRegistrar.ShowOnPageLoad = false;
-            this.popUpEstadoSocio.ShowOnPageLoad = false;
-            //this.popUpConsultaHistorial.ShowOnPageLoad = false;
-            this.popUpEliminarSocio.ShowOnPageLoad = false;
+            this.popUpMensajeAplicación.ShowOnPageLoad = false;            
         }
 
         /// <summary>

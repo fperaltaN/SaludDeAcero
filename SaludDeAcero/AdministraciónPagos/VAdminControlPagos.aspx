@@ -134,6 +134,12 @@
                                                 <p class="text-right"><a href="#">Ver Detalles del Paquete Seleccionado...</a></p>
                                             </div>
                                         </div>
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label for="FechaVence">Fecha Pago</label>
+                                                <dx:ASPxDateEdit ID="txtFechaPago" runat="server" Theme="Metropolis" Width="260px" Height="33px"></dx:ASPxDateEdit>
+                                            </div>
+                                        </div>
                                     </div>
                                     <div class="row">
 
@@ -264,6 +270,7 @@
                                 </div>
                                 <div class="modal-footer">
                                     <asp:Button class="btn btn-default" data-dismiss="modal" ID="btnMensajeApp" runat="server" Text="Entendido" OnClick="btnMensajeApp_Click" />
+                                    <asp:Button class="btn btn-success" ID="btnImprimir" runat="server" Text="Imprimir Pago" OnClick="btnImprimir_Click" />
                                 </div>
                             </div>
                         </div>

@@ -24,7 +24,7 @@ namespace SaludDeAcero.MasterPage
         {
             if (Session["Usuario"] == null)
             {
-                Session.Abandon();
+                //Session.Abandon();
                 Response.Cookies.Add(new HttpCookie("ASP.NET_SessionId", ""));
                 Response.Redirect("~/Login.aspx");
             }
@@ -44,7 +44,7 @@ namespace SaludDeAcero.MasterPage
 
             if (Session["Usuario"] == null)
             {
-                Session.Abandon();
+                //Session.Abandon();
                 Response.Cookies.Add(new HttpCookie("ASP.NET_SessionId", ""));
                 Response.Redirect("~/Login.aspx");
             }
@@ -69,7 +69,7 @@ namespace SaludDeAcero.MasterPage
         /// <param name="e"></param>
         protected void lnkBtnCerrarSession_Click(object sender, EventArgs e)
         {
-            Session.Abandon();
+            //Session.Abandon();
             Response.Cookies.Add(new HttpCookie("ASP.NET_SessionId", ""));
             Response.Redirect("~/Login.aspx");
             Session["Usuario"] = null;

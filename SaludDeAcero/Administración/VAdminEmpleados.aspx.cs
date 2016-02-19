@@ -194,6 +194,8 @@ namespace SaludDeAcero.Administración
                 default:
                     break;
             }
+            this.popUpEditarAgregarEmpleado.ShowOnPageLoad = false;
+            this.popUpEliminarEmpleado.ShowOnPageLoad = false;
         }
 
         /// <summary>
@@ -435,8 +437,6 @@ namespace SaludDeAcero.Administración
         protected void btnMensajeApp_Click(object sender, EventArgs e)
         {
             this.popUpMensajeAplicación.ShowOnPageLoad = false;
-            this.popUpEditarAgregarEmpleado.ShowOnPageLoad = false;
-            this.popUpEliminarEmpleado.ShowOnPageLoad = false;
         }
 
         /// <summary>

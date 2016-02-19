@@ -72,7 +72,6 @@
                                 <SettingsPager NumericButtonCount="10" PageSize="10">
                                      <PageSizeItemSettings Visible="true" ShowAllItem="true" />
                                 </SettingsPager>
-                                </SettingsPager>
                             </dx:ASPxGridView>
 
                             <dx:ASPxGridViewExporter ID="grdProductosExporter" runat="server" GridViewID="grdProductos">
@@ -263,13 +262,19 @@
                                                 <div class="form-group">
                                                     <label for="Cantidad">Cantidad</label>
                                                     <asp:TextBox ID="txtVentaCantidad" class="form-control" runat="server" Text="" ToolTip="Ingrese Nombre del Socio"></asp:TextBox>
-                                                </div>
+                                                </div>                                                
                                             </div>
                                             <div class="col-md-2">
                                                 <div class="form-group">
                                                     <label for="Total">Total</label>
                                                     <asp:TextBox ID="txtTotalVenta" class="form-control" runat="server" Text="" ToolTip="Ingrese Nombre del Socio"></asp:TextBox>
-                                                </div>
+                                                </div> 
+                                            </div>
+                                            <div class="col-md-2">
+                                                <div class="form-group">
+                                                    <label for="Cantidad">Existencias</label>
+                                                    <asp:Label ID="lblExistencias" class="form-control" runat="server" Text="" ToolTip="Existencia de Productos"></asp:Label>
+                                                </div>                                               
                                             </div>
                                         </div>
                                     </div>
@@ -360,6 +365,8 @@
                                 </div>
                                 <div class="modal-footer">
                                     <asp:Button class="btn btn-default" data-dismiss="modal" ID="btnMensajeApp" runat="server" Text="Entendido" OnClick="btnMensajeApp_Click" />
+                                    <asp:Button runat="server" Text="Imprimir Pago" ID="btnImprimir" class="btn btn-success" OnClick="btnImprimir_Click"></asp:Button>
+                                                                   
                                 </div>
                             </div>
                         </div>

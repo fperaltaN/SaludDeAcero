@@ -346,6 +346,15 @@ namespace Sisa.AdministraciónInvetario {
         protected global::System.Web.UI.WebControls.TextBox txtTotalVenta;
         
         /// <summary>
+        /// lblExistencias control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblExistencias;
+        
+        /// <summary>
         /// btnLimpiain control.
         /// </summary>
         /// <remarks>
@@ -416,6 +425,15 @@ namespace Sisa.AdministraciónInvetario {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnMensajeApp;
+        
+        /// <summary>
+        /// btnImprimir control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnImprimir;
         
         /// <summary>
         /// lnkBtnWord control.

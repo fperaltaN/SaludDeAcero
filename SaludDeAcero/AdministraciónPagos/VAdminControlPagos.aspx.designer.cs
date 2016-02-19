@@ -139,6 +139,15 @@ namespace Sisa {
         protected global::System.Web.UI.WebControls.DropDownList ddlPaquete;
         
         /// <summary>
+        /// txtFechaPago control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxDateEdit txtFechaPago;
+        
+        /// <summary>
         /// txtFecha control.
         /// </summary>
         /// <remarks>
@@ -281,6 +290,15 @@ namespace Sisa {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnMensajeApp;
+        
+        /// <summary>
+        /// btnImprimir control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnImprimir;
         
         /// <summary>
         /// lnkBtnWord control.
