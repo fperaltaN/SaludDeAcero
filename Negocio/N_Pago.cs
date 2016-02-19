@@ -80,7 +80,7 @@ namespace Negocio
                 SqlParameter[] param = new SqlParameter[4];
                 param[0] = new SqlParameter("@id_paquete", SqlDbType.Int, 10, ParameterDirection.Input, false, 0, 0, "", DataRowVersion.Current, id_paquete);
                 param[1] = new SqlParameter("@id_socio", SqlDbType.VarChar, 50, ParameterDirection.Input, false, 0, 0, "", DataRowVersion.Current, id_socio);
-                param[2] = new SqlParameter("@id_empleado", SqlDbType.VarChar, 50, ParameterDirection.Input, false, 0, 0, "", DataRowVersion.Current, id_empleado);
+                param[2] = new SqlParameter("@ID_USUARIO", SqlDbType.VarChar, 50, ParameterDirection.Input, false, 0, 0, "", DataRowVersion.Current, id_empleado);
                 param[3] = new SqlParameter("@importe", SqlDbType.VarChar, 50, ParameterDirection.Input, false, 0, 0, "", DataRowVersion.Current, importe);
                 transSucess = obj.getDataFromSP(addPago, param, "TblPago", datos);
                 idPago = Convert.ToInt32(datos.Tables[0].Rows[0]["id_pago"].ToString());
@@ -111,7 +111,7 @@ namespace Negocio
                 SqlParameter[] param = new SqlParameter[5];
                 param[0] = new SqlParameter("@id_paquete", SqlDbType.Int, 10, ParameterDirection.Input, false, 0, 0, "", DataRowVersion.Current, id_paquete);
                 param[1] = new SqlParameter("@id_socio", SqlDbType.VarChar, 50, ParameterDirection.Input, false, 0, 0, "", DataRowVersion.Current, id_socio);
-                param[2] = new SqlParameter("@id_empleado", SqlDbType.VarChar, 50, ParameterDirection.Input, false, 0, 0, "", DataRowVersion.Current, id_empleado);
+                param[2] = new SqlParameter("@ID_USUARIO", SqlDbType.VarChar, 50, ParameterDirection.Input, false, 0, 0, "", DataRowVersion.Current, id_empleado);
                 param[3] = new SqlParameter("@importe", SqlDbType.VarChar, 50, ParameterDirection.Input, false, 0, 0, "", DataRowVersion.Current, importe);
                 param[4] = new SqlParameter("@activo", SqlDbType.Bit, 250, ParameterDirection.Input, false, 0, 0, "", DataRowVersion.Current, activo);
                 transSucess = obj.getDataFromSP(updPago, param, "TblPago", datos);

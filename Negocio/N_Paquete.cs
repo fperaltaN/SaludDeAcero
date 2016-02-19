@@ -94,7 +94,7 @@ namespace Negocio
                 param[1] = new SqlParameter("@descripcion", SqlDbType.VarChar, 100, ParameterDirection.Input, false, 0, 0, "", DataRowVersion.Current, descripcion);
                 param[2] = new SqlParameter("@costo", SqlDbType.Decimal, 50, ParameterDirection.Input, false, 0, 0, "", DataRowVersion.Current, costo);
                 param[3] = new SqlParameter("@diasPaquete", SqlDbType.VarChar, 50, ParameterDirection.Input, false, 0, 0, "", DataRowVersion.Current, diasPaquete);
-                param[4] = new SqlParameter("@id_empleado", SqlDbType.Int, 50, ParameterDirection.Input, false, 0, 0, "", DataRowVersion.Current, id_empleado);
+                param[4] = new SqlParameter("@ID_USUARIO", SqlDbType.Int, 50, ParameterDirection.Input, false, 0, 0, "", DataRowVersion.Current, id_empleado);
                 transSucess = obj.getDataFromSP(addPaquete, param, "TblPaquete", datos);
             }
             catch (Exception ex)
@@ -127,7 +127,7 @@ namespace Negocio
                 param[2] = new SqlParameter("@descripcion", SqlDbType.VarChar, 50, ParameterDirection.Input, false, 0, 0, "", DataRowVersion.Current, descripcion);
                 param[3] = new SqlParameter("@costo", SqlDbType.Decimal, 100, ParameterDirection.Input, false, 0, 0, "", DataRowVersion.Current, costo.Replace(",","."));
                 param[4] = new SqlParameter("@diasPaquete", SqlDbType.VarChar, 50, ParameterDirection.Input, false, 0, 0, "", DataRowVersion.Current, diasPaquete);
-                param[5] = new SqlParameter("@id_empleado", SqlDbType.Int, 50, ParameterDirection.Input, false, 0, 0, "", DataRowVersion.Current, id_empleado);
+                param[5] = new SqlParameter("@ID_USUARIO", SqlDbType.Int, 50, ParameterDirection.Input, false, 0, 0, "", DataRowVersion.Current, id_empleado);
                 param[6] = new SqlParameter("@activo", SqlDbType.VarChar, 250, ParameterDirection.Input, false, 0, 0, "", DataRowVersion.Current, activo);
                transSucess = obj.getDataFromSP(updPaquete, param, "TblPaquete", datos);
             }
