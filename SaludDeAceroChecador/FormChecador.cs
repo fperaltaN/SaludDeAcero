@@ -140,54 +140,143 @@ namespace SaludDeAceroChecador
             {
                 if (Validate())
                 {
-                    N_Socio objSocio = new N_Socio();
-                    N_ChecadorSocio objChec = new N_ChecadorSocio();
-
-                    DataSet obj = objSocio.getSociosGrid();
-                    DataSet objExiste = objChec.getChecadorSocioByNumero(Convert.ToInt32(txtxClave.Text));
-                    bool bandera = false;
-                    if (obj.Tables[0].Rows.Count >= 1)
+                    if (chkSocios.Checked == true)
                     {
-                        objChec.updtChecadorSocios(objExiste.Tables[0].Rows[0]["id_entrada_salida"].ToString(), objExiste.Tables[0].Rows[0]["id_socio"].ToString(), objExiste.Tables[0].Rows[0]["entrada"].ToString(), System.DateTime.Now.ToString(), objExiste.Tables[0].Rows[0]["activo"].ToString());
-                        bandera = true;
-                    }
-                    else { objChec.addChecadorSocios(txtxClave.Text); }                    
-
-                    foreach (DataRow temp in obj.Tables[0].Rows)
-                    {
-                        if (Convert.ToInt32(temp["num_socio"].ToString()) == Convert.ToInt32(txtxClave.Text))
+                        try
                         {
-                            imgSocio.Visible = true;
-                            lblBienvenidos.Visible = true;
-                            lblDias.Visible = true;
-                            lblNombre.Visible = true;
-                            lblSetDias.Visible = true;
-                            lblSetNombreSocio.Visible = true;
-                            lblEntrada.Visible = true;
-                            lblHoraEntrada.Visible = true;
-                            lblSalida.Visible = true;
-                            lblHoraSalida.Visible = true;
-                            lblSetNombreSocio.Text = temp["nombre"].ToString() + "" + temp["ap_paterno"].ToString() + " " + temp["ap_Materno"].ToString();
-                            lblSetDias.Text = "27";
-                            Image image = Image.FromFile(System.Windows.Forms.Application.StartupPath.Replace("\\bin\\Debug", "\\fotos\\" + txtxClave.Text  + ".jpg"));
-                            // Set the position  on the form.
-                            //imgSocio.Location = new Point(10, 60);
-                            imgSocio.SizeMode = PictureBoxSizeMode.StretchImage;
-                            //imgSocio.Size = new System.Drawing.Size(250, 180);
-                            imgSocio.Image = image;
-                            if (bandera)
-                            {
-                                lblEntrada.Text = objExiste.Tables[0].Rows[0]["entrada"].ToString();
-                                lblSalida.Text = System.DateTime.Now.ToString();
-                            }
-                            else { lblEntrada.Text = System.DateTime.Now.ToString(); }
-                            break;                          
+                            Socios();
+                            chkSocios.Checked = true;
+                        }
+                        catch (Exception)
+                        {
+                            lblError.Text = "Error:Verifica que el numero ingresado pertenezca a un Socio y no a un Empleado....";
+                            lblError.Visible = true;
+                        }
+                    }
+                    else
+                    {
+                        try
+                        {
+                            Empleados();
+                            chkSocios.Checked = true;
+                        }
+                        catch (Exception)
+                        {
+                            lblError.Text = "Error:Verifica que el numero ingresado pertenezca a un Empleado (esté dado de alta) y no a un Socio....";
+                            lblError.Visible = true;
                         }
                     }
                     pausa(5000);
                     limpiaCampos();
                 }
             }
+        }
+
+        /// <summary>
+        /// Guarda el checador de los socios
+        /// </summary>
+        public void Socios()
+        {
+            N_Socio objSocio = new N_Socio();
+            N_ChecadorSocio objChec = new N_ChecadorSocio();
+
+            DataSet obj = objSocio.getSociosGrid();
+            DataSet objExiste = objChec.getChecadorSocioByNumero(Convert.ToInt32(txtxClave.Text));
+            bool bandera = false;
+            if (objExiste.Tables[0].Rows.Count >= 1)
+            {
+                objChec.updtChecadorSocios(objExiste.Tables[0].Rows[0]["id_entrada_salida"].ToString(), objExiste.Tables[0].Rows[0]["id_socio"].ToString(), objExiste.Tables[0].Rows[0]["entrada"].ToString(), System.DateTime.Now.ToString(), objExiste.Tables[0].Rows[0]["activo"].ToString());
+                bandera = true;
+            }
+            else { objChec.addChecadorSocios(txtxClave.Text); }
+
+            foreach (DataRow temp in obj.Tables[0].Rows)
+            {
+                if (Convert.ToInt32(temp["num_socio"].ToString()) == Convert.ToInt32(txtxClave.Text))
+                {
+                    imgSocio.Visible = true;
+                    lblBienvenidos.Visible = true;
+                    lblDias.Visible = true;
+                    lblNombre.Visible = true;
+                    lblSetDias.Visible = true;
+                    lblSetNombreSocio.Visible = true;
+                    lblEntrada.Visible = true;
+                    lblHoraEntrada.Visible = true;
+                    lblSalida.Visible = true;
+                    lblHoraSalida.Visible = true;
+                    lblSetNombreSocio.Text = temp["nombre"].ToString() + "" + temp["ap_paterno"].ToString() + " " + temp["ap_Materno"].ToString();
+                    lblSetDias.Text = "27";
+                    Image image = Image.FromFile(System.Windows.Forms.Application.StartupPath.Replace("\\bin\\Debug", "\\fotos\\" + txtxClave.Text + ".jpg"));
+                    // Set the position  on the form.
+                    //imgSocio.Location = new Point(10, 60);
+                    imgSocio.SizeMode = PictureBoxSizeMode.StretchImage;
+                    //imgSocio.Size = new System.Drawing.Size(250, 180);
+                    imgSocio.Image = image;
+                    if (bandera)
+                    {
+                        lblEntrada.Text = objExiste.Tables[0].Rows[0]["entrada"].ToString();
+                        lblSalida.Text = System.DateTime.Now.ToString();
+                    }
+                    else { lblEntrada.Text = System.DateTime.Now.ToString(); }
+                    break;
+                }
+            }
+            pausa(5000);
+            limpiaCampos();
+
+        }
+        /// <summary>
+        /// Guarda el checador de los empleados
+        /// </summary>
+        public void Empleados()
+        {
+            N_Empleados objEmpleado = new N_Empleados();
+            N_Checador objChec = new N_Checador();
+
+            DataSet obj = objEmpleado.getEmpleadosGrid();
+            DataSet objExiste = objChec.getChecadorByNumero(Convert.ToInt32(txtxClave.Text));
+            bool bandera = false;
+            if (objExiste.Tables[0].Rows.Count >= 1)
+            {
+                objChec.updtChecadors(objExiste.Tables[0].Rows[0]["id_entrada_salida"].ToString(), objExiste.Tables[0].Rows[0]["id_empleado"].ToString(), objExiste.Tables[0].Rows[0]["entrada"].ToString(), System.DateTime.Now.ToString(), objExiste.Tables[0].Rows[0]["activo"].ToString());
+                bandera = true;
+            }
+            else { objChec.addChecadors(txtxClave.Text); }
+
+            foreach (DataRow temp in obj.Tables[0].Rows)
+            {
+                if (Convert.ToInt32(temp["num_empleado"].ToString()) == Convert.ToInt32(txtxClave.Text))
+                {
+                    imgSocio.Visible = true;
+                    lblBienvenidos.Visible = true;
+                    lblDias.Visible = true;
+                    lblNombre.Visible = true;
+                    lblSetDias.Visible = true;
+                    lblSetNombreSocio.Visible = true;
+                    lblEntrada.Visible = true;
+                    lblHoraEntrada.Visible = true;
+                    lblSalida.Visible = true;
+                    lblHoraSalida.Visible = true;
+                    lblSetNombreSocio.Text = temp["nombre"].ToString() + "" + temp["ap_paterno"].ToString() + " " + temp["ap_Materno"].ToString();
+                    lblSetDias.Text = "27";
+                    Image image = Image.FromFile(System.Windows.Forms.Application.StartupPath.Replace("\\bin\\Debug", "\\fotos\\" + txtxClave.Text + ".jpg"));
+                    // Set the position  on the form.
+                    //imgSocio.Location = new Point(10, 60);
+                    imgSocio.SizeMode = PictureBoxSizeMode.StretchImage;
+                    //imgSocio.Size = new System.Drawing.Size(250, 180);
+                    imgSocio.Image = image;
+                    if (bandera)
+                    {
+                        lblEntrada.Text = objExiste.Tables[0].Rows[0]["entrada"].ToString();
+                        lblSalida.Text = System.DateTime.Now.ToString();
+                    }
+                    else { lblEntrada.Text = System.DateTime.Now.ToString(); }
+                    break;
+                }
+            }
+            pausa(5000);
+            limpiaCampos();
+
         }
 
         /// <summary>
@@ -206,13 +295,15 @@ namespace SaludDeAceroChecador
             lblHoraEntrada.Visible = false;
             lblSalida.Visible = false;
             lblHoraSalida.Visible = false;
+            lblError.Visible = false;
+            lblError.ForeColor = Color.DarkRed;
         }
 
         public void pausa(int pSegundos)
         {
             int vInicio = Environment.TickCount;
-            while((Environment.TickCount - vInicio) <= pSegundos)
-            {                
+            while ((Environment.TickCount - vInicio) <= pSegundos)
+            {
                 Application.DoEvents();
             }
         }
@@ -254,6 +345,25 @@ namespace SaludDeAceroChecador
         private void label1_Click_3(object sender, EventArgs e)
         {
 
+        }
+        /// <summary>
+        /// Verifica que el check de Socios este checado
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void chkSocios_CheckedChanged(object sender, EventArgs e)
+        {
+            chkEmpleados.Checked = false;
+        }
+
+        /// <summary>
+        /// Verifica que el check de Empleados este checado
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void chkEmpleados_CheckedChanged(object sender, EventArgs e)
+        {
+            chkSocios.Checked = false;
         }
     }
 }
