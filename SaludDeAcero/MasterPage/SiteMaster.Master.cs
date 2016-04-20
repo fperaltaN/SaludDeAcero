@@ -22,9 +22,10 @@ namespace SaludDeAcero.MasterPage
         /// <param name="e"></param>
         protected void Page_Init(object sender, EventArgs e)
         {
+            //Response.AddHeader("Refresh", Convert.ToString((Session.Timeout * 60) + 5));
             if (Session["Usuario"] == null)
             {
-                //Session.Abandon();
+                Session.Abandon();
                 Response.Cookies.Add(new HttpCookie("ASP.NET_SessionId", ""));
                 Response.Redirect("~/Login.aspx");
             }
@@ -40,11 +41,11 @@ namespace SaludDeAcero.MasterPage
         /// <param name="e"></param>
         protected void Page_Load(object sender, EventArgs e)
         {
-            Response.AddHeader("Refresh", Convert.ToString((Session.Timeout * 60) + 5));
+            //Response.AddHeader("Refresh", Convert.ToString((Session.Timeout * 60) + 5));
 
             if (Session["Usuario"] == null)
             {
-                //Session.Abandon();
+                Session.Abandon();
                 Response.Cookies.Add(new HttpCookie("ASP.NET_SessionId", ""));
                 Response.Redirect("~/Login.aspx");
             }
