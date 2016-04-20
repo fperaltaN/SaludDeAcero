@@ -205,7 +205,7 @@ namespace SaludDeAceroChecador
                     lblSalida.Visible = true;
                     lblHoraSalida.Visible = true;
                     lblSetNombreSocio.Text = temp["nombre"].ToString() + "" + temp["ap_paterno"].ToString() + " " + temp["ap_Materno"].ToString();
-                    lblSetDias.Text = "27";
+                    lblSetDias.Text = objChec.VerificaVisitas(Convert.ToInt32(txtxClave.Text)).ToString();
                     Image image = Image.FromFile(System.Windows.Forms.Application.StartupPath.Replace("\\bin\\Debug", "\\fotos\\" + txtxClave.Text + ".jpg"));
                     // Set the position  on the form.
                     //imgSocio.Location = new Point(10, 60);
@@ -258,8 +258,8 @@ namespace SaludDeAceroChecador
                     lblSalida.Visible = true;
                     lblHoraSalida.Visible = true;
                     lblSetNombreSocio.Text = temp["nombre"].ToString() + "" + temp["ap_paterno"].ToString() + " " + temp["ap_Materno"].ToString();
-                    lblSetDias.Text = "27";
-                    Image image = Image.FromFile(System.Windows.Forms.Application.StartupPath.Replace("\\bin\\Debug", "\\fotos\\" + txtxClave.Text + ".jpg"));
+                    lblSetDias.Text = "";
+                    Image image = Image.FromFile(System.Windows.Forms.Application.StartupPath.Replace("\\bin\\Debug", "\\fotosEmpleados\\" + txtxClave.Text + ".jpg"));
                     // Set the position  on the form.
                     //imgSocio.Location = new Point(10, 60);
                     imgSocio.SizeMode = PictureBoxSizeMode.StretchImage;
