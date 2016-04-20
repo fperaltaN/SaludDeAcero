@@ -22,6 +22,7 @@ namespace Negocio
         private string getChecadorSocio = "sel_ChecadorSocioSocio";
         private string getChecadorSocioXId = "sel_byId_ChecadorSocio";
         private string getChecadorSocioXNumero = "sel_byNumero_ChecadorSocio";
+        private string getVerificaVisitas = "VerificaVisitas";
         private string addChecadorSocio = "add_ChecadorSocio";
         private string updChecadorSocio = "upd_ChecadorSocio";
         private string delChecadorSocio = "del_ChecadorSocio";
@@ -84,6 +85,29 @@ namespace Negocio
             }
 
             return datos;
+        }
+
+        /// <summary>
+        /// Obtiene  la información de las  visitas de un Socio
+        /// </summary>
+        /// <param name="num_socio"></param>
+        /// <returns></returns>
+        public string VerificaVisitas(Int32 num_socio)
+        {
+            DataSet datos = new DataSet();
+            SQLDatos obj = new SQLDatos();
+            try
+            {
+                SqlParameter[] param = new SqlParameter[1];
+                param[0] = new SqlParameter("@num_empleado", SqlDbType.Int, 10, ParameterDirection.Input, false, 0, 0, "", DataRowVersion.Current, num_socio);
+                transSucess = obj.getDataFromSP(getVerificaVisitas, param, "TblChecadorSocio", datos);
+            }
+            catch (Exception ex)
+            {
+                transSucess = 1;
+            }
+
+            return datos.Tables[0].Rows[0]["DiasRestantes"].ToString();
         }
 
         /// <summary>
