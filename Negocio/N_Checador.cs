@@ -21,6 +21,7 @@ namespace Negocio
         private int transSucess = 0;
         private string getChecador = "sel_Checador";
         private string getChecadorXId = "sel_byId_Checador";
+        private string getChecadorXNumero = "sel_byNumero_Checador";
         private string addChecador = "add_Checador";
         private string updChecador = "upd_Checador";
         private string delChecador = "del_Checador";
@@ -63,24 +64,41 @@ namespace Negocio
         }
 
         /// <summary>
+        /// Obtiene  la información de un Socio
+        /// </summary>
+        /// <param name="num_empleado"></param>
+        /// <returns></returns>
+        public DataSet getChecadorByNumero(Int32 num_empleado)
+        {
+            DataSet datos = new DataSet();
+            SQLDatos obj = new SQLDatos();
+            try
+            {
+                SqlParameter[] param = new SqlParameter[1];
+                param[0] = new SqlParameter("@num_empleado", SqlDbType.Int, 10, ParameterDirection.Input, false, 0, 0, "", DataRowVersion.Current, num_empleado);
+                transSucess = obj.getDataFromSP(getChecadorXNumero, param, "TblChecador", datos);
+            }
+            catch (Exception ex)
+            {
+                transSucess = 1;
+            }
+
+            return datos;
+        }
+
+        /// <summary>
         /// Agregalos Checador en la base de datos
         /// </summary>
-        /// <param name="idChecador"></param>
         /// <param name="num_Checador"></param>
-        /// <param name="nombre"></param>
-        /// <param name="ap_paterno"></param>
-        /// <param name="ap_materno"></param>
-        /// <param name="direccion"></param>
-        /// <param name="id_perfil"></param>
         /// <returns></returns>
-        public int addChecadors(string num_socio)
+        public int addChecadors(string num_empleado)
         {
             try
             {
                 DataSet datos = new DataSet();
                 SQLDatos obj = new SQLDatos();
                 SqlParameter[] param = new SqlParameter[1];
-                param[0] = new SqlParameter("@num_empleado", SqlDbType.Int, 10, ParameterDirection.Input, false, 0, 0, "", DataRowVersion.Current, num_socio);
+                param[0] = new SqlParameter("@num_empleado", SqlDbType.Int, 10, ParameterDirection.Input, false, 0, 0, "", DataRowVersion.Current, num_empleado);
                 transSucess = obj.getDataFromSP(addChecador, param, "TblChecador", datos);
             }
             catch (Exception ex)
@@ -92,34 +110,26 @@ namespace Negocio
         }
 
         /// <summary>
-        /// Actualiza la información de un Checador
+        /// Actualiza la información de un ChecadorSocio
         /// </summary>
-        /// <param name="idChecador"></param>
-        /// <param name="num_Checador"></param>
-        /// <param name="nombre"></param>
-        /// <param name="ap_paterno"></param>
-        /// <param name="ap_materno"></param>
-        /// <param name="direccion"></param>
+        /// <param name="id_entrada_salida"></param>
+        /// <param name="id_empleado"></param>
+        /// <param name="entrada"></param>
+        /// <param name="salida"></param>
         /// <param name="activo"></param>
-        /// <param name="id_perfil"></param>
         /// <returns></returns>
-        public int updtChecadors(Int32 idChecador, string num_Checador, string nombre, string ap_paterno, string ap_materno, string telefono, string direccion, bool activo, int id_perfil)
+        public int updtChecadors(string id_entrada_salida, string id_empleado, string entrada, string salida, string activo)
         {
             try
             {
                 DataSet datos = new DataSet();
                 SQLDatos obj = new SQLDatos();
-                SqlParameter[] param = new SqlParameter[9];
-                param[0] = new SqlParameter("@id_Checador", SqlDbType.Int, 10, ParameterDirection.Input, false, 0, 0, "", DataRowVersion.Current, idChecador);
-                param[1] = new SqlParameter("@num_Checador", SqlDbType.Int, 10, ParameterDirection.Input, false, 0, 0, "", DataRowVersion.Current, num_Checador);
-                param[2] = new SqlParameter("@nombre", SqlDbType.VarChar, 50, ParameterDirection.Input, false, 0, 0, "", DataRowVersion.Current, nombre);
-                param[3] = new SqlParameter("@ap_paterno", SqlDbType.VarChar, 50, ParameterDirection.Input, false, 0, 0, "", DataRowVersion.Current, ap_paterno);
-                param[4] = new SqlParameter("@ap_materno", SqlDbType.VarChar, 50, ParameterDirection.Input, false, 0, 0, "", DataRowVersion.Current, ap_materno);
-                param[4] = new SqlParameter("@telefono", SqlDbType.VarChar, 250, ParameterDirection.Input, false, 0, 0, "", DataRowVersion.Current, telefono);
-                param[5] = new SqlParameter("@direccion", SqlDbType.VarChar, 250, ParameterDirection.Input, false, 0, 0, "", DataRowVersion.Current, direccion);
-                param[6] = new SqlParameter("@id_perfil", SqlDbType.VarChar, 250, ParameterDirection.Input, false, 0, 0, "", DataRowVersion.Current, id_perfil);
-                param[7] = new SqlParameter("@fecha_baja", SqlDbType.VarChar, 250, ParameterDirection.Input, false, 0, 0, "", DataRowVersion.Current, DateTime.Now);
-                param[8] = new SqlParameter("@activo", SqlDbType.VarChar, 250, ParameterDirection.Input, false, 0, 0, "", DataRowVersion.Current, activo);
+                SqlParameter[] param = new SqlParameter[5];
+                param[0] = new SqlParameter("@id_entrada_salida", SqlDbType.Int, 10, ParameterDirection.Input, false, 0, 0, "", DataRowVersion.Current, Convert.ToInt32(id_entrada_salida));
+                param[1] = new SqlParameter("@id_empleado", SqlDbType.Int, 10, ParameterDirection.Input, false, 0, 0, "", DataRowVersion.Current, Convert.ToInt32(id_empleado));
+                param[2] = new SqlParameter("@entrada", SqlDbType.DateTime, 50, ParameterDirection.Input, false, 0, 0, "", DataRowVersion.Current, entrada);
+                param[3] = new SqlParameter("@salida", SqlDbType.DateTime, 50, ParameterDirection.Input, false, 0, 0, "", DataRowVersion.Current, salida);
+                param[4] = new SqlParameter("@activo", SqlDbType.Int, 250, ParameterDirection.Input, false, 0, 0, "", DataRowVersion.Current, Convert.ToBoolean(activo));
                 transSucess = obj.getDataFromSP(updChecador, param, "TblChecador", datos);
             }
             catch (Exception ex)
@@ -129,6 +139,7 @@ namespace Negocio
 
             return transSucess;
         }
+
         /// <summary>
         /// Elimina de la Base de Datos
         /// </summary>
